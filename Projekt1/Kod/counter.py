@@ -25,7 +25,7 @@ except:
     print "can't find file english_word_stops.txt"
     sys.exit(1) 
 
-rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"']
+rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
 
 s = filter(lambda x : not x in rm,s) 
 

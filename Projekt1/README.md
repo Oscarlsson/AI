@@ -5,7 +5,7 @@ Machine learning of statistical classifiers, in this case applied to the task of
 Statistical analysis of experiments, such as comparing measurements of classification accuracy.
 You will implement some basic classifiers yourself (Naive Bayes and the Perceptron), and use some existing libraries that implement other algorithms, such as k-nearest-neighbors, support vector machines, decision trees, maximum entropty classifiers, or probabilistic topic models.
 
-# The data
+## The data
 You will use the following data:
 The following zip file contains a subset of Mark Drezde's collection of Amazon customer reviews, nicely processed by Richard Johansson:
 amazon-balanced-6cats.zip
@@ -19,20 +19,23 @@ http://www.cs.cornell.edu/people/pabo/movie-review-data/
 The file you want is the "sentiment polarity dataset v2.0" (the actual file is called review_polarity.tar.gz). You might also be interested in the "pool of 27886 unprocessed html files" too (file polarity_html.zip).
 The Reuters-21578 dataset, which contains 21578 news documents was published by Reuters in 1987. Each document is categorized in lots of different ways. It can be downloaded from here:
 http://www.daviddlewis.com/resources/testcollections/reuters21578/
-Different classification algorithms
+
+##Different classification algorithms
 You should at least implement the following machine learning algorithms:
 Naive Bayes
 Perceptron
 Averaged Perceptron (described below)
 You should also test at least one other machine learning algorithm, such as such as k-nearest-neighbors, support vector machines, decision trees, maximum entropty classifiers, or probabilistic topic models.
-Classification tasks
+
+##Classification tasks
 The Amazon data can be used for at least three different kinds of classification tasks:
 Text categorization: Categorize review documents into their six categories: Books, DVDs, Cameras, Music, Health, and Software.
 In-domain sentiment analysis: For each review category, train and classify review documents as positive or negative. Which categories are easiest resp. hardest to classify?
 Out-of-domain sentiment analysis: Make training and test sets for two different topics (such as Books and Cameras). Test how a classifier trained on book reviews performs on the camera test set and vice versa.
 For each of these tasks you should use your implemented classifiers; Naive Bayes, Perceptron and Averaged Perceptron. You should also use as at least one external library of your own chosing.
 To get more accurate evaluations, you should use N-fold cross-validation for each task. Also, think about how you want to split your data to be sure that you don't get any strange biases.
-Suggested reading
+
+##Suggested reading
 Here are some academic papers that describe these kinds of classification problems, and their associated algorithms.
 Fabrizio Sebastiani: Machine learning in automated text categorization. ACM Computing Surveys, 34(1):1–47, 2002.
 Bo Pang, Lillian Lee, and Shivakumar Vaithyanathan: Thumbs up? Sentiment Classification using Machine Learning Techniques. In Proceedings of the 2002 Conference on Empirical Methods in Natural Language Processing (EMNLP 2002).
@@ -40,11 +43,13 @@ Thorsten Joachims: Text Categorization with Support Vector Machines: Learning wi
 John Blitzer, Mark Dredze, and Fernando Pereira: Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification. In Proceedings of the 45th Annual Meeting of the Association of Computational Linguistics (ACL 2007).
 David M. Blei: Probabilistic Topic Models. Communications of the ACM, 55(4):77–84, 2012.
 There are also references in chapter 22 of the textbook. Look at the "biographical and historical notes" in the end of the chapter.
-Statistical tests and manual analysis
+
+##Statistical tests and manual analysis
 On each of the tasks you perform you should evaluate the accuracy of your different classifiers. Compute confidence intervals and carry out McNemar tests to see whether the differences are statistically significant.
 Print a few documents that are misclassified by the best of the classifiers. Try to see if you have any idea why they were difficult to classify.
 What is the relation between the size of the training set and the performance of the classifier on the test set? Train classifiers on subsets of the training set and evaluate them all on the same test set. Report the result in a plot or a table.
-Additional tasks
+
+##Additional tasks
 There are several ways you can extend your work, here are some suggestions:
 Try different feature sets, and see if you can get better results.
 Some categories are closer to each other than others. Is there a correlation between out-of-domain sentiment analysis of A and B, and to categorize A texts as B?
@@ -52,7 +57,8 @@ Try the IMDB movie review dataset or the Reuters-21578 dataset, and see how well
 The original Amazon dataset contains large unprocessed files. Try to use them in some way to get better results.
 Implement (and try) some more learning methods.
 Something else of your choosing – but check with your supervisor first!
-Averaged perceptron
+
+##Averaged perceptron
 The perceptron learning algorithm has the drawback that its end result is biased toward the final examples it saw. A solution proposed by Freund and Schapire (1999) and also used by Collins (2002) is to return the average weight vector rather than the final weight vector.
 It's a bit impractical to keep all versions of the weight vector in memory, and then taking the average at the end. Instead, we can build the average vector incrementally, updating it simultaneously while we're building the usual weight vector.
 Then the perceptron algorithm will be something like this:

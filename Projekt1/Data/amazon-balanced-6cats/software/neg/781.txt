@@ -1,0 +1,9 @@
+I have had to set up a few new installs of the Vista Business on some servers and I was disappointed with the overall performance. 
+
+My biggest gripe is when I tried to remotely log in from another PC and I sat there waiting and waiting only to discover that the Vista default setup is to ask permission to run even the most basic operations and was actually sitting there waiting for someone to click 'YES' to allow the process to run. How irritating! Kinda self defeats the idea of remotely logging in doesn't it?. 
+
+Also if you happen to rename the administrator account the change is not registered somewhere in the Remote Connections authorization. So when I *thought* I was remotely logging in under the new admin account name Vista wouldn't let me in and it was only after searching for what seemed an eternity - some hidden place it took me 15 minutes to find, I discovered that the the new admin account name had not been authorized when I did the name change. yikes!
+
+For those who need to run VNC Server on Vista, be aware there are issues -  installing and running that you will need to work around as well. 
+
+It seems like Microsft drastically changed the menus, overdid the default security features, and installed a new hood ornament. Other than that I don't see what the big deal is.

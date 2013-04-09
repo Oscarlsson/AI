@@ -1,0 +1,9 @@
+We have Kid Pix 3 and my kids (4 & 6) played it all the time. We just "upgraded" to Kid Pix 4, and my initial experience has prompted me to write this warning.
+
+Kid Pix 4 runs in 800x600 resolution BUT it won't force your screen resolution to match that when it runs. Kid Pix 3, of course, did. As we are using a LCD monitor with native resolution of 1280 x 1024, we obviously want to keep the desktop running in this resolution. So now we are faced with 2 options: 1) Use Kid Pix 4 with a drastically reduced window (the drawing and toolbars are in a box surrounded by a huge black screen with the file menus at the very top) or 2) adjust the resolution manually every time someone wants to run or exit the program.
+
+I find this unacceptable. Customer support is non-existent: if you bought it retail, The Learning Company won't answer your questions and refers you to Encore's website. No patches are available and Encore has no way to actually contact them. Their FAQ simply explains how to go to your desktop and adjust your screen resolution to 800x600.
+
+I think this huge oversight and lack of any patch to simply fix the problem speaks volumes for the quality of this release.
+
+Boo to Encore, boo to TLC for allowing their "brand" to be junked, boo to Broderbund. Don't waste your time

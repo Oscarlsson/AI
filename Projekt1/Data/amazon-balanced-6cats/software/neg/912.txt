@@ -1,0 +1,3 @@
+Intuit charges banks extra to support Mac users, and many banks don't pay.  So the convenience of automated transaction downloads is impossible for me on Quicken Mac.  Several other features are lagging behind the Windows version.  And for some inexplicable reason, transferring data between Quicken for Windows and Quicken for Mac isn't complete or straightfoward.
+
+I haven't used competing products, but for Mac users I recommend either running the Windows Quicken version (using Boot Camp or Parallels) or buying another product.  And by all means, let Intuit know that their pricing practices are costing them customers

@@ -1,0 +1,6 @@
+Despite many attempts and a complete reinstall of Windows XP, my XP machine refused to load Easy CD Creator 5 Platinum, rendering the progam disc and all update discs useless.
+
+Probably if you already had the program running in a 98 environment and then upgraded to XP you could keep it running with patches and updates.  So take statements by resellers that they provide update discs with a grain of salt.  If you cannot install the primary program, the update disc is of no use.
+
+The program is a good one but you have to run it on a 98 machine.
+

@@ -1,0 +1,7 @@
+Images from this camera are very high quality.  The 18X optical zoom is very usable with only minimal distortion noticeable at the extremes.  The optical image stabilization system (based on stabilizing the CCD image sensor instead of lens elements) is quite good and performed well under several different circumstances (moving car, boat, shaky hands).  
+
+My main gripe with this camera is the lack of high speed USB 2.0 support.  The fine print says that the USB interface is "full speed" which means a maximum transfer rate of 12 Mbit/s instead of the 480 Mbit/s possible with high speed USB.  So, downloading photos from the camera through the USB interface is painfully slow compared to most current generation digital cameras such as a Canon SD900.  
+
+The software provided with the camera is somewhat difficult to use and is slow and unresponsive.
+
+It would also be desirable if the camera could accept a lithium ion rechargeable battery in addition or instead of the 4 AA batteries it uses.  But, battery life with both alkaline and rechargeable NiMH AA batteries was adequate. 

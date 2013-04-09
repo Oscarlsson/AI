@@ -1,0 +1,23 @@
+I have been a Microsoft Money user for many, many years. (Going back to Money '98? I forget.) I reluctantly upgraded to Money 2007 Premium earlier this year from Money 2004 when I read somewhere that Money 2004 was no longer going to be supported. (I also read that Money 2005, Money 2006, and Money 2007 had issues. Hence my reluctance to upgrade.)
+
+For years, I have sync'ed Money with my online accounts on nearly a daily basis. I'm that kind of focused on keeping my eye on my money, and Money has historically served me very well in this habit. Money 2007 does not.
+
+Since installing it, I have:
+ 
+1) Battled with my prior bank for nearly two months to get them to figure out by Money 2007 does not synchronize with their systems. 
+
+2) Installed and reinstalled Money 2007 on several different workstations to test the synchronization issue with my years-old Money file and new, empty Money files. Always fails.
+
+3) Now I have *switched banks* thinking the syncing issue was my bank's fault. It wasn't. It's Microsoft Money's fault.
+
+Syncing fails *every* time with a helpful OBRES 22063 error. Oh, yea, that 
+one! We all know just what that is.
+
+I have read every Microsoft knowledge base article I can find. I have perused public.microsoft.money and other usenet groups. I have Googled. I have read blogs. The only thing I find is that lots of people have this problem with lots of different financial institutions, and Microsoft is doing nothing about it
+
+In Money 2004, this worked flawlessly nearly every time. Why did it 
+break?!?!!
+
+So if you're looking to have Money synchronize with your accounts online, look elsewhere. But if you're all about putting everything in manually, this product will serve you just fine.
+
+Buy a copy of Quicken instead!

@@ -1,0 +1,3 @@
+Not bad, however, in Version 10, was able to use CNTRL + to zoom in.  Used the + on the number pad -- now this function doesn't work, and the only + that works is that in the top row of the keyboard.  The zoom out "-" in the number pad still works, but not the plus.  I say that's not good.
+
+Why ruin things with an upgrade

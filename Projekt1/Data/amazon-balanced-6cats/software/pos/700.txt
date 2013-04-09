@@ -1,0 +1,6 @@
+The lawsuit mentioned in Mr John Matlock "Gunny" review has nothing to do with the quality or legality of documents created using Quicken WillMaker Plus software. Instead, it concerns the actions of an insurance agent who was found to have practiced law without a license. 
+
+He used will-making software (not Quicken WillMaker Plus) to write a will
+for an elderly client. The trouble arose because he created the will outside of her presence and arranged for her to sign it while she was hospitalized. Apparently she never reviewed the will. In other words, he acted too much like a lawyer. While the "unauthorized practice of law" is a vague concept, had the insurance agent merely recorded the woman's wishes and entered them verbatim into the software, there would almost certainly have been no problem.
+
+There is no problem with using software to prepare a will for your self. Nor is there a problem with using it to create a will for someone else if you merely type in that person's answers at their direction. The main way to run afoul of unauthorized-practice-of-law rules is to give legal advice to or prepare documents for others without their express, detailed instructions.

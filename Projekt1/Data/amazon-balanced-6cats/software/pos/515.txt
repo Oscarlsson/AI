@@ -1,0 +1,5 @@
+All I needed was to upgrade the hard drive on my Dell laptop, so I got Acronis True Image version 9 for half the price of the current version 10.
+
+I put the new hard drive (right off the sealed box) into a USB caddy that I got on eBay for $6, plugged it into the USB port, and ran Acronis 9.  Selected the "Clone Drive" wizard, and less than an hour later it was done.
+
+No need to cross my fingers... the new drive booted right up, and I'm using it now to write this review.  What could be easier

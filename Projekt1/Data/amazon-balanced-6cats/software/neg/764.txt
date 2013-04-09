@@ -1,0 +1,10 @@
+I started writing code for the web back when you could still order it as a text only service.  DOS ruled the day, and there were no ads plastered on every site.  This is the first product that takes HUGE STEPS BACKWARD in useability, functionality, and performance since the public birth of the web.  Unlike the previous reviewers glowing account of AS 4000 I am looking at new software because the service that this company provides and their complete lack of a proactive nature with regard to its useability have rankled me one too many times.  To wit:
+
+1.  I am running a dual core 3.0 with 1 gb of memory and the 3d draw is slower that previous versions.
+2.  Tech support had the audacity to tell me that going to a drop down menu to rotate an item selected is faster than a right click of the mouse and a context menu that would allow me to do the same from that menu.  This is a step backward of at least 10 years.  Previous versions had the right click menu which also had delete and other frequently used commands available.  Really piss poor on their part to eliminate this feature alone.
+3.  Despite a fast newer machine, once you select an item you have to wait before you can move it by selecting it a second time.  Pitiful.
+4.  Won't import standard dxf files without saving them as one layer.  Making a product that won't play nice with others is a bad thing.
+
+I have other issues, but just don't want to spend any more time on this company or their products.  If I ran my business and failed to listen to my customers like punch, I would be out of business.
+
+Bottom line:  NO LONGER RECOMMENDE

@@ -1,0 +1,11 @@
+I started off using Turbotax this year, but returned it to the store to use Taxcut instead. I purchased this version because it was a bargain, and it's easy enough to do state taxes by hand (or for free on the state website for those states that have that option).
+
+I did have some difficulty with the update process, which was frustrating at first. However, I found Taxcut's website to be helpful on this point, and I determined that my firewall was the problem. I was able to update the product once I followed their instructions.
+
+One key difference between Turbotax and Taxcut was that Taxcut is not integrated with as many companies. Whereas I could automatically download my W-2 and most of my 1099 forms into Turbotax, they needed to be manually entered with Taxcut. This wasn't a huge issue, but one difference people might want to know.
+
+I completed and e-filed multiple federal returns, which worked great, and the e-file charge was reasonable ($15.95). However, I don't suggest having the e-file charge taken out of your refund. Apparently, there's an extra charge (I think $25) for this service. It's more efficient and less expensive to just pay the fee with a credit card.
+
+Now to the software itself. I found it easy to navigate and enter information. I was a bit disappointed in the deduction section. Many of the fields were too short for me to enter complete names and addresses of charities, which I found frustrating. However, the calculations were accurate. I checked Taxcut's calculations regarding AMT, and they were excellent (Turbotax's calculations were wrong). In the second return I completed, the taxpayer was eligible for EIC, and Taxcut accurately identified this and did the proper calculations here as well.
+
+Overall, I was very satisfied with the product, and will use it again next year. I will make suggestions to Taxcut, and hope they will improve their support for automatic download of forms and longer fields for charitable deductions. However, even without these changes, the product is an exceptional value

@@ -1,0 +1,1 @@
+Despite generally good experiences with Microsoft products, Windows Live OneCare seems to have resulted in very poor performance on a brand new Lenovo PC running Windows XP.  I removed it and performance has improved back to where it was, now running McAfee for virus scanning etc

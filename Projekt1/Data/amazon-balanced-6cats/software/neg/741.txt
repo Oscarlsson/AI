@@ -1,0 +1,5 @@
+I've installed and tested this for several clients.  Whether backing up to a local HD or over the network, the system has worked; I install and come back a week later to do a test verify and restore, and it's always worked.  I did have trouble once; Windows froze up.  This was probably due to poor programming combined with insufficient RAM; it worked the second time.
+
+I don't get why a product with mostly single star ratings like this still gets 2.5 stars.  Annoying Amazon 'feature'!
+
+Since 60% of Windows PCs are malware-infected, I'm figuring most Windows PC support issues are malware-induced. 

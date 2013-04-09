@@ -1,0 +1,3 @@
+I've only been using Lightroom for a day, but I was pleasantly surprised with the Photoshop integration. Just hit Cmd-E, and Lightroom creates a copy of the photo (with our without the changes you applied in Lightroom) for editing in Photoshop format, and groups that copy in a stack with the original. As you save your changes in Photoshop, the image is updated in Lightroom. 
+
+I felt that the workflow was very smooth.

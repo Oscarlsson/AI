@@ -1,0 +1,11 @@
+This is a good example of the kind of scope astronomers warn beginners away from.
+
+The first red flag is the ridiculously high advertised magnification of "600x." Do you know what you will see at 600x in this scope? Nothing but a dim blur. Note that the objective (main) lens is 60mm. All telescope optics have inherent limitations; maximum useful magnification per millimeter of aperture is about 2x. Therefore, with any attempt to use this scope at magnification of over 120-140x, the increase in image size will be more than offset by breakdown, and that's even assuming the quality of the objective lens is any good. 
+
+The finder is useless; a 6x30 is barely adequate, and this is not even that big.  Finding any object other than the moon will be an exercise in frustration.  the 1 1/4" size of the eyepiece is creditable, but too high a mignification for this scope.  And the field of view is in doubt, and don't even think of using the barlow.  Buy this scope, and after a few outings, it will most likely sit in the attic.  The review immediately before mine is correct. This is no way to get started in astronomy.
+
+In a way, it is hard to fault Celestron for making and marketing this scope. Their upper-tier instruments are quite good, but the big money appears to be made on mass market toys like this. In one sense the sale of these scopes subsidizes their good models. Just make sure, gentle reader, to stay away from the toys. 
+
+Using an astronomical telescope is not like playing an MP3 file and but rather like playing a guitar. It is a learned skill. And you must do a lot of homework before you buy a telescope. Buying without prior experience is like buying a car without knowing anything about driving. If you want to see the wonders of the sky, contact your local astronomy club and attend one of their star parties. The members love sharing their hobby and can set you straight as to how to get started. The best way is to learn the sky with the unaided eye and 10x50 binoculars (decent ones are available on this website), then graduate to something along the lines of a 150-200mm (6-8") Dobsonian; Celestron's own 6" Starhopper can be found on Amazon for under $290.
+
+For more information on buying telescopes, see my encyclopedic guide on Amazon: "So you want to buy a telescope.

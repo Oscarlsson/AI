@@ -1,0 +1,1 @@
+Both versions of Scansoft cause my installer to have problems. Mainly it tries to re-install Softscan every time I start up Softscan. Also It has started to try and reinstall Softscan if I try to right click on a JPG. There is very little to no chance of getting any help from Scansoft (Nuance)to debug this problem. Save your money and buy some thing else

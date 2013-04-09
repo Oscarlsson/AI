@@ -1,0 +1,7 @@
+I have a 2 month old high-end Dell PC with tons of memory and disk, running Windows XP Pro.  This game doesn't work.  Period.  First of all, when I installed it, it reset my graphics options.  Second, when I attempt to play a game, even at the settings that it chose, I get nothing but a white screen.  After numerous tries, and killing the program with the task manager, I finally attempted the other Activities options.  Clicking on them does absolutely nothing!  It doesn't recognize my mouse clicks.
+
+I'm assuming that the game was written for the Apple Mac, and ported to the PC.  Trust me, it doesn't work.  
+
+BTW, we have tons of other kids games and have never had a problem with any of them.  
+
+Now I have to figure out how to return this silly thing. 

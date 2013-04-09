@@ -1,0 +1,12 @@
+I installed Norton Antivirus 2007 immediately after installing Windows Vista, Office 2007 and other software on a new computer.  Installation ran smoothly.  LiveUpdate ran automatically and updated the product without a hitch.
+
+Norton AntiVirus 2007 not only detects viruses, it detects spyware and rootkits as well.  It has an inbound firewall, and apparently some limited outbound firewall capabilities.  It does not protect against phishing, identity theft, or spam, nor does it contain full outbound firewall protection.
+
+When installed on Windows Vista, Norton Antivirus takes over for Windows Defender and the Windows Firewall.  I did not expect the latter; Symantec should have made it more clear that this product includes a software firewall.  Norton AntiVirus integrates well with Windows Security Center.
+
+Norton AntiVirus 2007 is noticeably quicker both in normal operation and during full scans than previous versions. Norton AntiVirus has always performed well in industry comparisons against other antivirus products. The only other product that I would use myself is McAfee VirusScan, but I have always felt that Norton AntiVirus does a more aggressive job of protecting my system.
+
+For those of you installing Norton AntiVirus 2007 as an upgrade, I would highly recommend that you first remove any existing Norton security products using Add/Remove Programs in the Control Panel.  Then, download and run the  Norton Removal Tool from the Symantec site to make sure that it's all gone.
+
+To see a comparison chart of the Norton 2007 Windows protection products as of this posting date, browse to Symantec's site, click on "Norton 2007 Products" under Home Products, click on related link "View All Products" and then click "Compare" next to PC Security.
+

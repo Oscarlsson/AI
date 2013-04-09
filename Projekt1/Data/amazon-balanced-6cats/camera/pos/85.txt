@@ -1,0 +1,7 @@
+The POWER-2000 XP-333 charges batteries in pairs, with one LED per pair, not as described.  The XP-555 charges each battery independently and slightly faster (3 vs 4 hours).  The XP-333 charger is very lightweight, the XP-555 is slightly heavier.   They work on 110 or 220 V and includes plug adaptors for round European type plugs.  I have used the XP-333 in the USA and overseas.  POWER-2000 makes several other charger models as well.  
+
+The XP-333 and 555 AAs are 2500 mAh, and there are XP-33327 and XP-55527 versions now available with 2700 mAh batteries.  AAA batteries charge faster as they hold less charge.  AAAs from Power-2000 currently come in 850 and 1000 mAh capacities.  
+
+I believe that these capacities for AA and AAA from POWER-2000 and other NiMH makers are twice as great or maybe more than alkalines.  As I recall, some years ago Duracell copper top AAs have 1100 mAh.  I have not found recent figures on the web, but got the old figure by calling the 800 number on the Duracell packages.  Duracell Ultras appear to have a bit higher mAh figure, but I do not know that that is.  
+
+The 1.2 V for NiMH vs 1.5 V for alkalines seems to make no practical difference as I am told, and I believe it is correct, that alkaline voltage drops rapidly under 1.5 V after initial use while I understand that the NiMH holds its 1.2 V value for some time. 

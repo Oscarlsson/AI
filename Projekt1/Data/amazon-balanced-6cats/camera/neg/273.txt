@@ -1,0 +1,8 @@
+I bought htis from Amazon, and have troubles in playing back the video clips. Almost evrytime, after a while, I do see "System error" on the screen, and then the firmware is hung. After a power-cycle, the last recorded clip is gone! Some issues with the basics...so I called Sanyo service, they said this is happening because I'm using a 4GB plain SD card. Acc to the support guy, max of 2GB of plain SD is supported , for more GB, a SDHC card is needed. I could not find this info on the manual or spec...so I'm not sure how true is this. If anyone of you know about this , please let me know.
+
+Video is okay for my need...still is too bad. 
+Firmware is just about average..not too great. There is much scope of improvement to be more user friendly and more informative with lesser use of buttons.
+
+Battery did not perform as promised in the spec. 
+
+Also, there are way too many components in the box for such a specialized product. I would expect those many in a robotics kit.

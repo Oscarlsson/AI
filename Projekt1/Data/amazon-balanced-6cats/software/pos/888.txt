@@ -1,0 +1,1 @@
+This new version is cleaner and better than V12 in several areas that are important to me.  Particularily the improved trace features

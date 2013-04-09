@@ -1,0 +1,19 @@
+I see a lot of people have had trouble tracking baseballs with this thing.  I've owned one for 3 years and it works pretty well.  I will give some tips on it:
+
+!!!If you throw at a respectable speed, and don't follow the correct procedure it will not work - there will be no reading!!
+
+1) Don't stand behind a metal fence.  The Chain links with the plastic coating over them will work, but for whatever reason exposed metal interferes with the signal.
+
+2) The focus beam of the radar gun is very narrow.  The whole idea is to keep the beam on the ball as long as possible.  Just having the ball pass through the radar beam is not enough.  You need to keep the beam on the ball for practically the whole pitch.
+
+3) Use rechargable batteries... and this isn't to save money.  Some of the better Energizer rechargable are high amperage, 1350 mA and up.  The gun tends to respond better to this, as its pretty power hungry.  You will get more consistant readings with better batteries.  Non-rechargable batteries cannot provide the same level of current (usually 850 mA or less), which seem to effect the gun.
+
+So, how would you properly use the gun?
+
+One way is to stand behind the mound as the pitcher throws.  Forget about using it during a game, behind the backstop.  It wont work.
+
+Try line up the pitchers release point and the plate, then situate your gun so that it fires on this imaginary line (connecting pitchers hand and the target.  
+
+You may have to slightly change the angle of the gun to track the pitch, which can be slightly tricky.  Follow the ball with the gun as long as you can.
+
+For a sure fire way to clock a throw, get a cheap net and stand behind it.  You will register it every time.  You will also have the most accurate reading

@@ -1,0 +1,3 @@
+There's a fundamental flaw in the software: it won't print a greeting card properly unless you have a borderless-capable printer.  If you print on a printer that can't do borderless printing, the front cover image on the card will be off center.  Check the FAQ section of the hallmarksoftware web site and they even admit as much.
+
+It's a known bug, and a 'fix' has been promised since December according to the hallmarksoftware on-line forums.  Until the fix is released, if ever, avoid this program

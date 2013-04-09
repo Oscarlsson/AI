@@ -1,0 +1,17 @@
+I have been using McAfee products for the last 7 years. I did not have any problems with viruses, but it is true, I try to stay out of dubious web sites. I purchase my McAfee software from Amazon every year because of their rebates and every time I see 1 - 2 star ratings. It is unfair. Their products are excellent.
+
+I have installed McAfee Internet Security Suite 2007 on two computers so far. The first one is a Dell laptop. I unistalled the previous 2006 edition and Ad-Aware (since Ad-Aware and the 2007 ed. are incompatible) and the installation was perfect. Not the least problem.
+
+I ran into problems though with my desktop. I have tried to remove the 2006 edition and I could not find a remove button in Windows' Add/Remove Progrmas. I poped the 2007 ed. in and it said that it will remove the old products automatically. After the instalation the Firewall did not work. I noticed that somehow the old 2006 ed. was still there. I went to McAfee's web site and I got a removal utility that got rid of all McAfee products on my computer. Another great tool I used off of their web site was "Virtual Technician" which told me that the entire installation was messed up. However, after cleaning up with the other utility I did a fresh installation and everything works perfectly.
+
+It took me a few hours to get a hold of the problem, yet I love to play with computers.
+
+McAfee should not be hold accountable for a product that performs excellent in normal conditions. I continue to trust McAfee's products.
+
+I love the cleaning utility. It is very thorough. I plan to use it every day before visiting banking and financial sites. It cleans all of your internet traces.
+
+It takes a while until you get used to where all the tools and settings are placed, yet any new complex bundle of software would present you with the same challange.
+
+I hope that the 2008 edition will have the anonymizer built in. It would be a great tool.
+
+In the end, protection is what it matters, and McAfee Virus Scan and Personal Firewall have done it for me for the last 7 years

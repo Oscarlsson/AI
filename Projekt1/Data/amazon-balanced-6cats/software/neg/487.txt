@@ -1,0 +1,5 @@
+I've been using Apple's Macintosh systems since 1984 and have seen some great improvements in system stability, which I consider THE most important aspect of an OS.
+
+First off Tiger is a smooth running system (when it is smoothly running), and has some of the nicest bells and whistles around. The best dog-and-pony show around. That being said, WATCH OUT!
+
+This OS is capable of completely hosing your user settings, all your software registrations, bookmarks, email settings, etc. The whole enchilada. ANY OS that can do that at the drop of a dime isn't worth the time. Since I use Disk Warrior, Cocktail and Disk Utility regularly, this should never have happened. I waited until the OS was at the 10.4.3 stage before upgrading from 10.3.9 -- apparently it is not yet ready -- best to wait another year before upgrading. Hopefully these bugs will be fixed

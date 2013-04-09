@@ -1,0 +1,15 @@
+The upgrade is $75 cheaper and you DON'T need to have a previous install of Windows to get it to work. Simply do the following:
+
+1. Boot with the Windows Vista Upgrade DVD.
+
+2. Click "Install Now."
+
+3. Do not enter a Product Key When prompted. 
+
+4. When prompted, select the Vista product edition that you do have.
+
+6. Install Vista normally.
+
+7. Once the install is complete, restart the DVD-based Setup from within Windows Vista. Perform an in-place upgrade. 8. Enter your Product Key when prompted. 
+
+This is according to Microsoft's internal documentation, and reported by Paul Thurrott at Windows IT Pro

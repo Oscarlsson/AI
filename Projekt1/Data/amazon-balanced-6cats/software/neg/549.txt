@@ -1,0 +1,3 @@
+I tried to use this program to file a very simple return, and it calculated that I owed the state $550 for underpayment, as well as a $230 penalty for late payment.
+I tried working through the program several times to find the error. I found that the program was automatically checking boxes that I hadn't checked! I have no idea if that was the cause of the underpayment problem, which I was not able to resolve.
+In frustration, I went to [...] and filed my return easily within an hour, with a $140 return from the state rather than a $780 penalty

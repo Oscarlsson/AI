@@ -1,0 +1,17 @@
+If you look at my review history, you may note that I've given very few five-star reviews. I save five stars for outstanding products. I believe Wordperfect X3 is best described as outstanding.
+
+A long time ago, I used Word Perfect. However, my earlier jobs required I use MS Word, so I did my best to become a Word guru. I believe I accomplished that short of creating custom macros. As a law clerk, I started a new job where WordPerfect was the standard.
+
+So, last year I bought WordPerfect 12. At first it was difficult, but I bought a book that helped me fill in the blanks. With the ability to customize keyboards and the fact that WordPerfect gives the author a great degree of control (especially with show-codes), I was soon able to become a WordPerfect guru. I remembered all the things I used to love about WordPerfect. Like any lover, I also learned to ignore some of the blimishes of WordPerfect. (One of those blemishes is the behavior of pushing a change from that point of the document forward, which, once you get accustomed to it, is really a nice feature.) Wordperfect and PDFs are the two accepted file formats for electronic submission to Federal courts.
+
+There were two complaints I found at work among Word devotees: 1) the ability to export to PDF but not import and 2) the inability to cut from a Word document into a WordPerfect document without creating all the formatting litter Word likes to use.
+
+1. We occasionally receive PDFs that we would have to retype to be able to make edits. With the ability to import PDFs (that is, those that were authored and exported into PDF, not documents scanned into PDF), we were now able to edit those PDFs. This was a real time saver. Since PDF is the de facto universal standard amongst all platforms (Windows, Mac, Unix), this was a great improvement.
+
+2. Formatting litter is a real pain to deal with. I never could get a MS Word document to just import into WordPerfect without headaches in trying to fix the formatting. My solution was to copy the portion out of MS Word, paste into a text file, copy again and then paste into WordPerfect. My complaint was I could not just straight paste into WordPerfect. Well, Corel heard my cry and provided the ability to copy just the text. The lone MS Word holdout in my office capitulated with that. He has no more to complain about.
+
+Another great thing about WordPerfect is the fact that the file format for its documents has not changed in years (I heard a WP rep say no change since 1995). Why should it? Everything you could want to do in a document (perhaps barring professional typesetting) can be done in WordPerfect. There's no need to create a new format when the one you have just works.
+
+This product does exactly what those who have come to love WP expect it to do. I think Corel has done a good job of resolving my own personal quibbles with WP.
+
+So, if you're looking for a solid performer that seeks to beat competition by improving itself, WPX3 is representative of what you're looking for

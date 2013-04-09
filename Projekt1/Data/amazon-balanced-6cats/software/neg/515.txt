@@ -1,0 +1,7 @@
+In the instruction pamphlet under Scan Tools, there is a list of what the program scans.
+
+One of the functions is a Registry Scanner--"This is a fast scanner that analyzes the Windows Registry for traces of known malware."
+
+The bottom line--I have an infected registry which was discovered by my antivirus program and the Spyware Doctor doesn't know it's there. I do keep Spyware Doctor up to date.
+
+I'm still looking for an effective spyware application

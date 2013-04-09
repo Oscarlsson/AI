@@ -1,0 +1,1 @@
+Doesn't show you what station you are listening to.  It starts over at 88.9 every time you shut it off.  By the time you scan a few stations, it stops getting a signal and you have to start off at 88.9, again. 

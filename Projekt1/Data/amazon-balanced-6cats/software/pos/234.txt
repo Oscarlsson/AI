@@ -1,0 +1,15 @@
+Homesite is widely recognized as "the" premier tool for coding HTML, client side, and server side code by hand. Adding it to your resume won't land you a job, but it will certainly boost your chances of getting an interview because it indicates that you are not a cheap, WYSIWYG junkie.
+
+One of the things I like best about Homesite 5 is the adaptability it allows when coding in ASP.NET. I was able to find a plug-in, which when added to Homesite, recognized the .NET tags and colors them accordingly. There are similar plug-ins for just about every language out there.
+
+If you are unfamiliar with HomeSite, are considering a purchase, but are not sure it's the right tool for you, here's a very brief description on how it works: This is not a drag-and-drop design tool that created the code for you. It is, in essence, a text editor on steroids. As you code BY HAND it will color the code for you, tell you when you've made errors, offer you a ton of help on knowing what tags mean, has a built in FTP client, helps you organize your work into projects, and a bunch of other functions I've never used.
+
+Here's the main thing you need to know: If you're a HomeSite pro, then you are also a REAL developer.
+
+To everyone who has whined about lack of support: What do you expect for less then $100? If you purchase a flagship product from Macromedia such as Dreamweaver, Studio MX, or Fireworks, you'll get all the support you'll need.
+
+Also, I've been able to find PLENTY of FREE support from news groups and email lists that focus on web development. For every problem or question I've found someone who knows the solution. You can too!!!
+
+Just a note: Amazon is behind the times. From the Macromedia website you can now purchase two versions ahead of what Amazon is offering.
+
+Well worth the $99.00

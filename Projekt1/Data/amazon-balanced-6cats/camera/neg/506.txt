@@ -1,0 +1,13 @@
+I have owned several digital cameras, and this is my current digital camera in hands. I would write a short review as a critical person with concentration ONLY on important things to watch for.
+Pros
+- Uses only 2 AA batteries.
+- Battery life is very good.
+- Small camera size. Easily fits into a pocket.
+- Can set '+' flash level, which forces camera to make a stronger flash. I use it almost every time.
+Cons
+- Resolution. The images are not sharp in terms of that you can't distinguish individual pixels when looking at the real size picture. I would say, there is no much difference in quality between 4 MP and 50% (1 MP) scaled down version. The same problem exists in Sony DSC W1 camera.
+- I had many problems with "ON" button. Sometimes camera refuses to turn on. It can be fixed by shaking camera and trying again. (It could be a defect in my camera only).
+- Some camera parts are painted plastic, which can be scratched.
+- Camera can lose all settings and preferences if left with discharged batteries (~several hours) or without them at all (10 minutes).
+- Video quality 640x480 is pretty good in high quality mode, but eats flash space very quickly. Windows 2000 didn't have the right codec to view the file. I had to install it by myself.
+- Camera is performing slightly below the average in low lighting condition with auto settings

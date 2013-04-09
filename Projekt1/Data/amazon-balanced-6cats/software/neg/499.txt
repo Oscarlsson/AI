@@ -1,0 +1,1 @@
+I found this software very difficult to use.  It does not have any "Stop" or "Go Back" button.  The only way to exit an activity is to hit "Esc" button to exit the program and then start all over.  When starting over, there is a very lengthy annimated introduction you have to go over each time and I could not find a way to skip it

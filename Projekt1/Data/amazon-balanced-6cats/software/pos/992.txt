@@ -1,0 +1,15 @@
+Compared to FP 2000 and earlier versions, it offered some major improvements, even letting one code in (gasp) PHP with live preview - it is highly configurable, and easily tied into SharePoint (well, I think that was the intent).  
+
+It was quite an evolution, moving beyond FP2000, with some fairly advanced features - while still retaining the "entry level, small business learnable" functionality (albeit cookie cutter designs) of previous versions.  
+
+I was surprised to find it even offered options to strip out all code that hinted this site was made with FrontPage (an odd change, knowing MS), but also offered other code functions, some on par with Dreamweaver - but do not mistake this for Dreamweaver, even the first MX version.  It's still aimed at Microsoft only - you really have to dig and tweak to configure it for anything else (e.g, php, cold fusion) - but it does offer some major improvements for flexibility over previous versions.  Mostly good, some horribly bad.
+
+The good - being able to tweak it to dozens of standards' compliance, Sec. 508, XML'ish stuff, whatever.  By default these things are not set up, so it does take some learning.  
+
+What annoyed (and freaked me out) was that while it easily allowed for desktop development with Access, to create database driven sites - the database had to remain in a public folder - ok, I suppose if you're using it only on an intranet.  
+
+I believe the point was to code with Access, then mod it slightly to interact with SQL server - but most folks probaby did not use it that way - knowing the history and "fire and forget" ease of use of FrontPage... 
+
+Anyhow, I'd call this a para-professional version. It has way more flexibility and functionality than any version of Frontpage, ever.  It is also going bye-bye.  
+
+There will not be a FrontPage 2007, due to the switch to Expression Web (which retains some FP functionality, but the "friendly" and pesky "bots" are gone).  No more email bots, whatever bots - gotta learn how to roll your own.

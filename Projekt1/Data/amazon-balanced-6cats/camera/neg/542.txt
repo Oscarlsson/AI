@@ -1,0 +1,5 @@
+SD card worked fine for a week.
+Problems arise then worsens over time for one more week then it just doesn't work anymore.  
+Problem is not the PDA, nor software on it.  Tried to use the card on a separate flash reader/writer.  Tried formatting it to FAT32, create test directory, data stays on for less than one hour. 
+I would refrain from buying this product.
+

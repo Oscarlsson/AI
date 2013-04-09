@@ -1,0 +1,24 @@
+**things i liked about the program
+
+it supports importing ojb files, that i make in different modeling programs
+
+the walking path editor works not too bad for simulated walking
+
+and the rigs have good looking emontions when you moves there face features
+
+
+**what i found to be not so good
+
+the tabs such as the library and keyframe bar are kind of hidden on the side because of his small they are.  
+
+I find the slection tool in the hair room to be alittle bit annoying when trying to grow dynamic hair groups. i most of the time end up growing hair on too many facets.  
+
+the control points are too senative, they end up twisting the body in un-natrual forms. 
+
+the rendering takes a very long, and the rendering shader doesent always save my settings. i end up transporting the animation to another program to render faster. 
+
+some of the cloths i cant set them up to be childern to the body parts so they end up not being connected to anything. 
+
+
+i'm sure there more on my mind by i dont have much time to write up an review. just keep in mind 3d animation isnt perfectly easy. a good modeling programs to make OBJ files will go a long way. 
+

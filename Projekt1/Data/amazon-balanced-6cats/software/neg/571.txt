@@ -1,0 +1,5 @@
+As an IT professional I would strongly recommend against installing Norton 360 on your computer.  I have been a big fan of Norton Security for years and I have it installed on all my home computers for years.  After installing Norton 360, it erased most of my security settings and my computer continiusly crashed.  It messed up on of my home computers to the point that not only it would crash several times a day, but I couldn't even use System Restore to recover my computer and I was forced to rebuild the system from scratch.
+
+Don't believe the promise to install it easily on 3 computers either.  Symantec makes as difficult as possible for you to download the software and isntall it.
+
+I am ready to switch to McAfee

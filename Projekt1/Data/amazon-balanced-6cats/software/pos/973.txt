@@ -1,0 +1,20 @@
+I give the DB Pro 5 stars, but I am totally disappointed in Amazon.com and The Gamecreaters, heres why
+
+The first thing I noticed is my box is different than that shown here... http://darkbasicpro.thegamecreators.com
+
+I didnt recieve any of the free software stated in the link above
+
+I cant find the 
+Over 45 Demo's
+Over 25 Tutorials
+Over 600 Textures
+Over 120 Sound Effects
+900 3D Models 
+That is stated here...
+http://darkbasic.thegamecreators.com/
+
+I applied the .59 upgrade patch and now my program wont start. It says its missing MSVCR71.dll file.
+
+The original version was 1.05
+
+I cant believe the darkbasic.com is advertising this product, yet Amazon.com is shipping some ancient version. Hopefully I will be able to resolve this issue..

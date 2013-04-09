@@ -1,0 +1,13 @@
+Office 97 was a pretty good product. The programs were powerful, had a decent interface (maybe not as good as the Claris products of the early 1990s, but not bad), and came with a ton of features all on one disc. The Office 98 release for Mac was pretty much the same thing. The only thing that really got annoying for me was the office assistant (paperclip) but it is easy enough to turn off.
+
+Office 2000 was a bit of a disappointment for me. I felt that the improvements were minimal (aside from a bit more stability in Word--anyone who has ever used Word 97 on a regular basis knows it's prone to crashing) and in fact detracted from the ease of use. One example is the clip gallery, which went from being one of the best organizers ever created to becoming a program that wouldn't have received decent reviews in 1988. Another is PowerPoint's outline feature. I always turned this off because it ate up monitor space and therefore made the actual slide smaller. When you use smaller displays like I often do this is a problem. The menus, which hide some functions until you go to the bottom of them, were also an annoyance. The manual went from being a nice thick book to one half the size.
+
+Office 2003 continues making the program uglier. Now there are many tasks crammed onto one little panel on the right of the screen. Again, this eats into the workspace. The clip art system is even more cumbersome, and many of the clips are online only now. The help feature tries to point too much in the online direction as well. Now some people may not complain, but what if you're using a laptop in the middle of the country?
+
+I feel that the program is basically an uglier version of the same thing that was first seen in 1997. In fact, the 1997 version was more pleasant to work with and almost as powerful. On my Macs, I've switched to Keynote for presentations and Pages for some of my word processing because the new Office versions on that platform are similar.
+
+Some of the templates also look very 1997. Apple's programs are updated on a regular basis, and their templates look very modern. Now I know Microsoft adds some new ones now and then, but they should consider redesigning many of them--such as replacing the overused Arial and Times New Roman fonts with something a little more classy.
+
+The program is bloated way too heavily. I can run Office 2000 comfortably on a 486 with sub-1GB hard drive, but can't even get 2003 on it.
+
+A final gripe is that Access is not user friendly at all. File Maker is a better alternative, as it is easier to use and friendlier

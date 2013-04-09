@@ -1,0 +1,9 @@
+A couple of years ago, we completed the transition over to the Mac platform in our household.  Both my wife and myself have a desktop and a laptop, so leveraging the .Mac service to keep our personal configuration settings synchronized across computers has been fantastic.  Further, with the sharing features that are available, we each have access to view the other person's address book or calendar.  
+
+One of the great features of the .Mac service is how it is tightly integrated into the operating system.  In addition, since the Synch Services capabilities in the operating system are documented and open, third party programs can write plug-ins that can leverage .Mac to propagate settings to different machines.
+
+My favorite feature (and the catalyst for my initial subscription) is the Backup application.  As someone who has suffered the inconvenience of crashed hard disk drives far too many times, I wanted a simple, comprehensive, easy-to-use solution that I could use to backup my data to an external hard disk drive on a daily basis.  I've used other Mac-specific programs before and none are as easy to use as the Backup you get with .Mac.
+
+The only real critique I have for the .Mac service is the amount of space available on the iDisk.  When services like Google Mail can offer 2.7GB of space for free (granted it is supported by advertising), it makes the .Mac the space available with .Mac seem meager.  Of course, considering a full backup of my data/settings takes up about 8GB of space, I may be outside of the demographic that the .Mac service is targeting.  However, in this age of digital media (pictures and movies), the amount of disk space people need for their "memories" is only going to go up.
+
+But I guess that is why they have external drives and DVD burners

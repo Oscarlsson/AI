@@ -1,0 +1,2 @@
+I notice with gratitude that Symantec has removed many glitches from NAV.
+Installation is now faster and smoother. The program is running well in the background, updating itself and sending notifications of any attention it needs

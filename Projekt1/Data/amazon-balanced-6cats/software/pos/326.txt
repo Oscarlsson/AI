@@ -1,0 +1,11 @@
+This is the 3 copy version of Norton  AV.  (one CD will create three copies) I purchased it to save money as it was less than $20 per copy.  I bought it to replace NAV 2006 on the same three computers which had expired.
+
+Installed easily on two machines.  Just the uninstall of 2006 and the install of 2007.   
+
+The first machine was more difficult.   There is evidently some conflicting software on the computer as i had to use msconfig for a "Clean boot" per Norton web site instructions .  I kept running into the "blue screen of death" on the previous installs when i would get to the actual install of the Norton AV.  Each time i would have to uninstall the program and do more.   But all of the help came from the Symantec (norton) website.  It is now working fine.
+
+Added:
+My personal preference is to not use software firewalls.  I use a router with NAT as a hardware firewall. (It only blocks unauthorized incoming malware)  Software firewalls try to tell you about everything leaving your computer and generally you either become paranoid or just shut the thing off.   They are intended to look for malware by behavior.  Antivirus programs look for malware by signature.  The only advantage to finding malware by behavior is if the computer is attacked in the first day or two of the malware's existence.  If one has an antivirus program it will eventually (within a few days) find the problem that the software firewall was trying to tell someone about. (assuming they haven't given up yet with too many cries for wolf).
+So the only software firewall i have (Microsoft OS firewall) is turned off and thus i haven't had the same problem as others report. 
+
+As a practice i sent junk email directly to the trash can and avoid weird websites.  So far no problems with malware.

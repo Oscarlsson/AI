@@ -1,0 +1,14 @@
+I think this product is highly overated and this claim
+of being 99% accurate is false.
+Once in while it can amaze you by typing a sentence with 100% accuracy , but this enthusiasm is quickly dashed when
+you realise that the very next sentence is complete
+gibberish which bears absolutely no relation to what you
+said and you wonder how it could have possibly interpeted
+what you have in that manner.
+I think this program maybe accent sensitive so that a person with an American accent may get good results while 
+a person with a British or an Australian accent may get poor results for the same level of training.
+In summary I think the program is unreliable with an
+accuracy of 45% at its present level of developement.
+It has plenty of potential and with future developement
+ it could much more reliable but at its present level of
+developement I think the performance is mediocre.  

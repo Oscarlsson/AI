@@ -1,0 +1,10 @@
+I am [...] the unit because it will not run a slideshow from a media card. 16 Mb of internal memory for a slideshow is just not enough! Read on!
+
+If you call they will tell you that the slideshow from cards is not possible because on Page 13 refers to excluding pictures from the slideshow on only on internal memory. This is not a definitive statement that slideshow is not possible from a card only that excluding individual pictures from a card is not possible. (because the unit is not capable of writing to a media card.) 
+
+Looking further on p13 it states: "Choosing slideshow frequency Note: This function applies to photos stored on all media." Page 27 in FAQ states: "2) Q: Can I switch between different slideshows photos by using different memory cards? A: Yes. When you connect your memory card to PhotoFrame(tm), it will slideshow photos stored on that specific card." Finally, the Quick start guide FAQ states: "Q Can I switch between different slideshow photos by using different memory cards? A Yes, Digital Photo frame will slideshow photos stored in the card or camera currently connected." 
+
+Clearly the three references I provide indicate that the DPF can operate slideshows from a media card. IN REALITY SLIDESHOWS FROM MEDIA CARDS DOES NOT WORK. Philips how about a firmware upgrade?
+
+I bought this thing to allow my mother who is not computer savvy and lives far away to look at family pictures. I was planning on sending preloaded cards to her. All she would have to do is insert the card and turn it on. (Mom is 75 and this is as technical as she gets..). Do not buy this DPF for older, none computer savvy people. Since media card can not be used, you have to use the internal memory for slideshows. The internal 16Mb memory can hold about 70 pictures - that's it. It is also unclear the maximum size a file can be. I believe the internal memory converts the file to a DPF friendly format and renames the file when copying from a media card. (How is Mom going to tell me which picture to print if the name changed?)
+Why have media card slots if they are useless? Internal memory is way too small! DO NOT BUY and save yourself the hassle.

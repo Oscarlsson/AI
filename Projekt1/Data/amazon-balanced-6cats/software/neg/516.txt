@@ -1,0 +1,11 @@
+Spyware Doctor was a fine malware detection product, but it is now broken. I've used various versions for quite a while (Windows 2000, Windows XP) but 5.0 is not working reliably. 
+
+SD will not keep running on XP. The new 5.0 program unloads the OnGuard & Immunizer functions without warning on XP. The speed issue had been a problem (even with 1 GB RAM), but they seemed to have addressed that issue before 5.0.
+
+On Vista 5.0 will not uninstall. When you attempted to uninstall, it sends you to their website telling you how great the product is. When you ask tech support for help, they suggest uninstalling using safe mode (which cannot connect to their website). 
+
+Spyware Doctor will not uninstall using (Windows Installer CleanUp utility - MSICUU2) as there is no entry. The Vista machine hangs and stalls. 
+
+The obnoxious redirection to the PCtools website puts this product in the spyware category. Their tech support has been very slow (during the week, during business hours for a subscribed user with multiple purchased units). 
+
+NEXT!

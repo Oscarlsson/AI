@@ -1,0 +1,7 @@
+This is the first digital camera that I have owned.  Overall I am generally satisfied with the quality of the pictures it produces.  However, there are a few things that, if I had known beforehand, would have prevented me from purchasing this camera.
+
+1) Camera is not plug-and-play (even if they say it is).  You have to install the Kodak EasyShare Software to download pictures.  This is a HUGE negative.  In the future, I will only buy cameras that show up as removable storage drives when plugged into a computer.
+
+2) Video is stored in Apple Quicktime format (*.mov).  The is also a huge negative.  The codecs for this format are not widely available for application integration.  You have to download and use Apple Quicktime to view them.  You can not view the videos in Windows Media Player.  It is also not compatible with some photo-album software.  I would only buy cameras in the future that have an option to store video in a non-proprietary format.
+
+Update:  After review, I have found that WinXP and Vista plug-n-play with the camera when it is plugged into the USB port.  It does not work on Win2k.  Thanks for the comment that made me double-check

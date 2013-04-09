@@ -1,0 +1,2 @@
+I discovered a bug in the program which seriously affects its integrity.
+Have been on the phone with Quicken techs numerous times and they finally acknowledged that there is a problem with the program and a patch (fix) needs to be developed.  So far though, they have not done it

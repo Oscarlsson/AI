@@ -1,0 +1,9 @@
+This maybe the worst interface I have ever had the displeasure of working with and that includes console applications with DOS interfaces. Edlin and fdisk are more user friendly than the McAfee's Security Center. There is noway to disable the software except by uninstalling the program or opening XP's admin tools and then forcing the services to stop, which is not a recommenable approach for the average user.
+
+Here is a short list of the probelms that I encountered. Counter Spy is cheaper, easier to use and has an interface that is user friendly!
+
+* cannot select to disable during non-internet use so I can run software that Security Center has conflicts with like ProTools 7.3 recording software.
+* the scan results are vague, ie returns 6 quarantined threats but doesn't display what the threats are and you can't print the result either.
+* There are more......
+
+There are some good features but the detractors win by a land slide.

@@ -1,0 +1,20 @@
+OK, it is big (4 CDRs).  And a full install will require over 2.35 GB.  But it loads quickly and offers nice greeting card variety along with pretty sophisticated card customization options on all pages of the card.  
+
+As in previous years, it also installs Event Planner. If you don't want to use Event Planner you can stop it from starting with Windows by going to START / ALL PROGRAMS / Startup group and deleting the entry for Event Planner from the STARTUP group but if you don't have a similar program, you might find Event Planner to be useful.
+
+I found setting up this program for my auto-duplexing Ricoh color laser printer easy enough to do, so setting it up for other printers will likely be pretty easy also. 
+
+The quality of the printed cards is really astounding, even my normally "picky" wife thinks they look very nice and acceptable for any use. I suppose your results could depend on your printer but if your printer currently prints nice graphics and pictures, then the cards should turn out very nice. I recommend using heavy card stock for a professional looking final product. 
+
+Cards that default to printing out in the 1/4 sheet size (four fold) format can easily be printed at 1/2 fold size and the graphics and text remain outstanding. 
+
+I never experimented with the "partial install" that would require disk swapping but save HD space, so I cannot if that would be a nuisance or not.  
+
+Overall, there is nothing I've found about the program that I don't like.  
+
+
+
+
+
+  
+

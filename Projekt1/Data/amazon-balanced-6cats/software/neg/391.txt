@@ -1,0 +1,30 @@
+Summary: 
+I wasted a lot of time trying to make this work, and I eventually went back to other products.  
+
+In theory, integrating virus checker, firewall, spyware, and data backup into a unified suite (like MS Office with Word, Excel, & PowerPoint) makes sense.  However, this software package seems poorly made; it did not work very well for me.  
+
+Hardware, OS, & primary software used: 
+1.  Dell Lattitude D620 Laptop with 2GB RAM, Windows XP, MS Office
+2.  Dell X1 Laptop (thin/lightweight) with 2GB RAM, Windows XP, MS Office
+3.  Dell Dimension Desktop with 4 GB RAM, Windows XP, children's games
+
+Prior virus/spyware products: 
+Lattitude & X1: Norton
+Dimension: freeware provided by our ISP
+
+Theory:  Since Microsoft makes the OS & office applications that get infected with viruses, their product should be better integrated with the OS.  There will be synergy by integrating several related software applications.  
+
+Lesson: 
+Well, after a series of terrible experiences, I hope others will benefit from my wasted time: 
+
+1.  Instead of loading most of the program from the CD & downloading small updates, this seems to load only a small part of the program and downloads huge files.  This made me feel that the product was shipped unfinished.  You had to do this separately for each machine since it hides the downloaded files then deletes them prior to finishing the installation.  This took a better part of an afternoon.  
+
+2.  I purchased a 3-pack license.  Installing and activating the software on the 2nd & 3rd machines required a series of very annoying steps that involved logging into their website with broken links.  It finally required a phone call.  At least, the phone support experience was good. 
+
+3.  The product promises to minimize performance impact, and improve overall performance.  On the Lattitude & Dimension (powerful machines), there was no difference in performance, but we could notice a slightly slower performance with the X1.  This was later verified when we uninstalled the MS Windows OneCare and replaced it with another product.  
+
+4.  The product has difficulty updating.  It opens a small message box that asks you to click to update OneCare, but that takes you to a webpage that only works about 1 in 4 times.  
+
+5.  Except for the first time, data backup always has several errors that I have to manually fix.  This has very rarely happened with other data backup software I've used.  
+
+6.  Some applications, the firewall asks everytime for permission to connect to the Internet although the application is in the list to always allow this connection. 

@@ -1,0 +1,4 @@
+I installed Adobe 8.0 at the request of a client in order to view secure docments on-line.  Two serious problems were caused by this: 1) Window 2000 Outlook runing under XP would crash after the Adobe reader was launched. Closing the reader and restarting Outlook would not always fix the problem. Often the computer would require a cold re-boot. 
+2). More serious, Adobe 8 installation corrupted my Agilent Technologies Genesys 8 and later (Eagleware) RF simulation software tools.  This resulted in the Genesys simulator to fail to find the authentication file.  Because the correlation between installing Adobe was not apparent considerable amount of time was lost on this project.  Adobe also causes problems with OrCAD 15 license server.
+
+I have currently un-installed Adobe 8 had to re-install and patch previously installed Microsoft and enginnering software tools.

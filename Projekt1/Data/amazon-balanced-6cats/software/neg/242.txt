@@ -1,0 +1,1 @@
+The definitions and thesaurus cross referencing are very good. The user interface is quite honestly shameful. Software companies got away with this years ago, but there are now accepted standards for windows user interfaces (e.g keyboard short cuts are missing). Integration with Word 2003 is weak. Numerous bugs and exceptions and very slow

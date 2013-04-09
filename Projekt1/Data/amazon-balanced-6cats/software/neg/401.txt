@@ -1,0 +1,11 @@
+I needed a document management system. After looking for software, there only appeared to be Paperport. 
+
+I had read somewhere that the software becomes incredibly slow with a large number of files. I guessed a large number meant 2500+ at least.
+
+This concerned me, so I called pre-sales at ScanSoft, and asked if it was slow with a large number of files. He was not sure! So he told me to call technical. I called technical, and it his responses were very slow and sounded like he was reading them out to me. I asked if he was reading the ScanSoft website and he said yes, so I hung up. Obviously I read their site for an answer, and did not need to be paying international call charge for someone who seemed less knowledgeable than myself to read it.
+
+I got the software. Basically all the software consists of is windows explorer and scanning software. It worked well, and I thought OK, expensive for what it is, when Windows Explorer and scanning software (usually free) would nearly do most of it, but THEN after around 560 PDFs, it started running VERY slow.
+
+I thought it was my machine so installed it and the PDFs on a new Vaio 1.7Mhz, 1 gig laptop. Same problem. If you click to view the PDF then hit the return back, it takes 12 seconds! So if you view a document, it takes a good few seconds but then when you hit back to the Paperport Desktop to continue it takes 12 seconds!!! Completely unusuable!
+
+If you have less than 500 files, it is maybe expensive software, but for more than 500 do not waste you money. It runs so slow you can not use it. I wonder how ScanSoft get away with it - surely they should have tested it internally with thousands of files

@@ -1,0 +1,1 @@
+When I click the "update components", I'm continually told that "the feature is still initializing, please try again later". This will happen even if I've had the program open for hours. I've contacted trend micro, followed their instructions for a workaround, but that still didn't help

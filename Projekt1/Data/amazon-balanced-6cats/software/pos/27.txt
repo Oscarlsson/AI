@@ -1,0 +1,3 @@
+This is an easy product to use.  It saves you when a disk drive fills up and you want to use the same partiction but need more space.  It will grab it from another hard drive.  It is also useful in setting up a D: drive for Documents, and and E: drive for programs.  It is useful to have windows on C: alone.  There are fewer crashes.
+
+Michael Common

@@ -1,0 +1,11 @@
+I won't include my website URL here, but I'm a professional photographer, who displays and sells his work at juried exhibitions. I've been using Photoshop since version 5.0, roughly 6-7 years.
+
+Frankly, I'm surprised to see how many negative reviews there are here of Photoshop CS2, and that overall the product only gets three stars. I understand all the frustration, though. Even on a top-of-the-line machine, "PS CS2" can be slow at times. However, in my case, that's because I'm working on incredibly large files. 
+
+For example, my camera / scanner combination typically produces 50 megapixel images. By the time multiple layers are added in PS, one image file can be 500 MB - 1 GB in size. This is exactly why I have a dual-Opteron system with 4 GB of RAM: so I can work on these monster files in Photoshop!
+
+For me, Photoshop is a must-have. There are *no* alternative programs for me to consider that can handle my files and do what I want to get done. I don't even want to mention all the advanced features that I use on a daily basis, frankly because that's part of my edge as a professional. I've spent over five years working in PS everyday, and have carefully studied several advanced books on PS. The learning curve is long, but the rewards are great if you have high goals and high standards.
+
+Yeah, Adobe's got some major improvements to make, along the lines that other reviewers have mentioned. For me, the only real problem is poor and often wasteful use of system memory. And I would agree with other reviewers here that for most people, the full Photoshop CS2 is probably a waste of money. Photoshop Elements is probably a better way to go, though I haven't used it personally. I know a good web designer who uses Paint Shop Pro, and who seems to be happy.
+
+IMHO, some people are probably drawn to Photoshop the way others are drawn to AutoCad or Solidworks or 3D Studio Max. All these programs are incredibly powerful tools that can support an entire career if one puts in the time and effort to become a true expert user. You can't make a career out of PS Elements, or Paint Shop Pro, or GIMP, or whatever else other reviewers may mention. PS CS2 is "the standard" for image manipulation

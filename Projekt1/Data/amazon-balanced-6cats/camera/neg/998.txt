@@ -1,0 +1,22 @@
+This camcorder is terrible in just about every way:
+
+Cons:
+- Unacceptably blurry video; the specs say it records at 640x480, but it looks more like 320x240 (if that!) blown up to VGA.
+- Noticeable aura around any dark shape on a lighter background.
+- Awful light sensitivity; forget about recording indoors--no matter how brightly the room is lit, faces will come out too dark.  The built-in LED's don't help much (and not at all at distances over 4 feet from the subject).
+- Noisy zoom that gets picked up loud and clear by the microphone.
+- Zooming goes in irregular steps--completely useless while recording.
+- Video lags noticeably behind camera movement; when image stabilization is turned on, the lag becomes so atrocious that you can't tell when to stop panning--UTTERLY USELESS!
+- When using AV-in and AV-out cables, the firmware has frozen on me a couple of times; the only way to reset the camera was to remove the battery.
+- Video encoding (through the AV-in cable) produces an unacceptably noisy and undersaturated result.
+- The LCD display has a very narrow viewing angle; anything more than about 10% and you can't make out a thing.
+- Still photos taken at the native 5MP resolution come out strangely grainy and uneven--something like a "sharpen" effect gone wrong.  I can get better looking pictures with my 2MP Canon Powershot A40 camera.
+- The manual recommends keeping the camera motionless for 2-3 seconds AFTER snapping a picture (that's on top of the 3-4 seconds it takes the thing to focus BEFORE it snaps); but you can't keep THE SUBJECT from moving, folks!  Welcome to the psychedelic land of image trails...
+- Flash photos come out with wildly different color balance depending on the color of the background.
+- The manual is a sorry affair--only 17 pages long and doesn't go much beyond identifying external controls and menu options.
+- I could go on and on, but I'll stop now, as you probably get the picture...
+
+Pros:
+- The camera body seems sturdily built; the controls also have a sturdy feel to them, as do the battery and the USB port covers.  Hmm... it's the only nice thing I can think to say about it.
+
+Maybe a child (think pre-teen) could find this "camcorder" exciting as a toy, but I don't see how it can be enough even for an undemanding person looking to capture occasional life's moments on video

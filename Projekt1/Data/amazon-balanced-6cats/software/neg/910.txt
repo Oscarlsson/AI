@@ -1,0 +1,9 @@
+Since most of the complaints are from recent switchers I went ahead and bought this because most of their problems don't apply to me (running on PowerPC, no old data to transfer), and because intuit offers a 60 day money back satisfaction guarantee.  Oh, and i downloaded it from their site, saving like 5 bucks.
+
+Here's the thing.  The QFX file that quicken uses to get data from financial institutions is restricted.  My bank offers the download, so i can get the file just fine.  However, part of quicken's import process is an internet check with the bank to see if they "support" mac users.  By support, all that really means is the bank pays quicken to allow mac users to import their QFX files.  If not, you get an error message saying to try the import again later.  There is a hack floating around the 'net that invloves changing some of the text in the QFX file, and it works.  BUT there are cheaper alternatives out there that support the format (moneydance is one) with no fuss.
+
+Aside from this issue, the interface is really bad. It looks like a check register.  If I wanted a glorified spreadsheet in the shape of my checkbook, i would have made one.  The program is not even close to intuitive, which means if you dislike/avoid tracking your finances like me this software will scare you away pretty effectively, making your purchase pointless.
+
+Lastly, the customer support is really very bad.  You basically get canned responses that don't even really address the questions you ask, in semi-broken English.
+
+I'm sure that someone with banks that have mac supported QFX, tons of patience, and is predisposed to dealing with accounting minutiae would find this program useful/powerful.  For me, all the advanced features in the world don't matter if i can't even use the most basic ones

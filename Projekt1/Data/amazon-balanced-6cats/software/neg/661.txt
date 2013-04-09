@@ -1,0 +1,4 @@
+The major flaw with this product is that it's not clear which version of Office you can upgrade FROM.
+Note: It does NOT work with Office SBE!!
+
+Various sources say various things, even the Microsoft site isn't helpful

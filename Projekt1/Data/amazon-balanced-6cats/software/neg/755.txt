@@ -1,0 +1,7 @@
+We purchased this software to map retail locations on a region.  It is missing too many features to be usable.  For instance, when you import a custom graphic pushpin, the software doesn't resize it as you zoom which forces you to create multiple sizes in another program.  You can add text description boxes but have no control over the font or sizing -- and they don't resize either.  
+
+We highlighted our specific region but the software doesn't let you print just that region (called 'territory.)  We searched the help files and their word 'territory' is not even listed.
+
+You cannot save your map graphics in any standard graphics format, e.g. JPEG, PDF or ai.  We tried printing to a PDF generator, but Map Point's map output is of very poor resolution even on the highest settings.
+
+After wasting a lot of time, it's apparent we should have tried Google Maps/Earth with our graphics editing software for a solution that works

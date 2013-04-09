@@ -1,0 +1,22 @@
+I recently purchased an HP Laptop that, to my regret, came with a pre-load of Win Vista.  Some of the bad things about this package are:
+
+1. The help files are all on line.  If I'm not connected to the internet, I can't access the help files.
+
+2. HP does ship it's laptops with the Vista install CD's.  Instead, a CD to purchase an upgrade to the next version of Vista is included.
+
+3. For the newer laptops, HP is not producing drivers for any other OS except Vista.
+
+4. Vista is less user friendly than XP or even 2000.
+
+5. And yes, Vista looks familiarly like OS X, but is harder to work with.  I have owned several Apples and looks are deceiving.  Just because it looks like an Apple doesn't mean it works like one.
+
+6. All of my instructional software no longer works.  I use a lot of software to teach Information Security that no longer works on Vista, such as:
+  a. CyberCiege (An information security wargame)
+  b. Boson CCNA Network Simulator
+  c. Visual Studio (Not everything works)
+
+7. Also, some of the network management tools will not run or run properly on Vista.  I do a lot of remote management from the workstation versus going to the server.  Many of the vendors that provide tools are way behind the power curve on their Vista support.
+
+I could go on but what's the point?  I can't even dump Vista to go back to Windows XP or even 2000 if HP won't even make an attempt to produce drivers for the laptop.  Linux is out for the same reason, no drivers.  So I'm basically stuck with an overpriced emailer and word processor.
+
+If you plan on purchasing a computer, make sure that if you plan on dumping the OS and going back to XP or changing to LINUX, the vendor has all of the drivers to support the change is not on the Microsoft Vista Conspiracy bandwagon

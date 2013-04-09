@@ -1,0 +1,1 @@
+The scale part works fine, but the fat % measurement does not work. If you care about fat%, I'd recommend using the hand held device instead. It gives more accurate reads.

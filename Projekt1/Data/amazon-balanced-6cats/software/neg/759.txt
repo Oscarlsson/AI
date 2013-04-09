@@ -1,0 +1,8 @@
+After researching a few options on the market I tried Kaspersky Internet Security Suite 6.0. I needed only anti-virus but since the rebates made the whole suite cost the same as anti-virus alone I decided to give it a try. Man, I was really disappointed. Out of 7 programs only 2 started and have been working properly: anti-virus and proactive defense. The suite was trying to start other 5 programs and was requesting to reboot laptop constantly. After trying all I could I decided to call or email for help. And this is where I got my surprise - none of the contact information led me to any LIVE person. I emailed to all addresses available on the net and in the program. I called all US numbers I could - they even don't have a live representative here. If you try to call a number for US and Canada you will reach one of those accept all calls and leave your numbers with wait all you can for response time. I filled out two bug reports directly from the program with the same result.
+One of the selling points of anti-virus program was HOURLY updates. Well, guess what. You are lucky to have a DAILY update without a manual interaction. I thought that something is wrong with my work laptop and installed second program (I was naïve and bought two) on a BRAND new installation of Windows XP. Result was ABSOLUTELY identical.
+If you don't believe me - try to contact ANY of their support (not SALES) channels BEFORE you buy their product. My final view on this product would be:
+1.	Great idea
+2.	Maybe great initial implementation (the reviews were great)
+3.	And UNAVAILABLE SUPPORT. 
+
+Don't waste your time and money

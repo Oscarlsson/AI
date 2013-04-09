@@ -1,0 +1,13 @@
+It does the basic job well.  The calibration runs smoothly and accurately.  Hardware looks and feels solid.  My two completely different brand, size and age CRT monitors ended up with exactly the same colors sitting side by side. 
+ 
+User interface is merely adequate.  Pop up help instructions are better than many I have seen.  You will need to know already how the calibration buttons on your monitors work (the hardwired buttons on the monitor, not software).  In order to make any edits you must run the entire time consuming calibration over.  Sometimes you can use "back" within the calibration, sometimes you must start over.  Also the separate "profile chooser" utility software, has not add or delete profile feature - even if it is a profile created and saved by the calibration software earlier.  You can see it with windows display properties, but it may not appear in the profile chooser list.
+
+Dual monitors is the one obvious reason to choose pro over plus version.  Yes, it does dual monitors, but with an asterisk.  It will create separate profiles, but will only apply the correct profiles automatically at startup to both monitors if you have two separate video cards.  If you have a single video card with dual outputs, it will load the same profile (the last one you created) to both monitors at startup.  This quirk is documented in a readme file on the installation disk (and blames windows for the problem), but this limitation appears nowhere in advertising material, catalogs,  or on the box.  Fortunately there is a work around (not documented) at least with my particular video card and running XP.  After windows opens, you can run profile chooser then choose the correct profile for each monitor.  You may have to use windows display properties settings to specify default profile and rerun the calibration to get the profiles you want to appear in profile chooser and to select the correct profile as default. 
+
+Once it's all set up, running profile chooser is a four of five click procedure, but you must rememeber to check it before using any application that uses color profiles.  And check it after you open the application.  I've had them change after opening photoshop - though not every time.       
+              
+
+      
+
+
+

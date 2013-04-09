@@ -1,0 +1,1 @@
+This pad works, basically, but it does turn itself after 30 minutes.  There's no way to prevent that.  This may be fine for some uses, but it's very inconvenient for others

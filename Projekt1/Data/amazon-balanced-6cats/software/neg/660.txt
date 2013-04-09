@@ -1,0 +1,12 @@
+This upgrade is a disaster. First of all, in Word, the view markups function is the default now, so you have to go through and change all the settings to hide markups (most people in my department do not want to see those distracting colors and balloons and do not need to edit the doc in any way). However, if you want to send a document that does not have the tracked changes embedded -- because you don't know which version of Word the recipient has, and you can't take the chance of them seeing all those comments -- you have to go through the document again, view markups, reject the comments, Accept Changes, and resave. It's kind of difficult to explain, and frustrating too. People think that if they can't see it, then the recipient won't be able to see it either.
+
+This is a good explanation from a Microsoft help forum:
+
+*Not displaying* tracked changes isn't the same as *not having* tracked changes. Even when using Word 2002, the changes were still in the documents, and anyone could see them just by turning on the display. All that has happened in 2003 is that the display is automatic. The way to have documents in which changes are not displayable is to remove the changes from the documents entirely -- and to do that you must *accept or reject* all the changes. Nothing you do with the view will be sufficient. If you need to retain a record of the changes, you'll have to maintain two sets of documents: one with the changes, which *never* leave your office, and another that has been "scrubbed" and can be sent out. 
+
+Still, it's a big problem and more unnecessary work than 2002's version. Also, Outlook's new default view is quite different than before. The panes are set differently, so you have to go to View/Reading Panes to change the positions. And then you have to ungroup items (the breaks in between the weeks are very annoying...most people don't like that, although I guess some people think it looks more organized).
+
+Oh, Microsoft - can't live with it, can't live without it.
+
+Almost forgot...the buttons/icons are prettier in this version, and we all know that that makes a huge difference. Yessss! Pretty buttons! I can die happy now.
+

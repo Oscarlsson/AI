@@ -1,0 +1,6 @@
+Love my new JVC Everio.  The original model just used compact flash cards, but the new Everio GZ uses an ipod like hard drive that lets you store a year's worth of video on it!  Tape is definitely dead, and DVD camcorder's 30 mintues a disc doesn't hold a candle to the Everio.
+
+The only issue I had was that the software that come with it was pretty basic, but all the other video editing software programs didn't recognize the Everio video files (.mod files which contain MPEG2 Video and Dolby Stereo Audio).  
+
+I did finally find Adobe Premiere Elements 2.0 which supports this new file type natively.  It has made editing a breeze.
+

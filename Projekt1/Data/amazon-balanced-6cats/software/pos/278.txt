@@ -1,0 +1,5 @@
+I tested numerous anti-virus programs after getting fed-up with previous Norton Anti-virus, which would always "hang" my incoming email, causing me to redownload larger files and sometimes make it impossible to retrieve them at all. (Incidentally, this had nothing to do with the "time-out" settings.) 
+
+After testing other top rated anti-virus programs, the only one that wouldn't "hang" large email files, was Kaspersky. Even though I have my "time-out" set to only 1 minute, Kaspersky never stumbles and lets go, even if it takes much more than 1 minute to download.
+
+I also like the easy to use "pause protection" when I'm doing file clean-ups, because there's no sense passing temporary files through a second time, and it speeds the clean-up 5 times faster

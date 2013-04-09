@@ -1,0 +1,7 @@
+This software is focused on learning the rules of the game.  Movement of different pieces and pawns is demonstrated through an assortment of arcade-type games.  There are some decent books for learning chess for beginners, but learning through a computer game program makes it much easier and more fun.
+
+The program doesn't contain any instructions,so some people may find it frustrating figuring out what to do in the beginning. However, there is a symbol in the top right corner, clicking on which brings down the menu at which point navigating becomes a piece of cake.
+
+Just knowing the rules of the game enables one to play chess, but not exactly to win, so the second CD in this series (Learn to Play Chess 2) continues where the first one left off and goes into different tactics and strategies.  
+
+The software is recommended for 8 year-old children and older - kids at heart may have fun learning chess with this program also

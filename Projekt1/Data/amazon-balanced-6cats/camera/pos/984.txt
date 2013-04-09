@@ -1,0 +1,6 @@
+This is Panasonic's entry-level camcorder, but it's packed with useful features, like good image quality, 12 lux sensitivity, and a whopping 30x optical zoom.  I think it's perfect for casual travel videography as well as for shooting entries to the "America's Funniest Video" show.  It's fairly easy to use and the build quality is solid.
+
+A good optional accessory to get is a spare battery.  You never know if the battery might run out at the most inopportune time, so be sure to pick up a backup one.  Given the recent Dell recall of 4.1 million laptops due to battery fire, you should get a genuine Panasonic LiIon battery designd specifically for this model.  Don't put your life or your loved one's at risk.
+
+The reviewer named "Hung" got it totally wrong (or was just plain lying).  The GS29 does come with IEEE1394 Firewire (aka i.Link) so you can download your videos quickly to your PC; if your PC doesn't already have an IEEE1394 port, you can get a PCI IEEE1394 card for $30 or less.  You can use Windows Movie Maker, included with Windows ME and XP, to edit your videos and export them to CDs or DVDs.
+

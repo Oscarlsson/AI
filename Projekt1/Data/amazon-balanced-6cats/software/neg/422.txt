@@ -1,0 +1,15 @@
+Several years ago I used DeLorme's Street Atlas with a USB GPS receiver. The software worked but the interface was lousy. This year I tried Microsoft's Streets and Trips 2007 and was surprised to find that it has an interface that is smoother in some ways than the Delorme software, but still surprisingly clumsy. And the help is possibly the worst I have seen in a Microsoft product (that's saying a lot). Here are some of the problems:
+
+1. Street & Trips is expecting a GPS receiver that uses a **COM PORT**. Are you kidding me? In 2007??? The Delorme Earthmate 20 (usb) will work if you use the delorme com port emulation software, but why is this necessary??? (And it was not trivial to get it to work.)
+
+2. The handling of pushpins (identifying spots on the map), favorite places, and the like, is extremely clumsy. (Although, contrary to another review, you don't to re-enter the information each time. You just save the file and reload it.)
+
+3. Directions are sometimes not so great. Why would you instruct someone to "turn left" if you don't know which direction they're pointing (e.g., when you're stationary in a parking lot)? Much better in such cases to say "head NE" or some such. Freeway exits (at least in So. California) were often not handled well. (One freeway entrance was identified as a "local road", which at the time proved quite confusing.)
+
+4. Why doesn't the software automatically recalculate directions to put you "on-route" once you're off-route? You can push F3, but why is this necessary?
+
+5. I never got the voice providing driving guidance to work. The online help was useless. I'm sure someone can jump in and tell me how to do it, but it should be trivial.
+
+6. In general, the software has the feel of a bunch of modules written independently and thrown together. I'm not a reflexive anti-microsoft bigot (I bought this software after all), but I find that much MS software is bad precisely because it feels like it's cobbled together without much attention given to integration. It's shiny on the surface but the shine vanishes once you really start to use it.
+
+Given this experience, I will probably give the Delorme software another try next time around.

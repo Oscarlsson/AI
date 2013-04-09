@@ -1,0 +1,1 @@
+Works well most (95%) of the time.  Slight improvement over v8

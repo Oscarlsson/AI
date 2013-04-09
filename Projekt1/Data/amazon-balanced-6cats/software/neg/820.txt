@@ -1,0 +1,12 @@
+Come one people, Windows Vista is not only as unstable as it's Windows predecesors with a very uglu memory management and a really unsecure and ineffective hard drive and files management; I've lost lots of very important files due to Windows "errors" that shut down applications and even the PC itself, so i decided my self: TO USE LINUX OR TO DIE WITH MICROSOFT !, and i'm still alive ! ;-)
+
+As i told you, Vista is nothing more but a cheap copy of visual effects that Linux users had from several years from now; in facto, right now i'm using a Linux version called Sabayon and it is a million light years away from Windows Vista, it's visual effects are simply incredible (try searching "Beryl" in youtube for you to know what i'm talking aboyt), i have not only 3D windows, but 3D Desktops, incredible effects to minimize and maximize and a veeeery looooong list of features that you have to see it for yourself to beleave it.
+
+I know that you might be concerned for several aspects at this points that wooried me in time (when i was evaluating Windows Vs Linux):
+1.- My Documents, that will happen with them?. Nothing will happen, in fact you'll ba able to open them and modify them as you please, the OppenOffice suite is totally compatibble with your Microsoft Documents.
+2.- My programs?, well there are several options to run Windows programs in Linux, as "cedega", "wine", etc etc etc, si it means that you will be able to run most of the windows programs in Linux.
+3.- Is it hard to use ?. No way !, it's as easy to use as Windows, you will only have to dedicate a few time (may be a couple of hours) to understand several conceps as the multiple destops, the file system, and the users and permission management (that is the one of the most secures in the world) (Microsoft Windows cant's say that!).
+
+So, if you don't beleave search google for sabayon and youtube for beryl and you will open your eyes!.
+
+So... think about spending this 400 bucks twice, because Sabayon and other versions as Ubuntu, Kubuntu, some versions of SUSE, and other Linux distributions are TOTALY FREE of charge!. you only have to download them and burn it to a CD or DVD, whatever you like.

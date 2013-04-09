@@ -1,0 +1,8 @@
+Don't buy this software even if you get it free after rebates.  It corrupts your windows registry and makes things worse for you.  You will feel your computer is far better after uninstalling this software.
+
+Instead, just follow these steps to keep your PC fast:
+1.  Run Disk Cleanup (provided by XP)
+2.  Defrag your hard-disk regularly
+3.  Clean the registry (there are lot of free software available to clean your registry).  
+
+That's all that you need to keep your computer fit.  No need to use softwares such as Fix-I

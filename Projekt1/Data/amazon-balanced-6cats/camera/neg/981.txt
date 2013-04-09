@@ -1,0 +1,1 @@
+While the Everio will work on a Mac, it is with JVC's movie program.  It is not iMovie ready.  There is a very strange "work around" involving DVDrop that will make it work.  Not very pleased with what I feel is misleading information about compatibility with Mac

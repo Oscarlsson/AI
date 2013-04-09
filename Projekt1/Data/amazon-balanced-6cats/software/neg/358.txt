@@ -1,0 +1,9 @@
+I purchased the standard edition of X3 primarily for 3 reasons: 1) It claims to have the ability to convert pdf files into WP format, 2) It claims to be able to organize your e-mail files through the use of WP Mail well beyond the capabilities of Outlook Express, and 3) It claims enhanced use of WP for word processing.
+
+What I found was a product that met only one out of three of its claims.  In baseball, batting .333 will put you into the Hall of Fame.  In business, fulfilling one of three claims will put you into bankruptcy!
+
+While the pdf converter is a rather good tool, WP3 Mail is unstable (and this is from their tech support department).  It destabilizes your use of e-mail to the point of making it virtually unusable in terms of reliability.  I imported older e-mail from outlook express when I installed the WP X3 software, only to later find out that the system crashed regularly.  I could not get at my older imported e-mail, and could not find a practical way to reverse the importing back into outlook express.  What really irked me was that their tech support was worthless in rectifying the situation.  They merely responded by saying they were aware of the problem and "may" release a patch to help sometime in the future.  Ahhhhh!
+
+As to the alleged improved "word processing power", I have experienced more bugs then appear in an Animal Planet Channel special on insects in the Amazon Jungle.  Unwanted page formating changes occur when I click my mouse on the page I had just finish reformatting. Undesired line spacing would appear on pages.  The list goes on, but who has the time to be more detailed. 
+
+Do yourself a favor and avoid the product.  If you need to upgrade, check out the latest version of MS Word, you will be far more satisfied I'm sure

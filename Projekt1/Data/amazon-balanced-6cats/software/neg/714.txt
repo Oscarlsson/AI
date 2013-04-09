@@ -1,0 +1,19 @@
+When I considered purchasing this product, I was confused to see that some people thought it was great, and others thought it was terrible.  I couldn't understand why there were such discrepancies in the reviews.
+
+After I bought it I understood: For some of the things it does, it works fine -- no problems.  However, there are many major bugs in the software, and if you need one of the buggy functions, you'll be sorry you bought it.
+
+Examples of some problems: 
+
+1. If you burn an audio track entitled "Blue Fog" Nero will give it the title "Fog."
+
+2. Every time I run a backup, it tells me there was a write error, but the backup seems OK.
+
+3. I backed up every file on my drive, but when my system crashed, there were problems that prevented me from restoring my system.
+
+4. It has blue screened my system one time.
+
+5. Many commands are poorly or not at all documented.  For example, the wave editor has a declipper function, but there is no documentation on how to use it.
+
+So, I'd recommend that you look instead at a competing product.
+
+Good luck

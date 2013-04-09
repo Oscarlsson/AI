@@ -1,0 +1,9 @@
+Having had Norton products installed for years including AntiVirus, Internet Security, and SystemWorks, I decided to replace the installed products with Norton 360 and a non-Norton password manager.  Obviously, it is critical to FIRST remove all Norton programs before installing Norton 360.  The installation process proceeded relatively smoothly.
+
+My computing environment includes a 1.6Ghz processor, 1,000MB of memory, and 6GB of available disk.  
+
+The background scans and LiveUpdate have played havoc with my other applications by periodically locking up the entire CPU at 100% CPU utilization.  One application that streams radio broadcasts now stops.  I immediately disabled the automatic updates and scheduled backups, however, the CPU occasionally still locks.  
+
+Additionally, there is no way to transfer security settings from previous Norton products to Norton 360 thereby making the installation process very labor intensive.
+
+If you now have separate Norton security products and are satisfied with them, save your money and renew the Norton subscriptions.

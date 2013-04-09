@@ -1,0 +1,48 @@
+This is a copy of the review on Amazon.com for Van Zant's Get Right With The Man which is another Sony corrupted title.
+
+"This CD secretly installs DRM (digital rights management) software on your PC without your permission. Not only does it do this, but the software then hides itself by installing as a "root kit."
+
+As per WikiPedia,
+
+--
+Root kit
+From Wikipedia, the free encyclopedia.
+A root kit is a set of tools used by an intruder after cracking a computer system. These tools can help the attacker maintain his or her access to the system and use it for malicious purposes. Root kits are known to exist for a variety of operating systems such as Linux, Solaris and versions of Microsoft Windows.
+
+A rootkit typically hides logins, processes, files, and logs and may include software to intercept data from terminals, network connections, and the keyboard. In many sources, rootkits are counted as trojan horses.
+--
+
+In this instance, Sony installs DRM software to copy protect their CD, and prevent it from being copied to various devices, all the while not telling you, the user, or letting you uninstall it because it hides itself from the user and Windows. Manually trying to uninstall it like some people have done, results in their CD-Rom drives disappearing entirely from Windows, as Sony installs their own custom CD-Rom drivers onto the system.
+
+DO NOT SUPPORT THIS WRECKLESS KIND OF COPY PROTECTION. SHOW THE MUSIC BUSINESS THIS IS *YOUR* MUSIC. *YOU* PURCHASED IT, AND THEY SHOULD *NOT* BE ABLE TO DICTATE HOW YOU CAN USE IT.
+
+Do not buy this CD. "
+
+A list of affected titles can be found here:
+
+http://www.eff.org/deeplinks/archives/004144.php
+
+And another part of an Amazon.com review for the Van Zant CD
+
+"Amazon rocks. They pulled they infected CD's from sale and allowed these reviews that tell of the problems. Shame on Sony they not only messed with the consumers but also the artists."
+
+Trey Anastasio, Shine (Columbia)
+Celine Dion, On ne Change Pas (Epic)
+Neil Diamond, 12 Songs (Columbia)
+Our Lady Peace, Healthy in Paranoid Times (Columbia)
+Chris Botti, To Love Again (Columbia)
+Van Zant, Get Right with the Man (Columbia)
+Switchfoot, Nothing is Sound (Columbia)
+The Coral, The Invisible Invasion (Columbia)
+Acceptance, Phantoms (Columbia)
+Susie Suh, Susie Suh (Epic)
+Amerie, Touch (Columbia)
+Life of Agony, Broken Valley (Epic)
+Horace Silver Quintet, Silver's Blue (Epic Legacy)
+Gerry Mulligan, Jeru (Columbia Legacy)
+Dexter Gordon, Manhattan Symphonie (Columbia Legacy)
+The Bad Plus, Suspicious Activity (Columbia)
+The Dead 60s, The Dead 60s (Epic)
+Dion, The Essential Dion (Columbia Legacy)
+Natasha Bedingfield, Unwritten (Epic)
+Ricky Martin, Life (Columbia) (labeled as XCP, but, oddly, our disc had no protection

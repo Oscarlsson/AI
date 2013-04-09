@@ -1,0 +1,22 @@
+Nero 7 the original version was useless in that it prevented you from burning some things; mysteriously Nero had suddenly undone itself. All of that has now changed with the new update. It is so good that you can now burn ANYTHING on Vista.
+
+Nero Inc also released a "Nero 7 cleantool" for removing bad installs. If you have had trouble with Nero 7 on Vista then the cleantool will fix it. Apply the tool. Clean install. 
+
+Nero 7 is 99.9% effective but has a tendency to corrupt now again simply because it has a vast configuration system. Nero is a core burning tool. This means that several backup packages out there will actually find Nero on install and use it for burning. One example is DVDshrink that runs Nero in the background while backing up DVD movies on DVD-R. I/O errors with these programs, including DVD Decrypter, are usually the result of a configuration problem with Nero. One example is updating your firmware. Sometimes this requires you to reinstall Nero. This problem however is the only bug I have found with Nero. Just on the side - I highly recommend either Sony, Imation, Memorex, Verbatim as relatively cheap good second class media (80% or higher burn success rate). DVD is still in its early days of development and some media is garbage so don't blame Nero if you make coasters (half burned DVD-R Discs that are useless to you) with this software. I also recommend a healthy supply of at least 3 DVD-RW Discs for TESTING your burning so that you NEVER make a coaster and waste money. Okay, now back to Nero. 
+
+Nero Burning Rom is the real tool in the bundle. It is the most configurable burning tool in the package while Nero Express is for those who do not know a thing about burning and works like a Wizard. A word of advice is to stick with the Rom and learn it without using the Wizard. You can choose from dozens of CD formats and dozens DVD formats, including several variations of each format. Image burning and hybrid discs of any time are all here. There is not a disc format you cannot burn with this program. Burner hardware based error correction systems in conjunction with the Nero software make a perfect burn almost every time. Nero also happens to be extremely fast, if not the fastest out there, however fast is also in terms of how fast your burner is, but the software package requires little to no processing before a 8GB DVD is being pulled onto your HD. You can create ISOs with Nero and even use Nero to open up ISOs so you can read the content). There is an amazing amount of free software out there that uses this burner as their base and rightly so. It is the best burning software out there at this time of writing. 
+
+Pros: 
+
+- If you can learn tutorials for all types of backups then this and a DVD burner will change your life if you play games and watch movies. 
+- Solid performance. With good hardware and media almost flawless burns every time. 
+- Nice configuration. Can even backup your PS and Xbox Games. 
+- All burning formats. 
+- About 266mb in size. 
+
+
+Cons: 
+
+- Let's face it. DVD burning and backup does have a bit of a learning curve. Read plenty of tutorials that use Nero to do specific backups. 
+- Corrupts sometimes and needs cleaning before reinstall. 
+- You really need a top of the range machine to backup a DVD in less than an hour

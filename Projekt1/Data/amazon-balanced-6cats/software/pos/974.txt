@@ -1,0 +1,1 @@
+Was using DataManager, but disliked the constant disk access in background.  Acronis backs up well without constant background disk access, and uses less disk space

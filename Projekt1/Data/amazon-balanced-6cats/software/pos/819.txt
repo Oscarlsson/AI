@@ -1,0 +1,63 @@
+Photoshop CS 2 Screen The Current Adobe Photoshop CS 2 Line
+
+    * The Adobe Bridge: The next generation of the Photoshop File Browser. This allows you to organize, browser and locate photos, images and movies across shared Adobe Creative Suite applications.
+
+      Since The Bridge is a standalone application, you can launch it separately or access it by double clicking on Adobe Photoshop CS 2 in the dock.
+
+    * New Camera Raw gives you control over your digital negatives in Adobe Photoshop CS 2. It is much easier to work on a several images at the same time. The Camera Raw has Auto checkbooks for Exposure, Shadows, Brightness and Contrast sliders.
+
+    * The Vanishing Point lets you clone, paint and transform images. Image Warping allows you to fold, stretch, pull, twist and wrap an image into shape by selecting an on-demand preset or dragging custom control points.
+
+    * Photoshop CS2's Smart Objects allow you to scale and transform images and vector illustrations without losing image quality, and
+
+    * Smart Guides appear when you're moving text or objects around, making it easier to align them.
+
+Working within the 'Inner Core' of Adobe Photoshop CS 2
+
+Most of my Photoshop CS work is done in the Browser. I single-click the photos that I need for my Photoshop CS project. Now I have a group of highlighted photos that can be used in the Browser's Automated menu.
+
+The inner core of the Photoshop CS Browser's Automated menu contains: Batch, PDF Presentation, Contact Sheet II and Online Services. Also, Automated menu contains Photomerge, Picture Package and Web Photo Gallery.
+
+Running these automated menu tasks from the File Browser saves me a lot of time. I can avoid opening each photo file separately in Photoshop CS.
+
+The Photoshop CS 2 Browser has Sort capabilities that contains the Filename, Flag, Rank, Width and Height. Also, Sort capabilities that contains File Size, Resolution, File Type and Color Profile.
+
+The Photoshop Browser's Sort contains Date Created, Date Modified, Copyright and Custom. You can sort them in ascending or descending order.
+
+Photoshop CS Photomerge and PDF Presentations
+
+In Photomerge, I can make a collage of photos and move them in any order. Also, I can take several sections photos of a large bridge using a tripod. I then take the section photos and join them together with Photoshop CS' Photomerge. I still have to edit the new Photomerge photo for length, size and contrast.
+
+In PDF Presentation, I can turn my photos into Acrobat PDFs and stitch them together. The fun is turning my new creation into a slideshow with various transitions. The PDF Presentation is cross-platform that can be used on a Mac and Windows computers.
+
+Working with the 'Outer Core' of Adobe Photoshop CS 2
+
+Keyboard Commands
+
+The one-key letter shortcuts that I use quite often is M for Marquee, V for Moving objects, T for Text, I for Eyedropper and C for Crop. There is a multitude of Toolbox one-key letter shortcuts that you can use or change.
+
+Toolbox uses the Shift bar to get to related tools on the same pop-out menu. For example, to cycle through the Lasso, Polygonal Lasso, and Magnetic Lasso tools, hold down Shift bar and keep pressing "L" key.
+
+Change Keyboard Commands in Photoshop CS 2
+
+This means that missing Photoshop CS Menu keyboard commands can now be added. For example, I am constantly making changes to my images by changing the photos' contrast and brightness.
+
+Now without using the computer mouse, I use the Command, Control, and C keys in unison. Like a piano chord, I can now change the contrast and brightness in my digital photographs.
+
+I use Command, Control, and letter keys for adding keyboard commands. This works well within the menus and plugin filters that I use in Photoshop CS.
+
+Pro Reaction
+
+Photoshop CS offers flexibility and nondestructive editing. Photoshop's Welcome screen and improved Help ease the learning curve for new users. The Help menu is changeable. I find Photoshop CS' Help menu an excellent way to learn the various functions of Photoshop program. Photoshop CS comes with a paper, hardcopy paper manual. Photoshop CS 2 works best within Mac OS X 10.4 Macs including Intel Macs. 
+
+Con Reaction
+
+You have to read and work with hardcopy paper manual. The Bridge does not work in older Photoshop programs. 
+
+Final Words
+
+Photoshop remains the industry standard for professional photo editing, graphic design, and digital imaging. Adobe Photoshop is considered the industry standard. Photoshop skills are required for employment in the graphic design field.
+
+Digital photographers will benefit from Adobe Photoshop with its strong digital-camera raw workflow.
+
+Paul Gerstenbluth is President of the ARIE Foundation and is a Macintosh consultant. The ARIE Foundation's mission is to provide VA hospitalized patients with hobby materials and Macintosh Powerbooks that helps in their stay and recovery

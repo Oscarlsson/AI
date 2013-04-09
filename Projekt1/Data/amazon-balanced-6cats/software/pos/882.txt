@@ -1,0 +1,4 @@
+I think that this is a very good Operating System, but it is FAR TOO OVERPRICED!
+A Note to the person who has the issue with disk#4 of his setup disk set:
+Try and get access to another computer and run diskcopy, if that does't work, then boot into MS-DOS with a Windows 98SE bootdisk and select the CD-ROM Drive letter and then type "CD I386" then type "winnt" then it will start the installation from the Compact Disc.
+I gave it 4 stars because i believe that they could sell a better Operating System for that price

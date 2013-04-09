@@ -1,0 +1,9 @@
+Microsoft Office can be handy to have.  The files you can open, edit and create with it (most notably .doc, .xls, and .ppt) are probably the closest to universal compatibility among all your high quality options. It's (relatively) intuitive.  It has a pretty broad array of useful functions.
+
+It's also obscenely expensive, considering the fact that you can get all of these things -- .doc, .xls, and .ppt; intuitive interface; and functionality -- for free.
+
+I hunted up OpenOffice two years ago when I decided several hundred dollars was an insane price to pay for the ability to write papers, make basic presentations, or put together spreadsheets.  I was looking for basic functionality, but I was pleasantly surprised; OpenOffice does most of the neat tricks, too.  (Actually, it has a neat trick Microsoft can never replicate: it's open source, so it can respond to the needs of individual users.  You just say "Add this neat trick!"  and someone will likely be able to do it for you.)
+
+It is possible that Microsoft Office has some killer feature you absolutely must have that OpenOffice doesn't.  But considering the price differential, I wouldn't splurge on this before checking.
+
+

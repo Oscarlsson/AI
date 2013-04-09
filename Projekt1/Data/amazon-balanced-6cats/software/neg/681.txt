@@ -1,0 +1,4 @@
+I have a recently purchased Acrobat 8.0 Professional. It installed fine on my new Vista machine, although it cites only Office 2003 products. But I have MS Office 2007.  After installation (and reinstallation) no Acrobat conversion options show on MS Word, and when trying to use Acrobat directly for an MS Word file conversion it first reinstalls itself, and then reports that the Word file (I have tried several) is corrupt.
+
+I now have to ask colleagues with older software to do my PDF conversion.
+I could not find out if or when Adobe plans to be compatible with Vista and Office 2007

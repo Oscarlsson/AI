@@ -1,0 +1,7 @@
+For those considering Outlook 2007, beware of my experience: one morning I ran Outlook 2007 to find it would not download email messages at all. (I would get an error about MAPI.) This appears to be due to an automatic office update of the junk mail filter.
+
+One of the most important features of an email program is that it doesn't suddenly stop being able to check email (imagine being on a business trip). Automatic improvements to the junk mail filter sounds great, but if that means one morning I wake up to not be able to check email at all, then the medicine is worse than the disease.
+
+The new features and changes Outlook 2007 really do not compensate for the lack of reliability. If you have another email program that works, I'd stick with it and not switch to Outlook 2007.
+
+On a positive note, I was able to fix the above problem by running repair (reinstall) from the Office 2007 install program, but this took half an hour or so to run.

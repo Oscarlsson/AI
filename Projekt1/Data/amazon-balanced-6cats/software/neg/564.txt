@@ -1,0 +1,9 @@
+Background - senior IT professional.  I have been a Quicken user for well over a decade and have always been very happy with the product until the 2007 version.  First, let me point out a couple of things to like about this version:
+
+- the interface; seems to depend on the eye of the beholder, but I for one find it pleasing and useful.
+- the ability to append notes and check images to a transaction.  I love this feature.
+- the Cash Flow dashboard and the Calendar
+
+Now for the caveat: if you depend a great deal on downloading transactions using WebConnect, prepare for a great deal of frustration and disappointment.  This feature used to work reliably in all other versions.  In version 2007 it is prone to quit with a notice that there has been a "Quicken Server Outage" that prevented the download from succeeding.  These occurrences are sporadic.
+Scores of users are reporting this on the support forums and elsewhere; I have seen no hint of a response or explanation from Intuit.  Horror stories about tech support at Intuit have kept me away from that venue, though at some point I'll call just to see what happens.  I upgraded to 2007 from a very solid and dependable Quicken 2006, and this issue alone has made me wish that I hadn't.
+Weighing the new features against the new bugs I would have to say that I do not recommend purchasing this version at this time

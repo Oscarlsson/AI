@@ -1,0 +1,7 @@
+Frontpage 2003 is a great, easy-to-use WYSIWYG web builder.  Most hosting companies support Frontpage extensions, a set of web robots to help you build a dynamic site, similar to DHTML.
+
+Two warnings, though:
+
+1) This full version is too expensive; you may qualify to buy the half-priced Academic Version (search for "frontpage 2003 academic" on Amazon);
+
+2) More important, though, Frontpage is being discontinued as a product altogether and will be replaced by Office SharePoint Designer (for businesses) and Expression Web (for everyone else).  You can download the latter for free (for now, at least) on MSFT's website

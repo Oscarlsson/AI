@@ -1,0 +1,12 @@
+I've used MS Streets and Trips for years with minor problems.  This year I upgraded to a Windows Vista Laptop and wanted the latest software for it.  I have a GPS and I use a Pocket PC PDA so I need Pocket Streets.
+
+After I got home I read the fine print on the box.  It list support for no higher than the Windows XP OS.  But, so far the program is running fine on my Vista machine.
+
+The laptop has no serial COM ports and S&T 2007 won't detect a USB port. The description of S&T 2007 which includes a GPS indicates it uses a USB port but apparently it needs the included USB adaptor.  I could not locate where I could purchase such an adapter.
+
+S&T 2007 no longer ships with Pocket Streets.  Nor could I locate where I could download a copy.  I can (for now) use my old Pocket Streets program because 2007 does EXPORT Pocket Street maps.
+
+Finally, within two miles of my home the map list an airport and runway that was shut down in the early 90's.  The main highway a few blocks from me has only 3 exits in 2 miles yet S&T 2007 list over a dozen intersections which means when I get directions I always end up down a dead-end road.
+
+I've purchase many versions of Streets and Trips and this is the first time I felt I've wasted my money. Open software can't be returned from where I purchased it.  I guess I'll have to start researching other software packages.
+

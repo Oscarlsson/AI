@@ -1,0 +1,1 @@
+This device is useless for monitoring pulse during activity.  One must be absolutely still for the meter to get a clear signal.  Nor is it useful for monitoring resting pulse, as it seems unable to pick up a pulse unless the heart is pounding.  At best, this device MIGHT manage to acurately read a pulse AFTER a strenuous activity is concluded

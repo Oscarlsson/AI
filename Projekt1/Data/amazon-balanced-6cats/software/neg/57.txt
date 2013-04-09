@@ -1,0 +1,42 @@
+Windows XP, and basically any other windows based OS is junk. After using Windows 3.1, 95, 98SE, 2000, ME, and XP, I was getting very sick of the same old boring basic programs.
+Linux however, has tons of programs with a lot of extra features to it.
+Spellcheck is one. I have to buy Microsoft Word or some other office program for spell check, and how much?!?! I'll tell you one thing, it ain't free.
+Linux however, there is spell check, and not just in their word processor. I also found this in their messenger program, email, and even in web browsers, free!
+
+The other thing I hate about Windows is "You must activate your copy, and only one copy per computer".
+With linux, there is no activating, or "one per computer". You don't have to fear changing hardware and having to call in to reactivate, typing in a ton of numbers and answering questions. You can give someone a copy of linux, and they can try it, for free, and for life! It's not 30 days free, or free for only a few people, it's free for everyone for life!
+
+As for one who mentioned that Linux releases more fixes than Windows, that is true. The difference between Windows and Linux when it comes to releases is like this. When Microsoft finally gets the operating system done enough, they will release it.
+Linux will release free their OS/software right away. You can download it right away as it becomes available or simply wait until they fix the bugs.
+So in other words, let's say both OS's have the same software. Day 5 comes along, and this software pretty much works, but may have some bugs.
+Linux will release this, and you have the "option" of installing it and trying it out, or wait until more bugs are fixed.
+Windows will not release this until it is more offical and finished.
+This is why linux has a lot of patches, they give it to you when they first get it going, and as they continue to improve this, you can enjoy it right away and not have to wait so long.
+
+It is also true that Windows can be attacked by viruses within hours, where as linux can take several days/weeks/months.
+Also, Linux has been proven to give your hardware/computer a longer life span.
+It can also work better with older hardware so you don't have to be compelled to upgrade all the time.
+
+Why not try out linux? It's a lot cheaper, and you may be amazed by how great it really is. I prefer Mandriva 2006. It's a great system.
+
+Final note -
+
+Windows: Very costly, even more so to get the benefits/features
+Linux: Free
+
+Windows: One per computer, or buy more licenses
+Linux: One copy to everyone for life, or each person can have a copy for life
+
+Windows: Boring; basic programs
+Linux: Several programs, multiple browsers, more than one type of software to fit your needs.
+
+Windows: New hardware/reformat PC: You must spend time on phone and answer questions and type in SEVERAL numbers to activate your PC.
+Linux: New hardware/reformat: Here's your OS installed; you're good to go!
+
+Windows: Constantly gets attacked by viruses
+Linux: Quite a lot safer
+
+Windows: Support? lol. Yeah, there may be some
+Linux: Various sites where you can ask questions for free and get help on your OS
+
+That's just some of the reasons why I love linux

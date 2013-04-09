@@ -1,0 +1,5 @@
+I measured 7 batteries out of the pack of 20 with La Crosse charger, which I also bought from Amazon.  The capacity ranged from 547 mAh to 2002 mAh, with the average being 886 mAh.  That's about a third of the stated capacity.  Before I took the measurements, I made sure the charger works properly by testing it with two different brands of AA NiMH batteries: La Crosse and Energizer.  Both scored very close to their stated capacity.  Therefore, the test is valid and SUNPAK's claim of 2650 mAh is grossly overstated. 
+
+My advice: avoid SUNPAK like the Plague!
+
+

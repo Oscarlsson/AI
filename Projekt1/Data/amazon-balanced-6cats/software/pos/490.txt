@@ -1,0 +1,7 @@
+I purchased Panda Internet Security 2007 for two reasons: The price after rebates (Free) and the fact that it is a 3-user license.  After switching from McAfee to Norton (and a subsequent 1-year renewal) I decided to either buy PC-Cillin 2007 or try Panda. (39.99 or Free...hmm...)  I installed Panda on my laptop first (after uninstalling Norton Internet Security 2005).  No problem what-so-ever.  In the initial HDD scan, Panda found and cleaned 5 files that were found in my email inbox identified as a worm.  I then installed Panda on 2 desktop machines with no problems there either.  Panda found 3 traces of spyware on one machine and nothing on the second.  
+
+Panda boots up with Windows XP quickly.  It has only given me a couple of pop-up messages (one for a WiFi intrusion, which was another computer on my network...I accepted it and it never came back.  The other pop-up was to start on-line customer service or something like that...I declined it and it has yet to come back.)
+
+My laptop is a P4 1.8GHz, 1GB ram, 32MB ATI video, 40GB HDD.  The initial virus scan took less than 20 minutes, scanning over 250,000 files.  Not bad!  Desktop 1's first scan (P4 2.4GHz, 512MB, 128MB video, 120GB HDD) scanned nearly 300,000 files also under 20 minutes.  Desktop 2 was the quickest (P4 3.4GHz, 1GB, 128MB video, 80GB HDD) scanning over 330,000 files in about 15 minutes.
+
+I am extremely impressed with Panda Internet Security 2007.  It's everything I hoped it would be.  I would definitely recommend this product to others

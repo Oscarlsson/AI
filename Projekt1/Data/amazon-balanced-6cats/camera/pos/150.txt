@@ -1,0 +1,23 @@
+This lens does exactly what it should. The overall quality is extremely good. Take a look at my photos:
+
+- First photo is without the lens
+- Second photo is with the lens and flash
+- Third photo is with the lens and without flash
+
+There are a few things to note about the photos:
+
+- There is a substantial amount of barrel distortion. This is normal. Try not to have straight lines near the borders of the photo to make it less obvious.
+
+- Fringing is exaggerated. You notice fringing (purple or blue tints) along high contrast edges of objects that are near the borders. You can see this on regular shots but is more exaggerated with the wide angle lens.
+
+- The lens makes a shadow when using the built-in flash. You can see the shadow in the photo with the flash. In a darker environment, it is very obvious. The external flash is the only way to fix this.
+
+A couple details:
+
+- You can get an extender that is a nice brushed aluminum here:
+
+http://www.lensmateonline.com/S2.html
+
+- The camera has a setting (Converter) to indicate that you have the lens attached. It's not obvious what it does but it is indicated by a change in the image stabilization icon so I assume that it affects the way that image stabilization works.
+
+Overall, I recommend this lens

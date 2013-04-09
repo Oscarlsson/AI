@@ -1,0 +1,3 @@
+On install the 1st problem encountered was that it replaced  my pictures folder, with another containing only "sample picture", yep  it took out a folder on install with no request or user action to do so. Regardless of how it works as an image editor such behaviour precludes its further use. 
+
+This program seems to be unsupported by MicroSoft, least their support site won't let you mail them on it,  so when it does hack up your file structure. SO program cost me $15 recovery effort on pictures, over $50. Just wonderful.

@@ -1,0 +1,6 @@
+I bought this product on the strength of the Norton name, and a positive review in Business Week.    I uninstalled ZoneLabs, Ad-Aware, and all Norton anti-virus.  There were still NAV files after the uninstall.  I had to download their Norton Software Removal tool, which also could not remove some NAV files.   Everytime I re-boot, those problematic NAV files want to re-launch NAV.  
+
+The NIS 2007 install was still difficult after all of that effort, and once installed NIS 2007 either freezes up my computer, or makes my internet connection so slow that it is un-usable.
+
+So, now I've uninstalled NIS 2007, still have issues with the corrupt NAV files, and will being go back to ZoneLabs and Ad-Aware.
+

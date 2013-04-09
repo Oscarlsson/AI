@@ -1,0 +1,18 @@
+They changed everything!  In an effort to make it more user friendly, they've rearranged most of the controls.  Menus are replaced by headings.  It is difficult to accomplish what were easy changes before.  Some of this will likely improve with use.
+
+WORD 2007 is constantly trying to think for you, auto formatting as you type.  However, it often isn't thinking what you are, and making it obey your commands is frustrated by the new headings.  Particularly frustrating, when I "right-click" on a list to restart numbering at "A" (ie. after roman numeral II on an outline), WORD 2007 flatly refuses.  My research paper is now formated:
+I.   Heading
+  A. subpoint
+  B. subpoint
+  C. subpoin
+II.  Heading
+  D. subpoint
+  E. subpoint
+  F. subpoint
+III.  Heading
+  G. subpoint etc....etc...
+This is ridiculous and inexcusable!  I also had to individually superscript 130+ footnotes.  Somehow, in changing the font from the Widows default "Calibri" back to "Time New Roman," the footnote setting was altered and I have yet to determine how to restore it.  However, if I open a new document it is fine, but I really don't want to retype a 30+ page research paper.
+
+POWERPOINT 2007 works well enough, compared to the older version.  They have added a few bell and whistles, but nothing that gets in the way.
+
+If you have to buy a new computer you're likely stuck with the new MS Office 2007.  But don't buy it until you have to.  It is NOT an upgrade from the previous two versions

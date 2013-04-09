@@ -1,0 +1,5 @@
+I have gone through all the major revisions of PaperPort, and I dislike them all.  The features have improved, but the program has become steadily more unreliable and bug-prone.  It often crashes, which means I have to shut down the entire program when editing a document and restart, which apart from taking ages, loses all the changes I made.   Very frustrating.  It has also become steadily slower as the version numbers have climbed - you just to sit around twiddling your thumbs waiting for it to load a document or advance a page on a scanned document, especially if it contains many pages.  If you can find an alternative, don't buy it - unfortunately for me, I can's see any alternative if you want to manage scanned pdf files in a sophisticated way.
+
+Incidentally, this product seems living proof of the dangers of bloatware - it's pretty clear that the programmers have lost control of the software's innnards.
+
+Plus, by the way, support for this product is a scandal - $9.95 for each email sent?  Unbelievable

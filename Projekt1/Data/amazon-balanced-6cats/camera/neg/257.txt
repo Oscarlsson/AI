@@ -1,0 +1,1 @@
+This Canon camera has poor quality interlacing artifacts all though out, on a 1080p monitor.  I have used other HDV format cameras, and they were much better. The low light level recording was filled with fairly large digital grain.  If you use a 1080i tube then it will probably look ok in high light, but still plauged in low light

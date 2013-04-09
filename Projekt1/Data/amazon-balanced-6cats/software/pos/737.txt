@@ -1,0 +1,1 @@
+It's quite a bit slower than version 7.  But it looks really good and the form designer has been improved by leaps and bounds

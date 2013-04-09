@@ -1,0 +1,5 @@
+Yes, it's easy to install, configure and use. The footprint is small and it doesn't hog resources. That's the good news. The bad news is that this software's virus detection rate is abysmal and the company's tech support is worse. So, in short, don't *trust* it. 
+
+Two examples, starting with tech support. After building a new computer, I had several blue screens (stop errors, BSODs) and my analysis seemed to indicate that EZ Antivirus was at least partially responsible. I emailed support with all the relevant info. Their (paraphrased) reply: "We understand that you are having Faults in Windows. This is because you have Windows installed. If you did not have Windows you would not have Faults. Thank you for contacting E-Trust." I should have that engraved on a plaque. 
+
+Example 2, AV detection: When my subscription ran out, I uninstalled EZ and tried a demo of Kaspersky. It found 5 viruses on my computer that EZ never told me about. In this case, it's 2 strikes and you're out. Goodby, Computer Associates

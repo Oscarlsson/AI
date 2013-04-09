@@ -1,0 +1,6 @@
+Bought this 3-pack about 2 months ago (three computers at home) and worked ok- no viruses. Then I did what I thought was a clean install of XP Pro from XP Home on one of the computers, and it carried over a lot of garbage from XP Home I wanted to get rid of, but that's another issue (clean install?}. After installing XP Pro, I was warned I didn't have virus protection and so I tried installing my NAV again. You would think at some point NAV would have enough brains to try and establish that this was a Windows upgrade, and that the NAV was legitimate. Nope- fatal error and computer lock-up, which I was able to survive. No contact opportunity at the Symantec web site.
+
+I simply opted for Microsoft's recommended anti-virus software- Computer Associates. Another twenty. Then I had a heck of a time uninstalling NAV, which wouldn't install and now wouldn't uninstall. What a waste of time and money. Who creates these viruses? We certainly know who benefits from them.
+
+There is really nothing you can do- they are immune unless they hurt someone with media clout. This little note means diddily, but thanks to Amazon anyhow for the opportunity to say something. 
+

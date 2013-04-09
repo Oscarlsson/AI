@@ -1,0 +1,9 @@
+I have had trouble and no satisfaction with this product.
+
+I am downloading Grateful Dead concerts from the internet. I want to turn them into audio or data CDs. Sometimes I get a whole concert as one giant file; I want to cut that into tracks and save it. Sometimes I get a bunch of tracks; I want to combine the songs that "go into" one another (my car stereo inserts a two-second delay between tracks). One of the things I want to do is to save the files (which are mostly MP3s) in the same bit rate and format as the originals, so I loose as little "music" as possible.
+
+The MP3 codec seems to be really buggy. Most of the combinations of bit rates and codec strategies create really wacky files: some go 5/6 normal speed, others are compressed into chopped up shortened versions of the original. When I pick a combination of settings that work, I usually lose a lot of fidelity as compared to the original (even when I'm only combinining four MP3's into one).
+
+Try cutting one MP3 into two, and then recombining the parts into a whole. No matter what I try, there's a little click in the place where the two files are joined. This should be an easy thing, since a lot of very basic editing is cutting and splicing.
+
+The upshot is, buying this was $40 down the drain. I'm going to have to find better software for my purposes

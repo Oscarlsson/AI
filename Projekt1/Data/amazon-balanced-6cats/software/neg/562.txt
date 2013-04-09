@@ -1,0 +1,15 @@
+I have been a loyal fan of Quicken for many years.  My, things have changed for the worst at the once mighty Intuit.  It pains me to report that Quicken Deluxe 2007 is a work in progress.
+
+
+1. The installation CD was unreadable.  To Intuit's credit, I was given access to their download site for replacement software.
+
+2. The reconciliation report (needed for balancing your checkbook) will not display or print for some reason.  All other reports display and print just fine.  Unfortunately, the reconciliation report is the only one I am truely interested in printing.  I am using a Brother HL-5280DW laser printer.  The printer works fine with all other programs, including the old version of Quicken.  Again, the most important report (reconciliation) will not print on Quicken Deluxe 2007.
+
+3.  The software would not recognize the C-drive as a working drive even though the program is running on that drive (?) - go figure.
+
+4.  The overseas Tech Support is willing to play dumb and pretend they don't know there is a problem with the software, keeping you in the chat room for hours.  I guess as long as they get paid it doesn't matter whether they help or not.  The ultimate recommendation is to reload the software - just one more time.
+
+As a past happy user of Quicken 2004, I was forced into this upgrade.
+Don't expect the problems to be resolved quickly.  Intuit has been aware of most of these problems for over 6 months.
+
+I hate to be the bearer of bad news, but this version of quicken is just that BAD NEWS

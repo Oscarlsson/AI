@@ -1,0 +1,8 @@
+I'm a PC mechanic. I have been using Ad-Aware with Ad-Watch (now called Ad-Aware Plus) for the last 5 years.  It's pretty good at what it does, but there is newer technology that is going to replace it soon.
+I've never had any problems with these program - it does NOT add any malware - it REMOVES it.
+However, using Ad-Aware and Ad-Watch to their fullest does take some computer savvy - as it seems does any anti-malware on the market these days.
+ALL of the other runtime problems the other reviewers here have reported are "fixable" by using the controls and tweaks in the software, so that you are not overprotecting your system - one example, the pop-up blocker in Ad-Watch is adjustable as to its intensity.  However, this requires changing TWO settings - one in Ad-Watch itself and one in Ad-Aware.
+  
+And, yes, at times, I have had to turn Ad-Watch off to download a file or see a popup I wanted.  Soooo?  Software these days is not as "automatic" as the companies would have you believe.  
+
+If you're not willing to take the time to learn (which also means going to the company's online user forums and asking questions), just stick with what Windows offers, don't use Outlook or Outlook Express (major source of malware on PCs) and only look at websites you know are safe.  (Kinda like the safest form of sex is abstinence - the safest form of surfing is NONE!!!

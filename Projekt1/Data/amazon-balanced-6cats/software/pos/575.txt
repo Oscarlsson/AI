@@ -1,0 +1,11 @@
+CorelDraw was my first foray into vector graphics back when version 3 showed up on my desk at the small "Mom and Pop" screenprinting shop i worked at. Back then, Corel came with OODLES of free fonts, clipart, manuals ... not to mention FREE technical support via a toll-free number.
+
+i stayed with Corel exclusively until version 10 ... enduring countless patches, bugs and the dreaded "odd-numbered" curse (if you tried version 5 or 7, you feel my pain). Adobe Photoshop was always my photo-editing program of choice ... CorelPhotoPAINT just never quite "did it" for me.
+
+Industry demands eventually delegated that i delve into Adobe Illustrator. Being already familiar with Adobe Photoshop's features, tools and "look and feel", Illustrator didn't present a huge, overbearing learning curve. In Illustrator, i found the same robust features as CorelDraw ... which wasn't what impressed me about Illustrator. Adobe's intuitive programs, and their ability to interact with one another ... seamlessly ... THAT is what won me over to Illustrator. Illustrator's ability to edit/create PDF's in their native format? WOW! Exporting LAYERED vector files to Photoshop ... with layers INTACT??? WOW!!! (i could go on)
+
+Now, that being said ... there are STILL things that i prefer in CorelDRAW  compared to Illustrator. The EXTRUDE function in corel is MUCH easier to utilize. The PowerClip function is more user friendly than Illustrator's "make clipping mask" function. The ability to customize/edit/add shortcut keys is an amazing feature. (again ... i could go on)
+
+In regards to importing and exporting files from other applications, CorelDRAW wins, hands down. It boasts a ROBUST set of import and export filters, my favorite being the .eps import filter which lets you import an .eps while converting the fonts to curves DURING the import. This is a MUST HAVE if you work with an .eps file created on another computer whose fonts you lack. If i had a dollar for every .eps that pulls into Illustrator with fonts blown out ... i'd be independently wealthy. WHY Illustrator has never implemented this is beyond me.
+
+So, to sum it up ... CorelDRAW is a great program ... but i can't imagine it being my ONLY vector drawing program. Just like in real life, you need a great team. This program, paired with Adobe Creative Suite, meets my needs perfectly

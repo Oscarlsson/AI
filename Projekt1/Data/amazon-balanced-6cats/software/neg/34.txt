@@ -1,0 +1,7 @@
+Being familiar with some Adobe products, we opted to try this at work as a cheaper alternative than some other packages for simple web graphics work.  Boy, were we disappointed.
+
+Simply put, this tool is not so much a tool, but a hindrance.  Utilities such as transparencies, are not only difficult to make work properly, but hidden in non-intuititve locations.  Dialogs are non-standard, which requires getting used to strange layouts in design.  While seeminly small for just a couple items I've mentioned, multiply this by the supposed feature set of the product and you start to get an idea of how cumbersome the tool really is.
+
+As has been mentioned by plenty of other people, it is also slow.  If you want a simple image viewer, find anything else - even freeware, as I have never come across an image utility that takes so long to load, regardless of it is the first time or the umpteenth time.
+
+While I could go on about the unsatisfactory qualities of this product, I will simple reiterate what others had also said; it is cumbersome to use, slow to use and load, un-intuitive with poor layout and design, and lacks many basic features one would expect in this form of utility.

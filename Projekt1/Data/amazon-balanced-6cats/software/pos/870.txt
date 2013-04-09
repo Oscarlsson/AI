@@ -1,0 +1,21 @@
+I really like OmniForm 5.  Actually I'm using version 5.1 and I'm very satisfied with it.
+
+I was using another forms program I had purchased that was adequate but not nearly as good.  After using FormTool I have a much greater appreciation of OmniForm.
+
+ScanSoft has been on my list of not to buy software recently  because of some of the poor performance of some of their other programs, tech support is expensive from ScanSoft and none of their software that I have used have been easy to learn using the manuals or help files.  In contrast OmniForm was well worth the money.
+
+OmniForm 5 does a great job of either creating forms from scratch, scanning or converting from PDF.  It's the only forms program I have tried so far that actually does a great job of importing a form from a PDF file.
+
+Its has all the tools you need to create a form starting with a blank page.  You can define any field with a variety of formats. Example you can create a date field with a specific format then no matter how the data is input the program will automatically reformat the data the way you specified.  You can create just about any field simply by dragging a symbol from a menu onto the page. In the case of inserting a graphic you can choose to have the graphic saved with the form or not saving with the form itself to conserve file size. You can have the graphic resized by the program with little loss of quality.  Features such as these might be available in other programs of this type but I found OmniForm to do the best job with creating a form field by field with the least effort.
+
+Scanning in of a form is almost flawless.  It even recognized fields on the paper form that were meant to be circled and created the field for them.  Other programs I have used could not do this well if at all.  The only adjustments I had to make on scanned forms were sometimes OmniForm recognized text as bold when it wasn't and occasionally it would change the font. For example it would change Arial to Times New Roman on some spots of the form. Strange quirk.
+
+To get a form imported from a PDF file you have to open the PDF file and print to OmniForm.  This is very accurate with little adjustment necessary after import. OmniForm really shines in this area.  But I did notice if the form your importing from PDF has multiple pages OmniForm will give you an out of memory error when you try to save.  To overcome this flaw you have to import one page at a time, creating a new page each time in OmniForm to make a multi page form from PDF. A little time consuming when you have a 9 page form. 
+
+It will create a self running .exe form you can e-mail and the person on the other end can fill out the form and send it back. This works even the other person does not have OmniForm on their machine.  Because some people filter out .exe file attachments the program also creates a .html version of the form.  This is a very handy feature.
+
+The help file is not of much use. The paper manual is better but still lacking. If you have problems tech support from ScanSoft is expensive.  But there is a user support forum you can get to through the support page on the ScanSoft web site. I have used the forum with great success.
+
+Overall this program is a little difficult to use with some quirks and needed features like being able to import and save a multiple page form from PDF.  But well worth the effort to use as it is the most accurate forms program I have used.
+
+I do recommend this program.  If the flaws I mentioned were corrected I would give this program 5 stars

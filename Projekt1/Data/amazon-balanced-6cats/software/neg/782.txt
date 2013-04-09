@@ -1,0 +1,7 @@
+I was required to purchase this with my new computer. I thought I'd give it a chance at work. We have a dedicated wired network, which just requires that you register the machine's MAC address with our DHCP server. Nice and simple, and very much like the LAN in any home where the user has a NAT router.
+
+I plugged in the network and tried to get the MAC address. Vista would only give me the wizard to connect my network. OK, I tried the wizard. It offers to let me setup PPPoE with a username and password. That's it, no other options. I asked for other options, and it only offered that I use a modem (that I did not have in my computer.) No options for a dedicated network at all, that I could find.
+
+I went to another machine (on the 'net) and searched Google. None of the Microsoft sites were helpful in any way. Lots of PR posturing, but no useful information or troubleshooting.
+
+I gave up, found the license and install disks for Windows XP, and downgraded the new machine. It was far, far easier.

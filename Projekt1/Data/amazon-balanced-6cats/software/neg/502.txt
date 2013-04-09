@@ -1,0 +1,16 @@
+
+I've spent all day putting together a 300 page book in Corel Draw, the file was saved several times without error, the finished piece is 2.6 GB. I exported it as a PDF that is 4.5 GB. Never any errors in Corel Draw. 
+
+Acrobat won't open the PDF. Says it's corrupted.
+
+Now when I open the CDR all I get is a single page, and when I right click on the file and look at the properties it says it's 0 pages.
+
+I'm really upset, and now I've wasted an entire day with COREL's software, if the thing is just for 1 or 2 page church brochures COREL should WARN people on the package.
+
+It looks like I'm SOL and I'm guessing Corel will never bother with a reply.
+
+Hint: I think I'll switch to Adobe.
+
+Sincerely,
+
+Waitman Gobbl

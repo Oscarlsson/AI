@@ -1,0 +1,1 @@
+This program is dependable and adequate within the limits that it is avertised to do. For instance, it won't keep track of inventory, since it was not designed to do so

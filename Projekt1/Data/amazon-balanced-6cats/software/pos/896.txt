@@ -1,0 +1,3 @@
+This book is among seminal works on system safety and safety engineering and should be read by anyone who is entering the field.  One may not necessarily agree with Prof. Leveson's views (e.g. her often unfair and unjustified dismissal of european approaches to safety engineering) but her views in the field are simply too important and influential to be ignored!
+The book is a good "bed time reading" that gives an overview of the field, major problems and introduction to some major approaches.  It is however not a handbook per se - you will not understand any particular method sufficiently to apply it.
+Overall, very good introductory text with a good coverage and a very easy and clear language

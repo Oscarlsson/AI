@@ -1,0 +1,1 @@
+Panasonic offers a USB driver however no video driver. This means that anyone using windows xp will be unable to transfer video to their computer. When talking to panasonic they just said they didnt have a driver and were not developing one. They offered no suggestions or alternatives

@@ -1,0 +1,9 @@
+I have been using TurboTax since I started working full-time after graduating form college. This year TurboTax really drops the ball:
+
+1) I didn't have any ESPP transactions for a few years. Tax year 2006 I had some, and that was when I realized that nowadays they force you to use TurboTax premier for ESPP calculations. The last time I had ESPP in 2000 or so, the deluxe version at that time could assist you to calcuate ESPP transactions with wizards. Now you can't with deluxe version.
+
+2) For first-time married-filed-joinly couples, they have to do a lot of work trying to merge their filed-single returns from 2005. The deluxe version simply does not handle this at all. Even if it helps you transfer the 2005 returns, they don't merge the data properly. For instance, if both couple have short/long-term capital loss carryovers from 2005, the deluxe version does not do that for you. Same for state/local taxes paid/refunded. Worse, if even if you try to correct it, sometimes you can't. There is obvious bugs, and I have to choose override from the menu to directly update the forms.
+
+3) Nitpick: when you choose to print out the every forms, by default they print out all those only for federal taxes. I have to go to the State tab and choose my state, go back to the print menu, to print state tax forms.
+
+I am not sure it that may be because this year is the first year I use the Mac version of TurboTax (I use PC versions before). But I really do not have a good tax preparation experience this year. Next year I may consider to switch

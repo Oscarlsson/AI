@@ -1,0 +1,13 @@
+Much worse than previous McAfee editions.
+
+I dropped Norton on some older desktops due to its lack of support for W2000. I then went to the free edition of AVG anti-virus, which was OK but slowed things down. Thinking "you get what you pay for" I sprung for McAfee which has been OK in the past. The edition I purchased has 3 licenses.  I installed one of these on my wife's XP laptop as well as one of my desktops (luckily, she's still talking to me).
+
+The 2007 McAfee Suite makes AVG look like a free Ferrari. Absolutely terrible performance, coupled with a mediocre interface. Perhaps the only poorer-performing way to assure you'll never get a virus, spam, etc. would be to hit your motherboard with a hammer.
+
+This will slow down your computer (even worse, unpredictably). If you have lots of email in Outlook or Outlook Express expect to open your mail box, then have a long break before you can do a thing (as it rechecks everything for spam). There's a partial workaround for this, but users shouldn't have to search for workarounds. Every Web action now has noticeable latency -- as well as slower applications when McAfee is grinding away in the background.  If you liked your current anti-spam, kiss it goodbye -- McAfee may not let you keep it. McAfee (like Norton) is also difficult to remove from your system. What prompted this review? Today it appears the update process rebooted my computer without requiring a "yes" from me.
+
+As for alternatives, I wasn't able to get Kaspersky anti-virus to run on an older machine -- somewhare a remnant of Norton persisted (possibly a document tagged Symantec etc. left over from a day of working with them ages ago). However, I did get it running on a laptop and its better than Norton-McAfee-and even AVG in my opinion.
+
+So, consider Kaspersky or another vendor. If that doesn't work try AVG. 
+
+It will be interesting to see how McAfee responds -- they've really shot themselves in the foot with this release

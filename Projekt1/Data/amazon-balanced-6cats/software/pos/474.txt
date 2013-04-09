@@ -1,0 +1,22 @@
+I've been using Norton Antivirus 2002 with annual updates of patches forever with Norton Internet Security 2003. Now that it's time to renewal Norton Antivirus, I thought I switch to Trend Micro Internet Secuirty 2005 after all the glowing wins it received from certain mainstream computer magazines. I like Norton 2002 but it was a memory resident hog in the TaskManager considering I was running a P3 500 laptop with 196MB on WinXP Pro, resources are valuable. Also newer Norton Antivirus version were a hit and miss.  After also reading reviews at Amazon, I took the plunge with Trend Micro. My review of this product can be best summarize along with it's relations to Norton Antivirus 2002 (updated).
+
+Pros of Trend Micro 2005:
+1. Fastest virus scan I've seen. I have not find any virus in my system yet whereas Norton would fail in about .01% of the time( i.e. one stalling virus every year).
+2. Check incoming and outgoing mail like Norton
+3. Scan selected files as I chose just like Norton
+4. Alert and Block virus threats
+5. Monitor nearby Wifi connection
+6. $25 mail in rebate making the price net at $15. (It's been 2 months since I've mailed it and not received it yet).
+7. Uses about 10MB of system background resources versus Norton's 30MB.
+
+Cons against Trend Micro 2005:
+1. Very annoying  auto-virus update every day that I log on the internet. I only have a 56k connection and updating takes 5 minutes. I'm not trying to save the internet but everyday update may be a bit too much so I would prefer to have a preference setting that I can choose myself. Norton is not as annoying.
+
+2. On a wifi network, Trend Micro Firewall failed 5 of the Gibson research Shields Up test. Ports were open. Norton Internet Firewall close all major holes except for the non-critical ones which wasn't a big worry. I ended up disabling Trend Micro Firewall and using the Norton Firewall instead as it's a full software and much better analysis and deeper protection.
+
+3. Anti-spam and data protection were subpar as I got advertisements and  pop-up from certain websites like West Cost major newspaper. Using Norton Firewall stops them dead; never seen them again.
+
+4. Still waiting for rebate.
+
+Overall, I think using TrendMicro Internet Security 2005 for it's fast virus check and a separate Norton Internet Firewall is the ideal combo for me. On it's own merit, Trend Micro would be perfect only if RAM and other resources are low as the case with my laptop but I wouldn't mind using Norton if I had plentiful more RAM.
+ 

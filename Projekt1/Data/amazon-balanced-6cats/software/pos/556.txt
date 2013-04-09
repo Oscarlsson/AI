@@ -1,0 +1,1 @@
+Product has a nice clean interface. I was able to load most drivers and application software without incident. Note - Upgrade install requirements are not clear. Microsoft should state what is expected on your system prior to trying to install either as an upgrade or clean install. Microsoft sites keep pointing back to sites that don't help very much.

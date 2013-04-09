@@ -1,0 +1,43 @@
+I used this program on a 5-state road trip of the Midwest, and while overall it was  "adequate," it had some key shortcomings.
+
+The bad stuff:
+
+First, this is not an especially user-friendly program; there is a steep learning curve to operate it with ease and predictability. Spend a LOT of time playing with this BEFORE using it as a primary navigator! A lot of the commands are not intuitive, and you need to go through a lot of menus to figure things out. This can be a problem when you are on the road looking to get somewhere. It doesn't have a lot of clickable buttons on the main screen. For example, to get the program to TALK to you, you must be on a certain tab at the bottom of the screen. If you are on any other of the many tabs, the program doesn't talk to you or show you the turns. It took me HOURS to figure this out! The help function was useless.
+
+Second, the tracking can be very slow, and as a result you can easily overshoot your turns--especially when there are no physical street signs in many areas of the country--which happened to me numerous times. Many times the screen showed me I had a lot farther to go before the scheduled turn, and this caused me to overshoot it when there was no sign.
+
+Third, the "rerouting" function is AWFUL and perhaps the biggest problem with this program: if you stray from the route--even to pull off and get gas--the program flips out and keeps trying to route you back to the original route even if that route is not the easiest or most direct. I have not found a way for it to manually or automatically calculate a new and different route. I also have found no way to modify a route once you begin the route (see below).
+
+Several times in several different cities, the re-routing function was totally wrong--spitting out names of streets that weren't even on the screen at close zoom level. This is a really annoying glitch, and it happened without fail every time I strayed from the route. Once off route, there is no way to hush the program from yelling at you that you're off route, and there is also no way to easily have the program recalculate a CHANGE in the route. When there is construction that you didn't anticipate, for example, this program sucks at being able to change the route once you've started on it. Very annoying. There is no construction updater plug-in, which would be helpful for long term construction projects that go on forever. 
+
+Fourth, the program does NOT audibly warn you if you are going the wrong way on a one way street. This actually happened to me, as there were no "one way" signs on a particular street in Springfield, IL. Though there were green arrows on the screen to indicate one-way, but the voice commands didn't warn me that I actually WAS going the wrong way, so had I not been looking at the screen, I wouldn't have known. You can't always look at the screen when driving. And in Iowa on I35, construction brought northbound drivers over to the southbound lanes. I was heading north in the southbound lanes (as I was supposed to) but there was no visual or audible indication that I was going the wrong way! Big time safety issue here.
+
+Fifth, the search function is wholly lacking and is not easy to use. I needed to find a police station while in Missouri--no such luck. I also needed to find the state fairgrounds in Missouri (which I later came across on the screen) but it did not show up when I intentionally searched for it. Search limitations are the second biggest problem with this program.
+
+Sixth, several times the screen showed me "off route" in a totally blacked-out area with no roads around me when I was in fact on a U.S. highway or interstate. Something wasn't communicating correctly. Other times the screen showed me more than 1000 feet off the highway even though I was certainly on the highway. In Illinois, the screen showed I was pretty much driving through corn fields even though I was on a U.S. Route. This problem is pronounced on multi-lane highways. If you're not in the center lane, often the program indicates you're off route. Very annoying.
+
+Seventh, the zoom level does not stay constant; it fluctuates automatically between high zoom and far-out zoom. I wanted high zoom most of the time to see all the minor roads and landmark indicators, but the program kept zooming out and in every few minutes.
+
+Eighth, the help function is a joke. It is totally lacking in substantive information. The program should come with a separate DVD movie showing how to use it.
+
+Ninth, the program does not recognize a lot of road name synonyms. For example, some U.S. Routes also have county/state/local designation numbers and/or an alphabetic name, but the map often only listed one or two of the many "also known as" names/numbers. This can be quite problematic when the signs on the roads don't match up with the turn commands (e.g. "Turn left on U.S. route 40," when the only street signs showed an alphabetic name and no numbers. This was also quite annoying.
+
+Tenth, the antenna that comes with the program SUCKS. Without fail, I would get a red "no signal" indicator in every city I was in where there were high-rise buildings. This happened in Kansas City, Des Moines, Indianapolis, and Springfield. If you are in a city, you risk having no GPS tracking ability. And yes, my antenna was mounted as recommended. At one point I held it up through my open sun roof with no success.
+
+Eleventh, the main-screen buttons are way too small for use while driving if the laptop is on your passenger's seat. You pretty much have to pull over OR risk crashing to see what you're clicking on. Yes, I'm aware that the disclaimer for the program states you should have a separate navigator to operate the program while driving. I'm also aware that almost no one who uses this program actually has a navigator/operator.
+
+Twelfth, trip planning is lacking. When you input a starting and ending point, the program gives you ONE route. There is no way to easily plan alternate routes or to preview them. True, you can do things like program it not to take you on toll roads, but this function is not easy to use. Several times the program kept me off the interstates when I wanted to be on them, and sometimes it kept my on the interstates when I wanted to be on U.S. or smaller county roads (for sightseeing purposes). I would have to go off route and listen to the program whine about being off route.
+
+Thirteenth, I emailed a list of my concerns/constructive criticisms/recommendations to the folks at Delorme. Never heard back from them, which does concern me as a quality issue.
+
+Ok, so there were some redeeming qualities:
+
+First, *in general* the GPS tracker was on-target. For about 95% of my 2000-mile trip, I knew where I was and the program operated just fine. Just realize that this program (as well as GPS in general) has a lot of limitations, ESPECIALLY when there is bad weather or you are in a woodsy area or place with a lot of obstructions.
+
+Third, you can easily add points of interest and comments yourself. I used this function a lot to mark places where I want to return to take photos in daylight.
+
+Fourth, there is a selectable function to show high contrast colors (black background with bright road colors). This is quite helpful.
+
+In summation, for the money this program is a good deal, but do NOT rely on it (or any GPS program) as your *sole* source of road information/navigation. If I hadn't had my Rand McNally paper road atlas and back-up state and city maps I borrowed from the library, I would have been in big trouble several times.
+
+There are a LOT of ways this program can and should be improved, but in the meantime I'd still recommend it despite the problems. Knowing the limitations that I've listen can save you time and frustration. There is no better alternative IMHO for the price. It's possible that some of my complaints DO have fixes, but you wouldn't know it from the crappy help function.

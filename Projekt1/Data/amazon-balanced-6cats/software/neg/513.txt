@@ -1,0 +1,1 @@
+I can't get the software to scan past 30%.  The software locks up when I try to end the scan after being stuck at 30% scan

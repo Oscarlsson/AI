@@ -1,0 +1,11 @@
+I have this program on a 30-day demo.  It might be OK if I didn't mind my computer becoming almost unusable.
+
+I tried to run the system virus scan, as recommended, but after 3 hours it was only 2% done because it was stuck on a file it couldn't seem to get past.  I skipped the file, but then it quickly got stuck again.  The "time remaining" said it would take 4 days to complete, so I cancelled that scan.
+
+It has a learning mode that initally blocks EVERYTHING.  Apparently, this program has no brain.  For example, I have the Live Search Toolbar installed in Outlook.  It had to ask me if it was OK to run that dll file.  In fact, each program that called up a process from a shared dll has to ask permission before it could run.
+
+Don't even get me started on the Quickbooks and Internet Explorer problems.  Which is what it wouldn't let those programs do, even after they had been run and I repeated clicked "allow" over and over.
+
+Twice today it got so slow running IE that it finally crashed the computer so bad that  I had to do a hard re-boot.  If you have it checking ports on your computer, almost nothing would run or download on IE.
+
+So, I'm going to demo a few more, but it's probably back to Windows Live OneCare, which I had the past year.  It just doesn't seem to do much (no long list of features), but it also doesn't jam everthing else up

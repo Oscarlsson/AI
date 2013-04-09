@@ -1,0 +1,5 @@
+Grainy ISO 100 pictures at any light conditions. Usage of 5mp and low sharpness options partially solves the problem, but if you take pictures with Panasonic DMC-FZ7 and compare ... it will be clear that a garbage trash is the right place for this camera.
+
+I had Panasonic DMC-FZ7 and the only cons. is really noisy high ISO sensitivity mode.
+
+In FZ8 camera Panasonic implemented the Venus III processor (FZ7 has Venus II processor). As a result picture quality really improved at high ISO sensitivity modes but DRAMATICALLY changed for the WORSE in ISO 100 mode

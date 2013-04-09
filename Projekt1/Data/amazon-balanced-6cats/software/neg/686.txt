@@ -1,0 +1,13 @@
+You can try this for free for up to 60 days by registering with Microsoft and downloading an evaluation copy. When you're sure you want it, permanently activate it with the product key you get in your Amazon package.
+
+The new version of Excel has two huge advantages:
+
+1. It removes the old 256 column/65,536 row limitation.  You can now have 16,384 columns and more than a million rows.  
+
+2. Excel 2007 can use all the cores/processors in your computer (or you can restrict it to use only some, so huge background calculations do not tie up your machine).  On my dual core computer, Excel 2007 is **way** faster than 2003 at almost every task.
+
+I've seen no crashes, hangs, or hiccups.
+
+But everything else about Excel 2007 is frustrating.  The new "ribbon" interface is unnecessary and awkward -- almost every operation takes more pointing and clicking than older releases. Bypassing the ribbon with the new "Quick Access Toolbar" is problematic because (bizarrely) Microsoft has deleted many distinctive command icons, leaving them with identical green circles.
+
+Right now Excel 2003 costs more than Excel 2007.  If the two plusses don't help you, you may think that 2003 is worth more

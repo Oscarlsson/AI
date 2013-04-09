@@ -1,0 +1,28 @@
+(this review is of the Spyware edition)
+NIS takes 25Megs of ram - ok for an all-in-one (if you have &lt;256Megs your lightweight CPU can't carry enough armor to make Windows really Zero-day Net safe IMHO)
+
+NIS has most of the features I look for in a firewall/spyware/virus scanner/intrusion detector, BUT 
+half don't work right, and some that do seem to fight every attempt to make them work.
+
+Even after LiveUpdate this week,
+One buggy automatic firewall rule autoloaded, and port 80 was open listening half 'naked' on the Internet.
+I replaced it, and at the first passing probe my rule was erased, autoreplaced, naked again.
+Only after I stumbled onto the secret trick (add a block all rule after the pass rules) did it close it.
+It took 11 clicks (!) just to add the block all rule - miserable!
+The log is a nightmare - pages of long sentences explaining "permitted once" 200 times, no actual info
+	until I click on one of them. What's worse is, none of them I checked WERE "permitted once" IIRC.
+
+NIS detected 2 trojan/spywares, but could not remove either.
+
+Enabling program component monitoring started an avalanche of popups, all suggesting I block access, but I actually DO want IE to access the internet. 
+Running Windows update brought a popup asking if 100's more dll's are ok. How would I know? I do want Windows updated. 
+Great feature in theory, totally useless even if you know the names of every evil dll not yet invented.
+
+If you have more than 1 or 2 programs not in the automatic ruleset, plan to either "permit all" or spend many hours actually writing the same set of 3 rules over and over for every autoupdating program you use - assuming you understand TCP vs UDP etc. Why no "permit all local + DNS + outbound port 80" choice? That would mean 1/10 the work! Jetico lets me pick "web browser" ruleset, so its UI from Hell gets used once per category.
+
+After spending all day and half the night getting it working, I discover that it is not possible to save my precious rules - or to reload them. I would be less furious if I had a fresh install of windows, but not much.
+
+All good, until a program autoupdates, and 3 more rules to write. Too angry for words.
+Jetico lets me clone the old rules or edit them to update the program sig.
+
+I would not use NIS if you paid me 10 times its price.

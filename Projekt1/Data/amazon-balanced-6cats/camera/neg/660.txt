@@ -1,0 +1,7 @@
+If you want to load directly from your camera's memory card the system takes forever to copy photos to the internal card.  There is no "copy all" function.
+
+Loading information from a computer didn't work.  The USB connection was not recognized by Windows XP and I couldn't find any drivers on the Web.
+
+A setup CD would be a nice addition.
+
+BTW the screen was not as large as one might think.  It is very wide but not tall and it crops the top & bottom of most pictures making it great for shots of the grand canyon but not for portraits of people

@@ -1,0 +1,7 @@
+This is a terrible suite.
+
+Read the fine print very carefully:  It will not work on RAID configurations of any kind.  It will tell you that in the install (thanks a lot...kinda late?)
+
+I found its support on recovery disc of USB hardware unstable.
+
+This is a very unstable, even errant, set of programs.  It also tries to take over a lot of system elements

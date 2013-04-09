@@ -1,0 +1,26 @@
+I have a Compaq Presario laptop with Windows ME. I wanted to upgrade it, so I decided to buy the Windows XP Upgrade. I have another computer that came with XP built in, and I like that system a lot.
+
+Well, before I purchased this software, I specifically asked the manager at CompUSA if there are any problems upgrading from Windows ME to Windows XP. I was very specific. "No problem!" he told me, "It works great!"
+
+NONSENSE!
+
+Here is a list of hardware problems I had after loading Windows XP onto the laptop:
+1. My touch pad stopped working.
+2. My PCI bus started getting errors.
+3. My wireless network card (D-Link GW-630) stopped working.
+
+And these are just the things I noticed in the first day of using it!
+
+I spent over six hours on the telephone with various technical service reps at Microsoft, uninstalling and re-installing the software, being put on hold, reinstalling drivers, restarting the computer over and over and over and over again... Six extremely frustrating hours!
+
+Finally, the tech support people told me to uninstall the software. They said I should return the software to CompUSA.
+
+Now for the fun part. CompUSA refused to take it back!!! After arguing with the very same manager who told me everything should work great, all I got was an offer to do an exchange for the same product. Then the manager said my system must not be compatible. Well, I showed him the "System Requirements" on the box, where it says "Windows ME."  According to the box, my laptop is perfectly compatible!  But apparently it's not.
+
+Then the manager told me that he would not recommend upgrading from ME to XP. Well, intyeresting he says that now!  I reminded him about our conversation!!!
+
+I even gave the manager my Microsoft Case Number so he could see for himself the problems I had and all the tech support people who tried to fix it for me.
+
+In the end, I am stuck with software that does not work.
+
+Learn from my trials. Do not buy this software if you have Windows ME. Only buy it if you can get a written agreement from your seller that they will take the software back after it messes up your system

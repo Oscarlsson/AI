@@ -1,0 +1,14 @@
+If you have a Mac, and are having difficulties with this dvd, here are some tips.
+
+Are you opening it with Preview?  If you just click on the icon on the disk, it will open in Preview... but this will not work properly.  You must use Adobe Reader to see the pages without the watermark.
+
+Install Adobe Reader from the dvd.
+Make an alias of Adobe Reader and put it in the Dock.
+Click and open the dvd icon.
+Click and open the decade folder.
+Don't open the year folder... click and drag the pdf icon, (such as FF_1960.pdf... I have the Fantastic Four dvd, so substitute whatever is appropriate), onto the Reader alias in the dock to open.
+Click on year.
+Click on month.
+Click on the magnifing glass icon to zoom to any size.
+
+I hope this is helpful

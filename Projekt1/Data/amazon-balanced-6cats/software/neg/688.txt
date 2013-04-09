@@ -1,0 +1,30 @@
+Normally I might wait to install a new software upgrade, but I just got a new laptop and thought it would be best to use Office 2007 with the new Vista operating system. I was wrong.
+
+You would expect that a multi-billion dollar company like Microsoft could put out a powerful and bug-free piece of software. But after a month of using Office 2007, you get the distinct impression that this software is not ready for public release. Microsoft should be ashamed.
+
+I don't know the root cause of my problems, but I have to stress that I am running a clean install of Office 2007 on Vista, so there shouldn't be any software conflicts or issues. 
+
+So what are my issues? The list is long:
+
+-- My biggest concern is that MS Word constantly hangs and stalls. It can making editing a document very painful. I suspect the problem is when I put images or Visio diagrams into a document. But that is something the old MS Word was able to do without an issue. Oddly, if I have a colleague open the document and save it out in Word 2003, the problem goes away! What?! It's killing my productivity.
+
+-- When ever I cut and paste from an old document, Word hangs for 15 to 20 seconds. And often the formatting and margins in my new document go haywire. I keep having to spend a ton of time fixing things. This never happened in the old Word. This is another time killer.
+
+-- Every few days, Outlook 2007 starts telling me that it cannot display my email folders. Uh oh! I have to completely restart my computer to see my email again.
+
+-- Outlook 2007 breaks many graphic emails that people send -- they look like a mess. It is because Outlook 2007 does NOT render HTML correctly since it uses the Word engine, not Internet Explorer to display email. I have no idea why Microsoft did this, but they have got to fix it.
+
+-- Many of the issues in the old Word 2003 still haven't been fixed. If you place an image, it can often be hard to get it to appear correctly. Why can't they solve this one?
+
+-- While most Office programs have the new ribbon interface (which I like), some programs like Visio 2007 do not. So you have to remember how to use two interfaces. Couldn't Microsoft find the time and money to update ALL its programs? Give me a break.
+
+-- On a few occassions in Visio 2007, my files have failed to save correctly. At first I thought this must have been my fault, but it's happened to me a few times and can't be a coincidence. A few times I've gotten an error message and lost my work. Ug.
+
+-- Word and Excel 2007 use a completely new file format. So anyone you send a document to has to have 2007 installed (which isn't likely the case). To get around this, you can save it down to a 2003 file format, but then you end up with two files on your hard drive -- one in the new format and one in the old format. What a pain! Also, there definitely seems to be an issue with Office 2007 opening older Office 2003 files. Could be the cause of many of my problems, but there is no way I can avoid using old files. They should have worked harder on compatibility.
+
+There are good things about the new 2007. I do like the new interface design and the new features in Outlook 2007 are amazing for organizing tasks and sharing your calendar.
+
+But I don't think it's fair that Microsoft released a product so full of serious, serious bugs that have cost me hours and hours of extra work. I didn't spend hundreds of dollars on a beta product and don't think the public should have to suffer. Surely they can afford to do better!
+
+NEW ADDITION TO MY REVIEW:
+Today I discovered that I can no longer paste Excel charts into Word like I used to. When I try, the chart goes in, but any bars/lines disappear. 

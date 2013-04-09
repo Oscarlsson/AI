@@ -1,0 +1,5 @@
+So I did the unthinkable. I put Windows Vista Business on my Mac--specifically my Mac Mini. it works great, no system slow downs and no crashes. The Mac handles Vista beautifully. I had no problems using Boot Camp 1.2 in order to install it. The Mac Drivers for Vista (included with Boot Camp) all worked fine. The Vista installation took all of about 30 minutes including some updates and such. I had Windows XP home on my mac b4 and while it worked well , Vista Business works much more smoothly.  
+
+As you may or may not know a Mac Mini is not exactly a powerhouse computer. I have a 1.66 gigahertz Core Duo with 1gb of Ram on it. It displays the Aero interface perfectly especially hooked up to my 32 inch Widescreen LCD TV. Seems even the lowest cost Mac can still make Vista shine while most PCs cant. One disclaimer tho. All intel macs can run Vista Ultimate without a hitch except the Mac Mini (which can only go up to Business/Home Premium)
+
+While Vista is still behind OS X 10.4 (Tiger) its a much better release from XP. Now im just waiting to upgrade my little Mac Mini in October for the release of OS X 10.5 (Leopard)

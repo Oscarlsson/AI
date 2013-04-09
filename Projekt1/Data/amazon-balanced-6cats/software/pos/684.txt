@@ -1,0 +1,13 @@
+Having used the Office programs for some time, I was a bit put off by the new ribbons which replace the old menus.  I guess that Office needed a new look, but I am not sure if I buy the advertising that the ribbon will make my work more productive.  
+
+Some things that you should know about Office 2007 and Ultimate in general.  The licensing agreement allows you to install Office 2007 Ultimate on two computers, one of them being a laptop.  I found this clause in the legal agreement and even called Microsoft Legal to confirm.  
+
+If you make modifications to the Quick Access Toolbar (and who won't do that?) and you want to take these changes with you to another computer, the files for the toolbars are located at:
+
+C:\Documents and Settings\username\Local Settings\Application Data\Microsoft\Office
+
+Where username is your username.  Something I have found handy when working with my two computers.
+
+One thing that I don't like is that the file name extensions have changed.  Gone is the familiar .doc for Word documents.  Now the file extension is .docx.  If you want to create a document that can still be opened by prior versions of Word, you must purposefully choose to create a .doc file, but you lose some of the functionality of the new files.  The .docx file This format is not the same as the OpenDocument standard.  Microsoft promises that older versions of Word can still open the .docx files, but I have not tried it and I don't buy into everything that Microsoft promises until I see it happen.  Why couldn't Microsoft just leave the files the same as they have always been?
+
+Office 2007 does look slick and I anticipate that I will warm up to it in the future as I get used to the new command structure.

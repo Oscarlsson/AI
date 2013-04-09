@@ -1,0 +1,2 @@
+In wandering around the web, I find I am not the only person to experience crash after crash upon importing (from Photoshop Elements 5).  When importing, Lightroom "thinks" for a long time (that's fine, and they do warn you it can be slow), but then the program crashes before it gets even close to finishing the import.
+About the rest of the program?  I don't know.  Too frustrated just trying to get it up and running.

@@ -1,0 +1,6 @@
+Building on the Intuitive QuickBooks Pro interface and SQL database, QuickBooks Premier enables firms to scale - merely by clicking on a button and paying the difference. This ensures no work is lost. There is a whole new menu dedicated to specific Industries. While the estimate can have multiple options, when the customer places an order, the Sales Order function enables QuickBooks to saddle up for the ride. It generates Purchase Orders with the click of a button, and when goods are received, keeps track of who it is for. Invoices are generated from the sales order as well, and partial invoicing keeps track so I don't leave money on the table. I use the email function all the time, sending pdf attachments and cc:g myself so there's a time stamp. 
+
+To address the problem of sharing large files, there is a new Portable Company File (much like a Zip file) which compresses files for emailing. 
+I have also grown to appreciate the online banking auto-reconciliation function - I log in to the bank every morning, and watch as transactions appear and then get matched with my books, leaving me only unreconciled transactions. 
+
+QuickBooks also enables integration with third party software - there is a legion of industry specific solutions that help with core business operations. With 2006, QuickBooks has moved from being a software to a Business Operations System

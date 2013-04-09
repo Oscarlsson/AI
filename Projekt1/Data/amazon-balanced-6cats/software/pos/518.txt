@@ -1,0 +1,1 @@
+Easy to install and navigate.  Automatic incremental backups are completed randomly.  Sometimes they work, other times they abort.  Can't determine why

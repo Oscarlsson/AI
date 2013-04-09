@@ -1,0 +1,1 @@
+The upgrade went smoothly and Tiger 10.4.6 appears to be as stable as 10.3.

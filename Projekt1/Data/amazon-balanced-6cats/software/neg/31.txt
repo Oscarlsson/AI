@@ -1,0 +1,11 @@
+I am an experienced computer user, and I bought this primarily on my previous experince with Symantec products, which had been good.  My experience with this product was unfortunately, very poor.
+
+First - the product claims to be able to clone your boot partition, but this failed repeatedly, creating cloned partitions which were not bootable.  
+
+Second - Tech support failed to provide an answer for days while I eventually figured out myself that I needed to use the bootable media to make a clone of my system disk - something the windows application was happy to try and fail at without warning.  Even when I attempted to provide this information to tech support so they could answer similar questions for others, they didn't get what I was saying and sent me another form letter response detailing how to make a copy (instructions which failed of course).
+
+Third - On another occasion, even using the bootable media, I got the error "1517" when attempting to clone by boot partition.  Searching the web revealed others having this problem, and Symantec tech support full of bogus solutions for it.
+
+Fourth - no support for USB/Firewire drives with the bootable media.
+
+On the plus side - it did resize partitions I asked it to without trouble (I give it one extra star for something working)

@@ -1,0 +1,3 @@
+At first I thought the idea of offering a set of the most popular applications at an affordable price was great. Recently, however, many computer makers have started using MS Works as the standard pre-loaded suite on new machines.
+
+Users who need more than very very basic features will need to buy more dependable software packages(e.g. MS Office). The word processor in Works, for instance, does not have many macrons that are commonly used in Dutch, Scandinavian, Turkish, romanized Russian, Japanese etc.. In the end the low price of MS Works is a way to save money to computer makers and to squeeze out extra money from buyers who will need to upgrade to better products anyway

@@ -1,0 +1,9 @@
+For many who like writing HTML/XHTML code, Homesite holds a special place in the heart.  It just feels so right and is addictive.
+
+The tool can be extended, and the extensions use script which makes the development cycle dead easy.
+
+Support from MacroMedia has not been good.  Now Adobe is in the process of buying Macromodia (as on 2005-04-19) so who knows where it all goes.  Saying that people who like this product still like it and prefer it.  If it fits you don't need support.  You just run it day after day and it works great.
+
+(There are alternatives emerging after all these years but none quite do it yet.  CSE and TopStyle are two that are coming along.)
+
+For some it almost seems perfect, for WYSIWYG oriented people, it might be best not to even look at it

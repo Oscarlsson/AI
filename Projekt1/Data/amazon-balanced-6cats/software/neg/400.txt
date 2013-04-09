@@ -1,0 +1,17 @@
+I have used both Paperport 8 and Paperport 9 Deluxe for over a year so I am qualified to report.
+
+Both pieces of software have some form of severe incompatibility with Windows XP Pro.  
+
+I cannot really get version 9 to operate.  Everytime I try its like cold molasses.  Click...wait....wait....wait...wait...and then lock up.
+
+I'm very experienced.  I've been working with PCs since 1991.  Every other piece of software I've loaded works very well...except for Paperport 8 and 9.
+
+In theory Paperport 9 should be fine because it converts all scans to PDF which is more or less a universal file format.  However theory is a lot better than reality.
+
+Support is nonexistent from ScanSoft.  If you pay the $19.95 per incident, you still do not get a solution.
+
+The ScanSoft forum is always either not working (another bad sign) or it's full of people complaining about the software and lack of support.
+
+Unfortunately there are not a lot of alternatives, but doQments looks promising.
+
+Avoid Paperport unless you have money and time to waste

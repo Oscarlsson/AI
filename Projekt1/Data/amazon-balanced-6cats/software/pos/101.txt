@@ -1,0 +1,11 @@
+As you can see by other reviews above, the Studio series has a history of being buggy.  You also hear a lot of people saying "This package is so much more intuitive and easy to use than the other 'powerful enough to be worth owning' packages -- if only it were more stable!"  
+
+I am one of those long-suffering users (5 years, going back to Version 9), and finally with Version 10.6 I have stopped complaining -- it now works as I'd hoped when I bought it.  The $300 I spent on other packages trying to do better was wasted -- I kept getting frustrated with interfaces that a 500-page manual couldn't clarify.  And I'm a very sophisticated computer user by most measures.
+
+I am turning all of our old family video tapes and CD's into DVD's.  I use Studio for all the editing (have not tried the DVD recording -- just use Roxio for that) and am now very pleased.  If you own 10.5 then version 10.6 is a free download.
+
+One important piece of advice that would have saved me lots of problems: put every "project" you work on in a separate subdirectory.  If you have 5 soccer game videos make a /game1, /game2 etc. series of subfolders.  If you edit those to a "Jimmy's great plays" proect, put it in a separate /JimmyPlays folder.  When projects are in the same folder and you edit them a few times weird overwrite problems can happen in 10.5.  I learned this trick before 10.6 came out, and I don't know if it matters any more but I take no chances.
+
+Why did I stick with something where I admit that version 9.0 was "powerful but unstable" and 10.0 was "more powerful and more unstable"?  Because I can actually use Studio with minimal reference to instructions, and when I use it things turn out as I expect.  Now that it has become stable and reliable I am a VERY satisfied customer.
+
+So that's how I got from being a frustrated Studio customer to giving it 4 stars on this review.  I tell the whole story so you understand that the other reviews from frustrated people are relevant for the older versions, but that "10.5 updated for free to 10.6" really is the best choice out there now... as my unused expensive rivals to Studio on my shelf prove.  Just keep putting every project inn its own folder!

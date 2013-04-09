@@ -1,0 +1,5 @@
+This is an inexpensive scale for measuring weight and body fat.  The only problem is it doesn't do either one too well.  The weight measurement gives a different answer every time you step on it, even if you weighed yourself just a minute before.  
+
+I was never able to get the scale to measure my fat percentage or give me any other reading besides an error.  Maybe my skin's too thick, or maybe the electrical charge it tries to send through your body is too weak.
+
+It's also inconvenient to use.  To get your weight, all you have to do is step on it.  To get the weight and fat reading, you have to hit the power button multiple times to cycle through all the settings, then step on the scale within 5-10 seconds to avoid it turning back off

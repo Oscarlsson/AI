@@ -1,0 +1,18 @@
+This frame looks great until you turn it on. The picture quality is less than stellar, but that isn't what annoyed me about this frame. When you buy this frame don't expect to view your photos at the 16:9 ratio without some work in a photo manipulation program. What does that mean you ask? That means that your photos won't fill the entire screen in the 4:3 mode. You will have 2 black bars on either side of your images; This will not take advantage of the entire frame. If you switch to the 16:9 mode your images will stretch to the width of the frame, making peoples faces distorted. I have a workaround for those who are familiar with image manipulation. See below.
+
+The build quality of the frame is pretty good. If Mustek would fix the 16:9 problem and get a better quality screen, this would be a nice little frame.
+
+A little work is evolved setting up the pictures for the 16:9 ratio, but I figured it out. 16:9 stretches the image, making it look distorted. These steps compensate for the stretch and make your images appear normal. I set up a macro in Photoshop allowing me to do a batch in one click of the mouse. You will just need to keep an eye out on how it crops the image. Some of your images might be better served one at a time.
+ 
+Start with an image that is 1024x768 in your image editing program.
+ 
+1. Go to the image size menu and change the width of the image to 77% (or 788 pixels)
+ 
+This will make the image look distorted. That is ok.
+ 
+2. Then go to the canvas size menu and crop the height of the image to 77% (or 591 pixels)
+            
+The image is ready to save. You might want to save as in to another folder so you
+can go back to your original if needed.
+ 
+3. Copy your edited images on to the flash card and insert into the frame

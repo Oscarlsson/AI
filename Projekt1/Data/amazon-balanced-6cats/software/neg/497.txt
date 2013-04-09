@@ -1,0 +1,1 @@
+It's not working with my Toshiba Tecra M2 laptop -- it keeps wanting an update to my video driver that doesn't exist

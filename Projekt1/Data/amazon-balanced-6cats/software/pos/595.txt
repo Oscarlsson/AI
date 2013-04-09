@@ -1,0 +1,17 @@
+I have been a long time user of Delorme Products but decided to get a combination of Microsoft products both for the US and Europe (Autotrip). 
+
+The program loaded very smoothly, but do make sure you load the program before plugging in the GPS Locator.  There are multiple warnings about this as well as what to do if you don't follow directions.  I loaded all the data on my laptop so I would not have to carry the DVD.  
+
+The setup was also quite simple.  There are warnings about usage in an automobile that pop up in use (as well as the cautions during setup).  One needs to keep this in mind and not be distracted when driving.  I set the mapping program and forget it.  But it works best with two people in the car with one to navigate.
+
+The GPS locator has a great chipset.  Very, very sensitive and quickly finds the coordinates within seconds, even as I sit in my house.  It rarely loses a lock on the satellite.  
+
+The route finding works well, so far.  You can save your track as well as the route, but unlike the Delorme products you can't playback your track (or if you can, I have not found it).  The screen is pleasing and you go fullscreen.  
+
+I haven't tried voice recognition but the spoken commands are about average.  The ability ot overlay satellite photographs when planning routes with an internet connection is a plus.  Plus you can routinely update road construction sites.  So far, no opinion on how good that feature is.  
+
+The Microsoft location finder internet leaves something to be desired though I've only tried it at home.  It routinely thinks I'm in China (which is interesting because so many ads are quite able to figure out where I am).  
+
+The GPS also works with other programs by selecting a generic NEMA GPS.  There are other optional equipment to go with the GPS.  
+
+If you've never used a GPS mapping program with a laptop, Microsoft S&T is a good choice.  Just don't be surprised if the GPS lcates you accurately and the Microsoft locator product puts you on the other side of the planet.

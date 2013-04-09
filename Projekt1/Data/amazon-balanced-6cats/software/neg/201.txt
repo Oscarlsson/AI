@@ -1,0 +1,46 @@
+This program is average to below average in it's abilities.
+
+That said, just hope you don't need any Roxio tech support.
+Why? because Roxio's  support bites!
+
+You CANNOT contact anyone online or by email for help;
+whenever their dis-functional "web portal" [web-based support] system traps you in an endless loop. 
+
+I needed an couple simples updates for a pc that is NOT ALLOWED on the internet.
+
+It used to be you could download Roxio's PATCHES from any pc having internet access. 
+Then burn patch[s] to a CD, or copy to floppy/jumpdrive.
+Then "sneakernet" the patches to the pc needing them.
+
+NO MORE.
+
+What happened today was that their webpage was apparently trying to download/patch a roxio product directly on MY pc.
+[EZCD5 doesn't exist on my pc].
+
+Instead of simply letting me download it somewhere, like to my hard drive, vs patchging it directly from their webpage to my pc,
+[which won't work in my case as I'm not using roxio, nor have it installed on my pc];
+ apparently the morons that did the roxio webpage coding make the download/patch process STOP/END and proceed to send the customer back to Roxio's initial patch download page.
+
+When you need a patch, all these endless loops and support games
+are enough to get me looking for a different product/different company.
+
+If you want to minimize human contact with customers, fine.
+But let folks at least download the patches they need in order to keep their pc going.
+Don't hand over your customer support system [almost] completely to a WEB SERVER. 
+That ignorant arrangement works about as well as when companies try to save a few pennies and get rid of phone receptionists for customer service telephone calls.
+Then they let customers wade through a 100 layer deep voicemail system to find the answer to a simple problem.
+
+IT JUST DOESN'T WORK.
+
+If a company won't provide access to PATCHES, 
+even after I have logged into their website with username and password, [so they know is accessing their patches] 
+AND they  don't offer any type of 
+FTP site  as a download backup  option, then 
+I sure as heck won't be buying anymore of their products.
+
+I see why Roxio bought up CeQuadrat and other companies.
+[Though I hate to see such quality companies be devoured like that]. 
+When a competitor has a better product, why fight to improve your prodsuct's quality/features, when you can buy the other company out.
+ 
+Thank goodness Nero is not under the Roxio umbrella.
+

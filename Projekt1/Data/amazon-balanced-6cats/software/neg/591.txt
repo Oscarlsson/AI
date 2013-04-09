@@ -1,0 +1,3 @@
+I installed quickbooks pro 2003 on my new computer running VISTA and had a small problem.  So, I bought an upgrade to 2007 since Intuit says it works with VISTA.  
+
+It does not.  The software crashes at odd times.  It also crashes when attempting to call up invoices from the accounts receivable report.  It reports out of memory errors and closes two to six times each day.  I have set up my old computer, which runs XP, so I can use the new software until they fix all of the glitches in the 2007 version.  I recommend NOT buying this version if you are running VISTA OS

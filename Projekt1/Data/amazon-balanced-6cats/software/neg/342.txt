@@ -1,0 +1,21 @@
+I purchased quickbooks 2005; 4th upgrade in 10 years.
+Unlike earlier versions, this one is confusing and painful to use.
+
+Simple things like making deposits has to do through contraptions.
+ 
+One of the reasons I upraded was to use Online banking; it's a complete disaster. It doesn't download the complete trasaction details, reconcilliations are very difficult.
+You will be doing twice the work to use it.
+
+Once my transfer to the bank was aborted by a message saying you are low on memory and though Quickbooks sent the transaction to the bank, it didn't mark it internally, so on the next login, it sent the payment again!!! It has cost me $1509 of double payment that I am still trying to get back!
+
+How you pay a bill is totally messed up, There is no way for you to mark that a bill was paid online unless it was done through quickbooks online connection. (Bank's billpay can't be used!!)
+
+It's very poor in organization, you can't have 2 accounts #'s with  a vendor (still in 2005!!!).
+It has introduced obscure concepts as items and classes, which have no real definition and no "default" use and stop every transaction.
+
+One of the biggest thing Quickbooks has done to hurt their customers is the payroll. Technically you can do it yourself, but they hide that information and scare you in every step that you should (must) buy the $299/year payroll service (old tax-tables).
+In all the documenation, not once do they mention that you can do the payroll directly and this is how.
+Compared to the earlier products, this is a huge cost. By that reckoning I would have paid ~$2000 for the previous version of quickbooks!!
+
+It's definitely cheaper to buy a basic version of the software and use an accountant to do the other work and you will be better 
+off. Don't waste money on Quicken services or premium products, they will bleed you to death on your way to a mental asylum

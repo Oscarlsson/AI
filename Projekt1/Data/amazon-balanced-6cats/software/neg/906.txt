@@ -1,0 +1,5 @@
+I gave this a 2nd star for a support call ms provided.  If you do have a frontpage server, and have it set "on", it had some advantages over ftp.
+
+I bought it for use on our family website which is mainly pictures.  I've used 6-8 programs for creating galleries over the years.  I think a perl script using Linux' mogrify worked best.  This works worst!  The free ones w/ the digital cameras beat it.  Frontpage is missing the most fundamental piece to view photos-  A next/previous button.  You can choose from several thumbnail displays including a cool mosaic/colage type thing.  Once you expand it, you must remember the shot you were on, back up, and then click on the next one!  Unbelievable.  
+
+I know what I need for handling photos efficiently.  Flicr has it- cross-tab indexing of the same photo.  I think picassa is close and getting closer.  This wasn't worth the cost of Picassa- FREE

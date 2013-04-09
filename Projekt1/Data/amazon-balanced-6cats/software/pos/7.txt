@@ -1,0 +1,29 @@
+If you're one of those people like me, who hang on to an older version of the application waiting for the right time, now is the time to upgrade.  You won't be disappointed.  Just ask the editors of both PC Magazine and C|Net which awarded this version their Editor's Choice Award.
+
+Once again Adobe has listened to its loyal customer base.  The proof is in the new version of Illustrator.  Many of our requests were answered with the latest version including some that we didn't even think of.  I was happy to find out that even with the new features, Adobe has not altered Illustrator's previous palettes or keyboard commands.  There's nothing worse than having a shortcut or command memorized for years and then it gets changed with a new version.  No fear here!
+
+First of all, I want to say that I am really impressed with the Live Trace and Live Paint features, especially when used together.   We all know that sometimes ideas hit us when we least expect it and are away from our beloved computer.  We end up drawing it out on a napkin, paper towel or the unused envelope from our glove compartment.  Normally, once you get back to your computer you have to try to redraw your graphic using Illustrator which takes both time and effort---not any more.
+
+Take your napkin masterpiece to your scanner and scan it in.  Once the image has been scanned, then the fun begins.  Once the image has been scanned in and brought into Illustrator CS2, use the Live Trace feature to actually trace your drawing.  This feature actually turns to drawing into a Live Trace object for easy manipulation.  After applying some blurring as needed, your traced image is cleared up.  Then, convert your Live Trace object into a Live Paint object using the new Control Palette.  I like the Live Paint tool also because it reminds me of working in Photoshop.
+
+Once you've converted to the Live Paint object, you can easily use the pen and other tools to modify any points to your liking.  Live Paint also has a feature called Gap Detector which can prevents paint from going over into other sections because of a break in a line.  This is a handy feature that keeps you from having to fix overspill later.  When the object outlines are finalized, use the Live Paint feature to easily fill any region with color.  Voila!  You are done.  Go from napkin to art in a matter of minutes.
+
+A concern of many of us for years was the fact that while Illustrator keep getting better and newer features, it also mean more and more palettes.  Sometimes it became a little unmanageable.  However, the pros at Adobe recognized this problem and applied a solution - the Control palette.  This new palette sits at the top of the screen.  First, it acts as a an object inspector providing information.  Secondly, (and more importantly), the Control palette provides easy access to fill and stroke dropdown menus, brush shape, opacity, and style.  No longer do you have to fumble through your palette to get at these frequently used features.  If you are fans of Adobe's other Creative Suite 2 software, you will be pleased to learn that the Control Palette is apart of their new makeover too.
+
+Here are some more new additions and changes to Illustrator:
+
+*	Like Photoshop, Illustrator CS2 now supports custom workspaces.  You can display only the palettes you need at any time. You are also able to access or save any workspace at any time or use workspace templates.
+*	Adobe has improved the Swatch and color integration.  Now, working with the other Creative Suite 2 programs is seamless.
+*	Isolation Mode is a feature that allows you to double-click a group move and edit internal objects without having to search through the Layers Palette.
+*	CS2 now supports all of the latest Wacom tablets. It now provides brush support for the new Wacom 6D Art Pen and adds a new dimension Illustrator's Calligraphic and Scatter brushes
+*	Adobe Bridge integration is now a part of Illustrator CS2.  Bridge allows you to easily manage images through thumbnails for better workflow.
+*	Macromedia Flash exports are now available.  You can export both text and objects as Flash files which result in smaller file size and easier incorporation into web projects.
+*	You can now open Photoshop files with layer comps within Illustrator.  This new feature allows you to view many versions of a layout at one time, just as you do in Photoshop
+*	Custom stroke placement is a new addition to Illustrator. You can now place strokes on the outside, inside or center of a path.
+*	Underline and Strikethrough are two of over 170 new type enhancements.
+*	These are a few of the new features!
+
+The $169 upgrade cost is well worth the money, just for the Live Trace and Live Paint features alone.  However, you get so much more in the new Illustrator CS2.  Upgrade now and be completely satisfied.  If you haven't purchased a vector graphics program, get Illustrator, especially if you are already an owner of a version of Photoshop.  This new version of Illustrator even looks more like the familiar Photoshop layout.
+
+Loren Elks
+Group Manager, D-MAG.org

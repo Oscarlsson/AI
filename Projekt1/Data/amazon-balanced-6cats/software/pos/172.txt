@@ -1,0 +1,43 @@
+I have been using Adobe Acrobat for a few years now.  I've used both their Professional and Standard versions.  Now, Adobe has released Acrobat 7.  In this review, I will be discussing primarily the features of the Standard edition.  However, these features are also available in the Professional edition.  Outside of the fact that the Professional version has more workgroup-oriented and enterprise features, these programs are the basically same.  I have noted any features available only in Professional in this review.  
+
+First, what is PDF and what can it do for me?
+Adobe's PDF is now a universal format that allows you to preserve the look and integrity of your original documents - Adobe PDF files look exactly like the original pages and fulfill requirements for electronic filing and document security.
+
+Not only that, but you can share the files with anyone, whether on a PC or a Mac.  Each PDF file has the graphics and fonts imbedded into the file.  The user of  the file does not have to have the same font set, nor even purchase Adobe Acrobat, because the Reader version of Acrobat is free!
+
+New Features in Acrobat 7
+*	Turn MS Outlook email into searchable documents.  This is a great feature.  It allows you to effortlessly turn those old emails into the universal PDF format.  Acrobat's searching capabilities make even searching through the longest emails easy and accurate.
+*	Attaching source files.  Previously, we have been able to create  PDFs from spreadsheet and other formats.  Now, not only can you do that, but this new feature allows you to attach the documents with the PDF!
+*	Improved Browser.  Acrobat's browser has been improved to make searching for documents easier.  If you are familiar with the Adobe Photoshop browser, you'll like the new upgraded browser in Acrobat 7.
+*	Searching improved.  The search feature has been improved when you are looking for files.  It is easier to search for files, because now Adobe has made the feature more friendly.  You can search by document and text properties on your local computer or across your companies LAN or WAN networked drives.
+
+More About Acrobat
+Although many people are familiar with the Acrobat Reader program, they are not as familiar with Acrobat itself.  I consult will many business persons and they are just astounded at what Acrobat 7 can actually do for their business.  Just the fact that you can collect and assemble output from different types of programs into on universal format floors them every time!  
+
+Another great point about assembling the documents in Acrobat is the compression factor.  With Acrobat, users are able to compress the original documents, thus saving space and making it more efficient to transmit the documents via email or internet downloads.
+
+This new version can now also create, and save "PDF/A" files for archiving and it allows users to  scan paper documents directly into a searchable PDF file saving space and time.  Many companies around the country are making the jump to the "paperless" environment.  Acrobat 7 can definitely help.
+
+In fact, I know of an attorney's office making great use of Acrobat.  They have almost converted their entire office to a paperless organization by using Acrobat because of its form creation, reviewing, commenting, approval and signature features.  In paper document storage space alone, this office is saving thousands of dollars per year.  Even legal documents can be approved, digitally signed and verified in Acrobat.
+
+Anyone concerned about the security of their documents has nothing to fear.  Acrobat's security features including the ability to create self-signed digital IDs are terrific; no matter if you have PDF documents loaded on your website for downloading to clients or if you are emailing the files.  For Professional users, Adobe has added a new feature called E-envelopes.  With the new E-Envelopes, user can package their PDF files in an encrypted wrapper and send those files securely via email.  For company networks, Adobe has also added support for your company-wide security policies using a new feature called Lifecycle Policy Service.  The granularity of the security allows the user to pick exactly what they will allow the recipient of the file to do like printing, copying, pasting and so on.  
+
+Many people are also surprised that Acrobat isn't just for static documents.  Users can create interactive forms (Professional Only) as well.  In fact, I know a client who is an attorney.  They have almost converted their entire office to a paperless organization by using Acrobat because of its form creation, reviewing, commenting, approval and signature features.  In paper document storage space alone, this office is saving thousands of dollars per year.
+
+For CAD and graphics professionals who work with 3D files, Acrobat 7 (Professional Only) can now convert these into PDF format for ease of viewing, whether in electronic or printed format.  This will allow the users to quickly send their clients views of the 3D object in the universal PDF format without the purchase of additional software for the recipient of the file.
+Another feature is the new licensing capability that Adobe has added to Acrobat 7.  You can install the program and activate it on two separate computers, which is great if you work at home and at the office as well.  Need to install it on a third computer?  Not a problem.  The transfer activation feature allows you to transfer the license to another computer.  To do this, deactivate one copy and transfer the activation via a simple menu command. If your computers have internet access, the change happens right away.  This feature alone may save users money on purchasing multiple copies of the software.
+Summary
+I would highly recommend this product to anyone in business.  The easy of use and versatility of Adobe Acrobat 7 make it an indispensable tool,  whether you are a legal professional, an IT company, accounting firm, healthcare company or anyone else in business.
+This is one investment where the ROI will definitely outweigh the purchase price of the software within weeks of normal use.  The ability to go paperless and save valuable office space that is now gobbled up by filing cabinets, paper binds and closets alone should make the difference for almost any company.
+Testing Setup
+To conduct tests of the software, the following hardware was used:
+PC Compatible System (2 GHz Athlon Processor, 512 MB Ram, 30 GB HD)
+Epson Scanner/Fax/Printer
+HP LaserJet 8150DN Printer
+For software tests (conversion to PDF format), the following software was used:
+MS Office 2003 (Word, Excel, Outlook)
+Photoshop CS
+
+
+Loren Elks
+Group Manager, D-MAG.or

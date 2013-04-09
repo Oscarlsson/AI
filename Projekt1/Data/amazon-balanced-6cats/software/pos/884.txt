@@ -1,0 +1,1 @@
+I found this upgrade has fixed some things and attempted to fix things that did not require fixing.  Hot keys that go to dockers does not speed up the work process.  It appears to be slower in handling bmps.  Larger files cause it to hesitate selecting objects.  A real memory hog.  The new contour tool makes the upgrade worthy.  So far it is not crashing like 12 did

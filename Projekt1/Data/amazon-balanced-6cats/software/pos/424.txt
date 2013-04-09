@@ -1,0 +1,12 @@
+I seriously don't get why people are having problems installing and using Windows Vista. I had no problems installing it and no problems using it. It runs smoothly and responsively. No problems. Current specs:
+   3.0GHz Intel Pentium 4 HT 800FSB 1MB L2 Cache
+   1.5GB DDR PC3200 667MHz RAM
+   200GB SATA 7200rpm 8MB CACHE
+   256MB ATI Radeon X600
+   Realtek Integrated HD Audio
+   Intel 915G Motherboard
+   22" Viewsonic VX2235wm HD Digital Monitor   1680x1050
+   Optical Drive 1: DVD+/- RW DL
+   Optical Drive 2: DVD-ROM
+No problemo.
+  

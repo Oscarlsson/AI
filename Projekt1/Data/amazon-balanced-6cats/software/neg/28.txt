@@ -1,0 +1,3 @@
+Warning! I resized my partition and when it restarted my computed could not boot. It destroyed my system and I had to format my whole drive.
+
+Read all the reviews from this program carefully. I read them but did not believe them

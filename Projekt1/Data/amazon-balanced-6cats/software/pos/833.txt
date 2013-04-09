@@ -1,0 +1,25 @@
+If you are even remotely familiar with home design or CAD software then this is your product assuming you can't deal with the price or steep learning curve of Chief Architect Base v10 (~$1300).  Chief Architect (CA) is the Holy Grail of powerful yet intuitive home design software but it's not cheap and it's not for beginners; it is really aimed at pro's not home enthusiasts.  Most home enthusiasts would be far better off with Punch! AS4000.  But if you have a brain, some patience, and like a challenge and want the best, go with CA.
+
+Punch! AS4000 v10 is the *best* product on the market in the sub-$1000 price point *easily* beating out products like CadSoft Envisioneer @ $795 (4x the cost!).  In my opinion CadSoft Envisioneer has no market.  If you are going to spend $800 on "Pro" software, get Chief Architect for $500 more.  If you don't need that much power that CA has (ie you aren't an engineer or architect drawing formal construction blueprints), than buy Punch! AS4000 for $500 less than Envisioneer.  Envisioneer is a product priced in no-mans land.  It's a suckers buy.
+
+Back to the product at hand.  First, Punch! AS4000 isn't as easy to pick up for a neophyte (ie complete computer design newbie) as say 3D Home Architect or Better Homes & Gardens (both of which were spawned from the same 3DHA v4 code base).  But, it is much more fully featured, faster and much more powerful and less buggy.  It's UI is more standard and intuitive to Windows software guru's, and it's 3D renderer blows away the competition not only in speed but quality.  It renders stunning 3D scenes which blow away the competition visually at 1/4 to 1/3 the time!
+
+Plus, Punch! recently (and quietly) acquired 3DHA from Riverdeep / Encore to supplement thier "bottom-end sub-$40 market".  In other words, Punch! considers 3DHA to be the bottom-feeder and not real competition against thier product for which they are 100% correct.  3DHA and it's derivatives are junk compared to Punch!; every few years I review them all and Punch! has been on top for a while.  Not just in features.  Not just in speed.  Not just in reliability / stability.  But across the board.  
+
+TopTenReviews recently gave Punch! the #1 spot, as they deserve.  Punch! has also been the top selling home enthusiast design software for the last 6 years running.  It's not by accident.  It's because it is the best; hands down.
+
+3DHA users should seriously consider jumping ship to Punch! now that they own it.  The only reason to consider 3DHA over Punch! is if you are a total clueless newbie.  Once you are no longer a totally clueless newbie, it's time to move to a serious program like Punch!  Even if you have a lot of 3DHA content, it doesn't mean you shouldn't start moving over to Punch!  You can continue to use both until Punch! has a solid 3DHA importer.
+
+This recent acquisition means that Punch! owns 75%+ of the home design software market for home enthusiasts.  This is estimated to be a $50 million market and Punch! pretty much has it owned.  Since Punch! considers 3DHA to be the bottom-feeder, don't count on the 3DHA title or code base to be drastically improved in the future.  In fact, if I had to gues I would bet that over time the existing 3DHA code base will be scrapped by Punch! and replaced with it's own code base w/ some of the power tools stripped.
+
+In short:
+
+1) if you are a professional who knows their way around CAD and want the best for home design despite the cost, get Chief Architect v10 Base ($1300) or Full ($2k+).  It's learning curve is steep but nothing beats it.
+
+2) if you are a home enthusiast who has a clue around CAD or home design software, then this (Punch! AS 4000) is your choice.  End of story.  Buy it.
+
+3) if you are a complete newbie and have never used home design or CAD software before, I recommend buying the cheapest v6 or v7 3DHA Special Edition you can find here on Amazon for only $9.99!!!  It's very limited but will serve it's purpose.  Go through the tutorials.  Learn how to use it.  Play with it until you know what is going on.  Design something simple.   This way it costs you only $10 to leverage all of the tuts included in 3DHA and come up to speed with the terminology and concept of home design.  Then toss it and buy Punch! AS 4000 v10 to do your real work. 
+
+It takes a real program to do real work. ;-P
+
+- Rhino

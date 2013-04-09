@@ -1,0 +1,1 @@
+The product does everything they claim save one. It won't work inside  Windows XP (service pack 2). But it will work when you boot from the disk. That isn't a problem in my view. Therefore I have no complaints

@@ -1,0 +1,1 @@
+I spent the last 3 hours trying to get support for this product. Although the site did not reject me it sent me through loops to get an "update" that when run, errored out as soon as it began

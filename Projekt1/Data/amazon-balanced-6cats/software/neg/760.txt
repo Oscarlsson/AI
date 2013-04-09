@@ -1,0 +1,4 @@
+Before buying, I downloaded and installed a 30-day trial version of KIS 6.0.  First, I uninstalled Windows Live One Care.  After installing KIS 6.0 and rebooting, my Windows XP Home Edition computer just locked up.  Had to go through Safe Mode to remove the program via Windows Explorer, since Add/Remove Programs in Control Panel will not work in Safe Mode.
+When I reinstalled Windows Live One Care, it offered to remove the remains of KIS 6.0 that I couldn't. 
+Next, Internet Explorer 7 would not work at some sites.  Had to call Microsoft Support and a great technician in India took about an hour to straighten out the damaged files in IE7 at no charge.  Thanks a lot, Kaspersky!
+Now, my computer is working fine.  I am sorry that I did not have a chance to use KIS 6.0, but I will stick with One Care and renew it when my 1st year of free updates expires soon

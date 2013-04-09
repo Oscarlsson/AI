@@ -1,0 +1,79 @@
+We bought this camera thinking that it would be our do-all "EuroCam" for an upcoming trip to Europe. It promised a sufficient range of performance and features to easily meet our needs on such a trip.
+ 
+Sadly, the camera is not up to filling this role. We will need to take another camera along with it. However, we will take the V705 for its wide-angle lens, the reason that we picked this model in the first place. It is this disparity between the advertised and actual capabilities of the camera which prompts me to contribute this review.
+
+The need for a true wide-angle lens is both a sufficient and a necessary condition for buying this camera. If you do not need a 23mm lens, or if you do not know if you need a 23mm lens, then you do not need this otherwise mediocre P&S (Point and Shoot) camera. 
+
+Good: Fairly decent 23mm wide-angle lens; The 23mm is the default lens; Rapid start-up time; Internal focus and zoom; Chromatic aberration well controlled; Can use 4GB cards; Freeze-frame and extract any video frame.
+
+Mediocre: Soft images; Perceptible shutter lag; Slow shot-to-shot times; Exposure compensation is easy, but steps are too small for digital, and is reset when camera turned off; Flash does not come close to covering the 23mm; Image numbering basically limited to 4 digits; Flimsy construction; No manual controls; No RAW format; No optical viewfinder; Histogram on display, but too small to be useful.
+
+Bad: The Absolute Worst menu system to be found on a camera; Excessive and unadjustable JPEG compression; Poor battery life with very expensive external charger and spare battery; Unacceptable visual noise starting at ASA-400; Forced in-camera stitching of panoramic images, with inability to save the individual panoramic shots; Panoramic component images forced to 5MP; Overlays for panoramic and delete modes are so dark they obscure the underlying image (even with display on `bright'); MPEG-4 video compression gives very poor results.
+
+Synopsis:
+
+If you need a 23mm lens in a point and shoot, this, and the older V570, are the only choices.
+
+If most of your images are in bright light, the 7MP V705 gives better images. If most images will be in low light, the older, cheaper, 5MP V570 is the better choice.
+ 
+The camera seems very fragile. Treat it gently and you will likely be happy with the wide-angle performance. If you chose this as your sole camera, you will likely be unhappy with your choice.
+
+The ONLY reason to buy this camera is for the wide-angle lens. 
+
+= = = = =  Some Expanded Comments  = = = = =
+
+Twenty-three mm wide-angle fixed-focus lens. This lens has almost decent optical quality; though the camera's processing still produces overly-compressed and soft images from it. On power-up the 23mm is the initially active lens, which is ideal for us. However, considering that this is truly a specialty lens, it would make more sense that the `normal' lens should be the default. Best would be a menu setting to allow selection of the boot-up lens. Better yet would be a camera with only the 23mm lens.
+
+The camera does have firmware wide-angle distortion correction. This works fairly well, at the cost of even more image softness, but even-so, barrel distortion is noticeable to a degree that is not present in actual 35mm-film camera wide-angle lenses of similar focal length. This in-camera correction can be turned off. Doing so allows one to see the marginal native lens performance.
+
+However, being able to turn off distortion correction exemplifies for me how poorly thought out this camera is. The only people who would wish to do this are those who are exploring the artistic limits of the camera - and they would seem better served by the camera having such basics as:  manual settings, a physically larger sensor chip, RAW image files, or, at least, a choice of degree of JPEG compression.
+
+At the other end of the camera's focal length the 114/117mm performance shows slightly below average image softness with average pincushion distortion. There are very few circumstances where one would want to use `digital zoom', so, as with all digicams, the claimed maximum telephoto length is completely bogus. After reaching optical zoom limits, one is much better off doing any further 'zooming' in an editing program.
+
+Kodak's advertised "5X Optical Zoom" is, at best, misleading. Actually, it is just flat out untrue. The camera has two lenses. The only lens that can be optically zoomed is the 39-114mm lens, which is not quite 3:1. The wide angle lens has a fixed focal length. (Note, in some places Kodak claims 39-114, in others 39-117 optical zoom.)
+ 
+Also misleading is the claimed "Anti-blur technology." As best I can tell from looking at the images, and at the EXIF metadata, all this actually means is that at some given shutter speed the camera boosts the ASA. Certainly there is no optical image stabilization technology in this camera.
+
+Speaking of ASA. This is an opportune time to address the camera's incredibly poor menu system. It is Byzantine: being both awkward and time consuming to use. To adduce, `Auto' ASA ranges from 50-200, to set a faster (or to lock in at a slower) sensitivity rating requires going through multiple menu levels. To change from `auto' to the next fastest (400) requires 11 manipulations of 2 controls! On either of the other two P&Ss which we will be taking along it requires 4 pushes on 1 control. The menu system is next to unusable in the field.
+
+Still on ASA settings, the camera does have sensitivities up to ASA/ISO 1000 (though the manual only documents ASAs up to 800, 1000 is available on the camera). Unless your shot is of a once-in-a-lifetime, will never-happen-again moment, then 200 is the max ASA tolerable before noise in the shadows becomes annoying. At 400 the entire image suffers from noise and is not really useable for any print larger than 4x5".
+
+The previous version of this camera, V570, had only 5MP, but the same sensor size. By increasing the pixel count, but not the physical size of the sensor, the new V705 camera actually has more low-light digital noise than its predecessor. This has happened with many of the current P&S cameras, as the makers advertise pixel count as a measure of image quality.  My initial experience with low-light high ASA use of this camera is that you might as well set the capture size to 3 MP, as the larger files have only marginally better printing capability because of the severe noise artifact.
+
+Another approach to dealing with the sensor noise is to use one of the commercially available products which, when calibrated to the sensor in the camera, allows the subtraction of much of the internally generated noise. Doing so does allow for semi-adequate 8x10" prints at ASA 800. If one really wants to get carried away, combining the preceding with any of the image stacking programs designed for astrophotography (where dozens/hundreds/thousands of images are averaged together) makes 8x10's at ASA 1000 doable. People willing to undertake these manipulations likely do not fit Kodak's target market.
+
+Back to earth.
+
+The V705's still-image quality is below average for this generation of 7MP P&S cameras. Mostly I believe this is because of the overly aggressive JPEG compression, which is not adjustable (e.g. `best', `good', etc). My guess is that a compression setting of 30-40 is being used. This results in small files, with a lot of compression artifact. The 7MP JPEGs from this camera are about 1.2-1.5MB in size, those from another 7MP P&S I have are 5-6MB. My 6MP prosumer digital SLR JPEGs are 8-10MB. The more the compression, the worse the image. Most cameras allow the user to pick the trade-off point. Kodak picks it for you, and picks poorly.
+
+The V705's video performance is very disappointing. It uses MPEG-4 compression, and at very aggressive compression settings. Unless it is a video of your baby's first steps, or aliens landing in the backyard, you will likely find it hard to watch. The total output datastream is about 0.5 MBS. Compare this with a miniDV tape video datastream of 25 MBS (total, adding sound, error correction, and time codes, is 36 MBS). Better to have stuck with MPEG-2 which would give less compression, but decent enough (TV quality) videos. That is the choice that most manufactures have made. As a result, the videos from my other P&Ss have about a 2 MBS datastream, and so are of much better quality.
+
+The battery. Kodak's claim is 150 still images per charge. I am getting 100-120, with minimal use of flash and the LCD on `energy saver'. Even 150 would be poor, compared with my other digital P&Ss, where I expect at least 200, and often get 250+ if I am at all careful with power-management. This camera has a proprietary (and hard to remove) 720 mAh battery. My (several) other, P&Ss have 790-1120 mAh batteries, and, I suspect, more efficient processors.
+
+Since we are only going to be using this camera for wide-angle, the battery will likely last most of a day. We have not bought an external charger and backup battery because the cost is about 25% the cost of the camera.
+
+Though the body is of aluminum, the camera itself is overall fragile and I doubt will hold up more than a year or two. The battery and media doors do not appear to have been designed for actual repeated use; there is no cover for the charge socket. The media door often dislodges open.
+
+Truly, my belief is that Kodak designed this camera with the thought that these doors would never be used: that the camera would spend its life simply being taken in and out of the (not included in this model) "EasyShare" dock system. This would also explain the relatively large amount of built in memory, and the overly aggressive JPEG compression.
+
+Shutter lag, the bête noire of digital cameras, is very evident with this model. I do not have any method of actually measuring the time between pressing the shutter, and the image being recorded. However, based on over 50 years of tripping shutters, it clearly varies, and I estimate is, at best 1/4  second, up to a bit over 1/2 second. In addition to the shutter lag, there is a perceptible lag in the LCD viewfinder screen showing what is in front of the lens. Together this makes the capture of a fleeting moment, an active child at a particular instant, or a wary animal almost impossible. The shutter lag is much more evident than in same-generation/price P&S cameras from other makers.
+
+The accompanying `manual' is poorly organized, childishly written. "Finish reading this book, so you can take and share your best pictures!"  At best, it was written for 8 year olds.
+
+The manual does make reference to a web-address where one can download the `full manual', however the address given is incorrect. When eventually found, the manual is better than the one enclosed with the camera - in that it contains some information that one could not figure out oneself - but it also is written at no more than a fourth grade level.
+
+Panoramics, one of the advertising points of the camera, are another disappointment. Basically the way it works is that 2 or 3 images can be taken in `panoramic mode', each subsequent shot is overlain by a thin strip of the preceding image, in order to allow alignment. As with most `panoramic modes' focus and exposure is locked on the first image. So far, this is all OK; however, it rapidly goes downhill.
+
+First, the max image size of the individual shots is limited to 5 (not 7) MP. Next, the image overlay is so dark that, even with the LCD set at max brightness, it is difficult to see through the mask to align the elements.
+
+However, it gets worse.
+
+The images MUST be joined in-camera! The individual images cannot be stored! In-camera processing is very slow and very battery hungry. Aligning the overlaps on a grainy 1.5x2" LCD in the field gives, in spite of the camera's best efforts, much poorer results than aligning them on a much bigger, and higher quality, computer display in the comfort and controlled lighting of your home.
+
+The best way to take panoramas with this camera is to use a lightmeter to determine exposure for each segment, and then simply take the appropriate series of images as 7MP single-stills, making exposure compensation adjustments based on your light-meter readings. Of course, my smallest lightmeter is almost as large as this camera, so we will not be dragging it along. You can eyeball the needed EC close enough that should be able to match the exposures up in production. Much better if the V705 allowed the individual images to be saved.
+
+Reading back through this review, I see that it is mostly negative. This makes sense, for, as I disclosed at the beginning, it was my disappointment in this camera's actual vs advertised capability which led me to write the review in the first place. Likely I have said all that needs to be said.
+
+So I will just close by mentioning that the only reason we did not send the camera back is because of the wide-angle lens.  Except for this unique lens, the camera's performance and ease of use is below that of similarly priced P&S cameras currently on the market.
+
+If you need a true wide-angle P&S, you need this camera. Otherwise forget it

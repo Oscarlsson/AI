@@ -1,0 +1,1 @@
+The program crashed during Setup. When I finally got it installed, it crashed my machine every night until I uninstalled it.

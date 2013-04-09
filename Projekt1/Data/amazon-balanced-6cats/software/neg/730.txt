@@ -1,0 +1,17 @@
+Okay... so I'm not as astute in the technical aspects of software as some reviewers, but I can say that my experience with this software is absolutely terrible.
+
+First off, it is built to integrate with Outlook, but doesn't really. It always leaves one e-mail in your outbox (the one you posted first). If you open your outbox before they send, then the one you posted most recently won't send either. Seriously, the only way I have been dealing with this is that I have left a dead e-mail in the box permanently. If I need to change something that has been posted to the outbox, I have to open it, then get out of the outbox, change it, and repost it, otherwise it won't send -- ever.
+
+I have set NIS so that it doesn't scan my outgoing e-mail, as it blocks anything over 2mb, and in my business, I send things that big all the time. In a recent update, however, it has reinstated that and now scans all of my outgoing e-mail whether it is set to or not.
+
+I spent hours and hours on the phone with (supposed) technicians, who refused to answer any questions unless I disabled my whole network. What that has to do with this program, I don't know. I tried the "live internet chat" function, but -- and I kid you not -- it took almost two hours for me to get ten responses from the guy. When I complained, he hung up on me. Gotta love that.
+
+When I tell NIS that something it has categorised as spam "isn't spam", it doesn't remember the sender's e-mail address, like it is supposed to. It just keeps calling it spam and quarantining it. 
+
+Regarding spyware, I have another piece of anti-spyware software called Webroot Spy Sweeper, that routinely finds spyware on my computer that NIS didn't catch. 
+
+This has just been one headache after another. Their customer service was unresponsive and totally unhelpful, with not ONE actual solution to any of these problems.
+
+The only piece of software I have ever bought that was anywhere close to as bad as this is WinFax 10, another Norton product.
+
+I will NEVER, EVER buy another piece of Norton/Symantec software again as long as I live. They should be ashamed of themselves

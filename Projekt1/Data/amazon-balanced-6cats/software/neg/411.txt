@@ -1,0 +1,7 @@
+After using TurboTax couple of years and then using TaxCut for last two years (2005 and 2006 returns) I concluded that TurboTax is much superior software. TaxCut's only advantage is that it is cheaper. If you take out price from the equation, TaxCut is inferior in quality.
+
+- In 2005 TaxCut software there was not PDF output of all the forms. This was pretty silly because after couple of years if I want to access my tax return I am not going to install TaxCut again in my computer and view by return. I would rather have have my tax return available in some widely acceptable format like PDF and then access/distribute whenever I want (I don't keep my documents in hardcopies). So I wrote to H&R Block. This year they added that saving return in PDF file feature available. But unfortunately, this is far from being perfect. It excludes number of important forms - example, IRS form 8853, California Adjustment Schedule 540CA etc. Instead of that it saves numbers of useless worksheet (without any data entered in those worksheets), same form multiple times.
+
+- Most annoying thing about this software is updating incorrect data. In one form I entered wrong data. While reviewing it I found a problem and went to that specific section to update. But in calculation TaxCut still showed old incorrect number. I just could not make it to use new corrected number. Eventually I had to restart a new return from scratch - just to have an dollar amount corrected.
+
+- In many section useful Helps are missing

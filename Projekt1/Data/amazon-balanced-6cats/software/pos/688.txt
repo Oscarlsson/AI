@@ -1,0 +1,13 @@
+For more than a year now, I have been using Ad-Aware. I love it. The program scans for spyware, adware, hijackers, keyloggers, and common trojans (but Norton is the one that takes out the trojans).
+
+So far, I am happy with this product. Even though I have never had anything bad on my computer (just cookies...mmm, cookies), my friend sure has had his share with MiniBug, Axela, eZula, FunWebProducts, and some others, and Ad-Aware completely removes it. And it does it all for free (yes, you can get the personal version free at Lavasoft's website).
+
+So what's something that Ad-Aware Personal doesn't do? Real-time. You'll notice on the personal version that if you click on Ad-Watch to enable Real-Time, it will state "Realtime protection not avaliable in the personal edition.". So, I checked out the plus edition.
+
+So, I did a test on an old computer, and installed eZula. That's right, it didn't go through. Right when it reached, an Ad-Aware pop-up stated "eZula was found at C:/(whatever). Would you like to remove?". Wow! Amazing!
+
+One thing that is doesn't do is block most pop-ups. This is dissappointing, mainly because competetors like SuperAdBlocker/SuperAntiSpyware has a great pop-up blocker along with everything Ad-Aware has. But, SuperAdBlocker doesn't have real-time, and Ad-Aware does. I'd recommend getting both.
+
+For now, if the computer is in a school, hotel, or airport of such, getting the plus edition wouldn't be a bad idea. But if you just use it for home, just keep the free personal edition. There aren't that many spyware programs that do things virus do, but I HAVE SEEN SOME that restart computers and add odd programs, such things trojans do. Though, for now, if you're not using this for public use, just have Ad-Aware Personal SE. If this is for public use, this is a great idea, and you may also want to get SuperAdBlocker for extra spyware protection and an excellent advertisement blocker (hell, now that I think of it, even if you have adware and SuperAdBlocker, it will block the adware), and Norton or McAfee for viruses or trojans (actally, every computer needs Norton or McAfee, unless it's a Mac or something).
+
+As for Ad-Aware, it's an excellent program, and it's highly recommended. Maybe in feature editions, maybe well see a pop-up/banner/flash blocker that SuperAdBlocker/SuperAntiSpyware has

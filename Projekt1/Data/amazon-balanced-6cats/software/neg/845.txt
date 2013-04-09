@@ -1,0 +1,3 @@
+I purchased the upgrade since I'd already bought both Office v.X and Virtual PC 6.1 last year. 
+
+The biggest letdown is that Microsoft's promised support for the G5 is nearly non-existent.  I have a dual processor G5 with an ATI Radeon 9800 card (Apple), and after trying to install Virtual PC 7 three times, I cannot get a VM to work.  It did install (and work) flawlessly on my G4 Powerbook.  Googling for reviews finds it's very hit or miss, but if (when) it misses, you'll regret investing the extra $$$ in an immature product

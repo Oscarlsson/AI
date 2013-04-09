@@ -1,0 +1,1 @@
+slowed a new system down too much when running in backgroud. Went back to free verison

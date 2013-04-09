@@ -1,0 +1,19 @@
+For federal returns this is a generally usable product with a very poor User Interface and Help system,   For state returns this product falls below the bar of "usable".  I have used the principle competitor, "Tax Cut: in the past and have found it to have generally a poor UI, but it was significantly better than Turbo Tax.
+
+Some examples of the poor User Interface experience are:
+
+*	If you enter the employer ID number from a W-2 in an attempt to retrieve it from the internet and the retrieve fails, then you are asked to re-enter the same ID number when you enter the W-2 information manually.
+
+*	Investment Sales: I have about 20 stocks I've sold over the past year, but the window only shows 3 at a time (with a scrollbar).
+
+*	On the form page, Schedule D-1 (the continuation form for stock sales) is displayed on the screen with scrollbar if the number of items exceeds the window height, but the scroll bar would not let me scroll to the bottom 2 entries.  Printing these out does however show them
+
+*	When entering a stock sale, you can indicate it is worthless to which Turbo tax will tell you that it will set the sale date to 12/31, regardless of what you entered in compliance with IRS rules.   So on my next stock that was worthless I tried to not enter a sale data knowing it would just override it, but the program insisted I enter a sale data, only to then immediately override it.
+
+*	Entering Federal information was usually clear enough, but an obvious lack of effort is shown in the state returns (PA in my case).  Cryptic questions are asked with no explanation and no useful help.  For example "Enter adjustment to income, and indicate type of adjustment -- the choice for type include OID, ABP, etc. with no explanation of what these are!.  It is not clear whether the amount of the "adjustment" should be an absolute or a delta. Requesting help brings up a screen on an irrelevant topic (penalties for early withdrawal of savings).
+
+*	On my state return, it dragged me through 3 screens for EVERY stock sale I made.   (about 20 of them - so 60 screens).  Since it already had the info from the federal return I was doing nothing other than clicking Continue over and over. Much better would be to present me with a table of all the sales and ask me to check the information there.
+
+*	It transferred information about my stock sales from my Federal to my state return.  However I was only a part year resident of the state and it made no attempt to either calculate, or warn me, that many of the sales would not be taxable events in that state because they were sold when I was not a resident of that state.
+
+In conclusion, while Turbo Tax ultimately did help me get the job done, I think I'll try going back to TaxCut next year

@@ -1,0 +1,9 @@
+I've used the ATI all-in-wonder remote with a make-shift media center solution before and it's been sluggish, and sometimes non-responsive.  Not so for the FireFly.  Quick, responsive and adaptive. 
+
+I also tried the CyberLink media remote.  Not even suitable to prop-up a bird-food tray.  You'll find Cyberlink's tech support is positively absurd.  Their primary focus is to ask you tons of questions till you run out of patience, or till they find an excuse to tell you they can't help you.
+
+The firefly really rocks.  Controls several programs and tools and even provides a mouse interface incase you can't get things just right with the application and pre-defined buttons.  
+
+If you have a PC and want media-center performance on it - I'd recommend this guy.
+
+Sadly the data is RF for this remote; not IR.  I was hoping to 'absorb' all the functions of this remote into my Harmony 688 but they don't talk the same.  I think SnapStream offers another product to talk IR for the same purposes, but I'm not there yet.  Still getting my sea-legs with the Firefly's abilities. 

@@ -1,0 +1,11 @@
+I have uninstalled SystemWorks 2006 and will not be going back to Symantec products. I had three problems:
+
+1. On initial install of SystemWorks in January 2006, the "GoBack" module wiped my hard drive. This was annoying and not easy to fix.
+
+2. I reinstalled (and had to reregister) without the GoBack module and used the software for several months satisfactorily. A few annoyances: CleanUp consistently (every night) deleted cookies and autofills I wanted to keep, so despite my entering them as exceptions in the options table, they kept disappearing.
+
+3. I wanted to move to a faster hard drive. After following the Norton Ghost directions explicitly (and getting a "successful" message, the cloned drive would not boot up. I therefore went back to my old drive. SystemWorks required me to reinstall (and reregister). In December, after renewing my SystemWorks subscription for $49.95, I successfully cloned the disk (using EZ Gig II). Again, the only software that did not work on boot up was SystemWorks. I called customer support and was told that the server would not allow me to install on more than 3 computers. I explained the circumstances but was told "there was nothing to be done," and that I would have to buy the software again. I chose not to.
+
+I have completely uninstalled the entire program and am now enjoying faster performance from the operating system and quicker boot times from Word, Photoshop, etc. The protections I was getting from SystemWorks are being covered by AVG AntiVirus (shareware), Registry Mechanic (shareware), SpyBot (shareware), and DiskKeeper ($30), and Microsoft's Malware Guard (free).
+
+I have been using Norton/Symantec products for over 15 years. Never again

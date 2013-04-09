@@ -1,0 +1,1 @@
+The little radio does not have the ability for station lock-in. Every time it is turned on it reverts to a station set at the manufacturer. Since there are no indicators or displays it is annoying and time consuming having to constantly reset the station(s). It also has lousy reception and lots of static can be heard when the radio is on

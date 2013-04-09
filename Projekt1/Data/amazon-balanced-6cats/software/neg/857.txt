@@ -1,0 +1,3 @@
+DarkBASIC is only good for people very new to programming and interested in games. To make a commercial-quality game in this language would be lunacy, BASIC just isn't quite flexible enough to do that with ease, and the DarkBASIC renderer looks very, very ugly. However, BASIC remains very easy to learn and DarkBASIC has some commands that are fun to toy with.
+
+If you're trying to get into serious game development, learn C++ and either learn how to use libraries like OpenGL or DirectX, or start modding a popular engine like the Unreal engine or Source. And make sure you've learned a good deal of physics and math

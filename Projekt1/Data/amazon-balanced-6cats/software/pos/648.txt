@@ -1,0 +1,5 @@
+Look, notation software is notoriously expensive.  All musicians know that.  So, when you see SongWriter and its price, it's a relief.  Everything you need is in this program.  I only have one complaint.
+
+When adding an expressive dynamic (p,mp,mf,f,ff,etc.) you have to add one to EACH note to insure proper playback.  That is a concern of mine since I use SongWriter to notate songs and export them in MIDI for recording purposes.  It leaves an ugly looking score.
+
+Other than that, this is the best deal on the market for what it is

@@ -1,0 +1,3 @@
+I installed a WD 320G usb drive to use as a backup drive. I used the HD backup software to do auto backups. Unfortunatly the software took controll of the entire drive and I could not use it as you would a normal drive (Drag n drop)or access a particular file.   I used Partition Magic to reclaim my USB drive and in the process I partitioned the drive. The drive now works as I want it to I have control!
+
+Partition Magic was very easy to use and didi a perfect job.

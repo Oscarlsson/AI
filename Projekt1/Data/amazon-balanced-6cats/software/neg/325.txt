@@ -1,0 +1,9 @@
+It's time to switch to any product BUT a Symantec one: what was once the best security software company for PC users is now the worst. 
+
+It was time to upgrade my Systemworks Premier to the 2007 version, so I checked out the '07 features online. But where was Password Manager? Hell, I have 187 passwords and logins I DEPEND UPON Password Manager to fill in -- at least 30 of them a day. After an hour on the phone with allegedly 'English-speaking' Symantec CSR's in Bombay, the story I got was that customer surveys prompted them to 'drop' Password Manager. Not being stupid, I said, 'let me guess, Symantec's going to roll out a stand-alone Password Manager to extort another $40 from me'. 'Oh, no, sir, no, no...'
+
+And here it is: a $[...] rip-off, nothing but Password Manager -- not so cleverly disguised as 'the Vault' -- along with other features IE7 provides for free, and marketed as a 'new' online security program. 
+
+Symantec seems to put more effort into playing marketing games with their customers than they do into making the programs they sell WORK correctly. Norton Anti-Virus is a MESS; it's once-a-week Wednesday night updates are now a joke: launch your attack, release your new virus on a Thursday morning and you'll have millions of NAV subscribers at your mercy for at least a week. Three times in the past few months, NAV has failed to stop an attack -- after several years of never failing. Systemworks too seems to be causing more problems than it solves (I'm continually rolling back to undo 'fixes' One Button Checkup or WinDoctor creates, after the 'fix' crashes my system). 
+
+Goodbye, Norton, hello McAfee -- or ANYBODY else. This rip-off -- deleting Password Manager from Systemworks only to regurgitate it as this bug-filled mess called Norton Confidential -- is the last straw

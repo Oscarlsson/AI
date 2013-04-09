@@ -1,0 +1,5 @@
+I can't even comment on the actual System Works application because I never got it to run - it ruined my system right after install!  Once I installed it, it asked for a reboot, then came back wtih "Load Error!  Press a key to reboot..." which just lead to the error message again, and again, and again. 
+
+A chat with tech support (after an hour wait) revealed that there are problems with the GoBack files, so I had to create a bootable CD, and do all kind of things which I haven't been able to do yet since my burner software doesn't have Image capability - necessary for creating this bootable cd.  
+
+Don't buy it, don't install it, don't use it - uninstall everything Norton/Symantec and never go back.  I'll be lucky if I ever get my computer working again.....Thanks Symantec!!!!

@@ -1,0 +1,1 @@
+i had a problem at the end of the process in that the program indicated no errors, but when you went to print the return, the message stated that there were errors on the return.  i contacted turbo tax directly, but they had no explanation.  they simply said that they had received a couple of calls about this problem.  that was it

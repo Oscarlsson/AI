@@ -1,0 +1,7 @@
+Looks nice... but beware!
+
+Installed Norton 360 on the 6 workstations in our small office.  As soon as I did that our accounting system (Peachtree) started to lock up a few times a day.  Even after turing off the firewall on all workstations the accounting system still locked up.
+
+I've now uninstalled Norton 360 on the server PC and that seems to have solved the problem.
+
+I wish now that I had just upgraded from Norton Internet Security 2005 to 2007...  Never again.

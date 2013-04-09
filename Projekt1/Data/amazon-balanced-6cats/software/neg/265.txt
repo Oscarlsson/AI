@@ -1,0 +1,14 @@
+I bought the software ( Digital Image Suite 2006 ) before I bought my camera - to be ready to process the pictures I was going to take.  
+A BIG MISTAKE.
+
+I bought a Canon 30D camera and record my images in RAW format (*.CR2).
+UNFORTUNATELY, not all Canon .CR2 RAW files are the same.  So, even though the software says you can edit .CR2 RAW images, it depends on which camera made the image.
+
+Here is complaint number two -
+If you use Microsoft's Customer Service/Technical Support you will be routed to India - and they will just give you an answer that is vaguely related to your problem.
+
+After emailing several times and getting nowhere you will find out that you can't write to their Washington state headquarters unless you have the name of someone in the address.
+
+So, basically, Microsoft is the largest technical software company in the world with the worst customer service and no American technical support.
+
+Now, for the final complaint.  There is no link or method to get updates or upgrades for this program!  So, if I want to use a Microsoft software package to edit my photo images then I will have to buy a new software package - isn't that wonderful.

@@ -1,0 +1,17 @@
+&#65279;Sandra; hope you get to read this before giving up on this great little program.
+Check your printer drivers and spooler.  I'm as close to a computer guru as you'd want having
+played with computers in general and PC's in particular since the heady early days of Sinclair,
+Kildall, and Adam Osborne.  Installed Hallmark Card Studio on my beloved's machine several
+years back.  Was immediately impressed with how thoughtfully programed for the beginner - my
+lady took to it immediately - and yet how full featured it was for an advanced user (only wish
+could import export data to other address books, and wouldn't it be great to have a Palm
+conduit?!-)(I digress!-).
+Every new version just gets better to the point 2004 has close to two gigs of cards and imagery.
+In short, Sandra Hallmark Card Studio 2004 IS A KEEPER.
+
+Now, approve of your using 98SE, I recommend to my students (yes I teach computing) not to go
+beyond 98SE and certainly not to connect anything from MS to the InterNet beyond 98SE (little
+thing code name of Palladium!-(
+There can be problems with corrupting printer drivers and notably spool32.  Try removing your
+printer under START &#62;SETTINGS &#62;PRINTERS, restart your computer with the printer on and
+reinstall.  Hope this helps and you learn to enjoy this little gem of a program.  HB

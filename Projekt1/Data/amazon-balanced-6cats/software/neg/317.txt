@@ -1,0 +1,15 @@
+TurboTax has what looks like it would be a geat feature -- the ability to import data from your financial institutions so that you don't have to enter all of your stock sales by hand.  
+
+Some of the cost basis (how much I bought the shares for) was empty, so I had to go in and enter them manually.  No big deal, just took a few minutes.
+
+However, when I went to e-file, the program had flagged these changes as "overrides" to computed values, and refused to let me e-file the return.  Equally bad is that if I just leave the fields empty -- as they came from Charles Schwab, then it looks like I got the stocks for free, and have a huge tax bill (that is incorrect). 
+
+So, after many hours of trying to see if I could change the field so that it would not be flagged as an "override", I determined from other upset users of TurboTax in the forums on intuit.com that I was out of luck.  I'd have to print it out and mail it in.
+
+As a special reward, TurboTax doesn't even tell you what attachments you need to include on the return that you are now forced to mail in.  The help screen says that what it prints out will tell you what to include in the return.  That's wrong.
+
+So, the main reason I got TurboTax was to e-file.  Now, I get to print it out, find out all of the crap that I have to attach to the return, mail it in, then wait for weeks to months to get my return.
+
+Thanks, Intuit!!!!
+
+The saddest part is that H&R Block had sent me a free copy of TaxCut before I bought TurboTax.  I should have used that before I spent $30 on a piece of crap like TurboTax.  Won't do that again

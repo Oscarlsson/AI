@@ -1,0 +1,15 @@
+Isn't this a Mac product? I thought Mac products were supposed to be (A) stable, and (B) easy to use.  This product is stable, (once I upped my RAM to 2GB) but at 512MB it brought the system to a crawl. 
+
+But as far as ease of use--I'm not a dumb guy (although my kids may argue the point) but this product is really a victum of itself. It is too hard for the "Express" audience and is really intended (in my opinion) ONLY for profression Final Cut Pro users.  In other words, if you use Final Cut Pro at work, and want something on your home-Mac, the Express version is a great value. You already know it and people have paid you to get used to it.
+
+But if you're a iMovie user, Pinnacle Systems Studio user, Adobe Premiere Elements 2.0 user, this product seems like I'm trying to fly the Space Shuttle.
+
+How do you output WMV with this product? You can do it in any of the PC-based products, oh, and they also output Quicktime so why does Apple have a hangup about WMV?
+
+I recently asked in an Apple forum "How do you do Picture in picutre?"  I got a great response from an experienced user.  "It only took a couple of minutes, just do these 6 steps..."   Great, in Premiere Elements or Pinnacle, I click on the PIP icon and its done.  I didn't have to do 6 obscure steps.
+
+The product is also one of those old fashion "Million Windows all over the place" applications. You try to minimize the thing by pressing one of the tiny little minimize buttons (like all Mac apps have) and it closes only that window of the app, like the preview window, not the timeline, not the browser.
+
+Bottom line... if you already use, know and love Final Cut Pro, this is a low-cost way to get a similar product on your own PC (although the Academic version of the Pro version is pretty affordable too). 
+
+I don't see the point of this product unless its just to provide a low-cost entry into Final Cut Pro for people who use Pro for a living

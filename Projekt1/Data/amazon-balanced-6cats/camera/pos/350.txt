@@ -1,0 +1,13 @@
+This UV filter does it job to protect the lens well. The build is solid (metal construction). The glass is also descent quality. 
+
+About the performance, it absorbs some UV light. The UV light absorbtion is hardly noticeable, probably the sky 1-A and the haze filter version will absorb more UV light than this lens which is fine for me. 
+
+Now, about the one problem which is the internal reflection. I've heard many people say that it mostly happens during night or low light shooting. I found out that it is not caused directly by the low light/night situation. The internal reflection will appear when there is a strong/bright source of light in comparison to the overall exposure (the surrounding environment). To put it in example (which hopefully is easier to understand), when you take a picture of a lamp during nightime and the light is much brighter than the surrounding area then you will see the internal reflection. as you move the position of the light to be closer to the sides/corner of the picture (and not in the center of the picture), the internal reflection reduces and finally dissapear (if you move the light far enough from the center). And if the light isn't too bright/contrast compare to the surrounding environment then there will be no internal reflection. but of course most of the time, a lamp at nightime is often very bright. But the point that I'm trying to make is that the internal reflection doesn't happen all the time during low light or night time. 
+
+Additionally, the internal reflection isn't only happening at night. it can also happen in the afternoon if you are taking a picture of a sun for example. basically same rule as above, on how bright is the light source compared to the surrounding area, and as you move the sun from the center of the photo and near the side the internal reflection will move to the side/dissapear (also depending the angle). But the best way is just to remove the filter during these situations. 
+
+Hope this explanation helps you to reduce the occurence of internal reflection by identifying correctly when the internal reflection will occur and then remove the filter during those situation (which is not hard to do). 
+
+I'm actually not a fan of lens filter (any filter) as I think it will only degrade picture quality as we added another layer between the sensor and object, but I decided to use them anyway for all my lens. And I would recommend everyone to get one of this filter if you don't have any filter for your lens yet. 
+
+I use this filter on my 50mm f/1.8D lens and on my 18-55mm lens. 

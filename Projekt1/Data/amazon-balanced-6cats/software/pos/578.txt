@@ -1,0 +1,14 @@
+I have used Corel Draw since it was Draw 5 or 6, I can't exactly recall for certain so I guess some would consider me a software guru. I have also used other top level design tools and can tell you the fact is the Corel Draw Suite X3 is a robust design suite that has a very palatable learning curve.
+
+The scope of what you can do with the software is amazing so certainly there is a new set of words to add to one's vocabulary however with terms like Pick Tool, Rectangle Tool, Ellipse Tool, and the like, I believe that it is pretty logical to get an idea of what the tools do just by allowing the mouse pointer to rest over the tool for about three seconds so the application can display the tool name and even the shortcut key to select the tool. 
+
+The icons also give a pretty clear visual representation of what the tool will do e.g. a capital A is the text tool and guess what you do with it ... it allows you to add paragraph text, and artistic text. After you learn a bit about the text tool you also see that it allows you to place text in your document on a path.
+
+The text on a path is just that... text on any path in your document. This can be a freehand line, an ellipse, a circle, or any other shape you care to make. How many of you have ever wanted to put your text in an arch?  In Corel Draw you simply make an ellipse with the ellipse tool, choose the text tool from the tool box, move the mouse pointer over to the ellipse and the mouse cursor changes to the text on a path icon and you click the left mouse button.  Now you type whatever you want around the shape that you have created.  If the text is not the size, color, font, or position you want you can change it, color it, or move it simply by selecting the pick tool.
+
+I have developed a program to teach technology skills to middle & high school students with various disabilities in 46 sites throughout Oklahoma and the Corel Draw Suite is the first software application the students use. Do the students know how to do everything with the software after the first week, or fourth, or tenth? No, but if it took a week to learn it would not be a design tool in would be something like Print Shop Pro where almost everything is done for you and you just type in the text. There is nothing wrong with PSP but if you want to truly be creative, if you want to have the ability to design anything that you can see in your minds eye, then the Corel Draw Suite is the tool you want.
+
+My program has a website that shows some of the work the students in the program have created. Just do a search for Tech-Now Oklahoma High School High Tech and you should be able to find the site. The section on weekly curriculum is a pretty good place to start but I encourage you to look around. Almost everything you will see on the site was created by the students using the Corel Draw Suite.
+
+Corel Draw is a program that can be used in a matter of minutes but is as deep as you can possibly want to go. 
+

@@ -1,0 +1,3 @@
+I wanted to make sure people who look at this product have a full understanding that Adobe Audition 2.0 WILL NOT install on a Windows 2000 Pro or Server operating system. Almost EVERY reference I have seen regarding OS requirements say Windows but not specifically Windows XP. The only exceptions have been on the Audition box itself and this Amazon listing (go Amazon). So if you are a Windows 2000 user understand that you will need XP for this product. If you can find a copy of Audition 1.5 you're good to go.
+
+I would say more about the product if I could actually get it installed but with the 12 PCs I use not a one has XP so I have a $300+ book end until I can upgrade (if you can call it that) to XP

@@ -1,0 +1,5 @@
+This program works after it's installed, but the installation process is unbelievably flawed.  If you have a version of Norton on your computer already, this may cause all kinds of problems with the new installation.  Not only did I have to uninstall all versions (after Norton lets you install the new one), but I had to make a bunch of changes to Windows, also.  
+
+On top of that, while you're struggling to install (I got it on to one computer easily, a second with some difficulty, and the third... well, it's been several days of struggle), Norton counts down the number of days in the subscription.  So if you install on one computer today, and another two months later, then your subscription on all your machines still expires a year from now.
+
+I don't see how Symantec can put out a program that doesn't allow you to upgrade easily... after all these years, they can't fix this major bug?  That's just pathetic

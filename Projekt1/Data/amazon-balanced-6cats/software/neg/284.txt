@@ -1,0 +1,8 @@
+I've had Norton Anti-virus since 2002 on my 2002 Dell machine which meets teh program requirements.    Its gotten so slow as to be really annoying to use.
+It takes 30+ seconds to open a 2 page word document.  When Norton is updating the virus file, the machine slows to a crawl, instead of downloading quietly (and a bit slower) in the back ground
+
+Its slowed the machine to such a great extent that we don't use sleep mode anymore because when the machine is woken up it can take 10 minutes on a DSL to update.
+
+Its so slow that I am trying Kaspersky 6.0.  I don't know if thats better or worse, but since I don't go to "dangerous" sits or perfom lots of downloads its got to be better than teh current state.
+
+The way I look at it - with Norton Anti-Virus my machine functions 100% of the time as if its being slowed by a virus.  Anything is bette

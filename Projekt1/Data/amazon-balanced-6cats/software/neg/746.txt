@@ -1,0 +1,3 @@
+I got Norton Ghost with my new Dell PC, so I thought I would use it for backups to an external USB drive. After about 6 months of 'trying' to use it, I finally gave up and uninstalled it. Reason, most of the backups somehow get corrupted and the software seems to have trouble working with it. Twice I removed all the partial backups and started from scratch, but again after a few weeks the backup agent would hang while doing an incremental backup.
+
+Now, the software is good for making a complete clone of the hard disk or restoring system from an image, but it does not seem to work well with incremental backups

@@ -1,0 +1,14 @@
+After going insane with the new version of Norton Systemworks 2005, which doesn't even install, I decided to finally swear off all Symantec products. 
+
+I have used Zone Alarm Pro for some time. It's not perfect, but it certainly will protect your computer. I took the plunge and went with the full security suite this week, and I've been relatively happy.
+
+On the plus side, the software works really well. The personal firewall is better than any you can find, and the virus protection found a phishing app that Norton had not (before I had unstalled it).
+
+On the minus side, the firewall can be problematic. I've had page load issues on Ebay and on my own site which has a cgi script to keep my images and files from being hotlinked (bandwidth theft). When I visit my site or any other that has a similar anti-theft cgi script, the images simply won't come up. Ebay gets all messed up as well. I haven't been able to figure out a setting that works, so I have to turn off the firewall on Ebay and a few other sites, which kind of defeats the purpose of a firewall. This doesn't happen a lot though, so it's not annoying enough to get my dander up.
+
+All in all it's been a far better investment than Symantec products, so despite its limitations I would recommend this program. It does have a lot of options to set, but they are pretty easy to get through if you are computer literate.
+
+If you decide to go with this program and you currently have Norton Antivirus, you will need to uninstall Norton before this program will run.
+
+If you were to ask me if I preferred Symantec Systemworks or Zone Alarm Security Suite, there would be absolutely no hesitation in recommending Zone Alarm.
+

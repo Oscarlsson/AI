@@ -1,0 +1,9 @@
+The Good- This software completely locks down email access, internet access, network access etc.
+
+The Bad - This software completely locks down email access, internet access, network access etc.  
+
+The UGLY.  I bought a new notebook I was going nuts trying to figure out why Outlook wouldn't send/receive emails, my wireless connection wouldn't work, why new software I was installing wouldn't update over the web, it was taking 5-10 minutes JUST TO RESTART THE COMPUTER!!! Hmmm all these issues started after installing Internet Security 2005.
+
+To be fair I said ok, better make sure I have this set up right...So I took a step back, went to Symantec's site and spent time learning to properly configure the settings, software etc.  Ok great, my bad right?  Wrong.  When I tried adding Comcast's server addresses to the trusted list NIS 2005 would freeze up, I would have to reboot, and 10min later the same thing. 
+
+To make a long story short, I would not reccomend this product for anyone with less than 110% of patience and complete understanding of the product installation and set up.  The best thing about NIS 2005 was it only took 5 minutes to uninstall.

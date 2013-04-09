@@ -1,0 +1,7 @@
+Systemic Mechanic 6 seemed to be helping, since it handled a lot of the advertised functions well. 
+
+However, the "repair broken shortcuts" function does not work properly.  
+
+For a variety of reasons I use a large number of Microsoft Word Shortcuts in my Folder/ File  system.   System Mechanic "repaired broken shortcuts" on a large number of my short-cutted documents by directing the shortcut from the correct file target to the wrong file target.   Now I am pulling up documents which are similar ( but are actually older versions which I have save to an auxiliary hard drive ) or unrelated to the actual, correct target file. This has had severe productivity consequences,  since I have to double check the target of every file opened via a shortcut.
+
+Contacting on-line Help was of no help whatsoever.  

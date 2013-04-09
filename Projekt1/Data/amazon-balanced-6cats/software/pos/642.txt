@@ -1,0 +1,2 @@
+6.6 Ultra is an extremely good CD/DVD burning suite.  It even has an excellent schedule-able backup/restore utility that burns to disk.
+Do NOT use the OEM version - it's like diet Nero.  And do NOT for ANY reason get Nero 7.0.  You have less than a 50% chance that it will work at all.  (I am speaking from experience here!

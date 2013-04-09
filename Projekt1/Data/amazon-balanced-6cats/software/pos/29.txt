@@ -1,0 +1,1 @@
+It has some nice upgrades from version 6.  It is quicker than the previous version. Highlighting text is a bit easier.   It caused a few problems with my officejet 5510xi and its ports, but I found a patch for the officejet and all is well.  It is a product that is helpful in my work

@@ -1,0 +1,9 @@
+I only wish I had read the previous review before I bought this item.  I too was trying to convert my Hi8 tapes to digital format using the pass-through on my Sony MiniDV handycam.  I bought this way-too-expensive cable, mostly because it was the only option available.  It seems ridiculous to me that a cable should cost as much as a low-end disk drive or graphics card, considering the technology involved in those devices.
+
+But my real problem is with the failure of Sony to reveal that the S-video connection is useless for input.  This information is nowhere on the package, nor is it on their website.  There IS a notice saying "please make sure this cable is compatible with your camcorder before you purchase".  You can't read that warning when buying online, and if buying at a store, there's no way to know what's compatible because they don't include a list of compatible camcorders on the package. I guess they assume everyone will run home and check their website, then come back to the store and buy it, instead of just buying it and seeing if it works.
+
+There is a section of the Handycam manual describing how one might record from another video device using a cable such as this one, however they fail to mention that the SONY cable won't work, despite the premium price they charge.  If the problem is that they couldn't make it work with both a composite and S-video cable, then they should have just made it work for S-video, since a composite cable comes with the camera.
+
+Shame on you, Sony, for adding a little aggravation to my day, and shame on you for creating yet another proprietary communications standard that allows you to rake us over the coals when we need to buy accessories supporting that standard.  It's enough to make me want to buy a Canon camcorder (I buy Canon digital cameras precisely because I don't want to submit to proprietary Sony standards like MemoryStick).
+
+Rant over.

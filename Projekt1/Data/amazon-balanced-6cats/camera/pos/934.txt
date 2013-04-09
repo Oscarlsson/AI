@@ -1,0 +1,3 @@
+Multi-element add-on lense used with Kodak DX-7590 provides good wide-angle capability.  Note that this is a very large add-on lense (screws into DX-7590 extension-piece which costs an additional $20).  Does the job well in most portraiture and scenic applications, however two caveats:
+(1) Slight curvature of field in extreme corners of wide-angle shots (ie, corners of shots may be noticeably out of focus).   Suggest cropping to 95% of original picture to maintain sharpness across plane.
+(2) Size of lense will render pop-up flash and outside the lense focusing system (Ultra-sonic) less functional. 

@@ -1,0 +1,1 @@
+This program is good if you want to mold the matrix bit by bit. But if you want to make games in a snap, spring for the professional and get a level editor on a DarkBASIC website

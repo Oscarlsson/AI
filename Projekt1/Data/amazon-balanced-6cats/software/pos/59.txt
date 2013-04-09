@@ -1,0 +1,5 @@
+Great SW, easy to learn, and good graphics.  Really helps visualize the space when you can see it 3D. 
+
+Could be improved if numerous similar objects could be selected and changed simultaneously (e.g., windows, doors, cabinets to get all with the same materials, colors, & hardware rather than one at a time - very labor intensive).  Should warn users to select/create a style and then copy/paste them where needed.
+
+Also, difficult (maybe impossible, because I haven't figured out how to do it) to change a room's/house's overall style once you start a given design

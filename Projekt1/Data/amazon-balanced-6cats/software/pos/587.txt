@@ -1,0 +1,2 @@
+Worked fine for standard items. Did not handle Partnership issues completely. Would be good to have a preview of the finished return before printed (maybe this is possible, but I did not find this function).
+In general, an easy, straightforward program that gets the job done

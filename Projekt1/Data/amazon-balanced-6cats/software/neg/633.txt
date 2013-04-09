@@ -1,0 +1,8 @@
+If, like myself, you have many DX and VST plug-ins installed on your system, then Audition 2.0 is definitely NOT the choice with you.  Somehow, the idiots who made this junk have made it completely incompatible with 3rd-party plugs such as Waves Diamond Bundle.  Oddly enough, this was not a problem in earlier editions of Audition, or its former incarnation, CoolEdit.  But now, Audition crashes irrevocably when trying to use many VST and DX plugs (except, of course, the ones made by Adobe themselves.)
+
+Bottom line?  This software is crap.  Absolute crap.  If you're serious about audio production, go with Wavelab.  Heck, even free multitrack audio software like Kristal works better than this.
+
+If, for some reason, you absolutely need Audition, then go with an earlier, more stable version, such as 1.5.
+
+2.0 is about as useful as a football bat.
+ 

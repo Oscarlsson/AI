@@ -1,0 +1,1 @@
+The video-editing component of this package, Video Wave, worked great for me for about a year, but it has recently turned into a NIGHTMARE!  The audio is anywhere between 2 and 4 seconds out of sync with the video, and after trying everything I'm convinced that its a problem with the code.  A quick product search will show others who have had similar problems.  I would STAY AWAY

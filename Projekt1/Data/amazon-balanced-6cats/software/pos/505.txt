@@ -1,0 +1,17 @@
+Why buy the upgrade when you can buy the full version?
+
+Basically cause it was cheap. You will see, old version, new version, 10.4.6, 10,4,8 and so on. I just bought the old version and installed the latest update. Now I am up to date and for a lot less money which meant I could spend the extra cash on more software for my Mac.
+
+As far as performance, No faster than Jaguar or Panther. The Benchmarks say faster but if you stare at the screen in any version, the 10 nano seconds you save are not noticable.
+
+You will encounter drive issues at some point as this version appears to have issues more often. This seems to be due to the new journaling scheme but I cannot back this up.
+
+If possible I recommend you erase the drive you are installing to. In the disk utility, select the erase tab, and then the security button, Select the zero out data option. Note: you cannot erase a drive but only a volume.
+
+This will clear out any corrupt data and pinpoint any bad or damaged sectors.
+
+The main reason I wanted this was for the widgets. They are a blessing. Calculator, thesarus, package tracking, and many more. Tiger only comes with about a dozen widgets but in the widget configuration button, you will see the more widgets option. You will be directed to hundreds of others widgets for immediate and FREE installation.
+
+My favorite is the weather and radar widget as I work outdoors a lot. I am able to quickly see the latest radar and plan my week, all by press F12. No need to interupt what I am doing on the Mac as the widgets will pop up in my layout and my activities stay active. Click any area other than a widget and they hide away.
+
+If you want to wait for a version of the OSX that allows you to write your own widgets without taking a programming course, wait for Leopard

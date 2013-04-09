@@ -1,0 +1,12 @@
+This software might be recommended if better utilities weren't out there. This one gives the user a sense of security, but when my system crashed, Fix-It couldn't. I dutifully put in the Rescue Disk, booted up on it, restored my earlier system, exited and rebooted.
+
+Nothing. Before I'd been able to get into safe mode, but now nothing. So when I manually restored my system, guess which program got yanked? And it freed up a lot of system resources, too. (Had I known how much before, that alone would have soured me.) My system now runs faster and doesn't lag while typing.
+
+Another small criticism: Even though Fix-It has automatic update for virus scans, I found more often than not I had to go to the VCom site and manually download the anti-virus files. No reason was ever given; I'd just get a message telling me to do it. Very inconvenient.
+
+Also WARNING*WARNING: This program has strict activation. You can only have it on one computer, so forget putting it on your notebook computer. 
+
+Finally, be careful when cleaning your registry. Look at every entry this suite wants to delete. If you run it on default, it may remove critical registry keys and settings. In fact, I'd use a different registry cleaner or some of the free ones. 
+
+Fix-It has some great features, but not enough to make it worth the system resources and a system sluggish system. (Not to mention the anti-virus problem). Try System Mechanic instead. 
+

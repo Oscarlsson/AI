@@ -1,0 +1,11 @@
+I just purchased the top end Dell Dimension XPS (with the 10,000 RPM harddrive) but I still have to allow about 10 seconds for the initial program startup, then it seems to hang for 15 to 20 seconds after that. I usually just go get a cup of coffee when I start ACT and when I come back we are ready to roll.
+
+I also reboot my system every time I close ACT.  The system just seems to run better without any "lingering" remnants of the program in memory.
+
+Whenever I delete a contact the program locks up.  It has done this through several versions.  I simply reboot, restart ACT and it works fine.
+
+At some point ACT changed the date on many (hundreds) of my activities to 11/18/2004.  Now I manually type the date into the call, to do, meeting and note fields to avoid this problem in the future.
+
+I have been an ACT customer since the early DOS days.  I have a huge commitment to the program in that much of my important data is now stored here (and some of it is nowhere else).  It is so difficult to export "all the data" (including notes, history, etc) that I am basically trapped.
+
+My point is, a program like this is not one that you can easily bail out of like Word or Excel, which has some alternatives available which will read your current files.  A lot of the ACT! database is proprietary and while you can purchase a conversion program from a few vendors, it is not a cheap proposition to do so

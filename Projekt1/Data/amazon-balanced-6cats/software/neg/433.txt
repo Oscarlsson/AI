@@ -1,0 +1,14 @@
+Everything the negative reviewers say is true and MORE. Please note the following as well:
+1. If you are a college student taking a class online that uses Blackboard software, Vista will prevent you from posting to the class discussion board and answering any fill-in-the-blank or discussion questions on TESTS! To fix this download the FoxFire browser (free) and use it to access your course. Because Vista uses so much memory and is already so huge, they had to drop quite a few little programs that software needs to access in the Operating system.
+
+2. HUGE MEMORY AND HARD DRIVE DRAIN. 
+Look at this comparison
+Windows XP Professional    Size on drive 1.5 gig    Memory requirements 128 MB
+
+Windows Vista    Needs 15 GIG To Load. Does not say how large the program is but I wouldn't think its small!!! Memory requirements 1 GIG!
+
+If you check the DELL website you will see that they recommend that you have 2 gig of memory to use Windows Vista. That is a few $$$ worth of memory just to run the operating system while openning a program. Try running a game or doing animation with that kind of a sink hole in your system! The less memory you have available, the slower everything, including websites will load (no matter how fast your internet connection) 
+
+ What is worse is that to fix what is wrong with it (ie replace all those small programs your software expects to find in the operating system), they will have to ADD patches that can only make it bigger and hungrier for memory!
+
+This is the most pathetic excuse for an upgrade that I have ever seen. I would expect some lawsuits before this is over! DO NOT BUY THIS PRODUCT

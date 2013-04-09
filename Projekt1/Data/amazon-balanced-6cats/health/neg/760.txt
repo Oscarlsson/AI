@@ -1,0 +1,3 @@
+Fails at it most basic function: to provide a non-leaking seal.
+You might as well throw the top away and just use your hand to cover 
+the top

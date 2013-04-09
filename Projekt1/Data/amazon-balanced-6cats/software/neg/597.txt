@@ -1,0 +1,11 @@
+  I've used PaperPort for years mostly because it was the best of a bunch of poor options. However, Version 11 is buggier than earlier versions: every time I launch a Microsoft Office product, the PaperPort installer starts up.
+
+  There is no reference to this in the PaperPort Help file or in the ridiculously inadequate knowledgebase on the PaperPort site. Another bug imprints a "trial copy" legend on your PDF files. This one is explained in the knowledgebase, but requires you to tinker with the Registry to correct it. That's a bit ridiculous. Why are they distributing code with a known bug?
+
+  Nuance expects you to pay $9.95 for e-mail technical support - even if it's a bug in their own product.
+
+  The product is a modest performer at best, but Nuance's awful technical support policies are the real sinker here.
+
+  I've requested an RMA for a refund.
+
+Jerr

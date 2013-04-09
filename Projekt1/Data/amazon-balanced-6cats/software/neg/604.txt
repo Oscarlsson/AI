@@ -1,0 +1,4 @@
+This review is for Turbo Tax Basic for Mac/PC 2005
+The software is easy enough to use but either out of curiosity or self abuse, I checked the results manually and found a round off flaw contained in the program.  If you are self employed and use Form SE (Self Employment Tax Form) the program fails to round "up" correctly.  The mistake favors the individual and not the Feds.  This is a math error and the IRS can red flag it. 
+ 
+I remember several years ago I purchased the Deluxe or Premire verson and the program recommended that I might consider putting $300 into my IRA in order to lower my tax bracket, it was great!  However subsquent versions did not do this, after which I only purchase the Basic version.

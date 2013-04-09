@@ -1,0 +1,23 @@
+If you're reading this. You want to upgrade, your old computer to Windows XP Professional Edition here are a few things to keep in mind. 
+
+First thing is, you can download service pack two from Windows update. So no need to buy it integrated with XP. 
+
+These are what I consider the minimum system requirements: 
+
+256 MB of RAM. I have found is adequate more equals better. 
+500 MHz or higher will do. 
+7200 rpm hard drive will help a lot. 
+
+If you're running Windows millennium edition, or 98 upgrade now the stability is vastly improved. Gone are the blue screens of death. 
+
+Frequently asked question: is Windows XP Pro better than home edition? 
+
+Windows XP Pro has a more high-end networking features that most home users will never miss or would even know were missing. So for most users Windows home edition is fine. They both are based on the same code and are almost identical. 
+
+If you're thinking of upgrading from Windows 2000, I did, because I like the GUI interface better. But Windows XP is as stable as Windows 2000. So it's your call. 
+
+The plug-and-play ability of Windows XP is totally great! Windows XP will by default find most drivers for video card sound cards, network cards, etc. that is such a bonus gone in the days of having to search for CDs with drivers. 
+
+I recommend upgrading to Windows XP be a professional or home edition. It is a great operating system 
+
+Have some fun and get it done

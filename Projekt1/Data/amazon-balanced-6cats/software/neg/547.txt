@@ -1,0 +1,9 @@
+I switched to Tax Cut years ago after Turbotax (in 2003) implemented their idiotic validation scheme. I figured I was doing my part to punish Intuit / Turbotax. And for all those years I've been happy with Tax Cut.
+
+Not this year. I found some major bugs which cost me a lot of time. I had my return done, but the numbers were seriously out of whack -- I know I didn't have that much income! Going back through the interview process didn't turn up the source of the added money. Only by checking the actual "Forms" did I find that several copies of 1099-Misc forms were hidden from the interview process, and by adding the same data in non-hidden copies, I was double entering the data. There was no easy way to recover. I eventually had to wipe the installation and start all over. 
+
+A call to tech support did absolutely no good. The person on the other end didn't seem to understand the problem with having "hidden" copies of forms going into the calculations. If those are hidden, what else is it doing wrong? 
+
+I'm not quite sure how do deal with this next year. Go back to Turbotax? Hope Tax Cut fixes its problems? Or go to a human tax preparer? 
+
+Whatver my choice, I'm not looking forward to it.

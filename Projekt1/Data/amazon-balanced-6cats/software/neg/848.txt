@@ -1,0 +1,9 @@
+The reviews of this software are a bit harsh, but pretty much true. It slow, is a resource hog, doesn't really like to share the machine with other applications. Support is bad, email transfer to move it to another system just plain doesn't work and it is really hard to make a complete backup with all of your attachments.  And - Windows Vista support is really limited.
+
+That said, if you have a really fast machine it does work well and has features I use every day that I can't get anywhere else. You can save any email as a history record attached to the sender OR any other person in your contact database. These attachments are copies so they stay with the database even if you purge your email (which is nice). 
+
+Email client is simple, but because it ISN'T OUTLOOK - I have personally been almost completely unaffected by worms, virus and other email hazards that have over the years affected most MS Outlook users. This is a feature that has saved me more time than the hassles in the first paragraph.
+
+The program runs smoothly for me but, I have a Core 2 Duo 7200 with 2 gigabytes of RAM. Just about the fastest processor you can get. I think without the maximum processor and memory you WILL have delays and slooow loading times.
+
+One more issue you might have is making backups. Since it uses a SQL database that is open whenever SQL Server is running, a normal backup program might not be able to backup the database file. You need to stop the service first. This is a hassle that if you don't know about you might be setting yourself up for disaster.

@@ -1,0 +1,3 @@
+Contrary to the other review, they did ship the proper 3 user version. 
+
+However, since installing it yesterday it is consuming 100% of my systems resources and I can not find any setting to have it stop. Evidently it does continuous deep virus scans so you might as well toss your computer in the garbage. What a mess of a product.

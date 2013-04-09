@@ -1,0 +1,13 @@
+This is not the best way to get started in astronomy. 
+
+The low power eyepiece is fairly useful, the higher power one less so, and don't even think of using the barlow.  The maximum useful magnification for a 60mm scope is about 120-140x, assuming the objective lens is of good quality. When you use the middle and high magnifications provided with this scope, you exceed that limit and the increased image size is more than offset by breakdown.  
+
+To their credit, the manufacturer has provided a reflex "red dot" finder in place of the useless 5x24 finders that plague so many similar scopes.  
+
+Even so, what you can expect to see in this scope is rather limited.  Some star clusters will be dimly visible, but galaxies and nebulae will be barely--if at all--visible. 
+
+In a way, it is hard to fault Celestron for making and marketing this scope.  Their upper-tier instruments are quite good, but the big money appears to be made on mass market toys like this.  In one sense the sale of these scopes subsidizes their good models.  Just make sure, gentle reader, to stay away from the toys.
+
+Using an astronomical telescope is not like playing an MP3 file and but rather like playing a guitar. It is a learned skill. And you must do a lot of homework before you buy a telescope. Buying without prior experience is like buying a car without knowing anything about driving. If you want to see the wonders of the sky, contact your local astronomy club and attend one of their star parties. The members love sharing their hobby and can set you straight as to how to get started. The best way is to learn the sky with the unaided eye and 10x50 binoculars (decent ones are available on Amazon), then graduate to something along the lines of a 150-200mm (6-8") Dobsonian; Celestron's own 6" Starhopper can be found on Amazon for under $290.
+
+For more information on buying telescopes, see my encyclopedic guide on Amazon: "So you want to buy a telescope.

@@ -1,0 +1,11 @@
+Overall its a fine viewer however it has a couple of problems.
+
+#1) it would be really nice if there was a way to copy pictures off of a SD card and into memory and vice versa. This would be invaluable for moving pictures around without having to hook things up to a computer.
+
+#2) hooking it up to a computer is a pain, instructions are not helpful. If you are using the viewer to look at images off of SD cards in remote places (ie trailcamera) it works fine, but I'd like the ability to move pictures off of a card into the viewers internal memory so I can leave the card with the trailcamera.
+
+#3 this is nasty, if you cycle through the pictures too fast you can "crash" the viewer. Upon resetting it, it will say there are no pictures found on the memory card. Powering off, swapping cards wont help it read. The pictures are still there however but you need to then access the card directly through a computer to extract. Reformat the card and it will be fine with the reader.
+
+For what I use it for I like it even though it has quirks that must be worked around.
+
+

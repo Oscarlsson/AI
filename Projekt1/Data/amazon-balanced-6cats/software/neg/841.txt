@@ -1,0 +1,7 @@
+Since buying the upgrade of windows XP i have had to reinstall
+it 3 times -onto a clean hard disk- The first time it just disappeared and turned into a blue screen,with messages that hive files were gone missing? 2nd time round the registery got
+corrupted and the last time it refused to boot,and not wanting
+to have to trall through another install i used the XP CD to try the recovery consol. This was as much use as a cigarette
+lighter on a motor bike. None of the commands worked,and even trying the help file was useless. There seems to be a serious
+problem with system restore in XP, and im fully updated with all the latest SPacks,and stacks of space on my hard disk  alotted to SR! Check dates will disappear and when you really need ST to get you back and running -it goes pear shaped! I now running 3 restored version of XP completly backed up on a seperate hard disk using Power Quests Drive image.
+My experences with XP are ITS NOT RELIABLE..

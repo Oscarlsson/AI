@@ -1,0 +1,5 @@
+The new Nikon EN-EL3e battery is a slight update for the Nikon EN-EL3 provided with earlier dSLR models such as the D70. It adds a contact that allows new cameras to determine how much charge is left in the battery. The battery is grey to distinguish it from the black EN-EL3.
+
+The EN-EL3e is backwards compatible with the EN-EL3: you can put it in your D70 or D50. The reverse is not true.
+
+The number of pictures that the battery gives you depends on a lot of factors, including shooting style, LCD usage, and of course, camera. (The 2.5" LCD on the D200 will use up the battery much quicker than the smaller D70.) It is sufficient for a day of shooting. Unless you are using a D200 in some professional capacity, in which case, you'll probably be investing in at least one backup battery

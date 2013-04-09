@@ -1,0 +1,1 @@
+Font manager is not user friendly.  There is no logical indexing or grouping of fonts.  User is forced to hunt and peck

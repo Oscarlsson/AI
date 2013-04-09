@@ -1,0 +1,16 @@
+I've been working with Punch AS/4000 since v10.0 was released (about 12 months ago). Although I agree in many respects with the positive reviews. For example, there are is a large feature list. However, there are issues with the software. For example: 
+
+- Hard coded limitations in the software design (e.g. four possible scale options for printing, does not support Grid Snap smaller than 3/8" or 10mm - which seriously complicates moving things around on a drawing with any degree of precision, very tiny dimension text on Windows, etc.)
+- Inaccuracies: I printed a 1:100 scale drawing that came out at 1:94 approximately;
+- I couldn't fit a scale house drawing on 8.5 X 11 paper, no print preview;
+- There are limitations and inconsistencies with dimensions (i.e. placement, snap to geometry, etc.)
+- The PowerTools seem to be a series of independently developed add on modules that don't necessarily conform with the application interface (e.g. precision, look and feel, functionality)
+- The elevation editor is very limited. It basically provides a visual representation of the drawing with some editing and texture applications
+- Can't differentiate exterior wall treatments independently from the wall surface (e.g. brick and siding on the same floor).
+- Object library is very limited for plumbing fixtures, furniture, windows, etc. Common items aren't in the library nor are they easy to find. (You can create them yourself though).
+- The 3D object editor is ok but not terribly intuitive.
+- Multi-floor buildings get complicated to work with once you add floors or ceilings.
+- Once you add objects, drawings get big and slow very quickly.
+- Import/Export is limited
+
+In short AS/4000 could use an overhaul, an updated object library, a major upgrade to scale and printing and an overall clean-up to create a more integrated and functional product. Also, incorporate user feedback into future releases

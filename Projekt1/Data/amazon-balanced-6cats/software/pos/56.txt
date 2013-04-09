@@ -1,0 +1,13 @@
+First, if you're thinking about using these photos for print, you may wish to think again.  Most objects run between 300-600 pixels in width or height, or 1-2 inches at 300 DPI.  Stretch them bigger than that, and they'll start to blur and/or get jagged.
+
+Also note, that if you try to export/save an image from the Hemera Image browser and select the 300 DPI setting, the browser may stretch the graphic larger than it's actual size, causing blurring and jaggedness right out of the gate.
+
+You need to use the "Use Image's Full Size" checkbox when exporting images.  If you specify a 300 DPI size, and don't use that checkbox, you'll get a stretched image.  
+
+For example, the first image in the collection (the pocket watch) is only 384 pixels wide. If you specify 300 DPI and don't check the "Use Image's Full Size" box, the software will stretch it to 642 pixels wide.  The stretching will cause the image to look fuzzier and/or more jagged when you use it in a web site or print project.
+
+All that said, if you're going to use the images for the web, they're great.
+
+You get almost all the images you'd find in their three "Photo Objects" collections, each of which is much more expensive than this single collection.  The difference is the Photo Objects collections offer about 20-30% higher resolution (i.e. the first image in the collection is 384 pixels wide, but is 492 pixels wide in Photo Objects) and you can save the Photo Objects images with transparent backgrounds (while this collection forces you to specify a color for the background).
+
+For the price, this is a good collection.  There are lots of shots with minor variations, so it may seem like duplication, but for someone trying to get something just right, that slightly different tilt of the head may be just what the doctor ordered

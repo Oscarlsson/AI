@@ -1,0 +1,10 @@
+The new office 2007 is completely revamped from older versions and is well worth the four year wait.
+
++'s
+1.New Interface with improved accessibility to all features, you can reach all the features that were hidden away inside those menus and no need to memorize the menu contents/options.
+2. If you are a developer you can write your own custom panes using Visual Studio.
+3. Great Plug-ins (like the save as PDF/XPS thing available as a free dwnld), massive clip-art/template library.
+
+-s
+1.Overpriced by about 40%. Somwhere around 250-300 wud have been the right price for the Pro Edition.
+2. Some backward compatability issues with the document formats and templates and doesn't work with Adobe Acrobat as of now

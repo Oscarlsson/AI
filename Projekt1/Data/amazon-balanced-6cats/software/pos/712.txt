@@ -1,0 +1,5 @@
+I was happy enough with the function of Office XP, and held off upgrading for a long time.  What pushed me over was when I switched to using Outlook as my email client, accessing quite a few POP3 email accounts for various websites.  Getting a spam filter to work smoothly under that circumstance was nasty: I spent many hours in addition to the fees for programs that were clunky and could never be kept working.
+
+Well, Office 2003's Outlook comes with it's own spam filter.  It works, it's simple and it's unobtrusive.
+
+The other programs have a nicer look and a few bells and whistles, but the upgrades I appreciate most are in Outlook

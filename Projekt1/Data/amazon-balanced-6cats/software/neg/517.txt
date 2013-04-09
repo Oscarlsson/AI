@@ -1,0 +1,15 @@
+I have used Spyware Doctor since version 3 -- almost three years now.  I liked the interface and simplicity -- and the power.  But as others have pointed out, including industry reviews, version 4.x was a HUGE drain on system resources.  My PC's would take anywhere from 5-9 minutes to completely boot up, with Spyware Doctor using almost 100% CPU the whole time.  Also, my computers would frequently "freeze," which turned out to be Spyware Doctor randomly zooming to 95-100% CPU for no reason at all.
+
+But with version 5, things are so much worse.  About 3 weeks ago, my PC's lost their ability to connect to the Internet.  Browsing slowed to a crawl, with frequent timeouts and "server not found".  I spent days on the phone with my cable company, and my router's manufacturer, trying to troubleshoot.  I re-configured my entire home network over and over.  I never made the connection between the onset of problems and my updating to SD5.  It was only after finding the PCTools support forums that I realized the problem was Spyware Doctor.
+
+I removed the program from my PC's -- and the problems were gone.  I had full Internet connection and full speed again.
+
+Spyware Doctor 5 is causing massive problems for users.  PCTools rewrote the program from the ground up, the company says, to improve the resource drain caused by version 4.  But apparently it was rushed to market even though beta testers reported many of these same problems for weeks.
+
+I've uninstalled this software and am basically wasting my subscription and losing money.  Other users are right -- PCTools does indeed "auto-renew" and charge your credit card without warning.  This is a huge red flag.  I lost hours, DAYS, dealing with the problems caused by this program.  Many users have had to reinstall Windows completely.
+
+It's easy to get caught up in the hyperbole and negative reviews.  But don't just take these at face value -- read the Spyware Doctor forum at PCTools' website.  These problems are real.  And it doesn't look like they're going to be addressable anytime soon.  They've issued a couple of version updates, even removed several of the program's protection "Guards", but these haven't fixed the problems.  And they're not giving any kind of timeline or explanations to users.
+
+My advice -- stay away for now.  But keep up with the forums at PCTools' website.  When they finally get the issues resolved, this should be a really strong spyware program.
+
+* PCTools has also been criticized for offering a "Free spyware scan" on their website (actually a download of SD), which will find spyware on your system but refuse to remove it until you buy a subscription to Spyware Doctor.  This kind of sleazy bullying isn't normally characteristic of reputable companies -- most will give you an actual free trial with functioning software

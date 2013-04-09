@@ -1,0 +1,10 @@
+After years of using Symantec Norton Antivirus and related internet security products, the upgrade to 2007 seemed like a no brainier.  That was until the install started.  If you run into error 9999,171 you may as well give up, it is over.  
+
+Following the Symantec directions for resolution of the dreaded 9999,171 error caused the entire windows XP install to be corrupt and necessitated reinstallation.  Believing that a reinstall was not all bad as it would clean up several old and no longer used software pieces and provide a clean base for installing Symantec I marched forward.  Once XP was installed and current with the patches it was time to install Symantec again.  No luck, I was still receiving the 9999,171 error.
+
+Now it was time to get someone on the phone for support.  This is a good trick since Symantec does not readily publish a phone number for support.  The number by the way is 877-832-2810.  Be prepared for a long wait on hold.  During four support calls I experienced no less that 40 minutes on hold and the longest was over one hour.  Support is provided by offshore resources in India so not only are you fighting a technical problem you must also overcome the language barrier.
+
+The four separate calls to support resulted in multiple steps to clean up old installs, prep for install, reboot, reinstall, hack through the registry, and oh yah corrupt windows XP again needing a second reinstall.  During the final call, the support rep finally gave up and indicated the Symantec could not be installed on this Windows XP machine.
+
+I have since moved on to McAfee Internet Security Suite 2007.  The install took about ten minutes and I am now up and running again.
+

@@ -1,0 +1,16 @@
+I bought a new state-of-the-art computer in February that came preloaded with Windows Vista. I was initially excited to get a computer that was running the newest operating system, and I hoped it would mean that my computer would have a much longer effective life. I have been nothing but disappointed since receiving this machine, especially knowing that had I called Dell, they would have installed XP instead.
+
+PROs:
+-Better security (it prompts me & allows me to stop some of the annoying "automatic" programs that software makers sneak onto your system)
+-Better appearance (this is strictly cosmetic, and I'd rather stare at an ugly screen that worked rather than a pretty, useless one)
+
+CONs:
+-FREEZING: I use this computer 2-3 hours a day and I can expect 1-2 freezes/day. Restarting often fails, and I have to cut the power and restart again.
+-DISPLAY PROBLEMS: although the cosmetics of the program were better, Vista can't display anything right. I tried updating the display driver which caused a major crash after restarting. I had to boot in safe mode and rollback the driver to get my computer back. Apparently, the newest display drivers are incompatible with Vista.
+-INCOMPATIBILITY: Entirely too many programs are incompatible with Vista, including some fairly big ones (lots of Adobe software, iPods, display drivers, etc.) I know Vista is new, and these software companies are slow to adapt, but does it really make sense for an operating system like Vista to render virtually all of my other software obsolete? Why can't Vista play nicely with the other kids?
+-ITS SLOW!!!-- Part of the reason I bought a new, state-of-the-art computer was to replace my old laptop (which still runs OK, but has become a little buggy & sluggish in the past 4 years). Although this computer is light years ahead of the old one, it actually runs EVEN SLOWER than my old laptop. Technical support has largely attributed this to the demands of Vista.
+
+BOTTOM LINE:
+1. IF YOU ARE NOT GOOD WITH COMPUTERS, AVOID VISTA LIKE THE PLAGUE
+2. VISTA IS A RIP-OFF. Save your money and keep/get XP-- I'm probably going to return my computer and make the manufacturer install XP so I can regain some speed and system stability. Maybe in the future Vista will work OK, but not right now...
+3. The incompatibility issues-- though there are several-- conspicuously include problems with Mac-oriented software (iPod, Adobe). I can't help but feel that Microsoft built-in these specific incompatibility issues in order to battle Apple

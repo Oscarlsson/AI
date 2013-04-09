@@ -1,0 +1,11 @@
+The new  look is very nice.
+
+BUT, when you install, you have also to keep the previous version (in well behaved software, automatically the previous version is cleaned... not here).
+
+The system of validation of License through Internet for the physical machine is fine, I just hope that I will not have a disk crash and then waste time to be authorised to re-install a product that I rightfully paid (and at such a price).
+
+Well, make sure you:
+- do not try to de-install 5,5 after the install of CS2 (or bye-bye the license)
+- have a clean and robust backup of your installation....
+
+I am not sure I will make the next upgrade....

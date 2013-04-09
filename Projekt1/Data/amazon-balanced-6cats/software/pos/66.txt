@@ -1,0 +1,20 @@
+Adobe has totally re-done the interface to streamline it and make it cleaner from versions prior to CS.  If you are a QuarkXpress user, you'll find that in InDesign CS2, you get the feeling that it is laid out in a logical and easy-to-use manner.  The tools and tool palettes are where you'd expect them to be in the menu structure and on the screen.  Small touches like being able to save your workspace, like you can do in Photoshop CS2, are great.
+
+I tested the integration between InDesign CS2 and some of its counterparts in the Adobe Creative Suite Premium.  I created different graphics in Photoshop CS2 and Illustrator CS2 and I found it was really easy to import them into InDesign CS2 and use.  You can effects like drop shadows and feathering to images directly in InDesign CS2.  No need to go to another program.  With the Control Palette you can also resize objects too.  This palette functions with Transform and Stroke features for graphics, and it includes paragraph, character and table features for text editing.  What the palette does is affected by the type of selection you have made - either graphic or text. 
+
+I imported some formatted text in from Microsoft Word 2003 and two different tables in from Microsoft Excel 2003.  I was concerned how the tables would appear after the import from Microsoft Excel.  The tables imported easily. With InDesign CS2, you can now automatically style Microsoft Word files on import by mapping Word styles to InDesign CS2 styles as well.
+
+An issue for a long time has been how to preview or view other types of files that you want to incorporate with InDesign CS2.  Now, Adobe "bridges" that gap.  Bridge now comes as a part of InDesign CS2 and the Premium Suite.  So, viewing any Adobe-type formatted file or standard graphic format is easy to do.  Using the same interface between the different programs is a help as well.  Adobe Bridge is a standalone program.
+
+Being a Web Designer and using Adobe (formerly Macromedia) Dreamweaver 8, I was familiar with using Snippets.  These are portions of code you can save for use in other programs or you can export them to give to someone else.  Now,  InDesign CS2 offers this Snippet capability.  You can export objects as snippets. These objects can be shared or reused in other documents. Simply place or drag a snippet into a layout, and  InDesign re-creates the original objects, their formatting, and their relative positioning on the page.  No more wasted time redesigning, just to get something you have brought in from another document to fit.
+
+InDesign CS2 also now has an Info palette that is just like those found in Photoshop and Illustrator.  Size dimensions and resolution are immediately available by selecting the graphic and simply glancing over to the Info palette.  This is a crucial tool when fitting graphics in a specifically space-limited area.  It's important to know the actual dimensions with which you are working.
+
+Sometimes in designing and re-designing printed work, you have to move objects.  When this happens, your structure can often change in different ways.  InDesign CS2 helps you maintain your layout by allowing you to anchor your callouts, pull quotes, margin notes, and graphics to text. You can now precisely control the positioning of Anchored Objects, apply text wrap settings, and more.
+
+As with other Adobe products, it is very easy to export your finished work in PDF format.  InDesign CS2 works so well at exporting to PDF, it even maintains the layers in Acrobat 7.  You can pre-define your Acrobat export settings as well.  InDesign CS2 also supports specialty PDF formats like PDF/X-1a and PDF/X-3, which are used in workflows.  It also supports high-resolution CMYK output and color-managed workflows.
+
+If you are familiar with previous versions of InDesign, the upgrade to the new version is easy.  InDesign CS2 is even backwards compatible CS.  You will find that your learning curve is greatly decreased.
+
+Loren Elks, Group Manager
+D-MAG.or

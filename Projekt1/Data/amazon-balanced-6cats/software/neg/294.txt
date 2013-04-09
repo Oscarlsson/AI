@@ -1,0 +1,8 @@
+The positive about PCcillin is that it seems to work okay.  It scans email and the firewall works okay.
+
+The negatives:
+- It supplies a lot of warning requests.  This would be good, but they aren't explained in an easily understood dialog so you end up answering yes to permission requests without always knowing if that's the best choice.
+- Even though it supplies 3 license keys the program is a little buggy and sometimes loses the keys.  If it loses the keys it disables the ability to update or click the customer service live chat button.  The process of restoring the key on the computer isn't too hard, but requires a bit of assistance from customer support.
+- Customer service is slow.  Sometimes I've been lucky and gotten into support chat right away, but sometimes I've had to wait 40 minutes or more.  The support personnel don't seemed to be trained technicians, but just phone support people reading through a manual with canned answers.  Getting to the right answer can take a long time and a lot of trial and error.
+
+I have used PCcillin for about 2 years now.  The latest version definitely isn't as good as it's previous versions.  I wouldn't recommend this product

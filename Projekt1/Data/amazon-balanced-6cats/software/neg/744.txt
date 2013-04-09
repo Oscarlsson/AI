@@ -1,0 +1,5 @@
+I should have listened to the other reviewers...  I wanted to replace my C: drive with a faster one, and Ghost 10.0 says it can do it, but don't be fooled.  Even if you follow the extra steps from their support site (which are not in the documentation), you will end up with an unusable copy that will boot up but then fail with assorted catastrophic errors.
+
+It will also give you occasional error messages that are neither in the documentation nor on their support site.
+
+A friend recommended Acronis TrueImage which I ended using instead.  It's much easier to use, copies about 2x faster than Ghost, and best of all it works.  I cloned and replaced C drives from two laptops in a couple of hours with no problems. 

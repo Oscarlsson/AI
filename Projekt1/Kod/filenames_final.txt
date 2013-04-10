@@ -1,6 +1,3 @@
-../Data/amazon-balanced-6cats/
-../Data/amazon-balanced-6cats/books
-../Data/amazon-balanced-6cats/books/neg
 ../Data/amazon-balanced-6cats/books/neg/1.txt
 ../Data/amazon-balanced-6cats/books/neg/10.txt
 ../Data/amazon-balanced-6cats/books/neg/100.txt
@@ -1001,7 +998,6 @@
 ../Data/amazon-balanced-6cats/books/neg/997.txt
 ../Data/amazon-balanced-6cats/books/neg/998.txt
 ../Data/amazon-balanced-6cats/books/neg/999.txt
-../Data/amazon-balanced-6cats/books/pos
 ../Data/amazon-balanced-6cats/books/pos/1.txt
 ../Data/amazon-balanced-6cats/books/pos/10.txt
 ../Data/amazon-balanced-6cats/books/pos/100.txt
@@ -2002,8 +1998,6 @@
 ../Data/amazon-balanced-6cats/books/pos/997.txt
 ../Data/amazon-balanced-6cats/books/pos/998.txt
 ../Data/amazon-balanced-6cats/books/pos/999.txt
-../Data/amazon-balanced-6cats/camera
-../Data/amazon-balanced-6cats/camera/neg
 ../Data/amazon-balanced-6cats/camera/neg/1.txt
 ../Data/amazon-balanced-6cats/camera/neg/10.txt
 ../Data/amazon-balanced-6cats/camera/neg/100.txt
@@ -3003,7 +2997,6 @@
 ../Data/amazon-balanced-6cats/camera/neg/997.txt
 ../Data/amazon-balanced-6cats/camera/neg/998.txt
 ../Data/amazon-balanced-6cats/camera/neg/999.txt
-../Data/amazon-balanced-6cats/camera/pos
 ../Data/amazon-balanced-6cats/camera/pos/1.txt
 ../Data/amazon-balanced-6cats/camera/pos/10.txt
 ../Data/amazon-balanced-6cats/camera/pos/100.txt
@@ -4004,8 +3997,6 @@
 ../Data/amazon-balanced-6cats/camera/pos/997.txt
 ../Data/amazon-balanced-6cats/camera/pos/998.txt
 ../Data/amazon-balanced-6cats/camera/pos/999.txt
-../Data/amazon-balanced-6cats/dvd
-../Data/amazon-balanced-6cats/dvd/neg
 ../Data/amazon-balanced-6cats/dvd/neg/1.txt
 ../Data/amazon-balanced-6cats/dvd/neg/10.txt
 ../Data/amazon-balanced-6cats/dvd/neg/100.txt
@@ -5006,7 +4997,6 @@
 ../Data/amazon-balanced-6cats/dvd/neg/997.txt
 ../Data/amazon-balanced-6cats/dvd/neg/998.txt
 ../Data/amazon-balanced-6cats/dvd/neg/999.txt
-../Data/amazon-balanced-6cats/dvd/pos
 ../Data/amazon-balanced-6cats/dvd/pos/1.txt
 ../Data/amazon-balanced-6cats/dvd/pos/10.txt
 ../Data/amazon-balanced-6cats/dvd/pos/100.txt
@@ -6007,8 +5997,6 @@
 ../Data/amazon-balanced-6cats/dvd/pos/997.txt
 ../Data/amazon-balanced-6cats/dvd/pos/998.txt
 ../Data/amazon-balanced-6cats/dvd/pos/999.txt
-../Data/amazon-balanced-6cats/health
-../Data/amazon-balanced-6cats/health/neg
 ../Data/amazon-balanced-6cats/health/neg/1.txt
 ../Data/amazon-balanced-6cats/health/neg/10.txt
 ../Data/amazon-balanced-6cats/health/neg/100.txt
@@ -7009,7 +6997,6 @@
 ../Data/amazon-balanced-6cats/health/neg/997.txt
 ../Data/amazon-balanced-6cats/health/neg/998.txt
 ../Data/amazon-balanced-6cats/health/neg/999.txt
-../Data/amazon-balanced-6cats/health/pos
 ../Data/amazon-balanced-6cats/health/pos/1.txt
 ../Data/amazon-balanced-6cats/health/pos/10.txt
 ../Data/amazon-balanced-6cats/health/pos/100.txt
@@ -8010,8 +7997,6 @@
 ../Data/amazon-balanced-6cats/health/pos/997.txt
 ../Data/amazon-balanced-6cats/health/pos/998.txt
 ../Data/amazon-balanced-6cats/health/pos/999.txt
-../Data/amazon-balanced-6cats/music
-../Data/amazon-balanced-6cats/music/neg
 ../Data/amazon-balanced-6cats/music/neg/1.txt
 ../Data/amazon-balanced-6cats/music/neg/10.txt
 ../Data/amazon-balanced-6cats/music/neg/100.txt
@@ -9012,7 +8997,6 @@
 ../Data/amazon-balanced-6cats/music/neg/997.txt
 ../Data/amazon-balanced-6cats/music/neg/998.txt
 ../Data/amazon-balanced-6cats/music/neg/999.txt
-../Data/amazon-balanced-6cats/music/pos
 ../Data/amazon-balanced-6cats/music/pos/1.txt
 ../Data/amazon-balanced-6cats/music/pos/10.txt
 ../Data/amazon-balanced-6cats/music/pos/100.txt
@@ -10013,8 +9997,6 @@
 ../Data/amazon-balanced-6cats/music/pos/997.txt
 ../Data/amazon-balanced-6cats/music/pos/998.txt
 ../Data/amazon-balanced-6cats/music/pos/999.txt
-../Data/amazon-balanced-6cats/software
-../Data/amazon-balanced-6cats/software/neg
 ../Data/amazon-balanced-6cats/software/neg/1.txt
 ../Data/amazon-balanced-6cats/software/neg/10.txt
 ../Data/amazon-balanced-6cats/software/neg/100.txt
@@ -10930,7 +10912,6 @@
 ../Data/amazon-balanced-6cats/software/neg/97.txt
 ../Data/amazon-balanced-6cats/software/neg/98.txt
 ../Data/amazon-balanced-6cats/software/neg/99.txt
-../Data/amazon-balanced-6cats/software/pos
 ../Data/amazon-balanced-6cats/software/pos/1.txt
 ../Data/amazon-balanced-6cats/software/pos/10.txt
 ../Data/amazon-balanced-6cats/software/pos/100.txt

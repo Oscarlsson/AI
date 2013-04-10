@@ -7,63 +7,77 @@ from collections import *
 #note the file english_word_stops.txt must be in the working directory 
 
 def run():
-	s = "" 
+    filenames = "" # To be printed to filenames.txt in the end...
 
-	try: 
-	    for line in sys.stdin:
-		f = open(line.strip('\n'))
-		output =  count_words(f.read());
-		label = get_label(line)
-		s = s + "------New Doc------- " + label + " ---------\n" +  output 
-		f.close()
-	except:
-	    print "failed to open input files"
-	    raise
-	    sys.exit(1)
+    print "Reading files..."
+    try: 
+        wordSet = set() # Set of all observed words
+        cList = [] # One Counter object for each document
+        for line in sys.stdin:
+            f = open(line.strip('\n'))
+            filenames = filenames + line
+            
+            c = count_words(f.read()) # Counter
+            cList.append(c)
+            wordSet = wordSet.union(c.keys())
 
-	try:
-	    f = open('output.txt','w')
-	    f.write(s)
-	    f.close() 
-	except:
-	    print "not allowed to write to output.txt"
-	    sys.exit(1)
+            f.close()
+    except:
+        print "failed to open input files"
+        raise
+        sys.exit(1)
 
+    print "Creating dictionary..."
+    d = dict()
+    for i, word in enumerate(wordSet):  
+        d[word] = i # Map each word to an index
 
-#Returns label 1/-1 depending on if given path has "neg" or "pos"
-def get_label(line):
-	if "pos" in line:
-		return "1"
-	else:
-		return "-1"	
+    print "Creating output..."
+    s = ""
+    for c in cList:
+        for word, count in c.items():
+            # Replace word with d[word] (index) in output:
+            s = s + str(d[word]) + ':' + str(count) + ' '
+        s = s + '\n'
 
+    print "Printing output..."
+    try:
+        f = open('output.txt','w')
+        f.write(s)
+        f.close() 
+    except:
+        print "not allowed to write to output.txt"
+        sys.exit(1)
+
+    try:
+        f = open('filenames.txt','w')
+        f.write(filenames)
+        f.close() 
+    except:
+        print "not allowed to write to output.txt"
+        sys.exit(1)
 
 #Input filename
 def count_words(s):
-	try: 
-	    f = open("english_word_stops.txt")
-	    common_words = f.read().split()  
-	    f.close() 
-	except:
-	    print "can't find file english_word_stops.txt"
-	    sys.exit(1) 
+    try: 
+        f = open("english_word_stops.txt")
+        common_words = f.read().split()  
+        f.close() 
+    except:
+        print "can't find file english_word_stops.txt"
+        sys.exit(1) 
 
-	rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
+    rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
 
-	s = filter(lambda x : not x in rm,s) 
+    s = filter(lambda x : not x in rm,s) 
 
-	ss = s.lower().split() 
+    ss = s.lower().split() 
 
-	c = Counter(ss)  
+    c = Counter(ss)  
 
-	for elem in common_words:
-	    del c[elem]  
+    for elem in common_words:
+        del c[elem]  
 
-	output = ""
-
-	for elem in c.most_common(len(ss)):
-	     output = output + str(elem) + '\n'
-
-	return output
+    return c;
 
 run()

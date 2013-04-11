@@ -1,6 +1,6 @@
 clear;
-wordcount = fmatrix('../output_final.txt');
-filenames = importdata('../filenames_final.txt');
+wordcount = fmatrix('../Datamanipulation/output_final.txt');
+filenames = importdata('../Datamanipulation/filenames_final.txt');
  
 emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);
 wordcount(emptyDocuments) = [];

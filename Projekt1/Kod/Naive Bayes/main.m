@@ -1,29 +1,27 @@
+%% Setup, data.
+
 clear;
-wordcount = fmatrix('../Datamanipulation/output_final.txt');
+wordcount = fmatrix('../Datamanipulation/output_final.txt', 1);
 filenames = importdata('../Datamanipulation/filenames_final.txt');
  
+% Delete unused documents. Does not have any other implications.
 emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);
 wordcount(emptyDocuments) = [];
 filenames(emptyDocuments) = [];
 
-% TODO: Change the preprocessing Python script to 
-% output word indices from 1:N instead of 0:N-1 .
-MINWORDINDEX = 0;
-if MINWORDINDEX == 0
-    WORDINDEXCORR = 1;
-else
-    WORDINDEXCORR = 0;
-end
-
-nClasses = 2;
-nWords = max(cellfun(@(x) max(x.id), wordcount)) + WORDINDEXCORR;
+nWords = max(cellfun(@(x) max(x.id), wordcount));
 nDocuments = length(filenames);
+
+%% Classes initialization
+nClasses = 2;
 
 classes = zeros(1, length(filenames));
 % Read filenames, set labels 1 = "neg", 2 = "pos"
 for i = 1:length(filenames)
     classes(i) = isempty(strfind(filenames{i}, 'neg')) + 1;
 end
+
+%% NB start
 
 % Setup Pc(c) =
 %   = P(c) =
@@ -37,11 +35,11 @@ end
 Pwc = ones(nWords, nClasses); % Note: ones. Not zeroes. Laplace smoothing.
 for d = 1:nDocuments
     class = classes(d);
-    for w = 1:length(wordcount{d}.id)
-        wordId = wordcount{d}.id(w) + WORDINDEXCORR;
-        wordCount = wordcount{d}.cnt(w);
-        Pwc(wordId, class) = ...
-            Pwc(wordId, class) + wordCount;
+    for i = 1:length(wordcount{d}.id)
+        docWordId = wordcount{d}.id(i);
+        docWordCount = wordcount{d}.cnt(i);
+        Pwc(docWordId, class) = ...
+            Pwc(docWordId, class) + docWordCount;
     end
 end
 % Normalize Pwc: Divide each element by the column sum.

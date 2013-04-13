@@ -1,10 +1,10 @@
-function [ class ] = NaiveBayesImpl( document, Pc, Pwc, WORDINDEXCORR )
+function [ class ] = NaiveBayesImpl( document, Pc, Pwc )
 %NAIVEBAYES This method returns a class label for the input args
 %   Detailed explanation goes here
 
 % Select from Pwc = P(w|c) only those words that occur in
 % the document (by document.id).
-wordProbabilities = Pwc(document.id + WORDINDEXCORR, :);
+wordProbabilities = Pwc(document.id, :);
 
 % Sum logs instead of multiplying probabilities.
 % Also, calculate all classes at once.

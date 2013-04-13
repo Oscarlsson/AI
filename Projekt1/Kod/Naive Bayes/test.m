@@ -4,7 +4,7 @@ nWrong = 0;
 results = [];
 for testId = 1:length(wordcount)
     realClass = classes(testId);
-    guessedClass = NaiveBayesImpl(wordcount{testId}, Pc, Pwc, WORDINDEXCORR);
+    guessedClass = NaiveBayesImpl(wordcount{testId}, Pc, Pwc);
     results = [results; realClass, guessedClass];
     if (realClass == guessedClass)
         nCorrect = nCorrect + 1;

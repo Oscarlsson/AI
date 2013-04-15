@@ -10,9 +10,11 @@ from cmath import log
 def run():
     filenames = "" # To be printed to filenames.txt in the end...
 
+    k = 40 # Number of words to output. Total: ~58 000.
+
     print "Reading files..."
     try: 
-        wordSet = set() # Set of all observed words
+        ###### wordSet = set() # Set of all observed words
         cList = [] # One Counter object for each document
         for line in sys.stdin:
             f = open(line.strip('\n'))
@@ -23,7 +25,7 @@ def run():
 
             # Keep all seen words in a set,
             # used later only for indexing.
-            wordSet = wordSet.union(c.keys())
+            ##### wordSet = wordSet.union(c.keys())
 
             f.close()
     except:
@@ -32,11 +34,6 @@ def run():
         sys.exit(1)
 
     nDocuments = len(cList)
-
-    print "Creating dictionary..."
-    d = dict()
-    for i, word in enumerate(wordSet):  
-        d[word] = i + 1 # Map each word to an index
 
     print "Calculating word occurrences for the idf-term..."
     # Number of documents that each word occurs in.
@@ -49,15 +46,35 @@ def run():
             else:
                 dWordDocOccurrences[word] = 1
 
+    print "Calculating tf-idf sum per word..."
+    # For each Counter in cList, the tf-value is replaced with tf*idf
+    wordIdfSum = Counter()
+    for c in cList:
+        for word, tf in c.items():
+            idf = log ( nDocuments / dWordDocOccurrences[word] ).real
+            try:
+                wordIdfSum[word] += tf * idf
+            except:
+                wordIdfSum[word] = tf * idf
+            c[word] = tf*idf
+
+    print "Filtering words on tf-idf sum AND creating dictionary..."
+    d = dict()
+    for i, (word, tfidfsum) in enumerate(wordIdfSum.most_common(k)):
+        d[word] = i
+
     print "Creating output..."
     s = ""
     for c in cList:
-        for word, tf in c.items():
+        for word, tfidf in c.items():
             # Replace word with d[word] (index) in output:
-            idf = log ( nDocuments / dWordDocOccurrences[word] ).real
-            s = s + str(d[word]) + ':' + str(tf * idf) + ' '
-            #idf = 1
-            #s = s + "foo" + ':' + str(tf * idf) + ' '
+            try:
+                s = s + str(d[word]) + ':' + str(tfidf) + ' '
+            except:
+                # Dictionary does not contain word, since it
+                # has been removed (too low tf-idf value).
+                # Do nothing!
+                pass
         s = s + '\n'
 
     print "Printing output..."
@@ -72,6 +89,15 @@ def run():
     try:
         f = open('filenames.txt','w')
         f.write(filenames)
+        f.close() 
+    except:
+        print "not allowed to write to output.txt"
+        sys.exit(1)
+
+    try:
+        f = open('vocabulary.txt','w')
+        for word, count in d.items():
+            f.write(str(count) + '\t' + word + '\n')
         f.close() 
     except:
         print "not allowed to write to output.txt"

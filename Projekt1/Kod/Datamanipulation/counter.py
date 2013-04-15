@@ -10,7 +10,7 @@ from cmath import log
 def run():
     filenames = "" # To be printed to filenames.txt in the end...
 
-    k = 40 # Number of words to output. Total: ~58 000.
+    k = 2000 # Number of words to output. Total: ~58 000.
 
     print "Reading files..."
     try: 

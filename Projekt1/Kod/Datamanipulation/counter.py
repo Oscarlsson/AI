@@ -10,6 +10,8 @@ from cmath import log
 def run():
     filenames = "" # To be printed to filenames.txt in the end...
 
+    k = 2000 # Number of words to output. Total: ~58 000.
+
     print "Reading files..."
     try: 
         wordSet = set() # Set of all observed words
@@ -38,6 +40,7 @@ def run():
     for i, word in enumerate(wordSet):  
         d[word] = i + 1 # Map each word to an index
 
+
     print "Calculating word occurrences for the idf-term..."
     # Number of documents that each word occurs in.
     dWordDocOccurrences = dict()
@@ -49,29 +52,35 @@ def run():
             else:
                 dWordDocOccurrences[word] = 1
 
-    print "Creating output..."
-    s = ""
-    for c in cList:
-        for word, tf in c.items():
-            # Replace word with d[word] (index) in output:
-            idf = log ( nDocuments / dWordDocOccurrences[word] ).real
-            s = s + str(d[word]) + ':' + str(tf * idf) + ' '
-            #idf = 1
-            #s = s + "foo" + ':' + str(tf * idf) + ' '
-        s = s + '\n'
-
-    print "Printing output..."
+    print "Creating and printing output..."
     try:
         f = open('output.txt','w')
-        f.write(s)
+        for c in cList:
+            for word, tf in c.items():
+                idf = log ( nDocuments / dWordDocOccurrences[word] ).real
+                woerd = str(d[word])
+                idf   = str(tf*idf)
+                f.write(woerd + ":" + idf + " ")
+            f.write('\n')
+        f.close() 
+
+    except:
+        print "not allowed to write to output.txt"
+        raise
+        sys.exit(1)
+
+    try:
+        f = open('filenames.txt','w')
+        f.write(filenames)
         f.close() 
     except:
         print "not allowed to write to output.txt"
         sys.exit(1)
 
     try:
-        f = open('filenames.txt','w')
-        f.write(filenames)
+        f = open('vocabulary.txt','w')
+        for word, count in d.items():
+            f.write(str(count) + '\t' + word + '\n')
         f.close() 
     except:
         print "not allowed to write to output.txt"
@@ -116,6 +125,9 @@ def count_words_tf_normalized(s):
     return cOutput
 
 
+"""
+This is an old function. Not in use.
+"""
 # Input file contents
 def count_words(s):
     try: 

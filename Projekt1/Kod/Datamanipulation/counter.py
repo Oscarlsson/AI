@@ -2,6 +2,7 @@
 import sys
 from collections import *
 from cmath import log
+import Stemmer
 
 #All input files must specified from stdin 
 #run for example: find root_path_to_files | grep .txt$  | ./counter.py
@@ -10,11 +11,10 @@ from cmath import log
 def run():
     filenames = "" # To be printed to filenames.txt in the end...
 
-    k = 2000 # Number of words to output. Total: ~58 000.
+    k = 5000 # Number of words to output. Total: ~58 000.
 
     print "Reading files..."
     try: 
-        ###### wordSet = set() # Set of all observed words
         cList = [] # One Counter object for each document
         for line in sys.stdin:
             f = open(line.strip('\n'))
@@ -25,7 +25,6 @@ def run():
 
             # Keep all seen words in a set,
             # used later only for indexing.
-            ##### wordSet = wordSet.union(c.keys())
 
             f.close()
     except:
@@ -108,9 +107,18 @@ def count_words_tf_normalized(s):
         print "can't find file english_word_stops.txt"
         sys.exit(1) 
 
+
+    # Filter unwanted chars
     rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
 
     s = filter(lambda x : not x in rm,s) 
+    
+    #
+    # Snowball!
+    #
+    stemmer = Stemmer.Stemmer('english')
+    changedlist = map(stemmer.stemWord,s.split())
+    s = ' '.join(changedlist)
 
     ss = s.lower().split() 
 

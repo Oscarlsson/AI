@@ -14,7 +14,7 @@ def run():
 
     print "Reading files..."
     try: 
-        ###### wordSet = set() # Set of all observed words
+        wordSet = set() # Set of all observed words
         cList = [] # One Counter object for each document
         for line in sys.stdin:
             f = open(line.strip('\n'))
@@ -25,7 +25,7 @@ def run():
 
             # Keep all seen words in a set,
             # used later only for indexing.
-            ##### wordSet = wordSet.union(c.keys())
+            wordSet = wordSet.union(c.keys())
 
             f.close()
     except:
@@ -34,6 +34,12 @@ def run():
         sys.exit(1)
 
     nDocuments = len(cList)
+
+    print "Creating dictionary..."
+    d = dict()
+    for i, word in enumerate(wordSet):  
+        d[word] = i + 1 # Map each word to an index
+
 
     print "Calculating word occurrences for the idf-term..."
     # Number of documents that each word occurs in.
@@ -46,44 +52,21 @@ def run():
             else:
                 dWordDocOccurrences[word] = 1
 
-    print "Calculating tf-idf sum per word..."
-    # For each Counter in cList, the tf-value is replaced with tf*idf
-    wordIdfSum = Counter()
-    for c in cList:
-        for word, tf in c.items():
-            idf = log ( nDocuments / dWordDocOccurrences[word] ).real
-            try:
-                wordIdfSum[word] += tf * idf
-            except:
-                wordIdfSum[word] = tf * idf
-            c[word] = tf*idf
-
-    print "Filtering words on tf-idf sum AND creating dictionary..."
-    d = dict()
-    for i, (word, tfidfsum) in enumerate(wordIdfSum.most_common(k)):
-        d[word] = i
-
-    print "Creating output..."
-    s = ""
-    for c in cList:
-        for word, tfidf in c.items():
-            # Replace word with d[word] (index) in output:
-            try:
-                s = s + str(d[word]) + ':' + str(tfidf) + ' '
-            except:
-                # Dictionary does not contain word, since it
-                # has been removed (too low tf-idf value).
-                # Do nothing!
-                pass
-        s = s + '\n'
-
-    print "Printing output..."
+    print "Creating and printing output..."
     try:
         f = open('output.txt','w')
-        f.write(s)
+        for c in cList:
+            for word, tf in c.items():
+                idf = log ( nDocuments / dWordDocOccurrences[word] ).real
+                woerd = str(d[word])
+                idf   = str(tf*idf)
+                f.write(woerd + ":" + idf + " ")
+            f.write('\n')
         f.close() 
+
     except:
         print "not allowed to write to output.txt"
+        raise
         sys.exit(1)
 
     try:
@@ -142,6 +125,9 @@ def count_words_tf_normalized(s):
     return cOutput
 
 
+"""
+This is an old function. Not in use.
+"""
 # Input file contents
 def count_words(s):
     try: 

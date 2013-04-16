@@ -1,8 +1,7 @@
 function [w, iter_count] = perceptron(data,Y)  
 
 
-n = size(data,1);
-d = size(data,2);
+[n, d] = size(data);
 
 %Create the randomized w.
 w = randn(d,1);

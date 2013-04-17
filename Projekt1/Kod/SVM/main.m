@@ -1,8 +1,10 @@
 %% Setup, data.
 
 clear;
-wordcount = fmatrix('output_final.txt', 0);
-filenames = importdata('filenames_final.txt');
+%wordcount = fmatrix('output_final.txt', 0);
+%filenames = importdata('filenames_final.txt');
+wordcount = fmatrix('output.txt', 0);
+filenames = importdata('filenames.txt');
 
 % Delete unused documents. Does not have any other implications.
 emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);
@@ -37,3 +39,4 @@ for d = 1:nDocuments
 end
 Y = classes';
 
+svmmain2

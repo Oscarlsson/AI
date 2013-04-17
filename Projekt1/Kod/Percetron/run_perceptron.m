@@ -18,7 +18,7 @@ end
 max_id
 
 %initalize data matrix for perceptron
-data = zeros(n,max_id); 
+data = zeros(nDocuments,max_id); 
 
 %update data matrix with cnt, for each document
 for i = 1 : nDocuments
@@ -31,7 +31,7 @@ for i = 1 : nDocuments
 end
 
 %training on everthing!
-load('categories.mat');
+load('../data.mat');
 pos = categories.pos; 
 w = perceptron(data, pos);
 

@@ -2,6 +2,7 @@
 import sys
 from collections import *
 from cmath import log
+import Stemmer
 
 #All input files must specified from stdin 
 #run for example: find root_path_to_files | grep .txt$  | ./counter.py
@@ -10,9 +11,10 @@ from cmath import log
 def run():
     filenames = "" # To be printed to filenames.txt in the end...
 
+    k = 5000 # Number of words to output. Total: ~58 000.
+
     print "Reading files..."
     try: 
-        wordSet = set() # Set of all observed words
         cList = [] # One Counter object for each document
         for line in sys.stdin:
             f = open(line.strip('\n'))
@@ -23,7 +25,6 @@ def run():
 
             # Keep all seen words in a set,
             # used later only for indexing.
-            wordSet = wordSet.union(c.keys())
 
             f.close()
     except:
@@ -32,11 +33,6 @@ def run():
         sys.exit(1)
 
     nDocuments = len(cList)
-
-    print "Creating dictionary..."
-    d = dict()
-    for i, word in enumerate(wordSet):  
-        d[word] = i + 1 # Map each word to an index
 
     print "Calculating word occurrences for the idf-term..."
     # Number of documents that each word occurs in.
@@ -49,29 +45,52 @@ def run():
             else:
                 dWordDocOccurrences[word] = 1
 
-    print "Creating output..."
-    s = ""
+    print "Calculating tf-idf sum per word..."
+    # For each Counter in cList, the tf-value is replaced with tf*idf
+    wordIdfSum = Counter()
     for c in cList:
         for word, tf in c.items():
-            # Replace word with d[word] (index) in output:
             idf = log ( nDocuments / dWordDocOccurrences[word] ).real
-            s = s + str(d[word]) + ':' + str(tf * idf) + ' '
-            #idf = 1
-            #s = s + "foo" + ':' + str(tf * idf) + ' '
-        s = s + '\n'
+            try:
+                wordIdfSum[word] += tf * idf
+            except:
+                wordIdfSum[word] = tf * idf
+            c[word] = tf*idf
+
+    print "Filtering words on tf-idf sum AND creating dictionary..."
+    d = dict()
+    for i, (word, tfidfsum) in enumerate(wordIdfSum.most_common(k)):
+        d[word] = i
 
     print "Printing output..."
     try:
         f = open('output.txt','w')
-        f.write(s)
+        for c in cList:
+            for word, tfidf in c.items():
+                try:
+                    f.write(str(d[word]) + ":"+ str(tfidf) + " ")
+                except:
+                    pass
+            f.write('\n')
+        #f.write(s)
+        f.close() 
+    except:
+        print "not allowed to write to output.txt"
+        raise
+        sys.exit(1)
+
+    try:
+        f = open('filenames.txt','w')
+        f.write(filenames)
         f.close() 
     except:
         print "not allowed to write to output.txt"
         sys.exit(1)
 
     try:
-        f = open('filenames.txt','w')
-        f.write(filenames)
+        f = open('vocabulary.txt','w')
+        for word, count in d.items():
+            f.write(str(count) + '\t' + word + '\n')
         f.close() 
     except:
         print "not allowed to write to output.txt"
@@ -88,9 +107,18 @@ def count_words_tf_normalized(s):
         print "can't find file english_word_stops.txt"
         sys.exit(1) 
 
+
+    # Filter unwanted chars
     rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
 
     s = filter(lambda x : not x in rm,s) 
+    
+    #
+    # Snowball!
+    #
+    stemmer = Stemmer.Stemmer('english')
+    changedlist = map(stemmer.stemWord,s.split())
+    s = ' '.join(changedlist)
 
     ss = s.lower().split() 
 
@@ -116,6 +144,9 @@ def count_words_tf_normalized(s):
     return cOutput
 
 
+"""
+This is an old function. Not in use.
+"""
 # Input file contents
 def count_words(s):
     try: 

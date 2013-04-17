@@ -23,7 +23,7 @@ def run():
         for i, elem in enumerate(ss):
              s = s + elem + "=" + str(Ys[i]) + ";\n"
         try: 
-            f = open('Y.m', 'w')
+            f = open('../Y.m', 'w')
             f.write(s)
             f.close()
         except:

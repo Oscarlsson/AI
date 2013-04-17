@@ -3,7 +3,7 @@
 
 function [percent] = run_perceptron() 
 
-load('output_final.mat'); 
+load('../data.mat');
 nDocuments = length(wordcount) 
 max_id = 0; 
 
@@ -18,9 +18,8 @@ end
 max_id
 
 %initalize data matrix for perceptron
-data = zeros(nDocuments,max_id); 
-
 %update data matrix with cnt, for each document
+data = zeros(nDocuments,max_id); 
 for i = 1 : nDocuments
     id = wordcount{i}.id; 
     cnt = wordcount{i}.cnt;
@@ -31,8 +30,8 @@ for i = 1 : nDocuments
 end
 
 %training on everthing!
-load('../data.mat');
-pos = categories.pos; 
+%pos = categories.pos; 
+pos = 1*(categories.pos == 1) + (-1)*(categories.pos == -1);
 w = perceptron(data, pos);
 
 %testing on everything

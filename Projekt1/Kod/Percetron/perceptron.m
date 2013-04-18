@@ -17,3 +17,5 @@ for j = 1:50 %number of iterations
 end
 
 w = w/norm(w);
+
+end

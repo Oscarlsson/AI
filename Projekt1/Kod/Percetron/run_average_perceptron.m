@@ -3,8 +3,9 @@
 
 function [ classifications ] = run_average_perceptron(training_data, training_labels, test_data) 
 
-[trainingData, testData, classes] = init_trainingdata_and_testdata(training_data, training_labels, test_data);
-w = averaged_perceptron(trainingData, classes);
+[trainingData, testData, trainingLabels] = init_trainingdata_and_testdata(training_data, training_labels, test_data);
+
+w = averaged_perceptron(trainingData, trainingLabels);
 
 classSigns = sign((testData*w)');
 

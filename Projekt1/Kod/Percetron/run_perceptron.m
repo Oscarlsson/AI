@@ -6,6 +6,9 @@ function [ classifications ] = run_perceptron(training_data, training_labels, te
 [trainingData, testData, classes] = init_trainingdata_and_testdata(training_data, training_labels, test_data);
 w = perceptron(trainingData, classes);
 
+disp('size w')
+size(w)
+
 classSigns = sign((testData*w)');
 
 % (-1) -> (2)

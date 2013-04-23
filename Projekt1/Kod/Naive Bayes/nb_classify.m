@@ -1,4 +1,4 @@
-function [ class ] = NaiveBayesImpl( document, Pc, Pwc )
+function [ class ] = nb_classify( document, Pc, Pwc )
 %NAIVEBAYES This method returns a class label for the input args
 %   Detailed explanation goes here
 

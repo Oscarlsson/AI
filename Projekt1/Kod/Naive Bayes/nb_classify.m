@@ -3,7 +3,8 @@ function [ class ] = nb_classify( document, Pc, Pwc )
 %   Detailed explanation goes here
 
 % Select from Pwc = P(w|c) only those words that occur in
-% the document (by document.id).
+% the document: Here document.id is the list of word ids
+% for that document...
 wordProbabilities = Pwc(document.id, :);
 
 % Sum logs instead of multiplying probabilities.

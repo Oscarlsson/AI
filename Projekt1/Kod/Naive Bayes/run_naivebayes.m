@@ -17,8 +17,7 @@ for i = 1:nClasses
     Pc(i) = sum(training_labels == i) / length(training_labels);
 end
 
-%
-laplace = 0.1;
+laplace = 1;
 % Setup Pwc(w, c) = P(w | c) = (#words=w in class c) / (#words in class c)
 Pwc = laplace*ones(nWords, nClasses); % Note: ones. Not zeroes. Laplace smoothing.
 for d = 1:nDocuments
@@ -37,19 +36,7 @@ Pwc = Pwc ./ (ones(nWords, 1) * sum(Pwc) + nWords*laplace);
 
 
 %% Generate classifications (output)
-
-% classifications = [];
-% for testId = 1:length(test_data)
-%     guessedClass = nb_classify(test_data{testId}, Pc, Pwc);
-%     classifications = [classifications; guessedClass];
-% end
-
-classifications = cellfun(@(x) nb_classify(x, Pc, Pwc), test_data)
-
-% DEBUG, not pretty.
-%test;
-%disp(sprintf('Classified correctly: %1.2f percent.', (nCorrect / (nWrong + nCorrect)) * 100));
-
+classifications = cellfun(@(x) nb_classify(x, Pc, Pwc), test_data);
 
 end
 

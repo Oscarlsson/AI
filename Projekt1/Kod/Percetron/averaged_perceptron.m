@@ -1,13 +1,8 @@
 %average perceptron
 function [wa] = averaged_perceptron(data, labels, N)
 
-[n, d] = size(trainingData);
-<<<<<<< HEAD
+[n, d] = size(data);
 %N = 50;
-=======
-
-N = 20;
->>>>>>> 07b0bbf1f3b7a865a89c5d552a56b6bef82157bb
 count = 0;
 
 %Initialize w and wa.

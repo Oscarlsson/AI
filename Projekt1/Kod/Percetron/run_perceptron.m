@@ -1,41 +1,18 @@
 %TODO: fixa plot för att visa hur många iterationer som behövs innan den konvergerar. 
 % träna på allt och testa på allt ger runt 74%
 
-function [percent] = run_perceptron() 
+function [ classifications ] = run_perceptron(training_data, training_labels, test_data) 
 
-load('output_final.mat'); 
-nDocuments = length(wordcount) 
-max_id = 0; 
+[trainingData, testData, classes] = init_trainingdata_and_testdata(training_data, training_labels, test_data);
+w = perceptron(trainingData, classes);
 
-%find highest word id
-for i = 1 : nDocuments
-   idarray = wordcount{i}.id;
-   max_elem = max(idarray);
-   if (max_elem > max_id)
-      max_id = max_elem ; 
-   end 
-end
-max_id
+disp('size w')
+size(w)
 
-%initalize data matrix for perceptron
-data = zeros(nDocuments,max_id); 
+classSigns = sign((testData*w)');
 
-%update data matrix with cnt, for each document
-for i = 1 : nDocuments
-    id = wordcount{i}.id; 
-    cnt = wordcount{i}.cnt;
-    for j = 1 : length(id)
-        data(i,id(j)) = cnt(j);
-    end
-       
-end
-
-%training on everthing!
-load('../data.mat');
-pos = categories.pos; 
-w = perceptron(data, pos);
-
-%testing on everything
-percent = sum(sign((data*w)') == pos)/length(pos);
+% (-1) -> (2)
+% ( 1) -> (1)
+classifications = 1*(classSigns == 1) + 2*(classSigns == -1);
 
 end 

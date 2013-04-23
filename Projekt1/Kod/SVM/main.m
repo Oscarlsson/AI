@@ -1,39 +1,25 @@
 %% Setup, data.
 
-clear;
-wordcount = fmatrix('output_final.txt', 0);
-filenames = importdata('filenames_final.txt');
+load('../data.mat');
 
-% Delete unused documents. Does not have any other implications.
-emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);
-wordcount(emptyDocuments) = [];
-filenames(emptyDocuments) = [];
+CVP = cvpartition(size(wordcount,2), 'k', 10);
 
-nDocuments = length(filenames);
-%%
-% TEMP: Change word ids
-for i = 1:nDocuments
-    wordcount{i}.id = wordcount{i}.id + 1;
+for i = 1:CVP.NumTestSets
+    % Training data
+    training_data = wordcount(CVP.training(i));
+    training_data = training_data(1:1000);
+    training_targets = labels_sentiment(CVP.training(i));
+    training_targets = training_targets(1:1000);
+    test_data = wordcount(CVP.test(i));
+    test_targets = labels_sentiment(CVP.test(i));
+    
+    classifications = run_svm( training_data, training_targets, test_data, 2000 );
+    
+    size(test_data)
+    size(test_targets)
+    size(classifications)
+    
+    correctFraction = sum(classifications == test_targets) / length(test_targets);
+    
+    disp(sprintf('Classified correctly: %1.2f percent.', correctFraction));
 end
-%%
-nWords = max(cellfun(@(x) max(x.id), wordcount));
-
-%% Classes initialization
-nClasses = 2;
-
-classes = zeros(1, length(filenames));
-% Read filenames, set labels 1 = "neg", 2 = "pos"
-for i = 1:length(filenames)
-    classes(i) = isempty(strfind(filenames{i}, 'neg')) + 1;
-end
-
-X = zeros(nDocuments, nWords);
-for d = 1:nDocuments
-    for i = 1:size(wordcount{i}.id)
-        w = wordcount{d}.id(i);
-        tfidf = wordcount{d}.cnt(i);
-        X(d,w) = tfidf;
-    end
-end
-Y = classes';
-

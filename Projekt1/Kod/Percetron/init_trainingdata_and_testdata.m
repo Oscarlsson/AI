@@ -1,4 +1,4 @@
-function [trainingData, testData, classes] = init_trainingdata_and_testdata(training_data, training_labels, test_data)
+function [trainingData, testData] = init_trainingdata_and_testdata(training_data, test_data)
 
 nTrainingDocuments = length(training_data);
 nTestDocuments = length(test_data);
@@ -36,9 +36,5 @@ for i = 1 : nTestDocuments
         testData(i,id(j)) = cnt(j);
     end   
 end
-
-% (-1) <- (2)
-% ( 1) <- (1)
-classes = 1*(training_labels == 1) + (-1)*(training_labels == 2);
 
 end

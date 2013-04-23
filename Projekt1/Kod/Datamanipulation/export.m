@@ -1,13 +1,18 @@
 clear;
-wordcount = fmatrix('Datamanipulation/output_final.txt', 0);
-filenames = importdata('Datamanipulation/filenames_final.txt');
+%wordcount = fmatrix('Datamanipulation/output_final.txt', 0);
+wordcount = fmatrix('output_final.txt', 0);
+
+% added delimiter to importdata to be compatible with octave
+% last cell is crap.
+%filenames = importdata('Datamanipulation/filenames_final.txt',' ');
+filenames = importdata('filenames_final.txt',' ');
  
 % Delete unused documents. Does not have any other implications.
 emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);
 wordcount(emptyDocuments) = [];
 filenames(emptyDocuments) = [];
 
-nDocuments = length(filenames);
+nDocuments = length(filenames)-1;
 
 %%
 % TEMP: Change word ids
@@ -49,4 +54,4 @@ labels_classes = ...
 %
 % Sparar wordcount variabeln i en fil som hetet data.mat
 %
-save('data.mat', 'wordcount', 'labels_sentiment', 'labels_classes')
+save('../data.mat', 'wordcount', 'labels_sentiment', 'labels_classes')

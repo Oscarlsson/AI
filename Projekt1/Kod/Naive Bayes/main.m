@@ -1,8 +1,10 @@
 clear;
 load ('../data.mat');
 
+nWords = max(cellfun(@(x) max(x.id), wordcount));
+
 classifications = ...
-    run_naivebayes(wordcount, labels_sentiment, wordcount, 2000);
+    run_naivebayes(wordcount, labels_sentiment, wordcount, nWords);
 
 realClasses = labels_sentiment;
 

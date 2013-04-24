@@ -1,6 +1,6 @@
 %% Setup, data.
 
-load('../data_100.mat');
+load('../data.mat');
 
 CVP = cvpartition(size(wordcount,2), 'k', 10);
 nWords = max(cellfun(@(x) max(x.id), wordcount))

@@ -1,11 +1,16 @@
 clear;
-%wordcount = fmatrix('Datamanipulation/output_final.txt', 0);
-wordcount = fmatrix('output_final.txt', 0);
+%wordcount = fmatrix('Datamanipulation/output.txt', 0);
+wordcount = fmatrix('output.txt', 0);
 
 % added delimiter to importdata to be compatible with octave
 % last cell is crap.
-%filenames = importdata('Datamanipulation/filenames_final.txt',' ');
-filenames = importdata('filenames_final.txt',' ');
+%filenames = importdata('Datamanipulation/filenames.txt',' ');
+isOctave = exist('OCTAVE_VERSION') ~= 0;
+if (isOctave)
+	filenames = importdata_octave('filenames.txt',' ');
+else
+	filenames = importdata('filenames.txt',' ');
+end
  
 % Delete unused documents. Does not have any other implications.
 emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);

@@ -27,7 +27,7 @@ def run(snowballBool, kInt, feature):
         cList = [] # One Counter object for each document
         for line in listoffiles:
             f = open(line)
-            filenames = filenames + line
+            filenames = filenames + line + '\n'
            
             c = count_words_tf_normalized(f.read(), snowballBool) # Counter
             cList.append(c)
@@ -113,7 +113,7 @@ def run(snowballBool, kInt, feature):
 #    output = subprocess.Popen(["octave","export.m"], stdout=subprocess.PIPE)
     # Consider using subprocess but make it wait
     # on the process before terminating.
-    os.system("octave export.m")
+    os.system("octave --quiet export.m")
     print "Done."
 
 # Input file contents

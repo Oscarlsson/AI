@@ -14,11 +14,11 @@
 ## along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*-
-## @deftypefn  {Function File} {@var{A} =} importdata (@var{fileName})
-## @deftypefnx {Function File} {@var{A} =} importdata (@var{fileName}, @var{delimiter})
-## @deftypefnx {Function File} {@var{A} =} importdata (@var{fileName}, @var{delimiter},  @var{headerRows})
-## @deftypefnx {Function File} {[@var{A}, @var{delimiter}] =} importdata (...)
-## @deftypefnx {Function File} {[@var{A}, @var{delimiter}, @var{headerRows}] =} importdata (...)
+## @deftypefn  {Function File} {@var{A} =} importdata_octave (@var{fileName})
+## @deftypefnx {Function File} {@var{A} =} importdata_octave (@var{fileName}, @var{delimiter})
+## @deftypefnx {Function File} {@var{A} =} importdata_octave (@var{fileName}, @var{delimiter},  @var{headerRows})
+## @deftypefnx {Function File} {[@var{A}, @var{delimiter}] =} importdata_octave (...)
+## @deftypefnx {Function File} {[@var{A}, @var{delimiter}, @var{headerRows}] =} importdata_octave (...)
 ## Importing data from file.
 ##
 ## Importing the contents of file @var{fileName} into workspace.
@@ -56,7 +56,7 @@
 ## 2012-10-16 First version
 
 
-function [output, delimiter, headerRows] = importdata(varargin)
+function [output, delimiter, headerRows] = importdata_octave(varargin)
 
   # Default values
   fileName   = '';
@@ -74,20 +74,20 @@ function [output, delimiter, headerRows] = importdata(varargin)
   fileName = varargin{1};
   # Check that the file name really is a string
   if not(ischar(fileName))
-    error('importdata: File name needs to be a string.')
+    error('importdata_octave: File name needs to be a string.')
   endif
   if strcmpi(fileName, '-pastespecial')
-    error('importdata: Option ''-pastespecial'' not implemented.')
+    error('importdata_octave: Option ''-pastespecial'' not implemented.')
   endif
 
   if (nargin > 1)
     delimiter = varargin{2};
     # Check that the delimiter really is a string
     if not(ischar(delimiter))
-      error('importdata: Delimiter needs to be a character.')
+      error('importdata_octave: Delimiter needs to be a character.')
     endif
     if ((length(delimiter) > 1) && not(strcmpi(delimiter, '\t')))
-      error('importdata: Delimiter cannot be longer than 1 character.')
+      error('importdata_octave: Delimiter cannot be longer than 1 character.')
     endif
     if strcmpi(delimiter, '\')
       delimiter = '\\';
@@ -97,12 +97,12 @@ function [output, delimiter, headerRows] = importdata(varargin)
   if (nargin > 2)
     headerRows = varargin{3};
     if ((~isnumeric(headerRows)) || (headerRows < 0))
-      error('importdata: Number of header rows needs to be an integer number >= 0.')
+      error('importdata_octave: Number of header rows needs to be an integer number >= 0.')
     endif
   endif
 
   if (nargin > 3)
-    error('importdata: Too many input arguments.')
+    error('importdata_octave: Too many input arguments.')
   endif
 
   ##########
@@ -115,9 +115,9 @@ function [output, delimiter, headerRows] = importdata(varargin)
 
   switch fileExt
     case {'.au','.snd'}
-      error(['importdata: Not implemented for file format ''' fileExt '''.'])
+      error(['importdata_octave: Not implemented for file format ''' fileExt '''.'])
     case '.avi'
-      error(['importdata: Not implemented for file format ''' fileExt '''.'])
+      error(['importdata_octave: Not implemented for file format ''' fileExt '''.'])
     case {'.bmp', '.cur', '.gif', '.hdf', '.ico', '.jpe', '.jpeg', '.jpg', '.pbm', '.pcx', '.pgm', '.png', '.pnm', '.ppm', '.ras', '.tif', '.tiff', '.xwd'}
       delimiter  = NaN;
       headerRows = 0;
@@ -127,17 +127,17 @@ function [output, delimiter, headerRows] = importdata(varargin)
       headerRows = 0;
       output = load(fileName);
     case '.wk1'
-      error(['importdata: Not implemented for file format ''' fileExt '''.'])
+      error(['importdata_octave: Not implemented for file format ''' fileExt '''.'])
     case {'.xls', '.xlsx'}
   #FIXME: implement Excel import.
-      error(['importdata: Not implemented for file format ''' fileExt '''.'])
+      error(['importdata_octave: Not implemented for file format ''' fileExt '''.'])
     case {'.wav', '.wave'}
       delimiter  = NaN;
       headerRows = 0;
       [output.data, output.fs] = wavread(fileName);
     otherwise
       # Assume the file is in ascii format.
-      [output, delimiter, headerRows] = importdata_ascii(fileName, delimiter, headerRows);
+      [output, delimiter, headerRows] = importdata_octave_ascii(fileName, delimiter, headerRows);
   endswitch
 
   # If there are any empty fields in the output structure, then remove them
@@ -161,7 +161,7 @@ endfunction
 
 ########################################
 
-function [output, delimiter, headerRows] = importdata_ascii(fileName, delimiter, headerRows)
+function [output, delimiter, headerRows] = importdata_octave_ascii(fileName, delimiter, headerRows)
 
   # Define the fields in the output structure so that the order will be correct.
   output.data       = [];
@@ -182,7 +182,7 @@ function [output, delimiter, headerRows] = importdata_ascii(fileName, delimiter,
 
   #FIXME: guess delimiter, if it isn't defined
   if (isempty(delimiter))
-    error('importdata: Guessing delimiter is not implemented yet, you have to specify it.')
+    error('importdata_octave: Guessing delimiter is not implemented yet, you have to specify it.')
   endif
 
   #FIXME: A more intelligent way to count number of header rows. This is needed e.g. when delimiter=' ' and the header contains spaces...

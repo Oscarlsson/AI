@@ -1,27 +1,30 @@
-function [ classification ] = knn_classifier( data1, data2, K, x )
+function [ classification ] = knn_classifier( data, labels, K, x )
 
+[~, sortedIndices] = ...
+    sort(arrayfun(@(i) norm(data(i,:) - x), 1:size(data,1))', 1, 'ascend');
 
-c1distances = sort(arrayfun(@(i) norm(data1(i,:) - x), 1:size(data1,1))');
-c2distances = sort(arrayfun(@(i) norm(data2(i,:) - x), 1:size(data2,1))');
+nLabels = max(labels);
 
-classification = 0;
-c1i = 1;
-c2i = 1;
+classScore = zeros(1, nLabels);
+
 for i = 1:K
-    if (c1distances(c1i) < c2distances(c2i))
-        classification = classification + 1;
-        c1i = c1i + 1;
-    else
-        classification = classification - 1;
-        c2i = c2i + 1;
-    end
+    % i:th nearest neighbour
+    pointIndex = sortedIndices(i);
+    pointClass = labels(pointIndex);
+    classScore(pointClass) = classScore(pointClass) + 1;
 end
 
-if classification == 0
-    classification = rand() - 0.5;
+maxIx = find(classScore == max(classScore));
+
+% maxIx = list of ties indices
+if size(maxIx, 2) > 1
+    bestClassIndex = randsample(maxIx, 1);
+else
+    bestClassIndex = maxIx;
 end
 
-classification = sign(classification);
+classification = bestClassIndex; % Same labels as class indices
 
 end
 
+ 

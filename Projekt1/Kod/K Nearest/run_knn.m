@@ -23,11 +23,9 @@ for d = 1:nTestDocuments
     end
 end
 
-data1 = Xtraining( training_labels == 1,: );
-data2 = Xtraining( training_labels == 2,: );
 classifications = zeros(1, size(test_data,2));
 for i = 1:size(test_data,2)
-    classifications(i) = knn_classifier(data1, data2, K, Xtest(i,:));
+    classifications(i) = knn_classifier(Xtraining, training_labels, K, Xtest(i,:));
 end
 
 end

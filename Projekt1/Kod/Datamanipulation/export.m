@@ -4,8 +4,7 @@ wordcount = fmatrix('output_final.txt', 0);
 
 % added delimiter to importdata to be compatible with octave
 % last cell is crap.
-%filenames = importdata('Datamanipulation/filenames_final.txt',' ');
-filenames = importdata('filenames_final.txt',' ');
+filenames = importdata('filenames_final.txt');
  
 % Delete unused documents. Does not have any other implications.
 emptyDocuments = cellfun(@(x) length(x.id) == 0, wordcount);

@@ -10,6 +10,7 @@ CVP = cvpartition(size(wordcount,2), 'k', 10);
 
 %plot error rate for different j (number of iterations)
 for j = 1:jmax
+    j
 
     for i = 1:CVP.NumTestSets
 
@@ -21,11 +22,11 @@ for j = 1:jmax
         
         classifications = run_average_perceptron(training_data, training_targets, test_data, true, j);
         correctFraction_sent_aver = sum(classifications == test_targets) / length(test_targets);
-        disp(sprintf('(AP) Classified correctly: %1.2f.', correctFraction));
+        disp(sprintf('(AP) Classified correctly: %1.2f.', correctFraction_sent_aver));
         
         classifications = run_perceptron(training_data, training_targets, test_data, true, j);
         correctFraction_sent = sum(classifications == test_targets) / length(test_targets);
-        disp(sprintf('(P) Classified correctly: %1.2f.', correctFraction)); 
+        disp(sprintf('(P) Classified correctly: %1.2f.', correctFraction_sent)); 
         
         %classification over classes 
         training_targets = labels_classes(CVP.training(i));
@@ -33,11 +34,11 @@ for j = 1:jmax
         
         classifications = run_average_perceptron(training_data, training_targets, test_data, false, j);
         correctFraction_class_aver = sum(classifications == test_targets) / length(test_targets);
-        disp(sprintf('(AP) Classified correctly: %1.2f.', correctFraction));
+        disp(sprintf('(AP) Classified correctly: %1.2f.', correctFraction_class_aver));
         
         classifications = run_perceptron(training_data, training_targets, test_data, false, j);
         correctFraction_class = sum(classifications == test_targets) / length(test_targets);
-        disp(sprintf('(P) Classified correctly: %1.2f.', correctFraction)); 
+        disp(sprintf('(P) Classified correctly: %1.2f.', correctFraction_class)); 
         
         error_rate_sent(j) = error_rate_sent(j) + correctFraction_sent;
         error_rate_sent_aver(j) = error_rate_sent_aver(j) + correctFraction_sent_aver;

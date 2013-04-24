@@ -3,10 +3,10 @@ load ('../data.mat');
 
 nWords = max(cellfun(@(x) max(x.id), wordcount));
 
-classifications = ...
-    run_naivebayes(wordcount, labels_sentiment, wordcount, nWords);
+labels = labels_classes; % Change to labels_sentiment for sentiment classification
 
-realClasses = labels_sentiment;
+classifications = ...
+    run_naivebayes(wordcount, labels, wordcount, nWords);
 
 disp(sprintf('Classified correctly: %1.2f percent.', ...
-    sum(classifications == realClasses) / length(realClasses)));
+    sum(classifications == labels) / length(labels)));

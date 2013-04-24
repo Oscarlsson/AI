@@ -10,7 +10,7 @@ w = zeros(d,1);
 wa = zeros(d,1);
 
 %
-%PERCEPTRON ALGORITHM
+%AVERAGED PERCEPTRON ALGORITHM
 %
 validationErrors = [];
 trainingErrors = [];

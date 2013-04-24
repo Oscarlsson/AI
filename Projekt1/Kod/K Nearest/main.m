@@ -7,7 +7,7 @@ CVP = cvpartition(size(wordcount,2), 'k', 10);
 
 %plot error rate for different k
 for K = 1:kmax
-
+    K
     for i = 1:CVP.NumTestSets
         % Training data
         training_data = wordcount(CVP.training(i));

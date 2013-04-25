@@ -1,4 +1,4 @@
-function [ classifications ] = run_svm( training_data, training_labels, test_data, nWords )
+function [ classifications ] = run_svm( training_data, training_labels, test_data, nWords, kernel )
 
 % Initialize training data
 nTrainingDocuments = size(training_data, 2);
@@ -23,8 +23,9 @@ for d = 1:nTestDocuments
     end
 end
 
+options = optimset('maxiter',50000);
 svm_model = svmtrain(Xtraining, Ytraining, 'method', 'SMO', ...
-    'Kernel_Function', 'linear', 'showplot', false);
+    'Kernel_Function', kernel, 'showplot', false, 'options', options);
 
 classifications = svmclassify(svm_model, Xtest)';
 

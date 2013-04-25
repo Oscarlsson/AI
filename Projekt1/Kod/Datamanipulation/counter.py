@@ -113,7 +113,8 @@ def run(snowballBool, kInt, feature):
 #    output = subprocess.Popen(["octave","export.m"], stdout=subprocess.PIPE)
     # Consider using subprocess but make it wait
     # on the process before terminating.
-    os.system("octave --quiet export.m")
+#    os.system("octave --quiet export.m")
+    os.system("matlab -nodesktop -nosplash -nojvm -r 'export; exit' > /dev/null")
     print "Done."
 
 # Input file contents

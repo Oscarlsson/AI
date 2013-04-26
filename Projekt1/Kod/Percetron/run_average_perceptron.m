@@ -1,6 +1,6 @@
-function [ classifications ] = run_average_perceptron(training_data, training_labels, test_data, N) 
+function [ classifications ] = run_average_perceptron(training_data, training_labels, test_data, N, nWords) 
 
-[trainingData, testData] = init_trainingdata_and_testdata(training_data, test_data);
+[trainingData, testData] = init_trainingdata_and_testdata(training_data, test_data, nWords);
 numberOfClasses = length(unique(training_labels));
 
 %sentimental classification or class classification

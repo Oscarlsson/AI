@@ -5,12 +5,14 @@ errors = zeros(1,10);
 timings = zeros(1,10);
 
 % 10-fold CV
-CVP = cvpartition(size(training_dataset,2), 'k', 10);
-for i = 1:CVP.NumTestSets
+cvSetSize = min(size(test_dataset,2), size(training_dataset,2));
+CVP = cvpartition(cvSetSize, 'k', 10);
+for i = 1:1 %10:CVP.NumTestSets
 
     % Training data
     training_data = training_dataset(CVP.training(i));
     training_targets = training_dataset_labels(CVP.training(i));
+    
     test_data = test_dataset(CVP.test(i));
     test_targets = test_dataset_labels(CVP.test(i));
     
@@ -27,7 +29,7 @@ for i = 1:CVP.NumTestSets
     timings(i) = toc;
     errors(i) = sum(classifications ~= test_targets) / length(test_targets);
      
-    [timings(i), errors(i)]
+    [timings(i), errors(i)];
 end
 
 timing = mean(timings);

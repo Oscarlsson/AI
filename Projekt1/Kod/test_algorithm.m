@@ -7,8 +7,8 @@ timings = zeros(1,10);
 % 10-fold CV
 cvSetSize = min(size(test_dataset,2), size(training_dataset,2));
 CVP = cvpartition(cvSetSize, 'k', 10);
-%for i = 1:CVP.NumTestSets
-for i = 1:1
+for i = 1:CVP.NumTestSets
+%for i = 1:1
 
     % Training data
     training_data = training_dataset(CVP.training(i));
@@ -19,8 +19,8 @@ for i = 1:1
     
     % DEBUG
     % Only use a subset of training/test data to decrease runtime...
-    test_data = test_data(1:100);
-    test_targets = test_targets(1:100);
+    %test_data = test_data(1:100);
+    %test_targets = test_targets(1:100);
     
     training_data_size = ceil(training_dataset_size_fraction * size(training_data, 2));
     tic;

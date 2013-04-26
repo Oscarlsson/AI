@@ -13,6 +13,9 @@ from itertools import tee , izip
         
 
 def run(snowballBool, kInt, feature):
+    if snowballBool:
+        print "Snowball stemmer active..."
+
     filenames = "" # To be printed to filenames.txt in the end...
 
     k = kInt # Number of words to output. Total: ~58 000.
@@ -127,7 +130,6 @@ def run(snowballBool, kInt, feature):
 def big(s,snowballBool):
         s = remove_tokens(s)
         if snowballBool:
-                print "Using Snowball Stemmer..."
                 s = run_snowball(s)
         #c  = remove_stop_words(s)    #Has a bug that generates newlines in output.txt 
         #a, b = tee(list(c))
@@ -199,10 +201,7 @@ def count_words_tf_normalized(s, snowballBool):
     # This is ugly because we create a stemmer-object each iteration. 
     #
     if snowballBool:
-        import Stemmer
-        stemmer = Stemmer.Stemmer('english')
-        changedlist = map(stemmer.stemWord,s.split())
-        s = ' '.join(changedlist)
+        s = run_snowball(s)
 
     ss = s.lower().split() 
 

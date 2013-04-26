@@ -5,8 +5,8 @@ function [ classifications ] = run_naivebayes( training_data, training_labels, t
 nDocuments = size(training_data,2);
 
 %% Classes initialization
-nClasses = size(unique(training_labels),2);
-
+%nClasses = size(unique(training_labels),2);
+nClasses  = max(training_labels);
 %% NB start
 
 % Setup Pc(c) =

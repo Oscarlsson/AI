@@ -1,40 +1,25 @@
-function [trainingData, testData] = init_trainingdata_and_testdata(training_data, test_data)
+function [trainingData, testData] = init_trainingdata_and_testdata(training_data, test_data, nWords)
 
-nTrainingDocuments = size(training_data,2);
-nTestDocuments = size(test_data,2);
-
-max_id = 0; 
-
-%find highest word id
-for i = 1 : nTrainingDocuments
-   idarray = training_data{i}.id;
-   max_elem = max(idarray);
-   if (max_elem > max_id)
-      max_id = max_elem ; 
-   end 
-end
-max_id;
-
-%initalize TRAINING data matrix for perceptron
-%update TRAINING data matrix with cnt, for each document
-trainingData = zeros(nTrainingDocuments,max_id); 
-for i = 1 : nTrainingDocuments
-    id = training_data{i}.id; 
-    cnt = training_data{i}.cnt;
-    for j = 1 : length(id)
-        trainingData(i,id(j)) = cnt(j);
-    end   
+% Initialize training data
+nTrainingDocuments = size(training_data, 2);
+trainingData = zeros(nTrainingDocuments, nWords);
+for d = 1:nTrainingDocuments
+    for i = 1:size(training_data{d}.id, 2)
+        w = training_data{d}.id(i);
+        tfidf = training_data{d}.cnt(i);
+        trainingData(d,w) = tfidf;
+    end
 end
 
-%initalize TEST data matrix for perceptron
-%update TEST data matrix with cnt, for each document
-testData = zeros(nTestDocuments,max_id); 
-for i = 1 : nTestDocuments
-    id = test_data{i}.id; 
-    cnt = test_data{i}.cnt;
-    for j = 1 : length(id)
-        testData(i,id(j)) = cnt(j);
-    end   
+% Initialize test data
+nTestDocuments = size(test_data, 2);
+testData = zeros(nTestDocuments, nWords);
+for d = 1:nTestDocuments
+    for i = 1:size(test_data{d}.id, 2)
+        w = test_data{d}.id(i);
+        tfidf = test_data{d}.cnt(i);
+        testData(d,w) = tfidf;
+    end
 end
 
 end

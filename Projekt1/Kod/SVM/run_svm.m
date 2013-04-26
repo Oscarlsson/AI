@@ -23,11 +23,15 @@ for d = 1:nTestDocuments
     end
 end
 
-options = optimset('maxiter',50000);
-svm_model = svmtrain(Xtraining, Ytraining, 'method', 'SMO', ...
-    'Kernel_Function', kernel, 'showplot', false, 'options', options);
-
-classifications = svmclassify(svm_model, Xtest)';
+% With low feature space convergence is slow
+options = optimset('maxiter',750000);
+try
+    svm_model = svmtrain(Xtraining, Ytraining, 'method', 'SMO', ...
+        'Kernel_Function', kernel, 'showplot', false, 'options', options);
+    classifications = svmclassify(svm_model, Xtest)';
+catch err
+    classifications = zeros(1, size(test_data, 1));
+end
 
 end
 

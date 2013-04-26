@@ -7,7 +7,7 @@ timings = zeros(1,10);
 % 10-fold CV
 cvSetSize = min(size(test_dataset,2), size(training_dataset,2));
 CVP = cvpartition(cvSetSize, 'k', 10);
-for i = 1:1 %10:CVP.NumTestSets
+for i = 1:CVP.NumTestSets
 
     % Training data
     training_data = training_dataset(CVP.training(i));

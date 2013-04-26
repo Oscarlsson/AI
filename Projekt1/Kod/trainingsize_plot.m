@@ -1,7 +1,7 @@
 %% This file runs the different algos on some datasets...
 clear
 % Init data and paths.
-load data.mat
+load MatData/data_2000.mat
 addpath('Percetron')
 addpath('Naive Bayes')
 addpath('SVM')
@@ -61,3 +61,4 @@ end
 
 % Correct? No.
 plot(tss_values, outputArray)
+legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');

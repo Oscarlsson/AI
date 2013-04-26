@@ -10,6 +10,8 @@ if numberOfClasses == 2
     classes = 1*(training_labels == 1) + (-1)*(training_labels == 2);
 
     w = perceptron(trainingData, classes, N);
+    size(w)
+    size(testData)
     classSigns = sign((testData*w)');
     % (-1) -> (2)
     % ( 1) -> (1)
@@ -41,7 +43,8 @@ else
         
         %if two classes have the same probability, just classify the document as the first one
         if length(class) > 1
-            class = class(1);
+            class = randsample(class,1);
+            %class = class(1);
         end
         classifications(1,j) = class;
     end

@@ -1,7 +1,7 @@
 function [trainingData, testData] = init_trainingdata_and_testdata(training_data, test_data)
 
-nTrainingDocuments = length(training_data);
-nTestDocuments = length(test_data);
+nTrainingDocuments = size(training_data,2);
+nTestDocuments = size(test_data,2);
 
 max_id = 0; 
 

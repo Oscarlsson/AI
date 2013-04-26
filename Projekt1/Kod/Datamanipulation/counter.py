@@ -4,11 +4,13 @@ from collections import *
 from cmath import log
 import os 
 import subprocess
-import argparse 
+import argparse
+from itertools import tee , izip 
 
 # Run the file with the command: python counter.py -k <nr of words> 
 # Alt. arguments is --snowball and --feature <bin/big>. Tfidf is default.
 
+        
 
 def run(snowballBool, kInt, feature):
     filenames = "" # To be printed to filenames.txt in the end...
@@ -28,10 +30,12 @@ def run(snowballBool, kInt, feature):
         for line in listoffiles:
             f = open(line)
             filenames = filenames + line + '\n'
-           
-            c = count_words_tf_normalized(f.read(), snowballBool) # Counter
-            cList.append(c)
-
+            if feature == 'big':
+                c = big(f.read(),snowballBool)
+                cList.append(c)
+            else:
+                c = count_words_tf_normalized(f.read(), snowballBool) # Counter
+                cList.append(c)
             # Keep all seen words in a set,
             # used later only for indexing.
 
@@ -103,13 +107,13 @@ def run(snowballBool, kInt, feature):
     try:
         f = open('vocabulary.txt','w')
         for word, count in d.items():
-            f.write(str(count) + '\t' + word + '\n')
+            f.write(str(count) + '\t' + str(word) + '\n')
         f.close() 
     except:
         print "not allowed to write to output.txt"
         sys.exit(1)
     
-    print "Calling export.m with octave.. "
+    print "Calling export.m with matlab.. "
 #    output = subprocess.Popen(["octave","export.m"], stdout=subprocess.PIPE)
     # Consider using subprocess but make it wait
     # on the process before terminating.
@@ -119,6 +123,60 @@ def run(snowballBool, kInt, feature):
 
 # Input file contents
 # Returns counts in range [0,1] for each word in each doc
+
+def big(s,snowballBool):
+        s = remove_tokens(s)
+        if snowballBool:
+                s = run_snowball(s)
+        #c  = remove_stop_words(s)    #Has a bug that generates newlines in output.txt 
+        #a, b = tee(list(c))
+        a, b = tee((s.split()))
+        next(b, None)
+        bi = izip(a, b) 
+        c = Counter(list(bi)) 
+        most_common = c.most_common(1)
+        if not most_common: 
+            return c
+        frec = float(most_common[0][1])
+        cOutput = Counter() 
+        for word, count in c.items():
+                cOutput[word] = count/frec
+        return cOutput 
+
+# Input file contents
+# Returns counts in range [0,1] for each word in each doc
+
+def remove_stop_words(s):
+    try: 
+        f = open("english_word_stops.txt")
+        common_words = f.read().split()  
+        f.close() 
+    except:
+        print "can't find file english_word_stops.txt"
+        sys.exit(1) 
+
+
+    ss = s.strip().lower().split() 
+
+    c = Counter(ss)
+    
+    for elem in common_words:
+        del c[elem]
+
+    return c 
+
+def remove_tokens(s):
+    rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
+    return filter(lambda x : not x in rm,s) 
+
+
+def run_snowball(s):
+        import Stemmer
+        stemmer = Stemmer.Stemmer('english')
+        changedlist = map(stemmer.stemWord,s.split())
+        return ' '.join(changedlist)
+
+
 def count_words_tf_normalized(s, snowballBool):
     try: 
         f = open("english_word_stops.txt")

@@ -127,6 +127,7 @@ def run(snowballBool, kInt, feature):
 def big(s,snowballBool):
         s = remove_tokens(s)
         if snowballBool:
+                print "Using Snowball Stemmer..."
                 s = run_snowball(s)
         #c  = remove_stop_words(s)    #Has a bug that generates newlines in output.txt 
         #a, b = tee(list(c))

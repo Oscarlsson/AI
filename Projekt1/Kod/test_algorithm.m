@@ -1,4 +1,4 @@
-function [ error, timing ] = test_algorithm( algorithm_handle, training_dataset, training_dataset_labels, test_dataset, test_dataset_labels, training_dataset_size_fraction, nWords )
+function [ error, stddev, timing ] = test_algorithm( algorithm_handle, training_dataset, training_dataset_labels, test_dataset, test_dataset_labels, training_dataset_size_fraction, nWords )
 %UNTITLED3 Summary of this function goes here
 
 errors = zeros(1,10);
@@ -35,6 +35,7 @@ end
 
 timing = mean(timings);
 error = mean(errors);
+stddev = std(errors);
 
 end
 

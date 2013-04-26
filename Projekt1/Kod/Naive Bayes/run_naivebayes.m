@@ -1,4 +1,4 @@
-function [ classifications ] = run_naivebayes( training_data, training_labels, test_data, nWords )
+function [ classifications ] = run_naivebayes( training_data, training_labels, test_data, nWords, useTfIdf )
 
 %% Setup, data.
 
@@ -24,8 +24,11 @@ for d = 1:nDocuments
     class = training_labels(d);
     for i = 1:length(training_data{d}.id)
         docWordId = training_data{d}.id(i);
-        docWordCount = training_data{d}.cnt(i);
-%		docWordCount = 1;
+		if useTfIdf
+			docWordCount = training_data{d}.cnt(i);
+		else
+			docWordCount = 1;
+		end
         Pwc(docWordId, class) = ...
             Pwc(docWordId, class) + docWordCount;
     end

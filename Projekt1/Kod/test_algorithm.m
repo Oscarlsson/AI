@@ -5,7 +5,8 @@ errors = zeros(1,10);
 timings = zeros(1,10);
 
 % 10-fold CV
-CVP = cvpartition(size(training_dataset,2), 'k', 10);
+cvSetSize = min(size(test_dataset,2), size(training_dataset,2));
+CVP = cvpartition(cvSetSize, 'k', 10);
 for i = 1:1 %10:CVP.NumTestSets
 
     % Training data

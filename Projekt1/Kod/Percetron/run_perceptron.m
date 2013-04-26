@@ -10,8 +10,6 @@ if numberOfClasses == 2
     classes = 1*(training_labels == 1) + (-1)*(training_labels == 2);
 
     w = perceptron(trainingData, classes, N);
-    size(w)
-    size(testData)
     classSigns = sign((testData*w)');
     % (-1) -> (2)
     % ( 1) -> (1)

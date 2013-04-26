@@ -25,6 +25,7 @@ for d = 1:nDocuments
     for i = 1:length(training_data{d}.id)
         docWordId = training_data{d}.id(i);
         docWordCount = training_data{d}.cnt(i);
+%		docWordCount = 1;
         Pwc(docWordId, class) = ...
             Pwc(docWordId, class) + docWordCount;
     end

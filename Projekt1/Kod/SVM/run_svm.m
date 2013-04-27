@@ -24,7 +24,7 @@ for d = 1:nTestDocuments
 end
 
 % With low feature space convergence is slow
-options = optimset('maxiter',750000);
+options = optimset('maxiter',1500000);
 try
     svm_model = svmtrain(Xtraining, Ytraining, 'method', 'SMO', ...
         'Kernel_Function', kernel, 'showplot', false, 'options', options);

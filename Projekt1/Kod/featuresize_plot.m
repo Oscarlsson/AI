@@ -57,8 +57,14 @@ for dataId = 1:length(kValues)
     
 end
 t = toc;
-%% Plotting
-% TODO: 0.01*stddev is only temporary since we only run CV once
+
+%% Plotting (can be run independently of above code if one sets nrAlgorithms).
+
+load('backup_feature.mat');
+if ~exist('nrAlgorithms')
+    nrAlgorithms = 6;
+end
+
 xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 2000]', [1, nrAlgorithms]);
-errorbar(xvals, error_per_feature_matrix, 0.01*stddev_per_feature_matrix)
+errorbar(xvals, error_per_feature_matrix, stddev_per_feature_matrix)
 legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');

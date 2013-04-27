@@ -33,7 +33,7 @@ algorithms = { ...
 nLabels = 6;
 nrAlgorithms = size(algorithms,2);
 
-tss_values = linspace(0.2,1,10);
+tss_values = linspace(0.1,1,10);
 errorAlg = zeros(nrAlgorithms,1);
 timingAlg= zeros(nrAlgorithms,1);
 
@@ -47,6 +47,19 @@ for tss_index = 1:length(tss_values)
              %save('backup_trainingsize.mat', 'outputArrayAlg', 'tss_index', 'outputArrayTiming');
 
     for algoIndex = 1:nrAlgorithms
+        if algoIndex == 5
+            disp('Running KNN with 250');
+            clear wordcount
+            clear labels_sentiment
+            clear labels_classes
+            load MatData/data_250.mat
+        else
+            disp('Running any other alg with 2000');
+            clear wordcount
+            clear labels_sentiment
+            clear labels_classes
+            load MatData/data_2000.mat
+        end
       % save('backup_trainingsize.mat', 'outputArrayAlg', 'tss_index', 'outputArrayTiming');   
         for i = 1:nLabels
            category_data = wordcount(labels_classes == i);
@@ -65,5 +78,5 @@ for tss_index = 1:length(tss_values)
 end
 
 % Correct? No.
-plot(tss_values, outputArray)
+plot(tss_values, outputArrayAlg)
 legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');

@@ -73,8 +73,19 @@ for tss_index = 1:length(tss_values)
         outputArrayAlg(tss_index, algoIndex) = mean(errorAlg);
         outputArrayTiming(tss_index, algoIndex) = mean(timingAlg);
 
-        save('backup_trainingsize.mat', 'outputArrayAlg', 'tss_index', 'outputArrayTiming');
+        save('backup_trainingsize.mat', 'outputArrayAlg', 'tss_values', 'outputArrayTiming');
     end
+end
+
+%% Plotting (can be run independently of above code if one sets nrAlgorithms).
+
+load('backup_trainingsize.mat');
+if ~exist('nrAlgorithms')
+    nrAlgorithms = 6;
+end
+
+if ~exist('tss_values')
+    tss_values = linspace(0.1,1,10);
 end
 
 % Correct? No.

@@ -57,4 +57,8 @@ for i = 1:nLabels % TRAINING DATA
 
         end
     end
+    save('backup_outofdomain.mat', 'errorCatSent','timeCatSent');
 end
+
+%% Plot Skriv kod för plot här.
+

@@ -28,9 +28,11 @@ nrAlgorithms = size(algorithms,2);
 
 %
 % In-domain
-%
-%kValues = {'MatData/data_100.mat','MatData/data_250.mat', 'MatData/data_500.mat','MatData/data_750.mat', 'MatData/data_1000.mat','MatData/data_1250.mat', 'MatData/data_1500.mat', 'MatData/data_2000.mat'};
-kValues = {'MatData/data_1750.mat','MatData/data_2250.mat','MatData/data_2500.mat'}
+
+kValues = {'MatData/data_100.mat','MatData/data_250.mat','MatData/data_500.mat','MatData/data_750.mat', ...
+            'MatData/data_1000.mat','MatData/data_1250.mat', 'MatData/data_1500.mat', ...
+            'MatData/data_1750.mat' , 'MatData/data_2000.mat', 'MatData/data_2250.mat','MatData/data_2500.mat'};
+
 error_per_feature_matrix = zeros(length(kValues), nrAlgorithms);
 timing_per_feature_matrix = zeros(length(kValues), nrAlgorithms);
 stddev_per_feature_matrix = zeros(length(kValues), nrAlgorithms);
@@ -53,8 +55,8 @@ for dataId = 1:length(kValues)
     stddev_per_feature_matrix(dataId, :) = stddevs;
     timing_per_feature_matrix(dataId, :) = timings;
     
-    disp(sprintf('making backup of k = %d', dataId));
-    save('backup_feature_3.mat', 'error_per_feature_matrix','stddev_per_feature_matrix','timing_per_feature_matrix');
+    disp(sprintf('Making backup of k = %d', dataId));
+    save('backup_feature.mat', 'error_per_feature_matrix','stddev_per_feature_matrix','timing_per_feature_matrix');
     
 end
 t = toc;
@@ -66,9 +68,6 @@ if ~exist('nrAlgorithms')
     nrAlgorithms = 6;
 end
 
-
-%1750 2250 2500
-xvals = repmat([1750,2250,2500]', [1, nrAlgorithms]);
-%xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 2000]', [1, nrAlgorithms]);
+xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 1750, 2000, 2250, 2500]', [1, nrAlgorithms]);
 errorbar(xvals, error_per_feature_matrix, stddev_per_feature_matrix)
 legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');

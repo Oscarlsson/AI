@@ -28,37 +28,7 @@ algorithms = { ...
         run_svm(training_data, training_labels, test_data, nWords, 'linear'), ...
 };
 
-%
-% In-domain
-%
 nLabels = 6;
-
-%errorCatSent = zeros(size(algorithms,2),nLabels);
-%timeCatSent = zeros(size(algorithms,2),nLabels);
-
-%for i = 1:nLabels
-%    for algoIndex = 1:size(algorithms,2)
-        
-        %Plocka ut kategorin
-%        category_data = wordcount(labels_classes == i);
-%        category_labels = labels_sentiment(labels_classes == i);
-        
-%        [error, timing] = test_algorithm( algorithms{algoIndex}, category_data, category_labels, category_data, category_labels, 1);
-%        errorCatSent(algoIndex, i) = error;
-%        timeCatSent(algoIndex, i)  = timing;
-
-%    end
-%end
-%meanError = zeros(nLabels,1);
-%for i = 1:nLabels
-%    meanError(i) = mean(errorCatSent(:,i))
-%end
-%[valuemin, indexmin] = min(meanError);
-%[valuemax, indexmax] = max(meanError);
-
-%disp(sprintf('Best category is %i with %1.2f', indexmin, valuemin));
-%disp(sprintf('Worst category is %i with %1.2f', indexmax, valuemax));
-
 
 %
 % Out-of-domain
@@ -88,16 +58,3 @@ for i = 1:nLabels % TRAINING DATA
         end
     end
 end
-
-% % Text Categorization
-% %
-%  for algoIndex = 1:size(algorithms,2)
-%           
-%         [error, timing] = test_algorithm( algorithms{algoIndex}, wordcount, labels_classes, wordcount, labels_classes, 1);
-%         errorCatSent(algoIndex, i) = error;
-%         timeCatSent(algoIndex, i)  = timing;
-% 
-% end
-% 
-% %Text categorization - categorizera mina dokument i alla kategorier och
-% %välj den som är mest lämplig?

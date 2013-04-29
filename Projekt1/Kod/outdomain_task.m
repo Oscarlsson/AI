@@ -61,4 +61,12 @@ for i = 1:nLabels % TRAINING DATA
 end
 
 %% Plot Skriv kod för plot här.
-
+load backup_outofdomain.mat
+figure
+errorCatSent_sum = zeros(6,6);
+for algoId = [2,3,5]
+    errorCatSent_sum = ...
+        errorCatSent_sum + 1/6 * reshape(errorCatSent(algoId,:,:), 6, 6);
+end
+bar(errorCatSent_sum ,'DisplayName','classification_matrix_sum')
+legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software');

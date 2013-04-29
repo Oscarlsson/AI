@@ -6,18 +6,16 @@ trattigt namn, borde kanske ändras. ska innehålla typ metod - alltså vad har 
 
 \section{Finished work}
 Running modules
-\\\\
-beskriv vilka delar som funkar och är klara t.ex.\\
-* naive bayes\\
-* perceptron\\
-* average perceptron\\
-* knn\\
-* svm
-\\\\
 What does your running code do? what is the output?
 
-\subsection{The Perceptron}
-The perceptron algorithm works as follows: 
+\subsection{Naive Bayes}
+
+\subsection{K-Nearest Neighbour (KNN) algorithm}
+
+\subsection{Support Vector Machine (SVM)}
+
+\subsection{The Perceptron algorithm}
+The Perceptron algorithm works as follows: 
 The output, w, from the algorithm is a weight vector with the same size as y. If the classification for a x in the training set is equal to y, the weight is unchanged.
 If y is 1 and the classification 0, then w is increased. If y is 0 and the classification 1, then w is decreased. [reference]
 \begin{verbatim}
@@ -31,7 +29,7 @@ Iterate N times through the training set:
             w := w + f(x, y) - f(x, guess)
 Return w
 \end{verbatim}
-The averaged perceptron works in the same way except that it returns the average weight vector instead of the final.
+The Averaged Perceptron works in the same way except that it returns the average weight vector instead of the final.
 This averaged vector is built incrementally by updating it while we build the usual weight vector. The pseudo code is the same as for the usual perceptron, except some lines which are shown below.
 \begin{verbatim}
 Initialize the average weight vector wa to all zeros and the counter c to 0.
@@ -42,5 +40,5 @@ If y is not equal to guess:
     wa := wa + average_weight * (f(x, y) - f(x, guess))
 Increase the counter c
 \end{verbatim}
-
-
+In both of the Perceptron algorithms, the algorithm makes a number of iterations. The following plot was made to decide how many iterations that must be done to get a fair result. The algorithms uses input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converge after around 15 iterations for both sentimental classification and text categorization.\\
+\includegraphics[scale = 0.8]{fig/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}

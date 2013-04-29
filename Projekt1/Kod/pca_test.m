@@ -22,16 +22,16 @@ zData = Xtraining * score(:,3);
 % plot(xData(labels_sentiment == 1), yData(labels_sentiment == 1),'.b')
 % plot(xData(labels_sentiment == 2), yData(labels_sentiment == 2),'.r')
 % hold off
-% figure
+figure
 hold on
 
+plot(xData(labels_classes == 4), yData(labels_classes == 4),'.black')
+plot(xData(labels_classes == 6), yData(labels_classes == 6),'.m')
 plot(xData(labels_classes == 1), yData(labels_classes == 1),'.r')
-plot(xData(labels_classes == 2), yData(labels_classes == 2),'.g')
-plot(xData(labels_classes == 3), yData(labels_classes == 3),'.b')
-plot(xData(labels_classes == 5), yData(labels_classes == 5),'.c')
 
-% plot(xData(labels_classes == 4), yData(labels_classes == 4),'.black')
-% plot(xData(labels_classes == 6), yData(labels_classes == 6),'.m')
+% plot(xData(labels_classes == 2), yData(labels_classes == 2),'.g')
+% plot(xData(labels_classes == 3), yData(labels_classes == 3),'.b')
+% plot(xData(labels_classes == 5), yData(labels_classes == 5),'.c')
 
 hold off
 

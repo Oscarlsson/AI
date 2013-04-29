@@ -1,16 +1,14 @@
-#!/usr/bin/python 
+#!/usr/bin/python
 import sys
 from collections import *
 from cmath import log
-import os 
+import os
 import subprocess
 import argparse
-from itertools import tee , izip 
+from itertools import tee , izip
 
-# Run the file with the command: python counter.py -k <nr of words> 
+# Run the file with the command: python counter.py -k <nr of words>
 # Alt. arguments is --snowball and --feature <bin/big>. Tfidf is default.
-
-        
 
 def run(snowballBool, kInt, feature):
     if snowballBool:
@@ -21,14 +19,14 @@ def run(snowballBool, kInt, feature):
     k = kInt # Number of words to output. Total: ~58 000.
 
     # Get files
-    s = subprocess.Popen(["find", "../../Data/amazon-balanced-6cats/"], stdout=subprocess.PIPE) 
-    s2 = subprocess.Popen(["grep", ".txt$"], stdin=s.stdout, stdout=subprocess.PIPE) 
+    s = subprocess.Popen(["find", "../../Data/amazon-balanced-6cats/"], stdout=subprocess.PIPE)
+    s2 = subprocess.Popen(["grep", ".txt$"], stdin=s.stdout, stdout=subprocess.PIPE)
     listoffiles = s2.stdout.read().split('\n')
     # delete last empty elem
     del listoffiles[-1]
 
     print "Reading files..."
-    try: 
+    try:
         cList = [] # One Counter object for each document
         for line in listoffiles:
             f = open(line)
@@ -72,7 +70,7 @@ def run(snowballBool, kInt, feature):
             except:
                 wordIdfSum[word] = tf * idf
 
-            if feature == "bin": 
+            if feature == "bin":
                 c[word] = 1
             else:
                 c[word] = tf*idf
@@ -93,7 +91,7 @@ def run(snowballBool, kInt, feature):
                 except:
                     pass
             f.write('\n')
-        f.close() 
+        f.close()
     except:
         print "not allowed to write to output.txt"
         raise
@@ -102,7 +100,7 @@ def run(snowballBool, kInt, feature):
     try:
         f = open('filenames.txt','w')
         f.write(filenames)
-        f.close() 
+        f.close()
     except:
         print "not allowed to write to output.txt"
         sys.exit(1)
@@ -111,11 +109,11 @@ def run(snowballBool, kInt, feature):
         f = open('vocabulary.txt','w')
         for word, count in d.items():
             f.write(str(count) + '\t' + str(word) + '\n')
-        f.close() 
+        f.close()
     except:
         print "not allowed to write to output.txt"
         sys.exit(1)
-    
+
     print "Calling export.m with matlab.. "
 #    output = subprocess.Popen(["octave","export.m"], stdout=subprocess.PIPE)
     # Consider using subprocess but make it wait
@@ -124,53 +122,28 @@ def run(snowballBool, kInt, feature):
     os.system("matlab -nodesktop -nosplash -nojvm -r 'export; exit' > /dev/null")
     print "Done."
 
-# Input file contents
-# Returns counts in range [0,1] for each word in each doc
-
-def big(s,snowballBool):
-        s = remove_tokens(s)
-        if snowballBool:
-                s = run_snowball(s)
-        #c  = remove_stop_words(s)    #Has a bug that generates newlines in output.txt 
-        #a, b = tee(list(c))
-        a, b = tee((s.split()))
-        next(b, None)
-        bi = izip(a, b) 
-        c = Counter(list(bi)) 
-        most_common = c.most_common(1)
-        if not most_common: 
-            return c
-        frec = float(most_common[0][1])
-        cOutput = Counter() 
-        for word, count in c.items():
-                cOutput[word] = count/frec
-        return cOutput 
-
-# Input file contents
-# Returns counts in range [0,1] for each word in each doc
-
 def remove_stop_words(s):
-    try: 
+    try:
         f = open("english_word_stops.txt")
-        common_words = f.read().split()  
-        f.close() 
+        common_words = f.read().split()
+        f.close()
     except:
         print "can't find file english_word_stops.txt"
-        sys.exit(1) 
+        sys.exit(1)
 
 
-    ss = s.strip().lower().split() 
+    ss = s.strip().lower().split()
 
     c = Counter(ss)
-    
+
     for elem in common_words:
         del c[elem]
 
-    return c 
+    return c
 
 def remove_tokens(s):
-    rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
-    return filter(lambda x : not x in rm,s) 
+    rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?','*','+']
+    return filter(lambda x : not x in rm,s)
 
 
 def run_snowball(s):
@@ -179,37 +152,22 @@ def run_snowball(s):
         changedlist = map(stemmer.stemWord,s.split())
         return ' '.join(changedlist)
 
+# Input file contents
+# Returns counts in range [0,1] for each word in each doc
 
 def count_words_tf_normalized(s, snowballBool):
-    try: 
-        f = open("english_word_stops.txt")
-        common_words = f.read().split()  
-        f.close() 
-    except:
-        print "can't find file english_word_stops.txt"
-        sys.exit(1) 
-
-
     # Filter unwanted chars
-    rm = [str(x) for x in range (0,10)] + [',','.',':','&','-','(',')','$','/','"',';','!','?']
-
-    s = filter(lambda x : not x in rm,s) 
-    
+    s = remove_tokens(s)
     #
     # Snowball! This is only run if argument
     # --snowball is set.
-    # This is ugly because we create a stemmer-object each iteration. 
+    # This is ugly because we create a stemmer-object each iteration.
     #
+    c = remove_stop_words(s)
     if snowballBool:
+        s = ' '.join(list(c))
         s = run_snowball(s)
-
-    ss = s.lower().split() 
-
-    c = Counter(ss)
-    
-    for elem in common_words:
-        del c[elem]
-
+        c = Counter(s.split())
     mostCommon = c.most_common(1)
     if not mostCommon:
         return c
@@ -225,18 +183,42 @@ def count_words_tf_normalized(s, snowballBool):
 
     return cOutput
 
+# Input file contents
+# Returns counts in range [0,1] for each word in each doc
+# Does the same as count_words_tf_normalized but for bigrams
+def big(s,snowballBool):
+        s = remove_tokens(s)
+        c  = remove_stop_words(s)
+        if snowballBool:
+                s = ' '.join(list(c))
+                s = run_snowball(s)
+                a, b = tee(s.split())
+        else:
+            a, b = tee(list(c))
+        next(b, None)
+        bi = izip(a, b)
+        c = Counter(list(bi))
+        most_common = c.most_common(1)
+        if not most_common:
+            return c
+        frec = float(most_common[0][1])
+        cOutput = Counter()
+        for word, count in c.items():
+                cOutput[word] = count/frec
+        return cOutput
+
 if __name__=="__main__":
    parser = argparse.ArgumentParser()
-   
+
    parser.add_argument('--snowball', help='Run with snowball', action='store_true')
    parser.add_argument('--feature', help='Choose feature',  action='store', choices=['bin','big', 'tfidf'], default='tfidf')
    parser.add_argument('-k', help='Choose a big-ass-K. Must be an int.', type=int, required=True)
-   
+
    args = vars(parser.parse_args())
    snowballBool = args['snowball']
    kInt = args['k']
    feature = args['feature']
-  
+
    run(snowballBool, kInt, feature)
 
 

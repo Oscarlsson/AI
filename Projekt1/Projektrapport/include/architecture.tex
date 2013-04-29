@@ -40,5 +40,8 @@ If y is not equal to guess:
     wa := wa + average_weight * (f(x, y) - f(x, guess))
 Increase the counter c
 \end{verbatim}
-In both of the Perceptron algorithms, the algorithm makes a number of iterations. The following plot was made to decide how many iterations that must be done to get a fair result. The algorithms uses input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converge after around 15 iterations for both sentimental classification and text categorization.\\
+In both of the Perceptron algorithms, the algorithm makes a number of iterations. The following plot was made to decide how many iterations that must be done to get a fair result. The algorithms uses input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converge after around 15 iterations for both sentimental classification and text categorization.
+\begin{center}
 \includegraphics[scale = 0.8]{fig/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
+\end{center}
+

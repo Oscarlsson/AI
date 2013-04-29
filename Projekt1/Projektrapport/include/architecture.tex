@@ -16,17 +16,31 @@ beskriv vilka delar som funkar och är klara t.ex.\\
 \\\\
 What does your running code do? what is the output?
 
-\section{Work in progress}
-Modules designed but not implemented
-\\\\
-något som är halvklart?
+\subsection{The Perceptron}
+The perceptron algorithm works as follows: 
+The output, w, from the algorithm is a weight vector with the same size as y. If the classification for a x in the training set is equal to y, the weight is unchanged.
+If y is 1 and the classification 0, then w is increased. If y is 0 and the classification 1, then w is decreased. [reference]
+\begin{verbatim}
+Let N = number of iterations through training set
+Initialize the weight vector w to all zeros
 
+Iterate N times through the training set:
+    For each x, y in the training set:
+        Let guess = classify(x) using our current w
+        If y is not equal to guess:
+            w := w + f(x, y) - f(x, guess)
+Return w
+\end{verbatim}
+The averaged perceptron works in the same way except that it returns the average weight vector instead of the final.
+This averaged vector is built incrementally by updating it while we build the usual weight vector. The pseudo code is the same as for the usual perceptron, except some lines which are shown below.
+\begin{verbatim}
+Initialize the average weight vector wa to all zeros and the counter c to 0.
 
-\section{Future work}
-Modules a future continuation may have
-\\\\
-* annat dataset\\
-* fler ord\\
-* kombinera algoritmer\\
-* boosting\\
+If y is not equal to guess:
+    w := w + f(x, y) - f(x, guess)
+    average_weight := (N*T - c) / (N*T)
+    wa := wa + average_weight * (f(x, y) - f(x, guess))
+Increase the counter c
+\end{verbatim}
+
 

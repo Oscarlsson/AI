@@ -27,7 +27,7 @@ classification_matrix = zeros(nLabels, nLabels, nrAlgorithms);
 tic;
 for algoId = 1:nrAlgorithms
     
-    if algoId == 4
+    if algoId == 3
         disp('Running KNN with 100');
         clear wordcount
         clear labels_sentiment

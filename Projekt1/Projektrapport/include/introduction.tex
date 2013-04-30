@@ -20,6 +20,23 @@ The input should be divided in words somehow, either one word (unigrams) or two 
 Describe briefly the scientific papers or book chapters you found relevant to the problem, references to sec 6. Explain which are relevant for your project and which not and why.
 
 \subsection{Naive Bayes}
+The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$ by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.
+\begin{align*}
+P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
+\\&=P(c,\mathbf{x})
+\\&\propto P(c) P(x_1,...,x_D\vert c)
+\\&\propto P(c) P(x_1\vert c) P(x_2,...,x_D\vert c, x_1)
+\\&\propto P(c) P(x_1\vert c) P(x_2\vert c, x_1) P(x_3,...,x_D\vert c,x_1,x_2)
+\\&\propto P(c) P(x_1\vert c) P(x_2\vert c, x_1) P(x_3\vert c,x_1,x_2) \dots P(x_D\vert c, x_1,...,x_{D-1})
+\\&\dots
+\end{align*}
+The independence assumption says that each feature $x_i$ is independent of every other feature $x_j,...x_k$, rendering $P(x_i\vert x_j,...,x_k) = P(x_i\vert c)$, which translates the posterior $P(c\vert \mathbf{x})$ to
+\begin{align}
+P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert c)
+\\&= P(c) \prod_{i=1}^{D} P(x_i\vert c).
+\end{align}
+A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate}, MLE, which corresponds to the relative frequency of each parameter in the training data.
+
 \begin{algorithm}[h]
 \label{algorithm:naive_bayes}
  \SetAlgoLined

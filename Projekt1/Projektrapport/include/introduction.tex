@@ -32,27 +32,30 @@ P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
 \end{align*}
 The independence assumption says that each feature $x_i$ is independent of every other feature $x_j,...x_k$, rendering $P(x_i\vert x_j,...,x_k) = P(x_i\vert c)$, which translates the posterior $P(c\vert \mathbf{x})$ to
 \begin{align}
-P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert c)
-\\&= P(c) \prod_{i=1}^{D} P(x_i\vert c).
+P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert c) \nonumber
+\\&= P(c) \prod_{i=1}^{D} P(x_i\vert c).\label{eq:naivebayes_model}
 \end{align}
 A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate}, MLE, which corresponds to the relative frequency of each parameter in the training data.
 
+The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}.
+
 \begin{algorithm}[h]
-\label{algorithm:naive_bayes}
+\label{algorithm:naive_bayes_classification}
  \SetAlgoLined
- \KwData{this text}
- \KwResult{how to write algorithm with \LaTeX2e }
- initialization\;
- \While{not at end of this document}{
-  read current\;
-  \eIf{understand}{
-   go to next section\;
-   current section becomes this one\;
-   }{
-   go back to the beginning of current section\;
-  }
+ \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+ \KwData{\textit{Feature vector with unknown class} $\mathbf{x} \in \mathbb{R}^D$; \textit{Class weights} $\{P(c) : c \in C\}$; \textit{Conditional feature probabilities} $\{P(x_1\vert c), ..., P(x_D\vert c)\}$}
+ \KwResult{Classification for $\mathbf{x}$}
+ \ForEach{$c \in C$}
+ {
+ 	score[$c$] $\leftarrow \log P(c)$\\
+ 	\For{$i=1$ \KwTo $D$}
+ 	{
+ 		score[$c$] += $\log P(x_i\vert c)$
+ 	}
  }
- \caption{How to write algorithms}
+ \Return $\displaystyle \argmax_{c \in C} score[c]$ \\
+
+ \caption{Multinomial Naive Bayes classification algorithm}
 \end{algorithm}
 
 \subsection{K-Nearest Neighbour (KNN) algorithm}

@@ -20,6 +20,23 @@ The input should be divided in words somehow, either one word (unigrams) or two 
 Describe briefly the scientific papers or book chapters you found relevant to the problem, references to sec 6. Explain which are relevant for your project and which not and why.
 
 \subsection{Naive Bayes}
+\begin{algorithm}[h]
+\label{algorithm:naive_bayes}
+ \SetAlgoLined
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ \caption{How to write algorithms}
+\end{algorithm}
 
 \subsection{K-Nearest Neighbour (KNN) algorithm}
 %http://www.cse.chalmers.se/edu/course/TDA231/mlsli11.pdf
@@ -59,15 +76,41 @@ complex ways for reducing noise.
 \end{center}
 
 \subsection{Support Vector Machine (SVM)}
-
+Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating two different classes of input data. 
+\\\\
+Given some input data SVM outputs a hyperplane which is a separating the given data depending on its class. SVM chooses the hyperplane which has the largest distance to the nearest training data point of any class, this distance is refered to as the margin and denoted $\gamma$. In general the larger margin, the lower generalization error. (Motivera!) 
+\\\\
+By default SVM is so-called hard margined, meaning that all points must be on correct side of the hyperplane. 
+\\\\
+The data points that is at the margin distance from the hyperplane is called the support vectors. The hyperplane only depends on the support vector, meaning that SVM is dimensional independent (??). This is shown in Figure~~\ref{fig:svm}.
+\\\\
+SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by mapping the data into a high-dimensional feature space, through a kernel function. Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
+\\\\
+SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data. 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale = 0.5]{fig/svm_example_stolen.png}
+\caption{Example of a classification by SVM. Support vecotors are marked with dots. \citep{svm_picture}}
+\label{fig:svm}
+\end{figure}
+(Behövs det nämnas dual problemet och de matematiska?? Det finns material för det) 
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem.
-The algorithm tries to separate the input data with a linear decision boundary, as shown in Picture X. The algorithm output a weight vector which should represent the line between the two separated classes for each input data point. \citep{perceptron_url}
-\begin{center}
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem. \citep{perceptron_ai}
+The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets. \citep{perceptron_url} This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point. \citep{perceptron_url}
+\begin{figure}[h!]
+\centering
 \includegraphics[scale = 0.5]{fig/perceptron_example.png}
-\end{center}
+\caption{Example of a classification by Perceptron}
+\label{fig:perceptron}
+\end{figure}\\
+The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron}. \citep{perceptron_ai}
+\begin{equation}
+\label{eq:perceptron}
+w = w + (x \cdot y)
+\end{equation}
+where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged. \citep{perceptron_ai}
+\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
-
 \subsection{Text categorization}
 
 

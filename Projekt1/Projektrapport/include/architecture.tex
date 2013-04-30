@@ -13,6 +13,26 @@ What does your running code do? what is the output?
 \subsection{K-Nearest Neighbour (KNN) algorithm}
 \input{include/KNN_metod}
 \subsection{Support Vector Machine (SVM)}
+We choose to use the matlab library $svmtrain$ \citep{svmtrain_ref} from the Statistics toolbox. Svmtrain was used hard-margined and configured such that when it didn't converge we set the classification to all zero, which would represent $100\%$ misclassification. \\
+\begin{algorithm}[H]
+\label{algorithm:SVM}
+\SetAlgoLined
+\KwData{Xtraining: The data to train, Ytraining: labels of data to train \\ Xtest: The data to test}
+\KwResult{Vector containing the classified labels}
+\SetKwData{Try}{try}
+\SetKwData{Catch}{catch}
+\SetKwData{End}{end}
+\SetKwIF{Try}{Elseif}{Catch}{try}{:}{else if}{catch:}{}
+
+Set max iterations 150000 \\
+\Try{}{
+svm$\_$model = $svmtrain(Xtraining, Ytraining, linear)$ \\
+classifications = $svmclassify(svm\_model, Xtest)'$
+}\Catch{$classifications = zeros( Xtest)$}{}{end}
+ \caption{SVM using svmtrain}
+\end{algorithm}
+
+
 
 \subsection{The Perceptron algorithm}
 The Perceptron algorithm works as follows:
@@ -43,7 +63,7 @@ This averaged vector is built incrementally by updating it while we build the us
  \KwData{data}
  \KwResult{weight vector $w$}
  Initialize weight vector $w$ and the average weight vector $wa$ to all zeros\;
- Initialize the counter $c$ to 0.\;
+ Initialize the counter $c$ to 0\;
  $N \leftarrow$ number of iterations through training set\;
  \For{1 $\rightarrow$ N}{
    \ForAll{x, y in the training set}{
@@ -58,9 +78,12 @@ This averaged vector is built incrementally by updating it while we build the us
  }
  \caption{Averaged Perceptron}
 \end{algorithm}
-In both of the Perceptron algorithms, the algorithm makes a number of iterations. The following plot was made to decide how many iterations that must be done to get a fair result. The algorithms uses input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converge after around 15 iterations for both sentimental classification and text categorization.
-\begin{center}
+In both of the Perceptron algorithms, the algorithm makes a number of iterations. To decide how many iterations that must be done to get a fair result the misclassifications and the number of iterations were plotted, which is shown in Figure~\ref{fig:number_iterations}. The algorithms uses input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converge after around 15 iterations for both sentimental classification and text categorization.
+\begin{figure}[h!]
+\centering
 \includegraphics[scale = 0.8]{fig/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
-\end{center}
+\caption{Plot over misclassifications for different \#iterations}
+\label{fig:number_iterations}
+\end{figure}\\
 Since the Perceptron algorithms are 0/1 classifiers there is some difficulties with classifying the data as classes. This was solved by for all data and all classes classify the data as belonging to this class or not. Finally the new document is classified as the class it belongs to most.
 

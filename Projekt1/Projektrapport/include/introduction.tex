@@ -18,6 +18,33 @@ The input should be divided in words somehow, either one word (unigrams) or two 
 
 \section{Theory}
 Describe briefly the scientific papers or book chapters you found relevant to the problem, references to sec 6. Explain which are relevant for your project and which not and why.
+\subsection{Text classification}
+One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern. 
+
+\subsubsection{Representing text}
+A document is typically a huge string containing all characters and is not suitable for classification, hence some processing needs to be done on each document. 
+\\\\
+All words in a document isn't interesting when doing text classification. E.g. words like "the", "one", "are", "is" are words that will occur in any human readable text, but has no value when trying to find similarities and differences between documents. These words are called "stop-words" and are usually filtered out and treated as noise. 
+\\\\
+When working with document we want to treat different inflections(?) of a word as the same word. There is no need to separate the words "persons" and "person", because both words give us the same information we want. This is called Stemming and we will not focus more on the theory behind it.
+\\\\
+There are various ways of storing document and the representation has a big impact on the result of different classifiers. The Bag-of-words model is a simplifying model where a text is represented as a unordered set of words, without respect to grammar or order of words. 
+\\\\
+Build a feature vector which is an n-dimensional vector of numerical features that represents the words.
+\subsubsection{Features}
+\textbf{Feature-size} \\
+\textbf{n-gram} \\
+\textbf{TF-IDF} \\
+\textbf{Wordcount} 
+Count the number of occurrences of each word or calculating the tf-idf, term frequency–inverse document frequency, of each word. 
+\begin{equation*}
+\begin{array}{l}
+tf(t,d) = \frac{f(t,d)}{(max \{f(w,d) : w \in d\})} \\
+idf(t,D) = log(\frac{|D|}{|\{d \in D : t \in d\}|})
+\end{array}
+\end{equation*}
+\\\\
+
 
 \subsection{Naive Bayes}
 The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$ by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.

@@ -61,13 +61,22 @@ complex ways for reducing noise.
 \subsection{Support Vector Machine (SVM)}
 
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem.
-The algorithm tries to separate the input data with a linear decision boundary, as shown in Picture X. The algorithm output a weight vector which should represent the line between the two separated classes for each input data point. \citep{perceptron_url}
-\begin{center}
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem. \citep{perceptron_ai}
+The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets. \citep{perceptron_url} This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point. \citep{perceptron_url}
+\begin{figure}[h!]
+\centering
 \includegraphics[scale = 0.5]{fig/perceptron_example.png}
-\end{center}
+\caption{Example of a classification by Perceptron}
+\label{fig:perceptron}
+\end{figure}\\
+The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron}. \citep{perceptron_ai}
+\begin{equation}
+\label{eq:perceptron}
+w = w + (x \cdot y)
+\end{equation}
+where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged. \citep{perceptron_ai}
+\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
-
 \subsection{Text categorization}
 
 

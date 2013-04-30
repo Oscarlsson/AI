@@ -32,19 +32,19 @@ There are various ways of storing document and the representation has a big impa
 \\\\
 Build a feature vector which is an n-dimensional vector of numerical features that represents the words.
 \subsubsection{Features}
-\textbf{Feature-size} \\
-\textbf{n-gram} \\
-\textbf{TF-IDF} \\
-\textbf{Wordcount} 
-Count the number of occurrences of each word or calculating the tf-idf, term frequency–inverse document frequency, of each word. 
-\begin{equation*}
+\begin{itemize}
+\item Feature size - Sometimes the feature vector can be very large adn hard to handle. Then it could be a good idea to just choose the 1000 most frequent words or maybe the 100 most frequent words. \citep{joachims}
+\item N-grams - N-grams is a sequence of symbols of length $n$, in this case words. Unigram is then one word and bigram is two words. \citep{ngrams_ai}
+\item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the words in the documents and give a number of how important each word is. This is given by Equation~\ref{eq:tfidf}.
+\end{itemize}
+
+\begin{equation}
 \begin{array}{l}
 tf(t,d) = \frac{f(t,d)}{(max \{f(w,d) : w \in d\})} \\
 idf(t,D) = log(\frac{|D|}{|\{d \in D : t \in d\}|})
 \end{array}
-\end{equation*}
-\\\\
-
+\label{eq:tfidf}
+\end{equation}
 
 \subsection{Naive Bayes}
 The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$ by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.
@@ -162,8 +162,6 @@ class = sign(testData \cdot w)
 \end{equation}
 Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
-\subsection{Text categorization}
-
 
 \subsection{Programs and tools}
 What tools and programs are already available for the problem, or for closely related ones?

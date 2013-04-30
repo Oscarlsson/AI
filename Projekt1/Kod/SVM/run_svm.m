@@ -1,4 +1,4 @@
-function [ classifications ] = run_svm( training_data, training_labels, test_data, nWords )
+function [ classifications ] = run_svm( training_data, training_labels, test_data, nWords, kernel )
 
 % Initialize training data
 nTrainingDocuments = size(training_data, 2);
@@ -23,10 +23,15 @@ for d = 1:nTestDocuments
     end
 end
 
-svm_model = svmtrain(Xtraining, Ytraining, 'method', 'SMO', ...
-    'Kernel_Function', 'linear', 'showplot', false);
-
-classifications = svmclassify(svm_model, Xtest)';
+% With low feature space convergence is slow
+options = optimset('maxiter',1500000);
+try
+    svm_model = svmtrain(Xtraining, Ytraining, 'method', 'SMO', ...
+        'Kernel_Function', kernel, 'showplot', false, 'options', options);
+    classifications = svmclassify(svm_model, Xtest)';
+catch err
+    classifications = zeros(1, size(test_data, 1));
+end
 
 end
 

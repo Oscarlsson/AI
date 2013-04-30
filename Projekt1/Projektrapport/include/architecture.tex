@@ -13,6 +13,26 @@ What does your running code do? what is the output?
 \subsection{K-Nearest Neighbour (KNN) algorithm}
 \input{include/KNN_metod}
 \subsection{Support Vector Machine (SVM)}
+We choose to use the matlab library $svmtrain$ \citep{svmtrain_ref} from the Statistics toolbox. Svmtrain was used hard-margined and configured such that when it didn't converge we set the classification to all zero, which would represent $100\%$ misclassification. \\
+\begin{algorithm}[H]
+\label{algorithm:SVM}
+\SetAlgoLined
+\KwData{Xtraining: The data to train, Ytraining: labels of data to train \\ Xtest: The data to test}
+\KwResult{Vector containing the classified labels}
+\SetKwData{Try}{try}
+\SetKwData{Catch}{catch}
+\SetKwData{End}{end}
+\SetKwIF{Try}{Elseif}{Catch}{try}{:}{else if}{catch:}{}
+
+Set max iterations 150000 \\
+\Try{}{
+svm$\_$model = $svmtrain(Xtraining, Ytraining, linear)$ \\
+classifications = $svmclassify(svm\_model, Xtest)'$
+}\Catch{$classifications = zeros( Xtest)$}{}{end}
+ \caption{SVM using svmtrain}
+\end{algorithm}
+
+
 
 \subsection{The Perceptron algorithm}
 The Perceptron algorithm works as follows:

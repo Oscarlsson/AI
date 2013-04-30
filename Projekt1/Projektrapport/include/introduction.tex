@@ -76,7 +76,24 @@ complex ways for reducing noise.
 \end{center}
 
 \subsection{Support Vector Machine (SVM)}
-
+Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating two different classes of input data. 
+\\\\
+Given some input data SVM outputs a hyperplane which is a separating the given data depending on its class. SVM chooses the hyperplane which has the largest distance to the nearest training data point of any class, this distance is refered to as the margin and denoted $\gamma$. In general the larger margin, the lower generalization error. (Motivera!) 
+\\\\
+By default SVM is so-called hard margined, meaning that all points must be on correct side of the hyperplane. 
+\\\\
+The data points that is at the margin distance from the hyperplane is called the support vectors. The hyperplane only depends on the support vector, meaning that SVM is dimensional independent (??). This is shown in Figure~~\ref{fig:svm}.
+\\\\
+SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by mapping the data into a high-dimensional feature space, through a kernel function. Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
+\\\\
+SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data. 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale = 0.5]{fig/svm_example_stolen.png}
+\caption{Example of a classification by SVM. Support vecotors are marked with dots. \citep{svm_picture}}
+\label{fig:svm}
+\end{figure}
+(Behövs det nämnas dual problemet och de matematiska?? Det finns material för det) 
 \subsection{The Perceptron algorithm}
 Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem. \citep{perceptron_ai}
 The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets. \citep{perceptron_url} This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point. \citep{perceptron_url}

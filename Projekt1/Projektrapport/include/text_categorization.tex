@@ -1,0 +1,22 @@
+Feature values corresponds to the term occurrence frequencies.
+The calculation for this was done in a number of steps.
+\begin{enumerate}
+\item Filter out unwanted characters as: . , ? , ! etc.
+\item Remove stop words as: and, or, this etc.
+\item Optionally make us of a stemmer, which removes endings of words.
+\item Making use of TF–IDF, term frequency–inverse document frequency that
+reflects on how important a word is to a document in a collection or corpus
+\end{enumerate}
+The text categorization was implemented in python. Feature values was generated
+for both 1-grams and 2-grams to be able to see if a n-gram, $n > 1$, improves
+the result when running the classification algorithms.
+
+The output data is represented by a matrix $(words \times document)$ where each
+elements represents the TF-IDF value for the frequency of a word in a specific
+document.
+It's obvious for one to realize that it isn't possible to take all unique words
+into account since the output matrix would have been enormous if so was the
+case. Even further it's not obvious that the classification results gets better
+just because every word is taken into account. Therefor several tests was
+performed using different number of features or more specific words or bigrams
+in this case.

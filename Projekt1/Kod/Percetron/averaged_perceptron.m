@@ -1,20 +1,16 @@
 %average perceptron
-function [wa] = averaged_perceptron(data, labels)
+function [wa] = averaged_perceptron(data, labels, N)
 
-[trainingData, trainingLabels, validationData, validationLabels] = ...
-    training_validation_partition(data, labels, 10);
-
-[n, d] = size(trainingData);
-
-N = 20;
+[n, d] = size(data);
+%N = 50;
 count = 0;
 
-%Create the randomized w.
+%Initialize w and wa.
 w = zeros(d,1);
 wa = zeros(d,1);
 
 %
-%PERCEPTRON ALGORITHM
+%AVERAGED PERCEPTRON ALGORITHM
 %
 validationErrors = [];
 trainingErrors = [];
@@ -24,10 +20,10 @@ for j = 1:N %number of iterations
 %    trainingErrors = [trainingErrors, ...
 %        classification_error(w, trainingData, trainingLabels)];
       for i = 1:n
-          if sign((trainingData(i,:)*w)') ~= trainingLabels(i) %makes mistake?
-              w = w + (trainingLabels(i) * trainingData(i,:))'; %update w
+          if sign((data(i,:)*w)') ~= labels(i) %makes mistake?
+              w = w + (labels(i) * data(i,:))'; %update w
               average_weight = (N*n - count) / (N*n);
-              wa = wa + average_weight * (trainingLabels(i) * trainingData(i,:))';
+              wa = wa + average_weight * (labels(i) * data(i,:))';
           end
           count = count + 1;
       end
@@ -40,4 +36,3 @@ end
 
 wa = wa/norm(wa);
 end
-

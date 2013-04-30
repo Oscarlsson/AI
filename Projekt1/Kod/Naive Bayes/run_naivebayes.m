@@ -1,12 +1,12 @@
-function [ classifications ] = run_naivebayes( training_data, training_labels, test_data, nWords )
+function [ classifications ] = run_naivebayes( training_data, training_labels, test_data, nWords, useTfIdf )
 
 %% Setup, data.
 
 nDocuments = size(training_data,2);
 
 %% Classes initialization
-nClasses = size(unique(training_labels),2);
-
+%nClasses = size(unique(training_labels),2);
+nClasses  = max(training_labels);
 %% NB start
 
 % Setup Pc(c) =
@@ -17,15 +17,18 @@ for i = 1:nClasses
     Pc(i) = sum(training_labels == i) / length(training_labels);
 end
 
-%
-laplace = 0.1;
+laplace = 1;
 % Setup Pwc(w, c) = P(w | c) = (#words=w in class c) / (#words in class c)
 Pwc = laplace*ones(nWords, nClasses); % Note: ones. Not zeroes. Laplace smoothing.
 for d = 1:nDocuments
     class = training_labels(d);
     for i = 1:length(training_data{d}.id)
         docWordId = training_data{d}.id(i);
-        docWordCount = training_data{d}.cnt(i);
+		if useTfIdf
+			docWordCount = training_data{d}.cnt(i);
+		else
+			docWordCount = 1;
+		end
         Pwc(docWordId, class) = ...
             Pwc(docWordId, class) + docWordCount;
     end
@@ -37,19 +40,7 @@ Pwc = Pwc ./ (ones(nWords, 1) * sum(Pwc) + nWords*laplace);
 
 
 %% Generate classifications (output)
-
-% classifications = [];
-% for testId = 1:length(test_data)
-%     guessedClass = nb_classify(test_data{testId}, Pc, Pwc);
-%     classifications = [classifications; guessedClass];
-% end
-
-classifications = cellfun(@(x) nb_classify(x, Pc, Pwc), test_data)
-
-% DEBUG, not pretty.
-%test;
-%disp(sprintf('Classified correctly: %1.2f percent.', (nCorrect / (nWrong + nCorrect)) * 100));
-
+classifications = cellfun(@(x) nb_classify(x, Pc, Pwc), test_data);
 
 end
 

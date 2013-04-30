@@ -1,4 +1,4 @@
-function [ classifications ] = run_knn( training_data, training_labels, test_data, nWords )
+function [ classifications ] = run_knn( training_data, training_labels, test_data, nWords, K)
 
 % Initialize training data
 nTrainingDocuments = size(training_data, 2);
@@ -23,11 +23,9 @@ for d = 1:nTestDocuments
     end
 end
 
-data1 = Xtraining( training_labels == 1,: );
-data2 = Xtraining( training_labels == 2,: );
 classifications = zeros(1, size(test_data,2));
 for i = 1:size(test_data,2)
-    classifications(i) = knn_classifier(data1, data2, 5, Xtest(i,:));
+    classifications(i) = knn_classifier(Xtraining, training_labels, K, Xtest(i,:));
 end
 
 end

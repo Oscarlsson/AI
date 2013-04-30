@@ -108,8 +108,12 @@ The basic idea for the Perceptron algorithm is for all input data, whose labelin
 \label{eq:perceptron}
 w = w + (x \cdot y)
 \end{equation}
-where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged. \citep{perceptron_ai}
-\\\\
+where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged. \citep{perceptron_ai} New data is classified by Equation~\ref{eq:new_perceptron}.
+\begin{equation}
+\label{eq:new_perceptron}
+class = sign(testData \cdot w)
+\end{equation}
+Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 \subsection{Text categorization}
 

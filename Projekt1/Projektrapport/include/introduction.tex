@@ -20,6 +20,23 @@ The input should be divided in words somehow, either one word (unigrams) or two 
 Describe briefly the scientific papers or book chapters you found relevant to the problem, references to sec 6. Explain which are relevant for your project and which not and why.
 
 \subsection{Naive Bayes}
+\begin{algorithm}[h]
+\label{algorithm:naive_bayes}
+ \SetAlgoLined
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ \caption{How to write algorithms}
+\end{algorithm}
 
 \subsection{K-Nearest Neighbour (KNN) algorithm}
 %http://www.cse.chalmers.se/edu/course/TDA231/mlsli11.pdf

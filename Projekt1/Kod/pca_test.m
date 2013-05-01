@@ -65,7 +65,7 @@ hold off
 figure
 hold on
     plot(xData(labels_classes == 3), yData(labels_classes == 3),'.b')
-    plot(xData(labels_classes == 1), yData(labels_classes == 1),'.m')
+    plot(xData(labels_classes == 1), yData(labels_classes == 1),'.r')
     
     axis([-1 10 -2 10])
     title('Projection of 2000 features onto principal components')

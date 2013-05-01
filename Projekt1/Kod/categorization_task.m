@@ -13,9 +13,7 @@ algorithms = { ...
     @(training_data, training_labels, test_data, nWords) ...
         run_average_perceptron(training_data, training_labels, test_data, N_AVG_PERCEPTRON_ITERATIONS, nWords), ...
     @(training_data, training_labels, test_data, nWords) ...
-        run_naivebayes(training_data, training_labels, test_data, nWords, true), ...
-    @(training_data, training_labels, test_data, nWords) ...
-        run_knn(training_data, training_labels, test_data, nWords, KNN_K) ...
+        run_naivebayes(training_data, training_labels, test_data, nWords, true) ...
 };
 nrAlgorithms = size(algorithms,2);
 
@@ -63,16 +61,24 @@ for algoId = 1:nrAlgorithms
 end
 t = toc;
 
-%% Plotting (can be run independently of above code if one sets nrAlgorithms).
+%% Plotting
+clear;
+load('../Plottar/backup_textclassification.mat')
+nrAlgorithms = 2;
+nLabels = 6;
 figure
 classification_matrix_sum = zeros(6,6);
-for algoId = 1:size(classification_matrix,3)
+for algoId = 1:nrAlgorithms
     classification_matrix_sum = ...
-        classification_matrix_sum + classification_matrix(:,:,algoId);
+        classification_matrix_sum + 1/nrAlgorithms * classification_matrix(:,:,algoId);
 end
-bar(classification_matrix_sum ,'DisplayName','classification_matrix_sum')
+% Normalize
+classification_matrix_sum = classification_matrix_sum ./ repmat(sum(classification_matrix_sum), nLabels, 1)
+% Plot
+bar(classification_matrix_sum,'DisplayName','classification_matrix_sum')
 legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software');
-
-% xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 1750, 2000, 2250, 2500]', [1, nrAlgorithms]);
-% errorbar(xvals, error_per_feature_matrix, stddev_per_feature_matrix)
-% 
+axis([0 7 0 0.1])
+set(gca,'XTickLabel',{'Camera', 'Books', 'DVD', 'Health', 'Music', 'Software'})
+ylabel('Classified as... (%)')
+xlabel('Test document of class')
+title('Text classification results')

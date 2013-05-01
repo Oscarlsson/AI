@@ -126,8 +126,7 @@ P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert 
 \end{align}
 A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate} (MLE) which corresponds to the relative frequency of each parameter in the training data \citep{devdatt_nb}.
 \\\\
-The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in Equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow \citep{devdatt_nb}. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}. 
-
+The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in Equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow \citep{devdatt_nb}. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}. \\ \\ \\ \\ \\
 \begin{algorithm}[h]
  \SetAlgoLined
  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
@@ -164,7 +163,7 @@ One may multiply each attribute variable by arbitrary factors or in other
 words stretch the coordinate axes arbitrary and independent. It is very easy to
 find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
-shouldn not do so \cite{ml_2011}. 
+should not do so \cite{ml_2011}. 
 %This phenomena is called \emph{curse of dimensionality}. One
 %can try to find good stretch factors by performing cross validation .
 \\\\
@@ -176,9 +175,8 @@ A further issue is to find a suitable $k$. A great choose of $k$ various
 depending on many circumstances. A keystone is that if the training set is large
 it is important to get rid of noise in the data, hence increase $k$. On the other
 hand a big $k$ requires more calculation \cite{ml_2011}. An example of a suitable $k$-value 
-is shown in Figure~\ref{fig:knn}.
+is shown in Figure~\ref{fig:knn}.\\\\\\\\\\\\
 %https://dl.dropbox.com/u/5139428/ml-course/Classification1.pdf
-
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.3]{../Plottar/KNN.png}

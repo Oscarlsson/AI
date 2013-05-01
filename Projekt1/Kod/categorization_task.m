@@ -76,9 +76,14 @@ end
 classification_matrix_sum = classification_matrix_sum ./ repmat(sum(classification_matrix_sum), nLabels, 1)
 % Plot
 bar(classification_matrix_sum,'DisplayName','classification_matrix_sum')
-legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software');
+%legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software');
+h = legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software', 'location', [0.122 0.78 0.1 0.1]);
+v = get(h,'title');
+set(v,'string','Classified as');
+
 axis([0 7 0 0.1])
+
 set(gca,'XTickLabel',{'Camera', 'Books', 'DVD', 'Health', 'Music', 'Software'})
-ylabel('Classified as... (%)')
+ylabel('Classifications (%)')
 xlabel('Test document of class')
 title('Text classification results')

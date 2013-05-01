@@ -14,69 +14,70 @@
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/training_size_k_2000allknn_100.png}
-\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying training set size $\in \{10\%, 100\%\}$.}
+\caption{Training set size dependence per algorithm}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/documents_per_feature.png}
-\caption{Documents per feature}
+\caption{Documents per feature. Bigram and Unigram}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale =  1]{../Plottar/feature_size_TIMING.png}
-\caption{Running time for different algorithms and feature size}
+\includegraphics[scale = 1]{../Plottar/feature_size_TIMING.png}
+\caption{Timing of different algorithms with different feature sizes}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/knn_2000words_testdata100_unigram.png}
-\caption{Plot showing results from the KNN classifier}
+\caption{Different K-values when running KNN on Classes and Sentimental-label}
 \end{figure} 
+
 
 \begin{sidewaysfigure}[H]
 \centering
 \includegraphics[scale = 0.47]{../Plottar/text_categorization.png}
-\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis).}
+\caption{Text categorization task}
 \end{sidewaysfigure} 
+
 
 \begin{sidewaysfigure}[H]
 \centering
 \includegraphics[scale = 0.47]{../Plottar/outofdomain.png}
-\caption{The sentiment analysis classification error results of training on a document class subset - represented by a group of bars, and testing on all classes - represented by individual bars.}
+\caption{Out of domain classification task}
 \end{sidewaysfigure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/pca_all.png}
-\caption{Principal Component Analysis showing all categories , (b) DVD and Camera, (c) Health, Software and Camera, (d) Books DVD and Music
-}
+\caption{PCA on all categories}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/pca_nocorr.png}
-\caption{Principal Component Analysis showing DVD and Camera}
+\caption{PCA on DVD and camera with no correlation}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/pca_largecorr.png}
-\caption{Principal Component Analysis showing Health, Software and Camera}
+\caption{PCA on health, software and camera. Represent a large correlation}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/pca_somecorr.png}
-\caption{Principal Component Analysis showing Books DVD and Music}
+\caption{PCA on Books, DVD and Music with some correlation}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 1]{../Plottar/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
-\caption{Plot over misclassifications for different \#iterations}
+\caption{Different max iteration Perceptron}
 \end{figure} 
 
-\chapter{Stop-words}
+\chapter{English stop words}
 \input{appendix/english_word_stops.txt}

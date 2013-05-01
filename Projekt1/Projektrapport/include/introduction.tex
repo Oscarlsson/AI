@@ -149,9 +149,12 @@ it is important to get rid of noise in the data, hence increase $k$. On the othe
 hand a big $k$ requires more calculation. There are however also other more
 complex ways for reducing noise.
 %https://dl.dropbox.com/u/5139428/ml-course/Classification1.pdf
-\begin{center}
-\includegraphics[scale=0.5]{fig/KNN.png}
-\end{center}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.3]{fig/KNN.png}
+\caption{Example of KNN with $K = 5$}
+\label{fig:knn}
+\end{figure}
 
 \subsection{Support Vector Machine (SVM)}
 Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two distances. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error. \citep{svm_ai} \\\\

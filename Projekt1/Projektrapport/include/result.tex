@@ -1,5 +1,5 @@
 \chapter{Results and discussion}
-To find the feature sizes for which each algorithm performs best we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data. The result is presented in Figure ~\ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm; and the error bar height is one standard deviation. KNN has better performance with a lower feature size of 100 while all other algorithms have better performance the larger the feature set size gets. This result was expected.WHY?
+To find the feature sizes for which each algorithm performs best we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data. The result is presented in Figure \ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm; and the error bar height is one standard deviation. KNN has better performance with a lower feature size of 100 while all other algorithms have better performance the larger the feature set size gets. This result was expected.WHY?
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{../Plottar/feature-size100-2500all.png}
@@ -58,17 +58,20 @@ The out-of-domain task was, just like for the text classification task, performe
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{../Plottar/outofdomain.png}
-\caption{FOOBAR}
+\caption{The sentiment analysis classification error results of training on a document class subset - represented by a group of bars, and testing on all classes - represented by individual bars.}
 \label{fig:outofdomain}
 \end{figure}  
 
-\section{Correlation Text categorization and Out-of-domain}
+\section{Result correlation and PCA}
+The results shown in the preceding sections in Figures \ref{fig:textcategorization} and \ref{fig:outofdomain} both agree on similarities between the three categories Camera, Health and Software, and similarly a (weaker) similarity between Books, DVD and Music. The similarities are represented by:
+\begin{enumerate}
+  \item Text classification results where the classifiers show a significally higher misclassification rate within the category groups rather than between them.
+  \item Out-of-domain sentiment analysis results where the classifiers perform better when trained and tested within a category group rather than inbetween groups. I.e. training on Health reviews also gives a low error on Camera and Software reviews.
+\end{enumerate}
+
+To further investigate this correlation, we performed a Principal Component Analysis decomposition of the full dataset and 2000 features. The results shown in Figure \ref{fig:pca_results} consist of projections of the corpus onto the two largest principal components. Here, there are clearly two separate groups of classes, where, within each group, the sets of classes are correlated which further strengthens the results presented so far.
 
 
-
-Categories DVD and Cameras has no correlation.\\
-Health, Software and Camera has large correlation.\\
-Books, DVD and Music has a tiny correlation
 \begin{figure}[h!btcp]
         \centering
        \begin{subfigure}[b]{0.5\linewidth}
@@ -96,7 +99,7 @@ Books, DVD and Music has a tiny correlation
               \caption{}
 	    \end{subfigure}
 	    \caption{Principal Component Analysis showing (a) all categories , (b) DVD and Camera, (c) Health, Software and Camera, (d) Books DVD and Music}
-                
+	    \label{fig:pca_results}
 \end{figure}
 
 %text categorization:\\

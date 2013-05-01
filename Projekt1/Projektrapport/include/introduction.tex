@@ -5,30 +5,64 @@ This could be used to train a system to recognize patterns in, for instance, ema
 By statistical analysis of experiments, the classifiers are compared in terms of, for instance, classification accuracy.
 
 \section{Problem description}
-The problem is to categorize reviews from Amazon in 6 different categories; books, camera, DVD, health, music and software.
-The classification is done by implementing five different classification algorithms; Naive Bayes, Perceptron, Averaged Perceptron, K-nearest neighbours (KNN) and Support vector machine (SVM). \\\\
-There is three different kinds of classification tests that should be done: 
-\begin{itemize}
-\item In-domain sentiment analysis - For each category, train and classify documents as positive or negative
-\item Out-of-domain sentiment analysis - Train on one category and test on another
-\item Text categorization - categorize the documents into their categories
-\end{itemize}
-Before classifying the input data, which is text files, must be processed.
-The input should be divided in words somehow, either one word (unigrams) or two words (bigrams). Some common words are totally useless for the classification, such as ''the'' and ''I''. These are called stop-words and should not be a part of the input to the algorithms. To get less words it's also possible to use a stemmer, such as Snowball to prevent separation of different inflectional forms, such as ''person'' and ''persons''. Another way of getting less input data is to use Term Frequency–Inverse Document Frequency TF-IDF. TF-IDF is a numerical statistic of how important a is in a document.
+The problem is to categorize reviews from Amazon. There are 6 different categories;
+books, camera, DVD, health, music and software. The reviews are also
+categorised as positive and negative reviews.
+%The classification is done by
+%implementing five different classification algorithms; Naive Bayes, Perceptron,
+%Averaged Perceptron, K-nearest neighbours (KNN) and Support vector machine
+%%(SVM).
+%\\\\ There is three different kinds of classification tests that should
+%be done:
+%\begin{itemize}
+%\item In-domain sentiment analysis - For each category, train and classify documents as positive or negative
+%\item Out-of-domain sentiment analysis - Train on one category and test on another
+%\item Text categorization - categorize the documents into their categories
+%\end{itemize}
+\\\\
+Before classifying the input data, which is given as text files, one must
+convert this data to a suitable form. Even further there may be irrelevant data
+in the text files. Some common words may be totally useless for the classification,
+such as ''the'' and ''I''. How should one process the data to handle this
+problem? Some words may also say the same about which category a text belongs to, for instance
+words as ''person'' and ''persons''. There are also a lot of data and  a lot of
+unique words. Is every unique word really important for the classification
+results? Is it possible to remove such words?
+
+
+%The
+%input should be divided in words somehow, either one word (unigrams) or two
+%words (bigrams). Some common words are totally useless for the classification,
+%such as ''the'' and ''I''. These are called stop-words and should not be a part
+%of the input to the algorithms. To get less words it's also possible to use a
+%stemmer, such as Snowball to prevent separation of different inflectional
+%forms, such as ''person'' and ''persons''. Another way of getting less input
+%data is to use Term Frequency–Inverse Document Frequency TF-IDF. TF-IDF is a
+%numerical statistic of how important a is in a document.
+
+%Before classifying the input data, which is text files, must be processed. The
+%input should be divided in words somehow, either one word (unigrams) or two
+%words (bigrams). Some common words are totally useless for the classification,
+%such as ''the'' and ''I''. These are called stop-words and should not be a part
+%of the input to the algorithms. To get less words it's also possible to use a
+%stemmer, such as Snowball to prevent separation of different inflectional
+%forms, such as ''person'' and ''persons''. Another way of getting less input
+%data is to use Term Frequency–Inverse Document Frequency TF-IDF. TF-IDF is a
+%numerical statistic of how important a is in a document.
 
 \section{Theory}
-Describe briefly the scientific papers or book chapters you found relevant to the problem, references to sec 6. Explain which are relevant for your project and which not and why.
+
 \subsection{Text classification}
-One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern. 
+One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern.
 
 \subsubsection{Representing text}
-A document is typically a huge string containing all characters and is not suitable for classification, hence some processing needs to be done on each document. 
+A document is typically a huge string containing all characters and is not suitable for classification, hence some processing needs to be done on each document.
 \\\\
-All words in a document isn't interesting when doing text classification. E.g. words like "the", "one", "are", "is" are words that will occur in any human readable text, but has no value when trying to find similarities and differences between documents. These words are called "stop-words" and are usually filtered out and treated as noise. 
+All words in a document isn't interesting when doing text classification. E.g. words like "the", "one", "are", "is" are words that will occur in any human readable text, but has no value when trying to find similarities and differences between documents. These words are called "stop-words" and are usually filtered out and treated as noise.
 \\\\
-When working with document we want to treat different inflections(?) of a word as the same word. There is no need to separate the words "persons" and "person", because both words give us the same information we want. This is called Stemming and we will not focus more on the theory behind it.
+When working with document we want to treat different inflections of a word as the same word. There is no need to separate the words "persons" and "person", because both words give us the same information we want. This is called Stemming and we will not focus more on the theory behind it.
 \\\\
-There are various ways of storing document and the representation has a big impact on the result of different classifiers. The Bag-of-words model is a simplifying model where a text is represented as a unordered set of words, without respect to grammar or order of words. 
+There are various ways of storing document and the representation has a big impact on the result of different classifiers. The Bag-of-words model is a simplifying model where a text is represented as a unordered set of words, without respect to grammar or order of words.
 \\\\
 Build a feature vector which is an n-dimensional vector of numerical features that represents the words.
 \subsubsection{Features}
@@ -47,7 +81,7 @@ idf(t,D) = log(\frac{|D|}{|\{d \in D : t \in d\}|})
 \end{equation}
 
 \subsection{Naive Bayes}
-The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$ by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.
+The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$. This is done by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.
 \begin{align*}
 P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
 \\&=P(c,\mathbf{x})
@@ -57,32 +91,32 @@ P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
 \\&\propto P(c) P(x_1\vert c) P(x_2\vert c, x_1) P(x_3\vert c,x_1,x_2) \dots P(x_D\vert c, x_1,...,x_{D-1})
 \\&\dots
 \end{align*}
-The independence assumption says that each feature $x_i$ is independent of every other feature $x_j,...x_k$, rendering $P(x_i\vert x_j,...,x_k) = P(x_i\vert c)$, which translates the posterior $P(c\vert \mathbf{x})$ to
+The independence assumption says that each feature $x_i$ is independent of every other feature $x_j,..,x_k$, rendering $P(x_i\vert x_j,...,x_k) = P(x_i\vert c)$, which translates the posterior $P(c\vert \mathbf{x})$ to
 \begin{align}
 P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert c) \nonumber
 \\&= P(c) \prod_{i=1}^{D} P(x_i\vert c).\label{eq:naivebayes_model}
 \end{align}
 A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate}, MLE, which corresponds to the relative frequency of each parameter in the training data.
-
-The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}.
+\\\\
+The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in Equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}.
 
 \begin{algorithm}[h]
-\label{algorithm:naive_bayes_classification}
  \SetAlgoLined
  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
  \KwData{\textit{Feature vector with unknown class} $\mathbf{x} \in \mathbb{R}^D$; \textit{Class weights} $\{P(c) : c \in C\}$; \textit{Conditional feature probabilities} $\{P(x_1\vert c), ..., P(x_D\vert c)\}$}
  \KwResult{Classification for $\mathbf{x}$}
  \ForEach{$c \in C$}
  {
- 	score[$c$] $\leftarrow \log P(c)$\\
- 	\For{$i=1$ \KwTo $D$}
- 	{
- 		score[$c$] += $\log P(x_i\vert c)$
- 	}
+score[$c$] $\leftarrow \log P(c)$\\
+\For{$i=1$ \KwTo $D$}
+{
+	score[$c$] += $\log P(x_i\vert c)$
+}
  }
  \Return $\displaystyle \argmax_{c \in C} score[c]$ \\
 
  \caption{Multinomial Naive Bayes classification algorithm}
+ \label{algorithm:naive_bayes_classification}
 \end{algorithm}
 
 \subsection{K-Nearest Neighbour (KNN) algorithm}
@@ -98,15 +132,12 @@ consideration. First of all what is nearest? There is of course a natural
 distance function in a geometrical space but a proper definition in parameter
 space is not obvious. As it turn out a distance function can be defined in a lot
 of ways. The given attributes are overall very different in reality.
-One may may multiply each attribute variable by arbitrary factors or in other
+One may multiply each attribute variable by arbitrary factors or in other
 words stretch the coordinate axes arbitrary and independent. It is very easy to
 find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
 shouldn't do so. This phenomena is called \emph{curse of dimensionality}. One
 can try to find good stretch factors by performing cross validation.
-One takes a vector of stretch factors that
-minimizes the classification errors on a valid set. The back side is that
-this will require a lot of test vectors.
 \\\\
 An other problem is the computation complexity. KNN is sad to have a lazy
 learning method. In other words it does output hypotheses in explicit form.
@@ -131,7 +162,7 @@ The data points that is at the margin distance from the hyperplane is called the
 \caption{Example of SVM. Support vectors are marked with dots. \citep{svm_picture}}
 \label{fig:svm}
 \end{figure} \\
-The equation of the hyperplane is given by 
+The equation of the hyperplane is given by
 \begin{equation}
 w \cdot x + b = 0
 \end{equation}
@@ -142,12 +173,12 @@ min \: ||w|| + C \sum_{i} s_i \\
 \forall (x_i, y_i) : \: y_i(w \cdot x_i + b) \geq 1 - s_i
 \end{array}
 \end{equation}
-If $C \rightarrow \infty$ then the SVM is called hard-margined, contrary to soft margin, and doesn't allow misclassifications. 
+If $C \rightarrow \infty$ then the SVM is called hard-margined, contrary to soft margin, and doesn't allow misclassifications.
 \\\\
 SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by using the kernel trick. The kernel trick is to map the data into a high-dimensional feature space, through a kernel function. \citep{svm_ai}
 %Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
 \\\\
-SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data. 
+SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
 Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem. \citep{perceptron_ai}
 The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets. \citep{perceptron_url} This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point. \citep{perceptron_url}
@@ -171,7 +202,7 @@ Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weig
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
 \subsection{Programs and tools}
-Python was used to generate the feature vector from the documents. 
+Python was used to generate the feature vector from the documents.
 \\\\
 Matlab was used to implement the algorithms, Cross-validation and to generate plots. The Statistics Toolbox with functions $cvpartition$, to easily perform N-cross-validation and $svmtrain$ to train a Support Vector Machine, has been of great use during the project.
 

@@ -63,13 +63,30 @@ t = toc;
 
 %% Plotting (can be run independently of above code if one sets nrAlgorithms).
 
-%load('backup_feature.mat');
+load('../Plottar/backup_feature_bigram.mat');
 if ~exist('nrAlgorithms')
     nrAlgorithms = 6;
 end
 
 xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 1750, 2000, 2250, 2500]', [1, nrAlgorithms]);
-errorbar(xvals, error_per_feature_matrix, stddev_per_feature_matrix)
+errorbar(xvals, error_per_feature_matrix, 0.5*stddev_per_feature_matrix)
 legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');
-xlabel('#Feature-size: Words')
+xlabel('Feature-size (# words)')
 ylabel('Misclassification')
+title('Algorithm classification comparison for different feature set sizes')
+axis([0 2500 0.35 0.56])
+%% Plotting of timing
+
+clear
+load('../Plottar/backup_feature_bigram.mat');
+if ~exist('nrAlgorithms')
+    nrAlgorithms = 6;
+end
+
+xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 1750, 2000, 2250, 2500]', [1, nrAlgorithms]);
+plot(xvals, timing_per_feature_matrix)
+legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');
+xlabel('Feature-size (# words)')
+ylabel('Timing (s)')
+title('Algorithm timing comparison for different feature set sizes')
+axis([0 2500 0 20])

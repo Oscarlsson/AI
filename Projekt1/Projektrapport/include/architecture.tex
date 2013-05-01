@@ -1,36 +1,26 @@
 \chapter{Architecture}
-Describe the different parts of your program suite in detail.
-\\\\
-kort inledning till kapitlet. vad har vi gjort i projektet?\\
-trattigt namn, borde kanske ändras. ska innehålla typ metod - alltså vad har vi gjort?
-
-\section{Finished work}
-Running modules
-What does your running code do? what is the output?
-\subsection{Representing text}
-
-Skriv om den här plotten! Vi skiter i bigram pga den.
-\begin{figure}[h!]
-\centering
-\includegraphics[scale = 0.5]{fig/documents_per_feature.png}
-\caption{Documents per feature}
-\label{fig:trainingsize}
-\end{figure} \\
-
-
-
+In our project we implemented four different classification algorithms: Naive Bayes, Perceptron, Average Perceptron, K-nearest neighbour and used one pre-implemented Support Vector Machines. 
+We compared these algorithms in classification-performance and in timing, on different feature vectors.
+The different feature vectors that we studied was two different n-grams: Unigram and bigram with TF-IDF and binary values as numerical values. We also compared the result with and without the snowball-stemmer.
+%Describe the different parts of your program suite in detail.
+%kort inledning till kapitlet. vad har vi gjort i projektet?\\
+%trattigt namn, borde kanske ändras. ska innehålla typ metod - alltså vad har vi gjort?
+%\section{Finished work}
+%Running modules
+%What does your running code do? what is the output?
+\section{Feature Vector / Text Representation}
 \input{include/text_categorization}
-Stop-words \\
-TF-IDF \\
-Snowball, $https://pypi.python.org/pypi/PyStemmer/1.1.0$ \\
-Ta bort tecken
-ngrams
-\subsection{Naive Bayes}
+%Stop-words \\
+%TF-IDF \\
+%Snowball, $https://pypi.python.org/pypi/PyStemmer/1.1.0$ \\
+%Ta bort tecken
+%ngrams
+\section{Naive Bayes}
 \input{include/NB_method}
 
-\subsection{K-Nearest Neighbour (KNN) algorithm}
+\section{K-Nearest Neighbour (KNN) algorithm}
 \input{include/KNN_metod}
-\subsection{Support Vector Machine (SVM)}
+\section{Support Vector Machine (SVM)}
 We choose to use the matlab library $svmtrain$ \citep{svmtrain_ref} from the Statistics toolbox. Svmtrain was used hard-margined and configured such that when it didn't converge we set the classification to all zero, which would represent $100\%$ misclassification. \\
 \begin{algorithm}[H]
 \label{algorithm:SVM}
@@ -52,7 +42,7 @@ classifications = $svmclassify(svm\_model, Xtest)'$
 
 
 
-\subsection{The Perceptron algorithm}
+\section{The Perceptron algorithm}
 The Perceptron algorithm works as follows:
 The output, $w$, from the algorithm is a weight vector with the same size as $y$. If the classification for a $x$ in the training set is equal to $y$, the weight is unchanged.
 If $y$ is 1 and the classification -1, then $w$ is increased. If $y$ is -1 and the classification 1, then $w$ is decreased. \citep{perceptron_ai}

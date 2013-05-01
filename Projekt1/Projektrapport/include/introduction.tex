@@ -52,7 +52,7 @@ results? Is it possible to remove such words?
 \section{Theory}
 
 \subsection{Text classification}
-One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern.
+One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive or negative) or different topics that the document concern.
 
 \subsubsection{Representing text}
 A document is typically a huge string containing all characters and is not suitable for classification, hence some processing needs to be done on each document.
@@ -66,8 +66,8 @@ There are various ways of storing document and the representation has a big impa
 Build a feature vector which is an n-dimensional vector of numerical features that represents the words.
 \subsubsection{Features}
 \begin{itemize}
-\item Feature size - Sometimes the feature vector can be very large adn hard to handle. Then it could be a good idea to just choose the 1000 most frequent words or maybe the 100 most frequent words. \citep{joachims}
-\item N-grams - N-grams is a sequence of symbols of length $n$, in this case words. Unigram is then one word and bigram is two words. \citep{ngrams_ai}
+\item Feature size - Sometimes the feature vector can be very large adn hard to handle. Then it could be a good idea to just choose the 1000 most frequent words or maybe the 100 most frequent words \citep{joachims}. 
+\item N-grams - N-grams is a sequence of symbols of length $n$, in this case words. Unigram is then one word and bigram is two words \citep{ngrams_ai}. 
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the words in the documents and give a number of how important each word is. This is given by Equation~\ref{eq:tfidf}.
 \end{itemize}
 
@@ -157,12 +157,12 @@ complex ways for reducing noise \cite{ml_2011}.
 \end{figure}
 
 \subsection{Support Vector Machine (SVM)}
-Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two distances. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error. \citep{svm_ai} \\\\
+Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two distances. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error \citep{svm_ai}.  \\\\
 The data points that is at the margin distance from the hyperplane is called the support vectors, shown in Figure~\ref{fig:svm}.. The constructed hyperplane only depends on the support vector, meaning that SVM is dimensional independent.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.7]{fig/svmhyperplane.png}
-\caption{Example of SVM. Support vectors are marked with dots. \citep{svm_picture}}
+\caption{Example of SVM. Support vectors are marked with dots \citep{svm_picture}. }
 \label{fig:svm}
 \end{figure} \\
 The equation of the hyperplane is given by
@@ -178,25 +178,25 @@ min \: ||w|| + C \sum_{i} s_i \\
 \end{equation}
 If $C \rightarrow \infty$ then the SVM is called hard-margined, contrary to soft margin, and doesn't allow misclassifications.
 \\\\
-SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by using the kernel trick. The kernel trick is to map the data into a high-dimensional feature space, through a kernel function. \citep{svm_ai}
+SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by using the kernel trick. The kernel trick is to map the data into a high-dimensional feature space, through a kernel function \citep{svm_ai}. 
 %Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
 \\\\
 SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem. \citep{perceptron_ai}
-The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets. \citep{perceptron_url} This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point. \citep{perceptron_url}
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem \citep{perceptron_ai}. 
+The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets \citep{perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.4]{fig/perceptron_example.png}
 \caption{Example of a classification by Perceptron}
 \label{fig:perceptron}
 \end{figure}\\
-The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron}. \citep{perceptron_ai}
+The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}. 
 \begin{equation}
 \label{eq:perceptron}
 w = w + (x \cdot y)
 \end{equation}
-where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged. \citep{perceptron_ai} New data is classified by Equation~\ref{eq:new_perceptron}.
+where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged \citep{perceptron_ai}. New data is classified by Equation~\ref{eq:new_perceptron}.
 \begin{equation}
 \label{eq:new_perceptron}
 class = sign(testData \cdot w)
@@ -205,5 +205,5 @@ Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weig
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
 \subsection{K-fold Cross Validation}
-Cross Validation is used to test classification algorithms on sets of data that the classifiers hasn't seen, in order to get an accurate evaluation of a hypothesis. \ref{crossvalid_ai}\\\\
-K-fold cross validation means that the data is split into k roughly equal sizes and then k rounds of training is performed with 1/k as test data and the rest as training. The average score will be better than one single score. K-values between 5 and 10 are popular and enough to get accurate results \ref{crossvalid_ai}.
+Cross Validation is used to test classification algorithms on sets of data that the classifiers hasn't seen, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
+K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be better than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.

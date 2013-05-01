@@ -90,4 +90,6 @@ end
 
 % Correct? No.
 plot(tss_values, outputArrayAlg)
-legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');
+legend('Perceptron K = 2000', 'Averaged Perceptron K = 2000', 'Naive Bayes TFIDF K = 2000', 'Naive Bayes Bin K = 2000', 'KNN K = 250', 'SVM K = 2000');
+xlabel('Training set size (%)');
+ylabel('Misclassification');

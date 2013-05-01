@@ -17,7 +17,7 @@ where $F_w^{(d)}$ defines the relative word frequency in document $d$ from corpu
   \item[Binary frequency:] Boolean $\in \left\{0,1\right\}$ if word $w$ occurs in document $d$,
   \item[Tf-idf:] $\frac{\texttt{Normalized term frequency}}{\texttt{Document frequency}} \in \left[0, \log \left\vert \mathbf{D}\right\vert\right]$.
 \end{description}
-A caveat with this procedure is that since both of these options allow for $F_{w_i}^{(d)}$ to be zero, the product in the Naive Bayes model (\ref{eq:naivebayes_model}) for $P(c\vert d)$ vanishes for all combinations of classes $c$ and documents $d$ for which $d$ includes a word $w_i$ that never occurs in the given class. To assure nonzero prior probabilities Laplace smoothing was used, which adds one to each count as follows. \citep{nb_ref}
+A caveat with this procedure is that since both of these options allow for $F_{w_i}^{(d)}$ to be zero, the product in the Naive Bayes model (\ref{eq:naivebayes_model}) for $P(c\vert d)$ vanishes for all combinations of classes $c$ and documents $d$ for which $d$ includes a word $w_i$ that never occurs in the given class. To assure nonzero prior probabilities Laplace smoothing was used, which adds one to each count as follows \citep{nb_ref}. 
 
 \begin{align}
 P(w_i\vert c) =

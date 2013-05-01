@@ -206,25 +206,25 @@ SVM can perform classification on both linear and non-linear input data. Classif
 \\\\
 SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem \citep{perceptron_ai}.
-The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets \citep{perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}.
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem 
+and tries to separate the input data with a linear decision boundary. \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to Support Vector Machines, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane). 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.4]{fig/perceptron_example.png}
 \caption{Example of a classification by Perceptron}
 \label{fig:perceptron}
 \end{figure}\\
-The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}.
-\begin{equation}
-\label{eq:perceptron}
-w = w + (x \cdot y)
-\end{equation}
-where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged \citep{perceptron_ai}. New data is classified by Equation~\ref{eq:new_perceptron}.
-\begin{equation}
-\label{eq:new_perceptron}
-class = sign(testData \cdot w)
-\end{equation}
-Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
+%The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}. 
+%\begin{equation}
+%\label{eq:perceptron}
+%w = w + (x \cdot y)
+%\end{equation}
+%where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged \citep{perceptron_ai}. New data is classified by Equation~\ref{eq:new_perceptron}.
+%\begin{equation}
+%\label{eq:new_perceptron}
+%class = sign(testData \cdot w)
+%\end{equation}
+%Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
 \subsection{K-fold Cross Validation}

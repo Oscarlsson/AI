@@ -1,25 +1,24 @@
 %This is an explanation of how we constructed our different feature vectors which we later used to try our algorithms. 
 %\\\\
-We read the documents document per document and processed them in the following order: 
+The documents was read, document per document and processed in the following order: 
 \begin{enumerate}
 \item Filter out unwanted characters as: . , ? , ! etc.
-\item Remove stop words as: and, or, this etc.
-\item Optionally: make us of Snowball \citep{snowball_url}, a stemmer which removes endings of words.
+\item Remove stop-words as: and, or, this etc.
+\item Optionally: make use of Snowball, a stemmer which removes endings of words \citep{snowball_url}.
 \item Optionally: Either use unigram or bigram as elements to the feature vector
 \item Making use of TF–IDF, term frequency–inverse document frequency that
 reflects on how important a word is to a document in a collection or corpus
-\item By input choose the feature size, meaning the number of most common words to choose. Refered to parameter K.
+\item By input choose the feature size, meaning the number of most common words to choose. Refered to parameter $K$.
 \end{enumerate}
 Each document was assigned a label corresponding to its sentimentality (positive / negative) in a vector and another label corresponding to its topic. All processed data was stored in different Matlab binary files depending on the different feature selections. 
 \\\\
-The generated feature vector using bigrams differed a lot from the one using unigram. It appeard as the bigrams were to unique and each bigram was only present in a small number of documents, making it hard to classify (??). This is shown in Figure~\ref{fig:docperfeature} 
+The generated feature vector using bigrams differed a lot from the one using unigram. It appeard as the bigrams were to unique and each bigram was only present in a small number of documents, making it hard to classify. This is shown in Figure~\ref{fig:docperfeature} 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.5]{fig/documents_per_feature.png}
+\includegraphics[scale = 0.6]{fig/documents_per_feature.png}
 \caption{Documents per feature}
 \label{fig:docperfeature}
-\end{figure} \\
-
+\end{figure} 
 %Feature values corresponds to the term occurrence frequencies.
 %The calculation for this was done in a number of steps.
 

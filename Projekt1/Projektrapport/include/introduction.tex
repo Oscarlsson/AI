@@ -3,11 +3,10 @@ This project is about machine learning of different statistical classifiers.
 Machine learning is about construct and study systems that can learn from data.
 This could be used to train a system to recognize patterns in, for instance, emails and learn how to distinguish between spam and non-spam messages. In this project the classifiers are applied to reviews and the task is to categorize these.
 By statistical analysis of experiments, the classifiers are compared in terms of, for instance, classification accuracy.
-
 \section{Problem description}
 The problem is to categorize reviews from Amazon. There are 6 different categories;
 books, camera, DVD, health, music and software. The reviews are also
-categorised as positive and negative reviews.
+categorized as positive and negative reviews.
 %The classification is done by
 %implementing five different classification algorithms; Naive Bayes, Perceptron,
 %Averaged Perceptron, K-nearest neighbours (KNN) and Support vector machine
@@ -20,15 +19,17 @@ categorised as positive and negative reviews.
 %\item Text categorization - categorize the documents into their categories
 %\end{itemize}
 \\\\
-Before classifying the input data, which is given as text files, one must
-convert this data to a suitable form. Even further there may be irrelevant data
+Before classifying the input data, which is given as text files, the data must be
+converted to a suitable form. Even further there may be irrelevant data
 in the text files. Some common words may be totally useless for the classification,
-such as ''the'' and ''I''. How should one process the data to handle this
+such as ''the'' and ''I''. How should the data be processed to handle this
 problem? Some words may also say the same about which category a text belongs to, for instance
 words as ''person'' and ''persons''. There are also a lot of data and  a lot of
 unique words. Is every unique word really important for the classification
 results? Is it possible to remove such words?
 
+
+(Ett stycke om in-domain, out of domain, text categorization och om att huvudfrågan är correlationen!!
 
 %The
 %input should be divided in words somehow, either one word (unigrams) or two
@@ -53,23 +54,44 @@ results? Is it possible to remove such words?
 \section{Theory}
 
 \subsection{Text classification}
-One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern.
+One part of supervised learning is the field Text classification which is to
+classify documents into a fixed number of predefined categories. The categories
+could be sentimental (positive / negative) or different topics that the
+document concern \cite{ngrams_ai}.
 
 \subsubsection{Representing text}
-A document is typically a huge string containing all characters and is not suitable for classification, hence some processing needs to be done on each document.
+A document is typically a huge string containing all characters and is not
+suitable for classification, hence some processing needs to be done on each
+document \cite{ngrams_ai}.
 \\\\
-All words in a document isn't interesting when doing text classification. E.g. words like "the", "one", "are", "is" are words that will occur in any human readable text, but has no value when trying to find similarities and differences between documents. These words are called "stop-words" and are usually filtered out and treated as noise.
+All words in a document isn't interesting when doing text classification. E.g.
+words like "the", "one", "are", "is" are words that will occur in any human
+readable text, but has no value when trying to find similarities and
+differences between documents. These words are called "stop-words" and are
+usually filtered out and treated as noise\cite{joachims}.
 \\\\
-When working with document we want to treat different inflections of a word as the same word. There is no need to separate the words "persons" and "person", because both words give us the same information we want. This is called Stemming and we will not focus more on the theory behind it.
+When working with document, different inflections of a word should be treated
+as the same word. There is no need to separate the words "persons" and
+"person", because both words give the same information. This is called Stemming
+and we will not focus more on the theory behind it\cite{stemming}.
 \\\\
-There are various ways of storing document and the representation has a big impact on the result of different classifiers. The Bag-of-words model is a simplifying model where a text is represented as a unordered set of words, without respect to grammar or order of words.
+There are various ways of storing document and the representation has a big
+impact on the result of different classifiers. The Bag-of-words model is a
+simplifying model where a text is represented as a unordered set of words,
+without respect to grammar or order of words\citep{bag_of_words}.
 \\\\
-Build a feature vector which is an n-dimensional vector of numerical features that represents the words.
+Build a feature vector which is an n-dimensional vector of numerical features
+that represents the words.
 \subsubsection{Features}
 \begin{itemize}
-\item Feature size - Sometimes the feature vector can be very large adn hard to handle. Then it could be a good idea to just choose the 1000 most frequent words or maybe the 100 most frequent words. \citep{joachims}
-\item N-grams - N-grams is a sequence of symbols of length $n$, in this case words. Unigram is then one word and bigram is two words. \citep{ngrams_ai}
-\item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the words in the documents and give a number of how important each word is. This is given by Equation~\ref{eq:tfidf}.
+\item Feature size - Sometimes the feature vector can be very large adn hard to
+        handle. Then it could be a good idea to just choose the 1000 most
+        frequent words or maybe the 100 most frequent words \citep{joachims}.
+\item N-grams - N-grams is a sequence of symbols of length $n$, in this case
+        words. Unigram is then one word and bigram is two words\citep{ngrams_ai}.
+\item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
+        words in the documents and give a number of how important each word is.
+        This is given by Equation~\ref{eq:tfidf}\citep{tfidf}.
 \end{itemize}
 
 \begin{equation}
@@ -121,10 +143,10 @@ score[$c$] $\leftarrow \log P(c)$\\
 
 \subsection{K-Nearest Neighbour (KNN) algorithm}
 %http://www.cse.chalmers.se/edu/course/TDA231/mlsli11.pdf
-K-nearest neighbors (KNN) algorithm is one of the simplest machine learning
+K-nearest neighbours (KNN) algorithm is one of the simplest machine learning
 algorithms. The classification performed by KNN works as follows: Fix some
 number $k$. For any new $x \in X$, take the most common classification value among
-the $k$ training examples in $D$ closest to $x$.
+the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
 \\\\
 Even though the KNN algorithm
 seems extraordinary simple there are some things that one must take in
@@ -137,36 +159,40 @@ words stretch the coordinate axes arbitrary and independent. It is very easy to
 find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
 shouldn't do so. This phenomena is called \emph{curse of dimensionality}. One
-can try to find good stretch factors by performing cross validation.
+can try to find good stretch factors by performing cross validation \cite{ml_2011}.
 \\\\
-An other problem is the computation complexity. KNN is sad to have a lazy
-learning method. In other words it does output hypotheses in explicit form.
-Instead a lot of computational steps are required for the classification.
-\\\\
+%An other problem is the computation complexity. KNN is sad to have a lazy
+%learning method. In other words it does output hypotheses in explicit form.
+%Instead a lot of computational steps are required for the classification.
+%\\\\
 A further issue is to find a suitable $k$. A great choose of $k$ various
 depending on many circumstances. A keystone is that if the training set is large
-it's important get rid of noise in the data hence increase $k$. On the other
+it is important to get rid of noise in the data, hence increase $k$. On the other
 hand a big $k$ requires more calculation. There are however also other more
-complex ways for reducing noise.
+complex ways for reducing noise \cite{ml_2011}.
 %https://dl.dropbox.com/u/5139428/ml-course/Classification1.pdf
-\begin{center}
-\includegraphics[scale=0.5]{fig/KNN.png}
-\end{center}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.3]{fig/KNN.png}
+\caption{A classification done by KNN, $k = 5$.}
+\label{fig:knn}
+\end{figure}
 
 \subsection{Support Vector Machine (SVM)}
-Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two distances. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error. \citep{svm_ai} \\\\
+Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two classes. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error. \citep{svm_ai} \\\\
 The data points that is at the margin distance from the hyperplane is called the support vectors, shown in Figure~\ref{fig:svm}.. The constructed hyperplane only depends on the support vector, meaning that SVM is dimensional independent.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.7]{fig/svmhyperplane.png}
-\caption{Example of SVM. Support vectors are marked with dots. \citep{svm_picture}}
+\caption{Example of SVM. Support vectors are marked with dots \citep{svm_picture}. }
 \label{fig:svm}
 \end{figure} \\
 The equation of the hyperplane is given by
 \begin{equation}
 w \cdot x + b = 0
 \end{equation}
-where the training data points are $x_i \in R^d$ with labels $y_i \pm 1$. $s_i$ is a slack variable and $C$ a penalty parameter, these are used to allow misclassification which is necessary if the data is non-separable. The best separating hyperplane-problem is defined as
+where the training data points are $x_i \in R^d$ with labels $y_i \pm 1$. $s_i$ is a slack variable and $C$ a penalty parameter and these are used to allow misclassification which is necessary if the data is non-separable. The best separating hyperplane-problem is defined as
 \begin{equation}
 \begin{array}{l}
 min \: ||w|| + C \sum_{i} s_i \\
@@ -175,25 +201,25 @@ min \: ||w|| + C \sum_{i} s_i \\
 \end{equation}
 If $C \rightarrow \infty$ then the SVM is called hard-margined, contrary to soft margin, and doesn't allow misclassifications.
 \\\\
-SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by using the kernel trick. The kernel trick is to map the data into a high-dimensional feature space, through a kernel function. \citep{svm_ai}
+SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by using the kernel trick. The kernel trick is to map the data into a high-dimensional feature space, through a kernel function \citep{svm_ai}.
 %Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
 \\\\
 SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem. \citep{perceptron_ai}
-The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets. \citep{perceptron_url} This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point. \citep{perceptron_url}
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem \citep{perceptron_ai}.
+The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets \citep{perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.5]{fig/perceptron_example.png}
+\includegraphics[scale = 0.4]{fig/perceptron_example.png}
 \caption{Example of a classification by Perceptron}
 \label{fig:perceptron}
 \end{figure}\\
-The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron}. \citep{perceptron_ai}
+The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}.
 \begin{equation}
 \label{eq:perceptron}
 w = w + (x \cdot y)
 \end{equation}
-where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged. \citep{perceptron_ai} New data is classified by Equation~\ref{eq:new_perceptron}.
+where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged \citep{perceptron_ai}. New data is classified by Equation~\ref{eq:new_perceptron}.
 \begin{equation}
 \label{eq:new_perceptron}
 class = sign(testData \cdot w)
@@ -201,8 +227,6 @@ class = sign(testData \cdot w)
 Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
-\subsection{Programs and tools}
-Python was used to generate the feature vector from the documents.
-\\\\
-Matlab was used to implement the algorithms, Cross-validation and to generate plots. The Statistics Toolbox with functions $cvpartition$, to easily perform N-cross-validation and $svmtrain$ to train a Support Vector Machine, has been of great use during the project.
-
+\subsection{K-fold Cross Validation}
+Cross Validation is used to test classification algorithms on sets of data that the classifiers hasn't seen, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
+K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be better than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.

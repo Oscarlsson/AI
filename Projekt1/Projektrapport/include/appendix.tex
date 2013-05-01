@@ -1,13 +1,12 @@
 \chapter{Appendix}
+\textbf{English stop words} \\
+\input{appendix/english_word_stops.txt}
 \begin{figure}[H]
 \centering
-\includegraphics[scale = 0.2]{../Plottar/feature-size100-2500bigram.png}
+\includegraphics[scale = 0.5]{../Plottar/feature-size100-2500bigram.png}
 \caption{In-domain classification using varying Bigram feature set sizes with 2$\sigma$ height error bars and comparing all algorithms.}
 \label{fig:trainingsize}
 \end{figure} 
-
-\input{appendix/english_word_stops.txt}
-
 
 \begin{figure}[H]
 \centering
@@ -19,77 +18,79 @@
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/documents_per_feature.png}
-\caption{derp}
+\caption{Documents per feature. Bigram and Unigram.}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/feature_size_TIMING.png}
-\caption{derp}
+\caption{Timing of different algorithms with different feature sizes}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/knn_2000words_testdata100_unigram.png}
-\caption{derp}
+\caption{Different K-values when running KNN on Classes and Sentimental-label}
 \label{fig:trainingsize}
 \end{figure} 
 
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale = 0.5]{../Plottar/outofdomain.png}
-\caption{derp}
-\label{fig:trainingsize}
-\end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/pca_all.png}
-\caption{derp}
+\caption{PCA on all categories}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/pca_largecorr.png}
-\caption{derp}
+\caption{PCA on health, software and camera. Represent a large correlation}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/pca_nocorr.png}
-\caption{derp}
+\caption{PCA on DVD and camera with no correlation}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/pca_somecorr.png}
-\caption{derp}
+\caption{PCA on Books, DVD and Music with some correlation}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
-\caption{derp}
+\caption{Different max iteration Perceptron}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale = 0.5]{../Plottar/text_categorization.png}
-\caption{derp}
+\includegraphics[scale = 0.3]{../Plottar/text_categorization.png}
+\caption{Text categorization task}
 \label{fig:trainingsize}
 \end{figure} 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale = 0.5]{../Plottar/training_size_k_2000allknn_100.png}
-\caption{derp}
+\includegraphics[scale = 0.3]{../Plottar/outofdomain.png}
+\caption{Out of domain classification task}
+\label{fig:trainingsize}
+\end{figure} 
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.8]{../Plottar/training_size_k_2000allknn_100.png}
+\caption{Training set size dependence per algorithm}
 \label{fig:trainingsize}
 \end{figure} 

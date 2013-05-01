@@ -1,0 +1,19 @@
+Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating two different classes of input data. 
+
+Given some input data SVM outputs a hyperplane which is a separating the given data depending on its class. SVM chooses the hyperplane which has the largest distance to the nearest training data point of any class, this distance is refered to as the margin and denoted $\gamma$. In general the larger margin, the lower generalization error. (Motivera!) 
+
+By default SVM is so-called hard margined, meaning that all points must be on correct side of the hyperplane. 
+
+The data points that is at the margin distance from the hyperplane is called the support vectors. The hyperplane only depends on the support vector, meaning that SVM is dimensional independent (??).
+
+SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by mapping the data into a high-dimensional feature space, through a kernel function. Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
+
+SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data. 
+
+(Behövs det nämnas dual problemet och de matematiska?? Det finns material för det)
+
+Method:
+------
+
+(Behöver vi nämna SMO?)
+Vi klassificerade bara sentimental och inte topics. 

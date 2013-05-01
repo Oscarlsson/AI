@@ -6,7 +6,19 @@ By statistical analysis of experiments, the classifiers are compared in terms of
 \section{Problem description}
 The problem is to categorize reviews from Amazon. There are 6 different categories;
 books, camera, DVD, health, music and software. The reviews are also
-categorized as positive and negative reviews.
+categorized as positive and negative reviews. 
+
+
+
+The following classification tasks should be investigated using different classification:
+\begin{itemize}
+\item Text categorization: Categorize review documents into their six categories: Books, DVDs, Cameras, Music, Health, and Software.
+\item In-domain sentiment analysis: For each review category, train and classify review documents as positive or negative. 
+\item  Out-of-domain sentiment analysis: Make training and test sets for two different topics (such as Books and Cameras).
+\end{itemize}
+The question of issue in this project is to answer weather there is a correlation between Out-of-domain sentiment analysis and Text categorization. 
+
+
 %The classification is done by
 %implementing five different classification algorithms; Naive Bayes, Perceptron,
 %Averaged Perceptron, K-nearest neighbours (KNN) and Support vector machine
@@ -18,7 +30,6 @@ categorized as positive and negative reviews.
 %\item Out-of-domain sentiment analysis - Train on one category and test on another
 %\item Text categorization - categorize the documents into their categories
 %\end{itemize}
-\\\\
 Before classifying the input data, which is given as text files, the data must be
 converted to a suitable form. Even further there may be irrelevant data
 in the text files. Some common words may be totally useless for the classification,
@@ -27,9 +38,6 @@ problem? Some words may also say the same about which category a text belongs to
 words as ''person'' and ''persons''. There are also a lot of data and  a lot of
 unique words. Is every unique word really important for the classification
 results? Is it possible to remove such words?
-
-
-(Ett stycke om in-domain, out of domain, text categorization och om att huvudfrågan är correlationen!!
 
 %The
 %input should be divided in words somehow, either one word (unigrams) or two
@@ -52,9 +60,9 @@ results? Is it possible to remove such words?
 %numerical statistic of how important a is in a document.
 
 \section{Theory}
-
+(TEXT HÄR????)
 \subsection{Text classification}
-One part of supervised learning is the field Text classification which is to
+Text classification has become a popular subject within machine learning as the amount of information lately has rapidly grown \citep{joachims}. Text classification is to
 classify documents into a fixed number of predefined categories. The categories
 could be sentimental (positive / negative) or different topics that the
 document concern \cite{ngrams_ai}.

@@ -29,6 +29,8 @@ unique words. Is every unique word really important for the classification
 results? Is it possible to remove such words?
 
 
+(Ett stycke om in-domain, out of domain, text categorization och om att huvudfrågan är correlationen!!
+
 %The
 %input should be divided in words somehow, either one word (unigrams) or two
 %words (bigrams). Some common words are totally useless for the classification,
@@ -157,7 +159,7 @@ complex ways for reducing noise \cite{ml_2011}.
 \end{figure}
 
 \subsection{Support Vector Machine (SVM)}
-Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two distances. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error. \citep{svm_ai} \\\\
+Support Vector Machines (SVM) constructs a non-probabilistic linear classification separating exactly two different classes of input data. Given some input data SVM outputs a hyperplane which separates the given data depending on its class. SVM chooses the hyperplane which has the largest distance between the two classes. This distance is refered to as the margin in Figure~\ref{fig:svm}. In general the larger margin, the lower generalization error. \citep{svm_ai} \\\\
 The data points that is at the margin distance from the hyperplane is called the support vectors, shown in Figure~\ref{fig:svm}.. The constructed hyperplane only depends on the support vector, meaning that SVM is dimensional independent.
 \begin{figure}[h!]
 \centering
@@ -169,7 +171,7 @@ The equation of the hyperplane is given by
 \begin{equation}
 w \cdot x + b = 0
 \end{equation}
-where the training data points are $x_i \in R^d$ with labels $y_i \pm 1$. $s_i$ is a slack variable and $C$ a penalty parameter, these are used to allow misclassification which is necessary if the data is non-separable. The best separating hyperplane-problem is defined as
+where the training data points are $x_i \in R^d$ with labels $y_i \pm 1$. $s_i$ is a slack variable and $C$ a penalty parameter and these are used to allow misclassification which is necessary if the data is non-separable. The best separating hyperplane-problem is defined as
 \begin{equation}
 \begin{array}{l}
 min \: ||w|| + C \sum_{i} s_i \\

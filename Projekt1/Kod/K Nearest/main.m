@@ -1,3 +1,5 @@
+% main.m consists of test code and is not necessary for any project results
+
 clear;
 load ('../data.mat');
 

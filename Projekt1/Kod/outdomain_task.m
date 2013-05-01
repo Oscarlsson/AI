@@ -60,7 +60,7 @@ for i = 1:nLabels % TRAINING DATA
     save('backup_outofdomain.mat', 'errorCatSent','timeCatSent');
 end
 
-%% Plot Skriv kod för plot här.
+%% Plot
 load('../Plottar/backup_outofdomain.mat')
 figure
 errorCatSent_sum = zeros(6,6);

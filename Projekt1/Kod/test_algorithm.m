@@ -1,5 +1,4 @@
 function [ error, stddev, timing, classificationsResult ] = test_algorithm( algorithm_handle, training_dataset, training_dataset_labels, test_dataset, test_dataset_labels, training_dataset_size_fraction, nWords )
-%UNTITLED3 Summary of this function goes here
 
 errors = zeros(1,10);
 timings = zeros(1,10);
@@ -30,12 +29,7 @@ for i = 1:CVP.NumTestSets
     tic;
     classifications = feval(algorithm_handle, training_data(1:training_data_size), ...
         training_targets(1:training_data_size), test_data, nWords);
-    
-%     if sum(classifications == 0) > 0
-%         classifications
-%         error('FEEEL');
-%     end
-    
+        
     classificationsResult(CVP.test(i)) = classifications;
     
     timings(i) = toc;

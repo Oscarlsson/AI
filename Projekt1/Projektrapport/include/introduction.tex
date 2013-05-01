@@ -123,7 +123,7 @@ score[$c$] $\leftarrow \log P(c)$\\
 K-nearest neighbours (KNN) algorithm is one of the simplest machine learning
 algorithms. The classification performed by KNN works as follows: Fix some
 number $k$. For any new $x \in X$, take the most common classification value among
-the $k$ training examples in $D$ closest to $x$.
+the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
 \\\\
 Even though the KNN algorithm
 seems extraordinary simple there are some things that one must take in
@@ -136,7 +136,7 @@ words stretch the coordinate axes arbitrary and independent. It is very easy to
 find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
 shouldn't do so. This phenomena is called \emph{curse of dimensionality}. One
-can try to find good stretch factors by performing cross validation.
+can try to find good stretch factors by performing cross validation \cite{ml_2011}.
 \\\\
 %An other problem is the computation complexity. KNN is sad to have a lazy
 %learning method. In other words it does output hypotheses in explicit form.
@@ -146,10 +146,13 @@ A further issue is to find a suitable $k$. A great choose of $k$ various
 depending on many circumstances. A keystone is that if the training set is large
 it is important to get rid of noise in the data, hence increase $k$. On the other
 hand a big $k$ requires more calculation. There are however also other more
-complex ways for reducing noise.
+complex ways for reducing noise \cite{ml_2011}.
 %https://dl.dropbox.com/u/5139428/ml-course/Classification1.pdf
 \begin{center}
+\begin{figure}[H]
 \includegraphics[scale=0.5]{fig/KNN.png}
+\caption{A classification done by KNN, $k = 5$.}
+\end{figure}
 \end{center}
 
 \subsection{Support Vector Machine (SVM)}

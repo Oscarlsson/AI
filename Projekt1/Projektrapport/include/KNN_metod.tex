@@ -5,17 +5,18 @@ implemented in a non deterministic way. This because of that a point $x$ in a pl
 may have neighbours with the property that they have equal distances to
 $x$. If this is the case a nearest neighbour is chosen at random. Several choices
 for $k$ was tested in different runs of the algorithm to find the best $k$ for
-the classification. The algoritm was implemented to be able to classify both
+the classification. The algorithm was implemented to be able to classify both
 different classes (music , software, etc.) and sentimental classification
-(positive, negative). Figure \ref{fig:KNNplot} shows the missclassification done by the
+(positive, negative). Figure \ref{fig:KNNplot} shows the misclassification done by the
 algorithm for both different $k$ and different sizes for the feature sets.
 \begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.6]{fig/knn_2000words_testdata100_unigram}
+\centering
+\includegraphics[scale=0.6]{../Plottar/knn_2000words_testdata100_unigram}
 \caption{Plot showing results from the KNN classifier}
-\end{center}
-\end{figure}
 \label{fig:KNNplot}
+
+Figure \ref{fig:KNNplot} shows that KNN has best performance with parameter  $K = 20$ for sentimental and $K = 10$ for classes.
+
 %\begin{comment}
 %The pseudocode below described the implemented matlab code.
 

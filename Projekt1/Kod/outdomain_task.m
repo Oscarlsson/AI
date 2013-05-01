@@ -61,12 +61,20 @@ for i = 1:nLabels % TRAINING DATA
 end
 
 %% Plot Skriv kod för plot här.
-load backup_outofdomain.mat
+load('../Plottar/backup_outofdomain.mat')
 figure
 errorCatSent_sum = zeros(6,6);
-for algoId = [2,3,5]
+for algoId = [2,3]
     errorCatSent_sum = ...
-        errorCatSent_sum + 1/6 * reshape(errorCatSent(algoId,:,:), 6, 6);
+        errorCatSent_sum + 1/2 * reshape(errorCatSent(algoId,:,:), 6, 6);
 end
 bar(errorCatSent_sum ,'DisplayName','classification_matrix_sum')
-legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software');
+h = legend('Camera', 'Books', 'DVD', 'Health', 'Music', 'Software', 'location', [0.125 0.78 0.1 0.1]);
+v = get(h,'title');
+set(v,'string','Testing on category');
+
+
+set(gca,'XTickLabel',{'Camera', 'Books', 'DVD', 'Health', 'Music', 'Software'})
+ylabel('Classified correctly (%)')
+xlabel('Training on category')
+title('Out-of-domain sentiment analysis')

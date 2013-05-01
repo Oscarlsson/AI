@@ -1,18 +1,14 @@
 \chapter{Conclusions}
-During the project we have learned that classification algorithms might be easy to implement but small changes in feature selection yields a big change in classification performance. It is hard to know in advance what features will work good on a given data, without executing heavy tests and measuring. During the project we performed lots of tests, some of which have taken long nights to run. 
+During the project we have learned that classification algorithms might be easy to implement and that the difficulty of getting good performance is by feature selection. \\\\
+Small changes in some parameter regarding feature selection yields a big change in the classification performance. E.g. feature size and bigram instead of unigram. It is hard to know in advance what features will work good on a given data without executing heavy tests and measuring. We had to perform lots of test, with some of which have taken days and nights to finish. 
 \\\\
-We have both studied the theoretical similarity between Support Vector Machines and Perceptron and practically shown the similarity (Figure \ref{fig:featuresize}).
+We have both studied the theoretical similarity between Support Vector Machines and Perceptron and actually practically shown the similarity (Figure \ref{fig:featuresize}).
 \\\\
-K-nearest neighbour did not perform as good as the other algorithms on this particular dataset. 
+K-nearest neighbour did not perform as good as the other algorithms, on this particular dataset and these features. We learned the importance of feature sets and k-value in KNN.
 \section{Future work}
-The bigram-feature gave bad results and we did not have time to investigate this further but one could continue where we stopped and try to achieve better classifications using bigram. \\\\
-Boosting is a meta-algorithm in supervised learning which takes a set of weak learners and creates a single large learner. (ref till http://www.cs.princeton.edu/~schapire/papers/strengthofweak.pdf) It would have been interesting to e.g. implement AdaBoost and messure the performance gain. \\\\
+It would have been interesting to study the correlation between text categorization and out-of-domain sentimental analysis with another dataset than the one from Amazon. Perhaps it would have shown better with some other data, or perhaps worse.  \\\\
+The bigram feature gave bad results and we did not have time to investigate this further but one could continue where we stopped and try to achieve better classifications using bigram.  \\\\
+Boosting is a meta-algorithm in supervised learning which takes a set of weak learners and creates a single large learner \citep{boosting}. It would have been interesting to e.g. implement AdaBoost and measure the performance gain. This is something we would have done if we had more time. \\\\
 K-nearest neighbor gave worse classification than the other algorithms and it would have been interesting to investigate if some parameters would turn the situation around and make KNN better. We did not have time to investigate if some feature selection would make KNN equivalent to the others.
 \\\\
 Another interesting task would have been to apply unsupervised learning methods on the datasets to see how well the extracted features and clusterings correspond to the data labels, for instance by experimenting with the EM-algorithm and the LDA-algorithm.
-%Modules a future continuation may have
-%\\\\
-%* annat dataset\\
-%* fler ord\\
-%* kombinera algoritmer\\
-%* boosting\\

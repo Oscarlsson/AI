@@ -1,6 +1,6 @@
 
-The prior probabilities $P(x_i\vert c)$ used in the Naive Bayes model $P(c\vert\mathbf{x})$, defined previously in Equation \ref{eq:naivebayes_model}, are interpreted as the individual probabilities of each word $w$ from the vocabulary $\mathbf{V}$ occurring in class $c$, i.e. by exchanging $\left\{x_i : 1 \le i \le D\right\}$ for $\left\{w_i \in \mathbf{V}\right\}$ when using the model.
-
+Naive Bayes was implemented using the prior probabilities $P(x_i\vert c)$ used in the Naive Bayes model $P(c\vert\mathbf{x})$, defined previously in Equation \ref{eq:naivebayes_model}. These were interpreted as the individual probabilities of each word $w$ from a vocabulary $\mathbf{V}$ occurring in class $c$, by exchanging $\left\{x_i : 1 \le i \le D\right\}$ for $\left\{w_i \in \mathbf{V}\right\}$ when using the model.
+\\\\
 The implementation of $P(w_i\vert c)$ follows the maximum likelihood estimate of relative frequency as follows:
 \begin{align}
 P(w_i\vert c) =

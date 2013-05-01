@@ -1,14 +1,14 @@
 The KNN algorithm was implemented by interpreting each feature, or in this case
-every document, as a dimension and the feature values corresponds to the term
-occurrence frequencies. Calculations of the nearest neighbours is
+every document, as a dimension and feature values corresponds to the term
+occurrence frequencies. Calculations of the nearest neighbours were
 implemented in a non deterministic way. This because of that a point $x$ in a plane
 may have neighbours with the property that they have equal distances to
 $x$. If this is the case a nearest neighbour is chosen at random. Several choices
-for $k$ was tested in different runs of the algorithm to find the best $k$ for
+for $k$ were tested in different runs of the algorithm to find the best $k$ for
 the classification. The algorithm was implemented to be able to classify both
 different classes (music , software, etc.) and sentimental classification
 (positive, negative). Figure \ref{fig:KNNplot} shows the misclassification done by the
-algorithm for both different $k$ and different sizes for the feature sets.
+algorithm for both different $k$ and different sizes of the feature sets.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{../Plottar/knn_2000words_testdata100_unigram}

@@ -1,20 +1,20 @@
 \chapter{Introduction}
-This project is about machine learning of different statistical classifiers.
+This project was about machine learning of different statistical classifiers.
 Machine learning is about construct and study systems that can learn from data.
-This could be used to train a system to recognize patterns in, for instance, emails and learn how to distinguish between spam and non-spam messages. In this project the classifiers are applied to reviews and the task is to categorize these.
-By statistical analysis of experiments, the classifiers are compared in terms of, for instance, classification accuracy.
+This could be used to train a system to recognize patterns, in for instance emails and learn how to distinguish between spam and non-spam messages. In this project the classifiers were applied to reviews and the task was to categorize these.
+By statistical analysis of experiments, the classifiers were compared in terms of, for instance, classification accuracy.
 \section{Problem description}
-The problem is to categorize reviews from Amazon. There are 6 different categories;
-books, camera, DVD, health, music and software. The reviews are also
+The problem was to categorize reviews from Amazon. There were 6 different categories;
+books, camera, DVD, health, music and software. The reviews were also
 categorized as positive and negative reviews. 
 \\\\
-The following classification tasks should be investigated using different classification:
+The following classification tasks was investigated using different classification:
 \begin{itemize}
 \item Text categorization: Categorize review documents into their six categories: Books, DVDs, Cameras, Music, Health, and Software.
 \item In-domain sentiment analysis: For each review category, train and classify review documents as positive or negative. 
 \item  Out-of-domain sentiment analysis: Make training and test sets for two different topics (such as Books and Cameras).
 \end{itemize}
-The question of issue in this project is to answer weather there is a correlation between Out-of-domain sentiment analysis and Text categorization. 
+The question of issue in this project was to answer weather there exist a correlation between Out-of-domain sentiment analysis and Text categorization. 
 \\\\
 %The classification is done by
 %implementing five different classification algorithms; Naive Bayes, Perceptron,
@@ -27,7 +27,7 @@ The question of issue in this project is to answer weather there is a correlatio
 %\item Out-of-domain sentiment analysis - Train on one category and test on another
 %\item Text categorization - categorize the documents into their categories
 %\end{itemize}
-Before classifying the input data, which is given as text files, the data must be
+Before classifying the input data, which was given as text files, the data needed to be
 converted to a suitable form. Even further there may be irrelevant data
 in the text files. Some common words may be totally useless for the classification,
 such as ''the'' and ''I''. How should the data be processed to handle this
@@ -69,7 +69,7 @@ A document is typically a huge string containing all characters and is not
 suitable for classification, hence some processing needs to be done on each
 document \cite{ngrams_ai}.
 \\\\
-All words in a document isn't interesting when doing text classification. E.g.
+All words in a document is not interesting when doing text classification. E.g.
 words like "the", "one", "are", "is" are words that will occur in any human
 readable text, but has no value when trying to find similarities and
 differences between documents. These words are called "stop-words" and are
@@ -85,17 +85,16 @@ impact on the result of different classifiers. The Bag-of-words model is a
 simplifying model where a text is represented as a unordered set of words,
 without respect to grammar or order of words \citep{bag_of_words}.
 \\\\
-To be able to clasify documents they must
-in same way get a numerical presentation. This can be done by builing a
-feature vector which is an n-dimensional vector of numerical features
-that represents the words.
+To be able to classify documents they must in some way get a numerical representation. 
+This can be done by building a feature vector which is a n-dimensional vector of numerical 
+features that represents the words.
 \subsection{Features}
 \begin{itemize}
-\item Feature size - Sometimes the feature vector can be very large adn hard to
+\item Feature size - Sometimes the feature vector can be very large and hard to
         handle. Then it could be a good idea to just choose the 1000 most
         frequent words or maybe the 100 most frequent words \citep{joachims}.
 \item N-grams - N-grams is a sequence of symbols of length $n$, in this case
-        words. Unigram is then one word and bigram is two words \citep{ngrams_ai}.
+        words. Unigram is one word and bigram is two words \citep{ngrams_ai}.
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
         words in the documents and give a number of how important each word is.
         This is given by Equation~\ref{eq:tfidf} \citep{tfidf}.
@@ -110,7 +109,7 @@ idf(t,D) = log(\frac{|D|}{|\{d \in D : t \in d\}|})
 \end{equation}
 
 \subsection{Naive Bayes}
-The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$. This is done by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows \citep{nb_ai, devdatt_nb}. 
+The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$. This is done by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewrite it as follows \citep{nb_ai, devdatt_nb}. 
 \begin{align*}
 P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
 \\&=P(c,\mathbf{x})
@@ -125,7 +124,7 @@ The independence assumption says that each feature $x_i$ is independent of every
 P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert c) \nonumber
 \\&= P(c) \prod_{i=1}^{D} P(x_i\vert c).\label{eq:naivebayes_model}
 \end{align}
-A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate}, MLE, which corresponds to the relative frequency of each parameter in the training data \citep{devdatt_nb}.
+A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate} (MLE) which corresponds to the relative frequency of each parameter in the training data \citep{devdatt_nb}.
 \\\\
 The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in Equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow \citep{devdatt_nb}. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}. 
 
@@ -165,8 +164,9 @@ One may multiply each attribute variable by arbitrary factors or in other
 words stretch the coordinate axes arbitrary and independent. It is very easy to
 find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
-shouldn't do so. This phenomena is called \emph{curse of dimensionality}. One
-can try to find good stretch factors by performing cross validation \cite{ml_2011}.
+shouldn not do so \cite{ml_2011}. 
+%This phenomena is called \emph{curse of dimensionality}. One
+%can try to find good stretch factors by performing cross validation .
 \\\\
 %An other problem is the computation complexity. KNN is sad to have a lazy
 %learning method. In other words it does output hypotheses in explicit form.
@@ -175,8 +175,7 @@ can try to find good stretch factors by performing cross validation \cite{ml_201
 A further issue is to find a suitable $k$. A great choose of $k$ various
 depending on many circumstances. A keystone is that if the training set is large
 it is important to get rid of noise in the data, hence increase $k$. On the other
-hand a big $k$ requires more calculation. There are however also other more
-complex ways for reducing noise \cite{ml_2011}. An example of a suitable $k$-value 
+hand a big $k$ requires more calculation \cite{ml_2011}. An example of a suitable $k$-value 
 is shown in Figure~\ref{fig:knn}.
 %https://dl.dropbox.com/u/5139428/ml-course/Classification1.pdf
 
@@ -207,7 +206,7 @@ min \: ||w|| + C \sum_{i} s_i \\
 \forall (x_i, y_i) : \: y_i(w \cdot x_i + b) \geq 1 - s_i
 \end{array}
 \end{equation}
-If $C \rightarrow \infty$ then the SVM is called hard-margined, contrary to soft margin, and doesn't allow misclassifications.
+If $C \rightarrow \infty$ then the SVM is called hard-margined, contrary to soft margin, and does not allow misclassifications.
 \\\\
 SVM can perform classification on both linear and non-linear input data. Classification on non-linear data can be performed by using the kernel trick. The kernel trick is to map the data into a high-dimensional feature space, through a kernel function \citep{svm_ai}.
 %Different popular kernel functions are linear kernel, quadratic kernel, polynomial kernel and Gaussian radial basis function kernel (rbf). (förklara dessa!)
@@ -215,7 +214,7 @@ SVM can perform classification on both linear and non-linear input data. Classif
 SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
 Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem
-and tries to separate the input data with a linear decision boundary. \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to Support Vector Machines, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane).
+and tries to separate the input data with a linear decision boundary \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represents the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to SVM, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane).
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.4]{../Plottar/perceptron_example.png}
@@ -236,5 +235,5 @@ and tries to separate the input data with a linear decision boundary. \citep{per
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
 \subsection{K-fold Cross Validation}
-Cross Validation is used to test classification algorithms on sets of data that is unknown, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
-K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be more accurate than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.
+Cross Validation is used to test classification algorithms on sets of data that is unknown to the algorithm, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
+K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with a portion of $1/k$ of the data as test data and the rest as training. The average score will be more accurate than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.

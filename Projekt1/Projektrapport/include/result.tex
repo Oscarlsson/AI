@@ -1,37 +1,64 @@
 \chapter{Results and discussion}
-To see which feature size each algorithm performed best with we messured in-domain sentimental analysis on all algorithm with 11 pre-selected different feature vectors as input data. The result in presented in Figure ~\ref{fig:featuresize}. In the Figure each line corresponds to an algorithm and the bars represent one standard deviation (??). KNN has better performance with a lower feature size whilst the rest has better performance with a large feature size. This result was expected. 
+To find what feature size each algorithm performed best with we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data. The result is presented in Figure ~\ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm; and the error bar height is one standard deviation. KNN has better performance with a lower feature size of 100 while all other algorithms have better performance the larger the feature set size gets. This result was expected.WHY?
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.2]{fig/featuresize_plot_snowball_unigram.png}
-\caption{In-domain classification of different feature size with stddeviation and all algorithms.}
+\includegraphics[scale = 0.2]{../Plottar/feature-size100-2500all.png}
+\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying feature vector sizes.}
 \label{fig:featuresize}
-\end{figure} \\\\
-We continued with each algorithms best feature size and messured how the training-set size would affect the classification. The result is found in \ref{fig:trainingsize} where each algorithm is represented by a line and the x-axis consists of different percentages of the total training size. 
+\end{figure}
+
+We continued with measuring how the training-set size would affect the classification by using each algorithm's optimal feature size, where 100 features were chosen for KNN and 2000 for all other algorithms. The result is shown in Figure \ref{fig:trainingsize} where each algorithm is plotted individually over varying fractions of the total training size on the x-axis.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.5]{fig/training-size.png}
-\caption{All algorithms with different training set size}
+\includegraphics[scale = 0.5]{../Plottar/training-size k=2000allknn=250.png}
+\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying training set size $\in \{10\%, 100\%\}$.}
 \label{fig:trainingsize}
-\end{figure}  \\\\
-The SVM-algorithm is not converging until around $~40 \%$ and this is the reason why it has $100 \%$ misclassification. With small training size the algorithms perform slightly better than random assignment, $50 \%$, but the bigger training size the better result. Naive Bayes is the algorithm with best performance whilst the two Perceptron and SVM has almost equal performance. 
-\\\\
+\end{figure}
+
+The SVM-algorithm does not converge below a training set size of $~40\%$ (corresponding to just below $4 000$ documents in each step of the cross validation), which is the reason for it having a $100\%$ misclassification. With a small training size the algorithms perform only slightly better than random assignment (i.e. $50\%$ for this dataset), but as the training set size increases, there are slight differences in how the algorithms perform. The Naive Bayes variants perform best, followed by the Average Perceptron; full figures on the full training set size is shown in Table ???????.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ | c | c | } \hline
+	\textbf{Algorithm} & \textbf{Error} \\ \hline
+	Perceptron & 27.26$\pm$1\% \\ \hline
+	Averaged Perceptron & 23.92$\pm$1\% \\ \hline
+	Naive Bayes TFIDF & 18.48$\pm$1\% \\ \hline
+	Naive Bayes Binary & 18.82$\pm$1\% \\ \hline
+	KNN & 37.11$\pm$1\% \\ \hline
+	SVM & 27.74$\pm$1\% \\ \hline
+	\end{tabular}
+	\caption{Best results of in-domain classification for each algorithm given the corresponding optimal feature sizes.}
+	\label{tab:algorithm_best_performance}
+\end{table}
 %How does it fare against your benchmarks and instances? Describe advantages and disadvantages, possibly in relation to other groups in this course.
 %* bättre eller sämre reslutat än förväntat? varför?
 %* jämför algoritmerna, hur bra är de? hur lång tid tar de?\\
 \section{Text categorization}
-Här skriver vi om vad vi fick för resultat
+
+For the two distinct best performing algorithms, Naive Bayes TFIDF and the Averaged Perceptron, we performed 10-fold Cross Validation on the full training set, recording the classification of each document for both algorithms, and averaged their results. In Figure \ref{fig:textcategorization}, each group of bars correspond to the distribution of classifications for a given document of the corresponding class on the x-axis. Each bar corresponds to a class and the height corresponds to the fraction of times that a document was classified as such.
+
+Notable examples are that for each category on the x-axis, the correct and corresponding bar for that category is largest. In each group of bars, the distribution of incorrect classifications is not uniform over the remaining classes. Instead, for instance, documents from the class Camera (leftmost bar group) are often misclassified as Health and Software documents. Likewise, documents of class Health (fourth bar group) are often misclassified as Camera and Software documents. The Software documents do not show the same distinct results, even though it is there.
+
+Another connection is that groups Books, DVD and Music (2, 3 and 5) have coinciding errors.
+
 \begin{figure}[h!]
-\centering
-\includegraphics[scale = 0.3]{../Plottar/text_categorization.png}
-\caption{All algorithms with different training set size}
-\label{fig:textcategorization}
+	\centering
+	\includegraphics[scale = 0.3]{../Plottar/text_categorization.png}
+	\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis).}
+	\label{fig:textcategorization}
 \end{figure}  
+
+
+
 \section{Out-of-domain}
-Här skriver vi om vad out of domain gav
+
+The out-of-domain task was, just like for the text classification task, performed using the Naive Bayes TFIDF and the Averaged Perceptron algorithms. Sentiment analysis was performed by training on all documents of a given category on the x-axis shown in Figure \ref{fig:outofdomain}, and training on all documents of the category represented by each bar for which the heights correspond to the classification error. As an example, the lowest bar is always the bar corresponding to the same group given by the x-axis. There are however notable entries, where for instance the classification results after training on the Health category (4th bar group) are of course low for the Health class itself, but at the same time also for the categories Camera and Software. Also, looking at the bar group for Camera and Software, the same can be said about these three categories and their three lowest bars. Likewise, the three lowest bars are the same in all tests for categories Books, DVD and Music.
+
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.3]{../Plottar/outofdomain.png}
-\caption{All algorithms with different training set size}
+\caption{FOOBAR}
 \label{fig:outofdomain}
 \end{figure}  
 
@@ -41,7 +68,7 @@ Health, Software and Camera has large correlation.\\
 Books, DVD and Music has a tiny correlation
 \begin{figure}[h!btcp]
         \centering
-        \begin{subfigure}[b]{0.5\textwidth}
+       \begin{subfigure}[b]{0.5\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{../Plottar/pca_all.png}
                \caption{}
@@ -63,12 +90,11 @@ Books, DVD and Music has a tiny correlation
 	    \begin{subfigure}[b]{0.5\textwidth}
 	            \centering
 	            \includegraphics[width=\textwidth]{../Plottar/pca_somecorr.png} 
-               \caption{}
+              \caption{}
 	    \end{subfigure}
 	    \caption{Principal Component Analysis showing (a) all categories , (b) DVD and Camera, (c) Health, Software and Camera, (d) Books DVD and Music}
                 
 \end{figure}
-\\\\
 
 %text categorization:\\
 %* plot över de olika algorithmerna och hur bra de kategoriserar. (en plot med alla?)

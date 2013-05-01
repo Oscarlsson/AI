@@ -63,7 +63,7 @@ t = toc;
 
 %% Plotting (can be run independently of above code if one sets nrAlgorithms).
 
-load('backup_feature.mat');
+%load('backup_feature.mat');
 if ~exist('nrAlgorithms')
     nrAlgorithms = 6;
 end
@@ -71,3 +71,5 @@ end
 xvals = repmat([100, 250, 500, 750, 1000, 1250 ,1500, 1750, 2000, 2250, 2500]', [1, nrAlgorithms]);
 errorbar(xvals, error_per_feature_matrix, stddev_per_feature_matrix)
 legend('Perceptron', 'Averaged Perceptron', 'Naive Bayes TFIDF', 'Naive Bayes Bin', 'KNN', 'SVM');
+xlabel('#Feature-size: Words')
+ylabel('Misclassification')

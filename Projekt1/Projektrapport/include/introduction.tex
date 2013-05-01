@@ -51,7 +51,7 @@ results? Is it possible to remove such words?
 %numerical statistic of how important a is in a document.
 
 \section{Theory}
-Describe briefly the scientific papers or book chapters you found relevant to the problem, references to sec 6. Explain which are relevant for your project and which not and why.
+
 \subsection{Text classification}
 One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern.
 
@@ -60,7 +60,7 @@ A document is typically a huge string containing all characters and is not suita
 \\\\
 All words in a document isn't interesting when doing text classification. E.g. words like "the", "one", "are", "is" are words that will occur in any human readable text, but has no value when trying to find similarities and differences between documents. These words are called "stop-words" and are usually filtered out and treated as noise.
 \\\\
-When working with document we want to treat different inflections(?) of a word as the same word. There is no need to separate the words "persons" and "person", because both words give us the same information we want. This is called Stemming and we will not focus more on the theory behind it.
+When working with document we want to treat different inflections of a word as the same word. There is no need to separate the words "persons" and "person", because both words give us the same information we want. This is called Stemming and we will not focus more on the theory behind it.
 \\\\
 There are various ways of storing document and the representation has a big impact on the result of different classifiers. The Bag-of-words model is a simplifying model where a text is represented as a unordered set of words, without respect to grammar or order of words.
 \\\\
@@ -81,7 +81,7 @@ idf(t,D) = log(\frac{|D|}{|\{d \in D : t \in d\}|})
 \end{equation}
 
 \subsection{Naive Bayes}
-The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$ by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.
+The Naive Bayes classifier uses (naive) independence assumptions to simplify the conditional probability $P(c\vert\mathbf{x})$ of a feature vector $\mathbf{x} \in \mathbb{R}^D$ belonging to class $c$. This is done by using Bayes' rule to formulate $P(c\vert \mathbf{x}) = \frac{P(\mathbf{x}\vert c) P(c)}{P(\mathbf{x})}$ and rewriting as follows.
 \begin{align*}
 P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
 \\&=P(c,\mathbf{x})
@@ -91,17 +91,16 @@ P(c\vert \mathbf{x}) &\propto P(\mathbf{x}\vert c)P(c)
 \\&\propto P(c) P(x_1\vert c) P(x_2\vert c, x_1) P(x_3\vert c,x_1,x_2) \dots P(x_D\vert c, x_1,...,x_{D-1})
 \\&\dots
 \end{align*}
-The independence assumption says that each feature $x_i$ is independent of every other feature $x_j,...x_k$, rendering $P(x_i\vert x_j,...,x_k) = P(x_i\vert c)$, which translates the posterior $P(c\vert \mathbf{x})$ to
+The independence assumption says that each feature $x_i$ is independent of every other feature $x_j,..,x_k$, rendering $P(x_i\vert x_j,...,x_k) = P(x_i\vert c)$, which translates the posterior $P(c\vert \mathbf{x})$ to
 \begin{align}
 P(c\vert \mathbf{x}) &\propto P(c) P(x_1\vert c) P(x_2\vert c) \dots P(x_D\vert c) \nonumber
 \\&= P(c) \prod_{i=1}^{D} P(x_i\vert c).\label{eq:naivebayes_model}
 \end{align}
 A suitable choice for each conditional distribution $P(x_i\vert c)$ is the \textit{maximum likelihood estimate}, MLE, which corresponds to the relative frequency of each parameter in the training data.
-
-The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}.
+\\\\
+The classification procedure then calculates the \textit{maximum a posteriori} (MAP) class $c_{\textit{map}} = \argmax_{c\in C} P(c\vert \mathbf{x})$. Since the argument $c$ that maximizes $P(c\vert \mathbf{x})$ also maximizes $\log P(c\vert \mathbf{x})$, the product in Equation \ref{eq:naivebayes_model} can be written as a sum of log terms, which helps to avoid arithmetic underflow. The pseudocode for the classification procedure is shown in Algorithm \ref{algorithm:naive_bayes_classification}.
 
 \begin{algorithm}[h]
-\label{algorithm:naive_bayes_classification}
  \SetAlgoLined
  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
  \KwData{\textit{Feature vector with unknown class} $\mathbf{x} \in \mathbb{R}^D$; \textit{Class weights} $\{P(c) : c \in C\}$; \textit{Conditional feature probabilities} $\{P(x_1\vert c), ..., P(x_D\vert c)\}$}
@@ -117,6 +116,7 @@ score[$c$] $\leftarrow \log P(c)$\\
  \Return $\displaystyle \argmax_{c \in C} score[c]$ \\
 
  \caption{Multinomial Naive Bayes classification algorithm}
+ \label{algorithm:naive_bayes_classification}
 \end{algorithm}
 
 \subsection{K-Nearest Neighbour (KNN) algorithm}
@@ -132,15 +132,12 @@ consideration. First of all what is nearest? There is of course a natural
 distance function in a geometrical space but a proper definition in parameter
 space is not obvious. As it turn out a distance function can be defined in a lot
 of ways. The given attributes are overall very different in reality.
-One may may multiply each attribute variable by arbitrary factors or in other
+One may multiply each attribute variable by arbitrary factors or in other
 words stretch the coordinate axes arbitrary and independent. It is very easy to
 find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
 shouldn't do so. This phenomena is called \emph{curse of dimensionality}. One
 can try to find good stretch factors by performing cross validation.
-One takes a vector of stretch factors that
-minimizes the classification errors on a valid set. The back side is that
-this will require a lot of test vectors.
 \\\\
 An other problem is the computation complexity. KNN is sad to have a lazy
 learning method. In other words it does output hypotheses in explicit form.

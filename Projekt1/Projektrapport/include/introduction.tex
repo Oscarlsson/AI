@@ -201,6 +201,10 @@ class = sign(testData \cdot w)
 Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
+\subsection{K-fold Cross Validation}
+Cross Validation is used to test classification algorithms on sets of data that the classifiers hasn't seen, in order to get an accurate evaluation of a hypothesis. \ref{crossvalid_ai}\\\\
+K-fold cross validation means that the data is split into k roughly equal sizes and then k rounds of training is performed with 1/k as test data and the rest as training. The average score will be better than one single score. K-values between 5 and 10 are popular and enough to get accurate results \ref{crossvalid_ai}.
+
 \subsection{Programs and tools}
 Python was used to generate the feature vector from the documents.
 \\\\

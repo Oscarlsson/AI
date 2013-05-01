@@ -68,17 +68,17 @@ All words in a document isn't interesting when doing text classification. E.g.
 words like "the", "one", "are", "is" are words that will occur in any human
 readable text, but has no value when trying to find similarities and
 differences between documents. These words are called "stop-words" and are
-usually filtered out and treated as noise\cite{joachims}.
+usually filtered out and treated as noise \cite{joachims}.
 \\\\
 When working with document, different inflections of a word should be treated
 as the same word. There is no need to separate the words "persons" and
 "person", because both words give the same information. This is called Stemming
-and we will not focus more on the theory behind it\cite{stemming}.
+and we will not focus more on the theory behind it \cite{stemming}.
 \\\\
 There are various ways of storing document and the representation has a big
 impact on the result of different classifiers. The Bag-of-words model is a
 simplifying model where a text is represented as a unordered set of words,
-without respect to grammar or order of words\citep{bag_of_words}.
+without respect to grammar or order of words \citep{bag_of_words}.
 \\\\
 To be able to clasify documents they must
 in same way get a numerical presentation. This can be done by builing a
@@ -90,10 +90,10 @@ that represents the words.
         handle. Then it could be a good idea to just choose the 1000 most
         frequent words or maybe the 100 most frequent words \citep{joachims}.
 \item N-grams - N-grams is a sequence of symbols of length $n$, in this case
-        words. Unigram is then one word and bigram is two words\citep{ngrams_ai}.
+        words. Unigram is then one word and bigram is two words \citep{ngrams_ai}.
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
         words in the documents and give a number of how important each word is.
-        This is given by Equation~\ref{eq:tfidf}\citep{tfidf}.
+        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}.
 \end{itemize}
 
 \begin{equation}
@@ -212,7 +212,7 @@ Perceptron is a linear, non deterministic, supervised classification algorithm. 
 and tries to separate the input data with a linear decision boundary. \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to Support Vector Machines, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane).
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.4]{fig/perceptron_example.png}
+\includegraphics[scale = 0.4]{../Plottar/perceptron_example.png}
 \caption{Example of a classification by Perceptron}
 \label{fig:perceptron}
 \end{figure}\\
@@ -230,5 +230,5 @@ and tries to separate the input data with a linear decision boundary. \citep{per
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
 \subsection{K-fold Cross Validation}
-Cross Validation is used to test classification algorithms on sets of data that the classifiers hasn't seen, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
-K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be better than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.
+Cross Validation is used to test classification algorithms on sets of data that is unknown, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
+K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be more accurate than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.

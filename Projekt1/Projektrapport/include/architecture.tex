@@ -1,5 +1,5 @@
 \chapter{Architecture}
-In our project four different classification algorithms ws implemented: Naive Bayes, Perceptron, Average Perceptron, K-nearest neighbour and used one pre-implemented Support Vector Machines. 
+In our project four different classification algorithms were implemented: Naive Bayes, Perceptron, Average Perceptron, K-nearest neighbour and used one pre-implemented Support Vector Machines. 
 These algorithms were compared in classification-performance and in timing, on different feature vectors.
 The different feature vectors that was studied was two different n-grams: Unigram and bigram with TF-IDF and binary values as numerical values. We also compared the result with and without the snowball-stemmer.
 %Describe the different parts of your program suite in detail.
@@ -9,7 +9,7 @@ The different feature vectors that was studied was two different n-grams: Unigra
 %Running modules
 %What does your running code do? what is the output?
 \section{Programs and tools}
-Python was used to generate the feature vector from the documents.
+Python was used to generate the feature vector from the documents. 
 \\\\
 Matlab was used to implement the algorithms, Cross-validation and to generate plots. The Statistics Toolbox with functions $cvpartition$, to easily perform N-cross-validation and $svmtrain$ to train a Support Vector Machine, has been of great use during the project.
 
@@ -25,10 +25,10 @@ Matlab was used to implement the algorithms, Cross-validation and to generate pl
 
 \section{K-Nearest Neighbour (KNN) algorithm}
 \input{include/KNN_metod}
+
 \section{Support Vector Machine (SVM)}
-We chosed to use the matlab library $svmtrain$ \citep{svmtrain_ref} from the Statistics toolbox. Svmtrain was used hard-margined and configured such that when it didn't converge the classification was set to all zero, which would represent $100\%$ misclassification. \\
+The pre-implemented Support Vector Machine used was the matlab library $svmtrain$ \citep{svmtrain_ref}, from the Statistics toolbox, seen in Algorithm\ref{algorithm:SVM}.  Svmtrain was configured to be soft margined, penalty parameter $C = 1$, andsuch that when it didn't converge the classification was set to all zero, which would represent $100\%$ misclassification. A linear kernel function was used. \\
 \begin{algorithm}[H]
-\label{algorithm:SVM}
 \SetAlgoLined
 \KwData{Xtraining: The data to train, Ytraining: labels of data to train \\ Xtest: The data to test}
 \KwResult{Vector containing the classified labels}
@@ -43,14 +43,13 @@ svm$\_$model = $svmtrain(Xtraining, Ytraining, linear)$ \\
 classifications = $svmclassify(svm\_model, Xtest)'$
 }\Catch{$classifications = zeros( Xtest)$}{}{end}
  \caption{SVM using svmtrain}
+ \label{algorithm:SVM}
 \end{algorithm}
-
-
 
 \section{The Perceptron algorithm}
 The Perceptron algorithm works as follows:
 The output, $w$, from the algorithm is a weight vector with the same size as $y$. If the classification for a $x$ in the training set is equal to $y$, the weight is unchanged.
-If $y$ is 1 and the classification -1, then $w$ is increased. If $y$ is -1 and the classification 1, then $w$ is decreased. \citep{perceptron_ai} Algorithm~\ref{algorithm:perceptron} shows the pseudo code for the Averaged Perceptron. The Averaged Perceptron and the usual Perceptron works in the same way except that the Averaged Perceptron returns the average weight vector, $wa$, instead of the final, $w$.
+If $y$ is 1 and the classification -1, then $w$ is increased. If $y$ is -1 and the classification 1, then $w$ is decreased \citep{perceptron_ai}. Algorithm~\ref{algorithm:perceptron} shows the pseudo code for the Averaged Perceptron. The Averaged Perceptron and the usual Perceptron works in the same way except that the Averaged Perceptron returns the average weight vector, $wa$, instead of the final, $w$.
 This averaged vector was built incrementally by updating it while the usual weight vector was built. The pseudocode almost the same as for the usual perceptron.
 \begin{algorithm}[h!]
  \SetAlgoLined

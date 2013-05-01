@@ -15,18 +15,18 @@ We continued with measuring how the training-set size would affect the classific
 \label{fig:trainingsize}
 \end{figure}
 
-The SVM-algorithm does not converge below a training set size of $~40\%$ (corresponding to just below $4 000$ documents in each step of the cross validation), which is the reason for it having a $100\%$ misclassification. With a small training size the algorithms perform only slightly better than random assignment (i.e. $50\%$ for this dataset), but as the training set size increases, there are slight differences in how the algorithms perform. The Naive Bayes variants perform best, followed by the Average Perceptron; full figures on the full training set size is shown in Table ???????.
+The SVM-algorithm does not converge below a training set size of $~40\%$ (corresponding to just below $4 000$ documents in each step of the cross validation), which is the reason for it having a $100\%$ misclassification. With a small training size the algorithms perform only slightly better than random assignment (i.e. $50\%$ for this dataset), but as the training set size increases, there are slight differences in how the algorithms perform. The Naive Bayes variants perform best, followed by the Average Perceptron; full figures on the full training set size is shown in \ref{tab:algorithm_best_performance}.
 
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{ | c | c | } \hline
 	\textbf{Algorithm} & \textbf{Error} \\ \hline
-	Perceptron & 27.26$\pm$1\% \\ \hline
-	Averaged Perceptron & 23.92$\pm$1\% \\ \hline
-	Naive Bayes TFIDF & 18.48$\pm$1\% \\ \hline
-	Naive Bayes Binary & 18.82$\pm$1\% \\ \hline
-	KNN & 37.11$\pm$1\% \\ \hline
-	SVM & 27.74$\pm$1\% \\ \hline
+	Perceptron & 27.65$\pm$3.38\% \\ \hline
+	Averaged Perceptron & 23.86$\pm$2.61\% \\ \hline
+	Naive Bayes TFIDF & 18.57$\pm$2.49\% \\ \hline
+	Naive Bayes Binary & 18.60$\pm$2.84\% \\ \hline
+	KNN & 36.42$\pm$3.31\% \\ \hline
+	SVM & 26.39$\pm$3.59\% \\ \hline
 	\end{tabular}
 	\caption{Best results of in-domain classification for each algorithm given the corresponding optimal feature sizes.}
 	\label{tab:algorithm_best_performance}
@@ -63,6 +63,9 @@ The out-of-domain task was, just like for the text classification task, performe
 \end{figure}  
 
 \section{Correlation Text categorization and Out-of-domain}
+
+
+
 Categories DVD and Cameras has no correlation.\\
 Health, Software and Camera has large correlation.\\
 Books, DVD and Music has a tiny correlation

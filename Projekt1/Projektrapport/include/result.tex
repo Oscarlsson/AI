@@ -1,8 +1,8 @@
 \chapter{Results and discussion}
-To find what feature size each algorithm performed best with we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data. The result is presented in Figure ~\ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm; and the error bar height is one standard deviation. KNN has better performance with a lower feature size of 100 while all other algorithms have better performance the larger the feature set size gets. This result was expected.WHY?
+To find the feature sizes for which each algorithm performs best we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data. The result is presented in Figure ~\ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm; and the error bar height is one standard deviation. KNN has better performance with a lower feature size of 100 while all other algorithms have better performance the larger the feature set size gets. This result was expected.WHY?
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.2]{../Plottar/feature-size100-2500all.png}
+\includegraphics[width=1\linewidth]{../Plottar/feature-size100-2500all.png}
 \caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying feature vector sizes.}
 \label{fig:featuresize}
 \end{figure}
@@ -10,7 +10,7 @@ To find what feature size each algorithm performed best with we performed in-dom
 We continued with measuring how the training-set size would affect the classification by using each algorithm's optimal feature size, where 100 features were chosen for KNN and 2000 for all other algorithms. The result is shown in Figure \ref{fig:trainingsize} where each algorithm is plotted individually over varying fractions of the total training size on the x-axis.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.5]{../Plottar/training-size k=2000allknn=250.png}
+\includegraphics[width=1\linewidth]{../Plottar/training_size_k_2000allknn_100.png}
 \caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying training set size $\in \{10\%, 100\%\}$.}
 \label{fig:trainingsize}
 \end{figure}
@@ -44,7 +44,7 @@ Another connection is that groups Books, DVD and Music (2, 3 and 5) have coincid
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale = 0.3]{../Plottar/text_categorization.png}
+	\includegraphics[width=1\linewidth]{../Plottar/text_categorization.png}
 	\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis).}
 	\label{fig:textcategorization}
 \end{figure}  
@@ -57,7 +57,7 @@ The out-of-domain task was, just like for the text classification task, performe
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.3]{../Plottar/outofdomain.png}
+\includegraphics[width=1\linewidth]{../Plottar/outofdomain.png}
 \caption{FOOBAR}
 \label{fig:outofdomain}
 \end{figure}  
@@ -68,21 +68,21 @@ Health, Software and Camera has large correlation.\\
 Books, DVD and Music has a tiny correlation
 \begin{figure}[h!btcp]
         \centering
-       \begin{subfigure}[b]{0.5\textwidth}
+       \begin{subfigure}[b]{0.5\linewidth}
                 \centering
                 \includegraphics[width=\textwidth]{../Plottar/pca_all.png}
                \caption{}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
           %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.5\textwidth}
+        \begin{subfigure}[b]{0.5\linewidth}
                 \centering
-                \includegraphics[width=\textwidth]{../Plottar/pca_nocorr.png} 
+                \includegraphics[width=\linewidth]{../Plottar/pca_nocorr.png} 
                                \caption{}
         \end{subfigure}
 	    \begin{subfigure}[b]{0.5\textwidth}
 	            \centering
-	            \includegraphics[width=\textwidth]{../Plottar/pca_largecorr.png}
+	            \includegraphics[width=\linewidth]{../Plottar/pca_largecorr.png}
 	                           \caption{}
 	    \end{subfigure}%
 	    ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 

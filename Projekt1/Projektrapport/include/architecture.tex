@@ -52,26 +52,6 @@ If $y$ is 1 and the classification -1, then $w$ is increased. If $y$ is -1 and t
  \KwData{Xtraining: The data to train, Ytraining: labels of data to train}
  \KwResult{Weight vector $w$}
  Initialize weight vector $w$ to all zeros\;
- $N \leftarrow$ number of iterations through training set\;
- \For{1 $\rightarrow$ N}{
-   \ForAll{x in Xtraining, y in Ytraining}{
-    $guess \leftarrow sign(x \cdot w)$\;
-    \If{$guess \neq y$}{
-     $w \leftarrow w + (y \cdot x)$\;
-     }
-   }
- }
- \Return $w$
- \caption{Perceptron}
-\end{algorithm}
-The Averaged Perceptron works in the same way except that it returns the average weight vector instead of the final.
-This averaged vector is built incrementally by updating it while we build the usual weight vector. The pseudo code almost the same as for the usual perceptron.
-\begin{algorithm}[h!]
-\label{algorithm:averaged_perceptron}
- \SetAlgoLined
- \KwData{Xtraining: The data to train, Ytraining: labels of data to train}
- \KwResult{Weight vector $wa$}
- Initialize weight vector $w$ and the average weight vector $wa$ to all zeros\;
  Initialize the counter $c$ to 0\;
  $N \leftarrow$ number of iterations through training set\;
  \For{1 $\rightarrow$ N}{
@@ -79,19 +59,26 @@ This averaged vector is built incrementally by updating it while we build the us
     $guess \leftarrow sign(x \cdot w)$\;
     \If{$guess \neq y$}{
      $w \leftarrow w + (y \cdot x)$\;
-     $average\_weight \leftarrow (N\cdot T - c) / (N\cdot T)$\;
-     $wa \leftarrow wa + average\_weight \cdot (y \cdot x)$\;
+     
+     \If{$average\_perceptron$}{
+          $average\_weight \leftarrow (N\cdot T - c) / (N\cdot T)$\;
+          $wa \leftarrow wa + average\_weight \cdot (y \cdot x)$\;
+     }
+     
      }
      Increase the counter $c$
+     
    }
  }
- \Return $wa$
- \caption{Averaged Perceptron}
-\end{algorithm}
+ \Return $w$
+ \caption{Perceptron}
+\end{algorithm} \\
+The Averaged Perceptron works in the same way except that it returns the average weight vector instead of the final.
+This averaged vector is built incrementally by updating it while we build the usual weight vector. The pseudo code almost the same as for the usual perceptron.
 In both of the Perceptron algorithms, the algorithm makes a number of iterations. To decide how many iterations that must be done to get a fair result the misclassifications and the number of iterations were plotted, which is shown in Figure~\ref{fig:number_iterations}. The algorithms uses input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converge after around 15 iterations for both sentimental classification and text categorization.
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
-\includegraphics[scale = 0.8]{fig/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
+\includegraphics[scale = 0.5]{fig/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
 \caption{Plot over misclassifications for different \#iterations}
 \label{fig:number_iterations}
 \end{figure}\\

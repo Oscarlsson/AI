@@ -80,7 +80,9 @@ impact on the result of different classifiers. The Bag-of-words model is a
 simplifying model where a text is represented as a unordered set of words,
 without respect to grammar or order of words\citep{bag_of_words}.
 \\\\
-Build a feature vector which is an n-dimensional vector of numerical features
+To be able to clasify documents they must
+in same way get a numerical presentation. This can be done by builing a
+feature vector which is an n-dimensional vector of numerical features
 that represents the words.
 \subsubsection{Features}
 \begin{itemize}
@@ -206,15 +208,15 @@ SVM can perform classification on both linear and non-linear input data. Classif
 \\\\
 SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem 
-and tries to separate the input data with a linear decision boundary. \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to Support Vector Machines, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane). 
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem
+and tries to separate the input data with a linear decision boundary. \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to Support Vector Machines, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane).
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.4]{fig/perceptron_example.png}
 \caption{Example of a classification by Perceptron}
 \label{fig:perceptron}
 \end{figure}\\
-%The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}. 
+%The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}.
 %\begin{equation}
 %\label{eq:perceptron}
 %w = w + (x \cdot y)

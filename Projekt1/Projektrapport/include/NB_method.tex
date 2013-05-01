@@ -1,5 +1,5 @@
 
-The prior probabilities $P(x_i\vert c)$ used in the Naive Bayes model $P(c\vert\mathbf{x})$, defined previously in equation \ref{eq:naivebayes_model}, are interpreted as the individual probabilities of each word $w$ from the vocabulary $\mathbf{V}$ occurring in class $c$, i.e. by exchanging $\left\{x_i : 1 \le i \le D\right\}$ for $\left\{w_i \in \mathbf{V}\right\}$ when using the model.
+The prior probabilities $P(x_i\vert c)$ used in the Naive Bayes model $P(c\vert\mathbf{x})$, defined previously in Equation \ref{eq:naivebayes_model}, are interpreted as the individual probabilities of each word $w$ from the vocabulary $\mathbf{V}$ occurring in class $c$, i.e. by exchanging $\left\{x_i : 1 \le i \le D\right\}$ for $\left\{w_i \in \mathbf{V}\right\}$ when using the model.
 
 The implementation of $P(w_i\vert c)$ follows the maximum likelihood estimate of relative frequency as follows:
 \begin{align}
@@ -17,7 +17,7 @@ where $F_w^{(d)}$ defines the relative word frequency in document $d$ from corpu
   \item[Binary frequency:] Boolean $\in \left\{0,1\right\}$ if word $w$ occurs in document $d$,
   \item[Tf-idf:] $\frac{\texttt{Normalized term frequency}}{\texttt{Document frequency}} \in \left[0, \log \left\vert \mathbf{D}\right\vert\right]$.
 \end{description}
-A caveat with this procedure is that since both of these options allow for $F_{w_i}^{(d)}$ to be zero, the product in the Naive Bayes model (\ref{eq:naivebayes_model}) for $P(c\vert d)$ vanishes for all combinations of classes $c$ and documents $d$ for which $d$ includes a word $w_i$ that never occurs in the given class. To assure nonzero prior probabilities we use Laplace smoothing\footnote{\textbf{FIXA REFERENS TILL http://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html}} which adds one to each count as follows.
+A caveat with this procedure is that since both of these options allow for $F_{w_i}^{(d)}$ to be zero, the product in the Naive Bayes model (\ref{eq:naivebayes_model}) for $P(c\vert d)$ vanishes for all combinations of classes $c$ and documents $d$ for which $d$ includes a word $w_i$ that never occurs in the given class. To assure nonzero prior probabilities Laplace smoothing was used, which adds one to each count as follows \citep{nb_ref}. 
 
 \begin{align}
 P(w_i\vert c) =
@@ -36,7 +36,6 @@ P(c) = \frac{\left\vert\mathbf{D}_c\right\vert}{\left\vert\mathbf{D}\right\vert}
 where $\left\vert\mathbf{D}_c\right\vert$ is the number of documents with class $c$. The training algorithm is shown in Algorithm \ref{algorithm:naive_bayes_training}.
 
 \begin{algorithm}[h]
-\label{algorithm:naive_bayes_training}
  \SetAlgoLined
  
  \KwData{\textit{Word Tf-idf-values} $\left\{F_{w_i}^{(d)} : d \in \mathbf{D}, 1 \le i \le \left\vert\mathbf{V}\right\vert\right\}$;
@@ -66,4 +65,5 @@ where $\left\vert\mathbf{D}_c\right\vert$ is the number of documents with class 
  Normalize($\left\{P(w\vert c) : w \in \mathbf{V}, c \in \mathbf{C}\right\}$)\\
  \Return $\left\{P(c), c \in \mathbf{C}\right\}, \left\{P(w\vert c) : w \in \mathbf{V}, c \in \mathbf{C}\right\}$
  \caption{Multinomial Naive Bayes training algorithm}
+ \label{algorithm:naive_bayes_training}
 \end{algorithm}

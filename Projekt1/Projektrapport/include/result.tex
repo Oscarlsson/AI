@@ -20,10 +20,56 @@ The SVM-algorithm is not converging until around $~40 \%$ and this is the reason
 %* jämför algoritmerna, hur bra är de? hur lång tid tar de?\\
 \section{Text categorization}
 Här skriver vi om vad vi fick för resultat
+\begin{figure}[h!]
+\centering
+\includegraphics[scale = 0.3]{../Plottar/text_categorization.png}
+\caption{All algorithms with different training set size}
+\label{fig:textcategorization}
+\end{figure}  
 \section{Out-of-domain}
 Här skriver vi om vad out of domain gav
+\begin{figure}[h!]
+\centering
+\includegraphics[scale = 0.3]{../Plottar/outofdomain.png}
+\caption{All algorithms with different training set size}
+\label{fig:outofdomain}
+\end{figure}  
+
 \section{Correlation Text categorization and Out-of-domain}
-Skriva om correlationen
+Categories DVD and Cameras has no correlation.\\
+Health, Software and Camera has large correlation.\\
+Books, DVD and Music has a tiny correlation
+\begin{figure}[h!btcp]
+        \centering
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{../Plottar/pca_all.png}
+               \caption{}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{../Plottar/pca_nocorr.png} 
+                               \caption{}
+        \end{subfigure}
+	    \begin{subfigure}[b]{0.5\textwidth}
+	            \centering
+	            \includegraphics[width=\textwidth]{../Plottar/pca_largecorr.png}
+	                           \caption{}
+	    \end{subfigure}%
+	    ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
+	      %(or a blank line to force the subfigure onto a new line)
+	    \begin{subfigure}[b]{0.5\textwidth}
+	            \centering
+	            \includegraphics[width=\textwidth]{../Plottar/pca_somecorr.png} 
+               \caption{}
+	    \end{subfigure}
+	    \caption{Principal Component Analysis showing (a) all categories , (b) DVD and Camera, (c) Health, Software and Camera, (d) Books DVD and Music}
+                
+\end{figure}
+\\\\
+
 %text categorization:\\
 %* plot över de olika algorithmerna och hur bra de kategoriserar. (en plot med alla?)
 

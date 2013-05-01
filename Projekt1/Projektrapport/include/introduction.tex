@@ -52,23 +52,44 @@ results? Is it possible to remove such words?
 \section{Theory}
 
 \subsection{Text classification}
-One part of supervised learning is the field Text classification which is to classify documents into a fixed number of predefined categories. The categories could be sentimental (positive / negative) or different topics that the document concern.
+One part of supervised learning is the field Text classification which is to
+classify documents into a fixed number of predefined categories. The categories
+could be sentimental (positive / negative) or different topics that the
+document concern \cite{ngrams_ai}.
 
 \subsubsection{Representing text}
-A document is typically a huge string containing all characters and is not suitable for classification, hence some processing needs to be done on each document.
+A document is typically a huge string containing all characters and is not
+suitable for classification, hence some processing needs to be done on each
+document \cite{ngrams_ai}.
 \\\\
-All words in a document isn't interesting when doing text classification. E.g. words like "the", "one", "are", "is" are words that will occur in any human readable text, but has no value when trying to find similarities and differences between documents. These words are called "stop-words" and are usually filtered out and treated as noise.
+All words in a document isn't interesting when doing text classification. E.g.
+words like "the", "one", "are", "is" are words that will occur in any human
+readable text, but has no value when trying to find similarities and
+differences between documents. These words are called "stop-words" and are
+usually filtered out and treated as noise\cite{joachims}.
 \\\\
-When working with document, different inflections of a word should be treated as the same word. There is no need to separate the words "persons" and "person", because both words give the same information. This is called Stemming and we will not focus more on the theory behind it.
+When working with document, different inflections of a word should be treated
+as the same word. There is no need to separate the words "persons" and
+"person", because both words give the same information. This is called Stemming
+and we will not focus more on the theory behind it\cite{stemming}.
 \\\\
-There are various ways of storing document and the representation has a big impact on the result of different classifiers. The Bag-of-words model is a simplifying model where a text is represented as a unordered set of words, without respect to grammar or order of words.
+There are various ways of storing document and the representation has a big
+impact on the result of different classifiers. The Bag-of-words model is a
+simplifying model where a text is represented as a unordered set of words,
+without respect to grammar or order of words\citep{bag_of_words}.
 \\\\
-Build a feature vector which is an n-dimensional vector of numerical features that represents the words.
+Build a feature vector which is an n-dimensional vector of numerical features
+that represents the words.
 \subsubsection{Features}
 \begin{itemize}
-\item Feature size - Sometimes the feature vector can be very large adn hard to handle. Then it could be a good idea to just choose the 1000 most frequent words or maybe the 100 most frequent words. \citep{joachims}
-\item N-grams - N-grams is a sequence of symbols of length $n$, in this case words. Unigram is then one word and bigram is two words. \citep{ngrams_ai}
-\item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the words in the documents and give a number of how important each word is. This is given by Equation~\ref{eq:tfidf}.
+\item Feature size - Sometimes the feature vector can be very large adn hard to
+        handle. Then it could be a good idea to just choose the 1000 most
+        frequent words or maybe the 100 most frequent words. \citep{joachims}
+\item N-grams - N-grams is a sequence of symbols of length $n$, in this case
+        words. Unigram is then one word and bigram is two words\citep{ngrams_ai}.
+\item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
+        words in the documents and give a number of how important each word is.
+        This is given by Equation~\ref{eq:tfidf}\citep{tfidf}.
 \end{itemize}
 
 \begin{equation}

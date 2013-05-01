@@ -61,11 +61,11 @@ The out-of-domain task is, just like the text classification task, performed usi
 \section{Result correlation and PCA}
 The results shown in the preceding sections in Figures \ref{fig:textcategorization} and \ref{fig:outofdomain} both agree on similarities between the three categories Camera, Health and Software, and similarly a (weaker) similarity between Books, DVD and Music. The similarities are represented by:
 \begin{enumerate}
-  \item Text classification results where the classifiers show a significally higher misclassification rate within the category groups rather than between them.
+  \item Text classification results where the classifiers show a significantly higher misclassification rate within the category groups rather than between them.
   \item Out-of-domain sentiment analysis results where the classifiers perform better when trained and tested within a category group rather than inbetween groups. I.e. training on Health reviews also gives a low error on Camera and Software reviews.
 \end{enumerate}
 
-To further investigate this correlation, we performe a Principal Component Analysis decomposition of the full dataset and 2000 features. The results shown in Figure \ref{fig:pca_results} consist of projections of the corpus onto the two largest principal components. Here, there are clearly two separate groups of classes, where, within each group, the sets of classes are correlated which further strengthens the results presented so far.
+To further investigate this correlation, we perform a Principal Component Analysis decomposition of the full dataset and 2000 features. The results shown in Figure \ref{fig:pca_results} consist of projections of the corpus onto the two largest principal components. Here, there are clearly two separate groups of classes, where, within each group, the sets of classes are correlated which further strengthens the results presented so far.
 
 
 \begin{figure}[h!btcp]
@@ -102,8 +102,10 @@ To further investigate this correlation, we performe a Principal Component Analy
 %* plot över de olika algorithmerna och hur bra de kategoriserar. (en plot med alla?)
 
 \section{Discussion}
-Konkreta exempel på vad man har lärt sig.
-Exempel på exempel från Vinay:
-	Missclassified ante
-	Stopword impact / stemming
-	Your observations
+All of the implementations show a significantly reduced error rate compared to random guessing, but there is still a large margin for further improvement.
+\\\\
+The choice of feature vectors and their size is nontrivial with regards to the data environment and the algorithm configuration; the KNN algorithm performs well on a low feature space and the opposite holds for the other algorithms.
+\\\\
+Even though the classifiers are weak or semi-strong, we can still learn important bits of information about the data by making measurements in completely different setups. A motivated configuration and choice of experiments, utilizing also the mistakes that the algorithms make, shows inherent correlations between subsets of the data in Figures \ref{fig:textcategorization} and \ref{fig:outofdomain}.
+\\\\
+We see that there are similarities between the Camera, Health and Software categories, but also that the results are not bidirectional. The overlap between the categories is such that one category may have regions that is not coupled with the other categories, and vice versa that one category may be completely spanned by another in feature space.

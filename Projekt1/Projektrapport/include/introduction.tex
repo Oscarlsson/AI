@@ -6,7 +6,19 @@ By statistical analysis of experiments, the classifiers are compared in terms of
 \section{Problem description}
 The problem is to categorize reviews from Amazon. There are 6 different categories;
 books, camera, DVD, health, music and software. The reviews are also
-categorized as positive and negative reviews.
+categorized as positive and negative reviews. 
+
+
+
+The following classification tasks should be investigated using different classification:
+\begin{itemize}
+\item Text categorization: Categorize review documents into their six categories: Books, DVDs, Cameras, Music, Health, and Software.
+\item In-domain sentiment analysis: For each review category, train and classify review documents as positive or negative. 
+\item  Out-of-domain sentiment analysis: Make training and test sets for two different topics (such as Books and Cameras).
+\end{itemize}
+The question of issue in this project is to answer weather there is a correlation between Out-of-domain sentiment analysis and Text categorization. 
+
+
 %The classification is done by
 %implementing five different classification algorithms; Naive Bayes, Perceptron,
 %Averaged Perceptron, K-nearest neighbours (KNN) and Support vector machine
@@ -18,7 +30,6 @@ categorized as positive and negative reviews.
 %\item Out-of-domain sentiment analysis - Train on one category and test on another
 %\item Text categorization - categorize the documents into their categories
 %\end{itemize}
-\\\\
 Before classifying the input data, which is given as text files, the data must be
 converted to a suitable form. Even further there may be irrelevant data
 in the text files. Some common words may be totally useless for the classification,
@@ -27,9 +38,6 @@ problem? Some words may also say the same about which category a text belongs to
 words as ''person'' and ''persons''. There are also a lot of data and  a lot of
 unique words. Is every unique word really important for the classification
 results? Is it possible to remove such words?
-
-
-(Ett stycke om in-domain, out of domain, text categorization och om att huvudfrågan är correlationen!!
 
 %The
 %input should be divided in words somehow, either one word (unigrams) or two
@@ -52,9 +60,9 @@ results? Is it possible to remove such words?
 %numerical statistic of how important a is in a document.
 
 \section{Theory}
-
+(TEXT HÄR????)
 \subsection{Text classification}
-One part of supervised learning is the field Text classification which is to
+Text classification has become a popular subject within machine learning as the amount of information lately has rapidly grown \citep{joachims}. Text classification is to
 classify documents into a fixed number of predefined categories. The categories
 could be sentimental (positive / negative) or different topics that the
 document concern \cite{ngrams_ai}.
@@ -68,19 +76,21 @@ All words in a document isn't interesting when doing text classification. E.g.
 words like "the", "one", "are", "is" are words that will occur in any human
 readable text, but has no value when trying to find similarities and
 differences between documents. These words are called "stop-words" and are
-usually filtered out and treated as noise\cite{joachims}.
+usually filtered out and treated as noise \cite{joachims}.
 \\\\
 When working with document, different inflections of a word should be treated
 as the same word. There is no need to separate the words "persons" and
 "person", because both words give the same information. This is called Stemming
-and we will not focus more on the theory behind it\cite{stemming}.
+and we will not focus more on the theory behind it \cite{stemming}.
 \\\\
 There are various ways of storing document and the representation has a big
 impact on the result of different classifiers. The Bag-of-words model is a
 simplifying model where a text is represented as a unordered set of words,
-without respect to grammar or order of words\citep{bag_of_words}.
+without respect to grammar or order of words \citep{bag_of_words}.
 \\\\
-Build a feature vector which is an n-dimensional vector of numerical features
+To be able to clasify documents they must
+in same way get a numerical presentation. This can be done by builing a
+feature vector which is an n-dimensional vector of numerical features
 that represents the words.
 \subsubsection{Features}
 \begin{itemize}
@@ -88,10 +98,10 @@ that represents the words.
         handle. Then it could be a good idea to just choose the 1000 most
         frequent words or maybe the 100 most frequent words \citep{joachims}.
 \item N-grams - N-grams is a sequence of symbols of length $n$, in this case
-        words. Unigram is then one word and bigram is two words\citep{ngrams_ai}.
+        words. Unigram is then one word and bigram is two words \citep{ngrams_ai}.
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
         words in the documents and give a number of how important each word is.
-        This is given by Equation~\ref{eq:tfidf}\citep{tfidf}.
+        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}.
 \end{itemize}
 
 \begin{equation}
@@ -206,27 +216,27 @@ SVM can perform classification on both linear and non-linear input data. Classif
 \\\\
 SVM algorithm is closely related to the Perceptron algorithm with the difference that the hyperplane constructed by SVM maximizes the margin whilst perceptron is non-deterministic and returns a hyperplane which separates the input data.
 \subsection{The Perceptron algorithm}
-Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem \citep{perceptron_ai}.
-The algorithm tries to separate the input data with a linear decision boundary, i.e. tries to fit a hyperplane between the datasets \citep{perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}.
+Perceptron is a linear, non deterministic, supervised classification algorithm. The Perceptron algorithm consider a 0/1 classification problem
+and tries to separate the input data with a linear decision boundary. \citep{perceptron_ai, perceptron_url}. This is shown in Figure~\ref{fig:perceptron}. The algorithm output a weight vector which represent the hyperplane between the two separated classes for each input data point \citep{perceptron_url}. The Perceptron is closely related to Support Vector Machines, and they works in pretty much the same way (see Section 1.2.4) except that the Perceptron algorithm not necessarily outputs the optimal weight vector (hyperplane).
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.4]{fig/perceptron_example.png}
+\includegraphics[scale = 0.4]{../Plottar/perceptron_example.png}
 \caption{Example of a classification by Perceptron}
 \label{fig:perceptron}
 \end{figure}\\
-The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}.
-\begin{equation}
-\label{eq:perceptron}
-w = w + (x \cdot y)
-\end{equation}
-where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged \citep{perceptron_ai}. New data is classified by Equation~\ref{eq:new_perceptron}.
-\begin{equation}
-\label{eq:new_perceptron}
-class = sign(testData \cdot w)
-\end{equation}
-Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
+%The basic idea for the Perceptron algorithm is for all input data, whose labeling are known, check their classification with the current weight vector. If the classification is correct, continue, else update the weight vector, $w$, according to Equation~\ref{eq:perceptron} \citep{perceptron_ai}.
+%\begin{equation}
+%\label{eq:perceptron}
+%w = w + (x \cdot y)
+%\end{equation}
+%where $x$ is the input data and $y$ the desired output (1 or -1). The Perceptron algorithm converge when the weight vector remains unchanged \citep{perceptron_ai}. New data is classified by Equation~\ref{eq:new_perceptron}.
+%\begin{equation}
+%\label{eq:new_perceptron}
+%class = sign(testData \cdot w)
+%\end{equation}
+%Where $class$ is the class the new data belongs to (1 or -1) and $w$ is the weight vector.\\\\
 There is also another variant of the Perceptron algorithm, which is called Averaged Perceptron. They work in the same way, except that the Averaged Perceptron outputs the averaged weight vector instead of the final one.
 
 \subsection{K-fold Cross Validation}
-Cross Validation is used to test classification algorithms on sets of data that the classifiers hasn't seen, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
-K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be better than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.
+Cross Validation is used to test classification algorithms on sets of data that is unknown, in order to get an accurate evaluation of a hypothesis \citep{crossvalid_ai}.\\\\
+K-fold cross validation means that the data is split into $k$ roughly equal sizes and then $k$ rounds of training is performed with $1/k$ as test data and the rest as training. The average score will be more accurate than one single score. K-values between 5 and 10 are popular and enough to get accurate results \citep{crossvalid_ai}.

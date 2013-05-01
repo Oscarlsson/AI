@@ -1,5 +1,5 @@
 \chapter{Architecture}
-In our project four different classification algorithms ws implemented: Naive Bayes, Perceptron, Average Perceptron, K-nearest neighbour and used one pre-implemented Support Vector Machines. 
+In our project four different classification algorithms were implemented: Naive Bayes, Perceptron, Average Perceptron, K-nearest neighbour and used one pre-implemented Support Vector Machines. 
 These algorithms were compared in classification-performance and in timing, on different feature vectors.
 The different feature vectors that was studied was two different n-grams: Unigram and bigram with TF-IDF and binary values as numerical values. We also compared the result with and without the snowball-stemmer.
 %Describe the different parts of your program suite in detail.
@@ -9,7 +9,7 @@ The different feature vectors that was studied was two different n-grams: Unigra
 %Running modules
 %What does your running code do? what is the output?
 \section{Programs and tools}
-Python was used to generate the feature vector from the documents.
+Python was used to generate the feature vector from the documents. 
 \\\\
 Matlab was used to implement the algorithms, Cross-validation and to generate plots. The Statistics Toolbox with functions $cvpartition$, to easily perform N-cross-validation and $svmtrain$ to train a Support Vector Machine, has been of great use during the project.
 
@@ -27,7 +27,7 @@ Matlab was used to implement the algorithms, Cross-validation and to generate pl
 \input{include/KNN_metod}
 
 \section{Support Vector Machine (SVM)}
-We chosed to use the matlab library $svmtrain$ \citep{svmtrain_ref} from the Statistics toolbox. Svmtrain was used hard-margined and configured such that when it didn't converge the classification was set to all zero, which would represent $100\%$ misclassification. Algorithm~\ref{algorithm:SVM} describes this in pseudocode.\\
+The pre-implemented Support Vector Machine used was the matlab library $svmtrain$ \citep{svmtrain_ref}, from the Statistics toolbox, seen in Algorithm\ref{algorithm:SVM}.  Svmtrain was configured to be soft margined, penalty parameter $C = 1$, andsuch that when it didn't converge the classification was set to all zero, which would represent $100\%$ misclassification. A linear kernel function was used. \\
 \begin{algorithm}[H]
 \SetAlgoLined
 \KwData{Xtraining: The data to train, Ytraining: labels of data to train \\ Xtest: The data to test}

@@ -1,3 +1,4 @@
+% main.m consists of test code and is not necessary for any project results
 %% Setup, data.
 
 load('../data_2000.mat');

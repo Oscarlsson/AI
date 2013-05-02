@@ -43,6 +43,7 @@ for algoId = 1:nrAlgorithms
         
    category_data = wordcount;
    category_labels = labels_classes;
+   % DEBUG: Use subset of data...
 %    subsetIndices = rand(1,length(wordcount)) < 0.5;
 %    category_data = category_data(subsetIndices);
 %    category_labels = category_labels(subsetIndices);

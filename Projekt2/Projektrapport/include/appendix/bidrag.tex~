@@ -1,0 +1,57 @@
+\chapter{Bidragsförteckning}
+Nedan listas hur varje individ har bidragit till de olika delarna i projektet.
+\section{Ansvarsområden}
+
+\begin{longtable}{l p{0.9cm} p{7cm}}
+  Projektledare & & Oscar Carlsson\\
+  Rapportansvarig & & Caroline Strandberg\\
+  Modellering av systemet & & Caroline Strandberg, Oscar Carlsson\\
+  Inloggningssystem & & Oscar Carlsson\\
+  Företagsimport & & Mirac Günes, Oscar Carlsson\\
+  Ansökningsformulär & & Caroline Strandberg\\
+  Värdtilldelning & & Caroline Strandberg\\
+  Sammankoppling av implementeringen & & Oscar Carlsson\\
+  Konfiguera PHP-Server & & Oscar Carlsson\\
+  Design av posters & & Caroline Strandberg\\
+\end{longtable}
+
+\section{Författare av avsnitt}
+Huvudansvarig författare av avsnitt i slutrapporten\\
+\begin{longtable}{l p{3.3cm} p{7cm}}
+    Sammanfattning & & Caroline Strandberg, Oscar Carlsson\\ 
+    Ordlista & & Caroline Strandberg, Oscar Carlsson\\\\
+  1 Inledning & & Alla\\
+  2 Teoretisk bakgrund  & & Oscar Carlsson\\
+  2.1 Webbutveckling & & Caroline Strandberg\\
+  2.2 Säkerhet & & Oscar Carlsson \\
+  2.3 Språk och ramverk & & Caroline Strandberg, Oscar Carlsson\\
+  2.3.1 ASP & & Alla\\
+  2.3.2 JSP & & Caroline Strandberg\\
+  2.3.3 PHP & & Alla\\
+  2.3.4 Django & & Oscar Carlsson\\
+  2.3.5 Ruby on Rails & & Oscar Carlsson\\
+  2.4 Databashanterare & & Caroline Strandberg\\
+  2.5 Jämförelse & & Caroline Strandberg, Oscar Carlsson\\
+  3 Arbetsmetod & & Oscar Carlsson\\
+  4 Modellering & & Caroline Strandberg\\
+  5 Implementering & &  Caroline Strandberg\\
+  5.1 Utvecklingsmiljö & & Caroline Strandberg, Oscar Carlsson\\
+  5.2 MVC-modellen & & Caroline Strandberg\\
+  5.3 Inloggningssystem & & Oscar Carlsson\\
+  5.4 Företagsimport & & Mirac Günes\\
+  5.5 Ansökningsformulär & & Caroline Strandberg\\
+  5.6 Värdtilldelning & & Caroline Strandberg\\
+  6 Resultat & &  Caroline Strandberg, Oscar Carlsson\\
+  7 Diskussion & &  Caroline Strandberg, Oscar Carlsson\\
+  8 Slutsats & &  Oscar Carlsson\\\\
+  A Kravspecifikation & & Oscar Carlsson \\
+  B Tabeller & & Caroline Strandberg, Oscar Carlsson
+\end{longtable}
+
+\section{Redovisningar}
+
+\begin{longtable}{l p{2.5cm} p{7cm}}
+  Muntlig halvtidsredovisning & & Caroline Strandberg, Oscar Carlsson\\
+  Muntlig slutredovisning & & Alla \\
+  Muntlig opponering & & Alla\\
+\end{longtable}

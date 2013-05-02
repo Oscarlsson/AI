@@ -1,0 +1,43 @@
+\chapter{Modellering}
+För att förstå problemet och beskriva tänkbara lösningar modellerades systemet i flera steg, vilka beskrivs i detta kapitel. Även för flexibilitet och vidareutveckling var det viktigt med modeller som representerade tankesättet och idéerna bakom systemet. Dessa modeller skulle sedan fungera som en mall och underlätta vid implementeringen. \\\\
+För att beskriva systemet så bra som möjligt gjordes: ett diagram över de användningsfall som finns, ett diagram för databasen samt ett klassdiagram.
+\section{Användningsfall}
+För att modellera hur internsystemet skall fungera i stort, skapades ett Use Case-diagram (se Figur~\ref{fig:usecase}). Diagrammet representerar hur de olika användarna interagerar med systemet. Systemets funktioner är definierade, som ovaler, i boxen. CHARMk är administratörer och har därför tillgång till alla funktioner i systemet. Företagen använder inte systemet mer än att deras information importeras. Studenter har begränsad behörighet i systemet och kan därmed endast se begränsade delar.\\
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.4]{fig/diagram/CHARM-Use-case.png}
+\caption{\textit{Use Case-diagram över systemet\\För större figur, se Figur C.1}}
+\label{fig:usecase}
+\end{figure}
+\section{Databasen}
+För att kunna förstå databasstrukturen bättre och därmed underlätta implementeringen av internsystemet skapades ett Entity-Relationship-diagram, ER-diagram. ER-diagram används för att modellera relationer mellan delarna i en databas \citep{TDA357}. Därmed blir det enkelt att implementera de tabeller som behövs i databasen. Ett ER-diagram är uppbyggt av entiteter och relationer, vilka symboliseras i figuren genom gröna boxar respektive rosa diamanter (se Figur~\ref{fig:er}).\\ \\
+Varje entitet representerar en egen tabell i databasen. En entitet kan ha flera egenskaper (ovaler i figuren) varav måste vara en nyckel; antingen en primär (understruken i figuren) eller en partiell (streckad i figuren). En nyckel krävs för att referera till ett objekt i tabellen.
+En entitet med partiell nyckel (en svag entitet) existerar endast i samband med en entitet med primär nyckel. 
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.42]{fig/diagram/ER.png}
+\caption{\textit{ER-diagram av systemet\\För större figur, se Figur C.2}}
+\label{fig:er}
+\end{figure}\\
+I systemet finns två databaser -- en för att hantera inloggningssystemet och en för att hantera en mässa. Dessa beskrivs utförligare nedan.\\\\
+Den stora streckade boxen representerar databasen för en mässa  (se Figur~\ref{fig:er}). Delarna i denna box (värdar/Host, företagsområden/CompanyArea, företag/Company och värdansökan/HostApplication) existerar endast i tillhörande mässa/Expo, vilket beskrivs med de inramade entiteterna som symboliserar svaga entiteter.\\\\
+Studenter skall kunna skicka in en värdansökan som är specifik för en viss mässa. Om en student blir antagen som värd, kan denne vara värd till antingen ett företag eller ett företagsområde. Varje företag skall tillhöra ett företagsområde. \\ \\
+Inloggningssystemet har användare som antingen kan vara studenter eller medlemmar i CHARMk. Alla typer av användare är en form av User, vilket innebär att databasen lagrar samma typ av information för dem alla. Samtliga användare har också en behörighetsnivå för att reglera vilka sidor de skall få behörighet till.
+\section{Objektorienterad modellering}
+Systemet är uppdelat i klasser enligt objektorienterad PHP (se Figur~\ref{fig:phpklasser}). För att följa MVC-modellen representeras alla klasser av tre olika filer (Model, View och Controller). Genom denna uppdelning underlättas felsökning i systemet och det blir enkelt att vidareutveckla systemet genom att skapa nya klasser. Det är dock viktigt att tänka på att alla nya klasser måste följa MVC-modellen så att systemets uppbyggnad förblir enhetlig.\\ \\
+För att få tillgång till systemet registrerar användaren sig genom klassen \textit{Registration}. Inloggning sker i klassen \textit{Login} som beroende på användarens behörighet ger användaren tillgång till en av de säkra klasserna \textit{Student\_secure} eller \textit{Charmk\_secure}. Säkra klasser kan endast nås av inloggade användare. Klassen \textit{Student\_secure} ger tillgång till ansökningsformuläret medan \textit{Charmk\_secure} ger administratörsrättigheter och möjligheten att exempelvis importera företag. 
+%\section{Webbsidor}
+%För att representera vilka sidor som finns i systemet och hur olika användare kan nå dessa, konstruerades även ett UML-digram över alla PHP-sidor %(se Figur~\ref{fig:phpsidor}). Diagrammet beskriver hur de olika sidorna förhåller sig till varandra och kopplingen mellan dem.\\ \\
+%Av diagrammet framgår de behörighetsskillnader som finns i systemet beroende på användare. Det går att specifikt se vilken funktionalitet som %genererar vilken sida. 
+\begin{figure}[p]
+\centering
+\includegraphics[scale=0.5]{fig/diagram/PHP-Klasser2.png}
+\caption{\textit{UML-diagram över PHP-klasser}}
+\label{fig:phpklasser}
+\end{figure}
+%\begin{figure}[p]
+%\centering
+%\includegraphics[scale=0.4]{fig/php_pages2.png}
+%\caption{\textit{UML-diagram över PHP-sidor}}
+%\label{fig:phpsidor}
+%\end{figure}

@@ -1,0 +1,18 @@
+% Chalmers title page
+\begin{titlepage}
+
+\pagestyle{plain}
+% \centering \includegraphics[scale=0.1]{../Plottar/pca_all}
+\title{
+{\Huge TILE}\\TIN171 - Artificial Intelligence}
+\author{
+Group 18:\\
+\begin{tabular}{ l  r }
+  Oscar Carlsson & Caroline Strandberg  \\
+  John Karlsson & Oskar Ingemarsson \\
+\end{tabular}
+} % senast igenomgången
+
+\maketitle
+
+\end{titlepage}

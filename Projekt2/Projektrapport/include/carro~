@@ -1,0 +1,23 @@
+\newpage
+\textbf{Individual Page - Caroline Strandberg} \\\\
+We have tried to divied the work between us, but all group members have contributed to everything more or less.
+
+I wrote both the Perceptron algorithms. At first we had some code from a previous course that we changed to fit better. I also wrote a lot of loops to be able to plot results. 
+
+We also thought that it would be a good idea to find out which value of k to use in knn and how many iterations to do in perceptron. I wrote this loops for different values that plots a graph for each algorithm.
+
+I also helped writing some code to the classification tasks: In domain sentimental, Out of domain sentimental and Text categorization. 
+
+I rhave runned a lot of tests on the computers in shool the last week .
+
+i have design the report and 
+
+have written: 
+But i, like the others, have been editing and writing in most of the chapters.
+
+I've been sort of trying to act project manager, involving dividing equally amount of work on each group member and steering the project in the right direction. I've taught some basics in git in the beginning of the project and managed the repository with branches and such to make the the work easier for the others. All of us were new to Git so this has required some reading and supporting. \\\\
+We wrote alot in teams and everyone has almost certainly edited every file some time during the project, but i will try to state which areas i've been most involved in. \\\\
+We set up some scripts to process the documents into Matlab-friendly vectors. I contributed with a Snowball-stemmer, handling of arguments and pair-programmed TF-IDF etc. I were also involved in creating a nice way of generating feature vectors in .mat-format (such that all algorithms only needed to load the work space). Dealed with most areas of the datamanipulation.\\\\
+All of us had prior knowledge of Machine Learning and we were able to re-use a lot of Matlab code. The original perceptron algorithm was at first written by me, but later on changed. I helped writing code to perform the classification tasks: In domain sentimental, Out of domain sentimental and Text categorization. Also spent some time to get nice plots of the data we received from the tests.\\\\
+I started a lot of big and heavy tests on some of the computers at school. Started, collected data and made re-runs if there were any errors. E.g Training size-plot and Feature size-plot, both bigram and unigram.\\\\
+In te final report i had the resposiblity for the parts related to Support Vector Machines, the paragraph about cross validation and wrote about our conclusions. But i, like the others, have been editing and writing in most of the chapters.\\\\

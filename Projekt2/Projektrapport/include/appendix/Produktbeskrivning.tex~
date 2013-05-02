@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\begin{document} 
+\section{Funktionella krav}
+\begin{description}
+  \item[$\# 1$ Studenter skall kunna logga in] \hfill \\
+  Alla studenter skall kunna registrera sig, med sin Chalmers-mail som användarnamn,
+	och kunna lämna information som: namn, institution och mailadress.
+
+  \item[$\# 2 $ Medlemmarna i CHARMk skall kunna logga in] \hfill \\
+  Alla i CHARMk skall kunna logga in i systemet och 
+	administrera endast de delar som rör dennes arbetsuppgifter. Endast CHARM-mail accepteras här som användarnamn.
+
+  \item[$\# 3 $ Import av företag] \hfill \\
+  Företagen anmäler sig till mässan via den externa sidan, arbetsmarknadsdagar.se, och det
+	skall därför finnas en funktion för CHARMk som importerar informationen till internsystemet.  
+
+  \item[$\# 4 $ Tilldela student en värdroll] \hfill \\
+  En student kan av CHARMk tilldelas en av tre roller: företagsvärd, områdesvärd eller övrigt.
+  
+  \item[$\# 5 $ Behörighetsnivåer] \hfill \\
+  Varje användare skall endast kunna se och ändra information som är specifikt för dennes arbetsuppgift. CHARMk är administratörer och har full behörighet.Företagsvärd skall kunna administrera sitt tilldelade företag, områdesvärd skall kunna administrera sitt tilldelade område och värdrollen övrigt har i nuläget ingen speciell behörighet. 
+ \\\\\\
+  \item[$\# 6 $ Tilldelning av värdar till företag och företagsområden] \hfill \\
+  Alla företag och områden skall tilldelas en värd. Företagsvärden ska kunna se och ändra information om sitt tilldelade företag samt dess beställning. Områdesvärden kan se och ändra vilka företagen som tillhör dennes tilldelade område.
+\end{description}
+\newpage
+\section{Icke-funktionella krav}
+\begin{description}
+ \item[$\# 16 $ Vidareutveckling och underhåll] \hfill \\
+  Systemet skall vara lätt att både underhålla och utveckla i framtiden.
+
+\item[$\# 17 $ Väldokumenterad kod] \hfill \\
+  Eftersom IT-ansvarig för CHARMk byts ut årligen är det viktigt att det snabbt går att få en övergripande blick om systemets uppbyggnad, varför systemet behöver vara väldokumenterat.
+  	
+  \item[$\# 18 $ Säkerhet] \hfill \\
+  Informationen om företag är sekretessbelagt och säkerheten anses viktig. Lösenorden skall inte
+	sparas i klartext, utan vara krypterade. En obehörig användare skall inte kunna se något om databasens struktur. 
+
+\item[$\# 19 $ Flexibilitet i värdansökningsformuläret] \hfill \\
+  Det skall vara enkelt att ändra frågorna i formuläret,  från år till år.
+
+ \item[$\# 20 $ Användarvänlighet] \hfill \\
+  Systemet skall vara användarvänligt, framförallt i de delar som används av andra än IT-ansvariga i CHARMk.
+\end{description}
+\end{document}
+

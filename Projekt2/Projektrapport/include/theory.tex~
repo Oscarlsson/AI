@@ -1,0 +1,122 @@
+\chapter{Teoretisk bakgrund}
+\section{Webbutveckling}
+För att effektivt kunna spara stora mängder data på Internet används databaser. En databas är information som är samlad på ett sätt som gör att det enkelt går att söka, hämta och ändra i informationen. Med andra ord är en databas bara data som är samlat på ett visst sätt för att kunna modellera något. För att kunna hantera och lagra den här informationen krävs en databashanterare. \citep{mysql} \\ \\
+För att kommunicera med en databas finns det ett speciellt standardiserat språk för relationsdatabaser som kallas SQL. SQL används, genom att ställa frågor till databasen, både för att hantera och interagera med datan. Det går både att definera struktur, spara data, ändra data och hämta data i databasen. Det finns också möjlighet att påverka vem som kan hantera vilken data och med vilka rättigheter. \citep{mysql}\\ \\
+Inom webbutveckling utvecklas databasstrukturen oftast inte i ren SQL utan i något annat verktyg som genererar SQL-koden. Webbprojekt går att skriva i vilket programmeringsspårk som helst men det finns ett antal programmeringsspråk som är inriktade mot webbutveckling och för att kommunicera med databashanterare. Ofta har dessa språk också tillhörande ramverk för att underlätta implemeteringen och bidra med vissa standardfunktioner. 
+\section{Språk och ramverk}
+Ramverk är skapade för att underlätta för utvecklaren igenom att korta ner produktionstiden och motarbeta upprepad kod. Detta sker genom att handhålla utvecklaren med färdiga och vältestade funktioner. Användningen av ramverk minskar också risken för problem med skalbarhet.\\ \\
+Nedan följer några av de största programmeringsspråken och ramverken som är anpassade för webbutveckling i kombination med en databashanterare. 
+\subsection{ASP.NET}
+ASP.NET utvecklades av Microsoft 2002 och har flera forum och en community. \citep{asp} Utöver detta finns det även ett stort API med väl dokumenterad kod. Det ramverk som används i samband med programmeringsspråket ASP kallas .NET. ASP.NET utvecklas och uppdateras regelbundet av Microsoft vilket är en stor anledning till att det är så populärt.\\\\
+Programmeringen kan ske i Visual Studio .NET, vilket är en Microsoftprodukt som är anpassad för ASP. Visual Studio .NET är gratis för privatpersoner. ASP.NET är endast kompatibelt med Windows och kräver också en Microsoft-licens. Det fungerar  tillsammans med alla databashanterare, men med Microsoft SQL Server i första hand.\\\\
+Språket är en av de bästa när det gäller skalbarhet. \citep{asp_magazine} ASP.NET är använt på många webbsidor och av många stora företag. Några exempel på webbsidor som använder ASP.NET är bing.com, msnbc.msn.com och xbox.com. \citep{asp}\\\\
+På ASP.NETs forum finns dokumentation som beskriver hur man ökar säkerheten genom att täcka de kända säkerhetshål som finns. ASP.NET går likt de flesta andra programmeringsspråk att implementera enligt MVC-modellen.
+\subsection{PHP}
+PHP är ett skriptspråk utvecklat av privatpersoner som idag underhålls av företaget Zend Technologies. \citep{zend_tech} Kring PHP finns en stor community med forum och bloggar där det förs diskussioner kring utveckling samt rapporterade buggar. \citep{php_net}\\\\
+Det är ett gratis språk som går under sin egen licens, PHP license. Licensen kräver öppen källkod men är inte copyleft vilken är anledningen till varför en egen licens skapades istället för att använda GPL. \citep{php_net} Copyleft innebär att ett program eller projekt får användas och modifieras fritt av sina användare så länge de nya versionerna följer samma licenskrav.\\\\
+PHP är kompatibelt med de största operativsystemen: Windows, Linux, UNIX och MacOS. Det krävs en webbserver för att kompilera och köra koden, något som inte medföljer vid installation. \citep{php_net} PHP kan virtuellt konfigureras med alla databashanterare som finns idag. \citep{php_net}\\\\
+Communityn kring PHP har dokumenterat de största säkerhetshålen. Programmeraren har då en bra vägledning till hur säker programmering sker i PHP.\\\\
+Till språket finns många ramverk. Nedan följer en kort beskrivning av några av de olika PHP-ramverk som finns.\\\\
+\subsubsection*{Yii}
+Yii är ett ramverk som är skapat av företaget Yii Software LLC (YiiSoft). Yii uppmuntrar programmeraren till att följa MVC-modellen och innehåller funktionalitet som scaffolding och stöd för testning. \citep{yii} Dokumentationen är utförlig och till organisationen finns en community med till exempel forum och IRC-kanal. \citep{yii}\\\\
+Med Yii får man tillgång till en funktion för autentisering, som tar hänsyn till säkerhet. För att underlätta utvecklarens databashantering finns Active Records samt en funktion kallad Yii Query Builder, som hjälper till att skapa kod som säkrad mot SQL-injektioner.
+\subsubsection*{CodeIgniter}
+CodeIgniter är utvecklat av EllisLab. Ramverket följer, likt många andra ramverk, MVC-modellen och har funktioner för att täcka många av de kända säkerhetshål som finns. Det är utvecklat för att programmeraren inte ska behöva följa riktlinjer för hur kodningen ska ske, inte få stora avtryck av ramverket och för att slippa konfiguration. \citep{ellislab}\\\\
+CodeIgniter finns på GitHub och har en stor community. \citep{ellislab} Det finns också en user guide som fungerar som ett API för de funktioner som finns.
+\subsubsection*{CakePHP}
+CakePHP är utvecklat av företaget Cake Software Foundation, Inc. som grundades 2005 men finns också numera på GitHub. Likt många andra ramverk har även CakePHP funktioner för att öka säkerheten. Ramverket följer också MVC-modellen. Det finns också en autentiseringkomponent som används för att underlätta implementering av  inloggningssystem. \citep{cake} När en modelklass skapas i CakePHP kommer den att automatiskt mappa den till en databastabell, med hjälp av konventioner. \citep{cake}
+\subsubsection*{Symfony}
+Symfony är ett open source projekt som går under MIT-licensen och är idag ett av de största ramverken för PHP. \citep{symfony} Det är utvecklat av Sensio Labs år 2005 och är väl dokumenterat med en stor community samt support. Ett exempel på rörelsen kring Symfony är att det kommer att hållas en konferens i Paris om just Symfony, i juni 2012. \citep{symfony}\\\\
+Strukturen följer MVC-modellen och det finns också funktioner för att täcka vanliga säkerhetshål. Vid installation medföljer ett verktygsfält för testning som dyker upp på varje sida som är gjort i Symfony. Utvecklaren behöver inte använda tjänsterna som följer med utan ramverket strävar efter att ha mycket funktionalitet och låta utvecklare själv välja vad den vill använda. \citep{symfony}\\\\
+Symfony stödjer endast PHP5 och finns publikt på GitHub. \citep{symfony}
+\subsubsection*{Zend}
+Zend ägs av samma företag som PHP, Zend Technologies Ltd., och är ett av de äldsta ramverken för PHP. Zend är ett open source projekt som går under BSD-licensen. Sturkturen följer, likt andra ramverk, MVC-modellen. Zend har både en wiki, mailingslistor och support och stödjer alla stora databashanterare. \citep{zend}\\\\
+Till Zend kommer antal hjälpfunktioner, exempelvis Zend\textunderscore Auth för autentisering, och ett par tjänster för att underlätta utveckling mot stora API:er som Google, Yahoo! och Flickr. \citep{zend}
+\subsection{JSP}
+JSP, Java Server Pages, är ett programmeringsspråk som utvecklades av Sun Microsystems för att dynamiskt generera webbsidor. Den första versionen släpptes 1999. \citep{jsp} Med JSP kan man få en flexibilitet i webbsidorna som inte går att skapa med ren HTML. Både struktur och dokumentation följer samma standard som den som finns för Java. Det finns också en community och installationsguider. \citep{jsp}\\ \\
+Strukturen på en JSP-fil ser ut som en blandning mellan HTML och Java, med grundstrukturen för HTML inkluderad och Java-funktioner inuti. Spårket är en Javateknologi och därför finns det många standardfunktioner som kan användas från Javas API. JSP har också ett eget bibliotek för att underlätta och effektivisera implementering. Alla datatyper och variabler som finns i Java kan också användas i JSP.  \citep{jsp}\\ \\
+JSP är, precis som Java, ett objektorienterat språk vilket innebär att koden kan delas upp i klasser och paket. \citep{jsp} Detta medför att MVC-modellen enkelt kan tillämpas. Därmed blir det också lätt att bygga vidare på ett projekt och undvika problem med skalbarhet. JSP fungerar också bra tillsammans med XML-dokument då det finns färdiga metoder för detta. \citep{jsp}\\ \\
+JSP-projekt kan utvecklas i exempelvis Eclipse som är ett känt utvecklingsverktyg för Java. Men för att kompilera en JSP-fil behövs dels ett antal standardfiler skrivas för att möjliggöra kompileringen och dels en kompilator för dessa. För att underlätta detta finns det servletmotorer, exempelvis Apache Tomcat, som kan lösa det här problemet. \citep{jsp} Att allt detta behövs beror på att när JSP-sidor kompileras görs de om till Java Servlets. En Java Servlet används för att utöka funktionaliteterna i en server genom att acceptera förfrågningar och generera svar. Detta medför både snabbhet och skalbarhet i systemet eftersom projektet endast kompileras en gång. \citep{jsp}\\ \\
+Det finns ingen färdig CRUD-generator i JSP men det går att få genom att använda ett ramverk. Ett exempel på ett sådant ramverk är Grails som liknar Ruby on Rails men är baserat på språket Groovy. Detta funkar även till JSP eftersom det är kompatibelt med Java. Ett annat ramverk till JSP som också ger scaffolding är Spring Roo. JSP fungerar med alla databashanterare.
+\subsection{Ruby on Rails}
+Ruby on Rails är ett ramverk till det objektorienterade språket Ruby. Det är i första hand utvecklat av en privatperson, David Hansson. Ramverket går under MIT-licensen och idag finns det över 2000 personer som bidrar till utvecklingen. \citep{ror_web} Kring organisationen kretsar en stor community. Det finns mailinglistor, en twitter, en wikipedia och mycket mer som huvudsakligen rör utveckling av Ruby on Rails samt utvecklingserfarenheter.\\ \\
+Ruby on Rails har en arkitektur som uppmuntrar programmeraren att följa MVC-modellen och har en autogenerationsfunktion, kallad scaffolding. \citep{ror_web} För databashantering stödjs Active Records. \citep{ror_web}\\ \\
+Ruby on Rails går efter principerna  DRY, Don’t Repeat Yourself, samt COC, Convention over Configuration. \citep{ror_web} DRY handlar om att återanvända kod medan COC handlar om att använda konventioner, exempelvis på filnamn, för att låta ramverket sköta konfigurationen.\\ \\
+Ruby on Rails kommer med en egen webbserver, WEBrick, och är kompatibel med databashanterarna: DB2, MySQL, Oracle, PostgreSQL, Microsoft SQL Server och SQLite. \citep{ror} Om man inte har möjlighet att lägga upp en egen webbserver finns det webbhotell som stödjer Ruby on Rails. Ett exempel är Heroku. \citep{heroku}\\ \\
+Ruby on Rails finns tillgängligt i Rubys pakethanterare, RubyGems. \citep{rubygems} En stor applikation som till en början  var byggt i Ruby on Rails är Twitter.com, men det håller på att bytas ut. \citep{twitter}
+\subsection{Django}
+Django är ett ramverk som är skrivet i språket Python. Python tillåter flera paradigmer som objektorienterad, imperativ samt delvis funktionell programmering. \citep{python} Ramverket är framtaget för att utnyttja Pythons egenskaper i webbutveckling. Det är en öppen källkod och går under BSD-licensen.\\ \\
+Vartannat år hålls en konferens, för utvecklare och användare av Django, kallad DjangoCon. \citep{djangocon} Det finns en mailinglista och en wiki där utvecklare delar med sig av erfarenheter och rapporterar in buggar i ramverket.\\ \\
+Likt många andra webbramverk uppmuntrar även Django till att utveckla enligt MVC-modellen. Konceptet Don’t Repeat Yourself eftersträvas. \citep{django} Till ramverk kommer det, utöver scaffolding-principen, en hel autentiseringsfunktion. \citep{django} Det vill säga säker inloggning, registrering av användare samt en säker sida där endast inloggade kommer åt. Liknande funktioner kallas för Batteries och finns listade på deras hemsida.\\ \\
+Vid installationen av Django ingår en fristående webbserver för enkel utveckling och testning. Det är även, med tilläggspaket, kompatibelt med Apache och andra kända webbservrar.
+I grunden stödjer Django följande databashanterare: PostgreSQL, MySQL, SQLite och Oracle, men fler går att konfigurera med tillägg. \citep{django}\\ \\
+En modelklass, i MVC-modellen, representerar en databastabell och en instans av den klassen representerar en specifik läsning i tabellen. \citep{django} Det innebär att utvecklaren inte arbetar direkt mot databasen utan endast mot modelklasser.\\ \\
+Hemsidan till applikationen Instagram är ett av många projekt som är skriva i Django. \citep{instagram}  
+\section{Databashanterare}
+Det finns även olika typer av databashanterare. Ett exempel är den hierarkiska modellen, vilket även var den första, som bygger på en trädstruktur. En sådan struktur är väldigt effektiv att söka i men den är däremot mycket ineffektiv att ändra i. \citep{mysql} \\ \\
+Numera används framförallt relationsdatabaser som innebär att databasen byggs upp av tabeller som innehåller rader och kolumner som relaterar data till varandra. Denna struktur innebär att det går att definiera relationer även mellan tabellerna, vilket gör att man kan konsturera väldigt komplexa strukturer. \citep{databaser}
+\subsection{Oracle}
+Databashanteraren Oracle är en objektorienterad relationsdatabashanterare skapad av företaget Oracle och tillhör en av världens mest använda databashanterare. Den är gjord för att kunna användas på allt från en vanlig PC till stora parallella system. \citep{oracle} Det ingår också ett antal verktyg för hantering av databasen. Första versionen av Oracle släpptes 1979. \\\\
+Oracle är kompatibelt med Windows, Linux samt UNIX och har både installationsguider och support. Oracle är inte låst till något speciellt språk och priset på databashanteraren beror på valet av paket. \citep{oracle_web}
+\subsection{MySQL}
+MySQL är en relationsdatabashanterare och även en av de mest använda databashanterarna i världen. Det är ett open source-projekt som går under GPL-licensen och ägs numera av företaget Oracle. MySQL är en gratis databashanterare som är plattformsoberoende och fungerar därmed på de flesta operativsystem, som exempelvis Linux, Windows, Solaris och MacOS. \\\\
+Den första versionen släpptes 1995 och idag används databashanteraren av många av världens största och snabbt växande företag, exempelvis Google, NASA, Youtube och Facebook. MySQL har både support, en community och utbildningar för att främja användarvänligheten och anpassa sig till såväl nybörjare som erfarna användare. Det finns också installationsguider och dokumentation tillgängliga. \citep{mysql_web}\\\\
+MySQL är utvecklat för att det skall vara skalbart och kunna användas på alla från små inbyggda system till enorma databaser. Arkitekturen på databasen gör att den har en hög prestanda och ger exemplevis snabba hämtningar och möjliggör en snabb fulltextsökning. \citep{mysql} MySQL är inte låst till något speciellt programmeringsspråk. Det finns också ett GUI, phpMyAdmin, för att enkelt kunna hantera databasens struktur och innehåll.
+\subsection{Microsoft SQL Server}
+Microsoft SQL Server är en relationsdatabashanterare skapad av Microsoft och utvecklad för Windows. Första versionen släpptes 1989 och används idag, förutom av Microsoft, av exempelvis SAS och Maersk. Beroende på version och hur stort projektet är, kostar Microsoft-licensen för databashanteraren olika mycket. Det finns både guider och support. Fokus ligger bland annat på hög prestanda och snabbhet. Microsoft SQL Server är utvecklad för att vara skalbar och den är även kompatibelt med Microsoft Office. \citep{microsoft_web}\\ \\
+För att kunna använda Microsoft SQL Server måste ett .NET-ramverk installeras på servern. Därför blir urvalet av programmeringsspråk också begränsat. \citep{sqlserver}
+\subsection{DB2}
+DB2 är en relationsdatabashanterare utvecklat av IBM för Windows, Linux och UNIX. Den första versionen släpptes 1983. IBM har lång erfarenhet av databaser och var även med och utvecklade språket SQL. \citep{db2} Med DB2 kan informationen i databasen enkelt hämtas och presenteras i ett XML-formulär. Till databashanteraren finns det support, installationsguider och utbildningar. DB2 är inte låst till något speciellt programmeringsspråk och priset på databashanteraren beror på valet av paket. \citep{db2_web}
+\subsection{PostgreSQL}
+PostgreSQL är en gratis objektorienterad relationsdatabashanterare. Den är också en multiplattformsdatabashanterare och fungerar därmed på de flesta operativsystem. PostgreSQL är ett open source-projekt som går under BSD-licensen. \\\\
+Den första versionen släpptes 1997 och idag är databashanteraren använd av många stora företag, däribland Skype och Sun Microsystems. Det finns både support, en wiki, en community, installationsguider och utbildningar för att främja användarvänligheten för såväl nybörjare som professionella användare. \citep{postgresql_web}\\ \\
+PostgreSQL använder också en speciell lagringsteknik, MVCC, för att snabbt kunna hantera stora mängder data. Det finns även ett antal olika GUI-verktyg tillgängliga och databashanteraren är inte låst till något speciellt programmeringsspråk. \citep{postgresql}
+\section{Säkerhet}
+Vid utveckling mot webben finns det ett antal olika säkerhetshål som är allmänt kända och viktiga täppa igen för att skapa en säker och professionell applikation. Nedan följer en kort teoretisk förklaring om de vanligaste bristerna.
+\subsection{Lösenord i klartext}
+Vid hantering av lösenord i en databas är ett vanligt misstag att utvecklaren väljer att spara de i klartext. Nackdelen är att om någon obehörig skulle komma in i systemet och få tillgång till databasen skulle den personen få tillgång till en lista över alla användarnamn med respektive lösenord. Även om den personen redan lyckats komma in i systemet löper användarna stor risk för angrepp på andra tjänster där de använder samma lösenord.\\\\
+En lösning på problemet är att köra lösenorden igenom en envägsfunktion för att kryptera texten. Det innebär att om någon får tag på databasen har den endast krypterade lösenord, vilket nästintill eliminerar risken för att någon obehörig skulle få tillgång till de riktiga lösenorden.\\\\
+De vanligaste envägsfunktonerna vid, lagring av lösenord, är två hashfunktioner kallade SHA1 och MD5. Båda funktionerna är kända och går att knäcka. De går att knäcka genom att den som gör attacken kan skapa en regnbågstabell över lösenord.\\\\
+Det går att försvåra en sådan attack genom att lägga till en extra, förutbestämd, sträng (salt) till varje text som skall krypteras. Då krävs det att regnbågstabellen har exakt samma sträng för att den skall stämma överens med systemets. 
+\subsection{Injektioner}
+Vid utveckling av webbapplikationer är det viktigt att alltid vara kritisk mot datan som skickas från användarna till servern. Det finns olika fallgropar och vanliga misstag som utvecklare gör som kan öppna upp stora säkerhetshål i system. Nedan följer ett par sådana misstag.
+\subsubsection{SQL-injektion}
+Vid hantering av databasläsningar kan väldigt farliga säkerhetshål skapas om obehandlad data skickas in i söksträngen. Detta förtydligas enklast med ett exempel:\\\\
+Ett inloggningsystem där användaren fyller i sitt användarnamn som sedan kollas mot en databas för att se om personen finns. 
+\begin{verbatim}
+Select * from users where användare = $_POST['Användarnamnet']
+\end{verbatim}
+Det här fungerar bra om användaren agerar som applikationen förväntar sig, det vill säga skickar in sitt användarnamn och inget annat.\\\\
+Om användaren däremot skulle vara elak och skicka in användarnamnet 
+\begin{verbatim}
+Oscar; DELETE from users
+\end{verbatim} skulle söksträngen istället att bli:
+\begin{verbatim}
+Select * from users where användare = Oscar; DELETE from users
+\end{verbatim}
+Det blir istället två frågor, först en för att hämta och sedan en för att ta bort. Resultatet skulle bli att all data i tabellen users försvinner vilket inte var det utvecklaren eftersträvade i applikationen.
+\subsubsection{JavaScript-injektion}
+Likt exemplet ovan finns det liknande problem även vid hantering av användardata utan tillgång till databasen. Ett exempel på det kan vara en gästbok. Gästboken har en sida som itererar över en tabell i databasen och skriver ut dess innehåll. 
+\begin{verbatim}
+(Select * from gbinlagg)
+\end{verbatim}
+Gästboken har också en sida som låter användaren skicka in sina kommentarer.
+\begin{verbatim}
+(Insert into gbinlagg (meddelande) VALUE ($_POST[‘meddelande’]))
+\end{verbatim}
+Det fungerar bra om användaren skickar in vanlig text men en elak användare skulle kunna skicka in följande: 
+\begin{verbatim}
+<script type="Javascript">farlig kod</script>
+\end{verbatim}
+%\begin{lstlisting}
+%\end{lstlisting}
+Det skriptet kommer att köras varje gång på sidan där gästboken skriver meddelanden. 
+\subsection{Sessioner}
+För att hålla reda på information om besökare på webbplatser kan man välja att använda sessioner. En session lagrar data temporärt och tas bort när användaren lämnar webbsidan.
+Säkerhetshålet ligger i hur och vad som lagras i sessioner.\\\\
+En utvecklare skulle kunna lagra t.ex. en användares lösenord i en session. Skulle sessionen lagras i en okrypterad cookie skulle det utgöra en säkerhetsrisk då en hackare som får tag på cookien får tag på lösenordet. En cookie är en fil som lagras temporärt på användarens dator.\\\\
+Även kontrollsummor för att se hurvida en användare har klarat ett inloggningstest kan sparas i en session för att endast tillåta användare med inloggning att få tillgång till vissa sidor. Skulle en hackare lyckas modifiera eller skapa en egen session kan den personen få tillgång till sekretessbelagt material.
+%jämförelse
+%För att kunna konstruera något som är webbaserat krävs det vissa kunskaper inom HTML. Eftersom JSP är en blandning av HTML och java är det lätt att komma igång med om man har kunskap om dessa. 
+%Dokumentationen är bra strukturerad och lättförståelig. 
+

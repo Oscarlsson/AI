@@ -1,0 +1,241 @@
+\chapter{Teoretisk bakgrund}
+Nedan följer en sammanfattning av hur programmering mot webben sker och en sammanställning av några viktiga säkerhetsaspekter.
+Därefter följer en utvärdering av ett antal presumtiva programmeringsspråk och ramverk, samt databashanterare som är tänkbara för projektet. För att göra utvärderingen objektiv har denna skett enligt en mall framarbetad utefter de krav gruppen ansåg viktiga. \\\\
+Kapitlet avslutas med en jämförelse och diskussion, vilka föranleder ett teoretiskt resultat och ett val som även inbegriper CHARMks krav och önskemål. 
+\section{Webbutveckling}
+Webbprojekt går att skriva i de flesta programmeringsspråk men det finns ett antal språk som är specifikt inriktade mot webbutveckling och kommunikation med databashanterare. Ofta har dessa programmeringsspråk också tillhörande ramverk -- detta för att underlätta implementering och bidra med vissa standardfunktioner, vanligtvis för att lösa återkommande problem. \\ \\
+För att effektivt kunna spara stora mängder data på Internet används databaser. En databas är information samlad på ett sådant sätt att det enkelt går att lagra, söka, hämta och ändra i informationen. För att kunna hantera databaser krävs en databashanterare \citep{mysql}. \\ \\
+För att kommunicera med en databas finns det ett speciellt standardiserat språk, SQL. Interaktion med databasen sker genom att ställa frågor i SQL \citep{mysql}. Inom webbutveckling utvecklas databasstrukturen oftast inte i ren SQL, utan med hjälp av något verktyg som genererar SQL-koden. 
+\section{Säkerhet}
+I utvecklingen av en säker och professionell applikation mot webben finns det ett antal olika säkerhetsaspekter som är kända och viktiga att ta hänsyn till. Nedan följer en kort teoretisk förklaring om några viktiga aspekter.
+\subsection{Injektioner}
+Det är viktigt att alltid vara kritisk mot datan som skickas från användarna till servern. Om den inskickade datan gör att systemet beter sig på ett annat sätt än vad utvecklaren avsett, kallas det för en injektion. Två vanliga injektioner är SQL-injektion och Cross Site Scripting \citep{smask}. 
+\subsubsection*{SQL-injektion}
+Vid lagring av data där systemet tillåter användaren att skriva in valfri information löper systemet risk för SQL-injektion. Beroende på användarens information kan söksträngen manipuleras. Det här kan resultera i att en obehörig person får tillgång till systemet, manipulering av lagrad data eller radering av information i databasen \citep{smask}. 
+\subsubsection*{Cross Site Scripting}
+Cross Site Scripting betyder att en användare injicerar ett script, Javascript eller HTML, i systemets kod. Det kan resultera i avslöjande av säker data och åtkomst till autentiseringsinformation \citep{smask}. 
+\subsection{Lösenord i klartext}
+Vid lagring av lösenord i en databas är ett vanligt misstag att utvecklaren väljer att spara lösenorden i klartext. Risken är att någon obehörig kan komma in i systemet, exempelvis genom SQL-injektion \citep{smask}, och få tillgång till databasen och därmed tillgång till en lista över alla användarnamn med deras respektive lösenord. De användare som använder samma lösenord till andra tjänster löper då risk för intrång även på dessa.\\\\
+En lösning på problemet är att kryptera lösenorden med en envägsfunktion \citep{ctp}. 
+De vanligaste envägsfunktionerna som används vid kryptering av lösenord är SHA1  
+\citep{sha1} och MD5 \citep{md5}. Båda dessa funktioner går att dekryptera genom att skapa en tabell över lösenord och tillhörande krypteringsvärde, likt ett uppslagsverk.
+En sådan attack går dock att försvåra genom att lägga till en sträng till lösenordet som krypteras. Strängen kallas för salt och fungerar som en hemlig nyckel.	
+\subsection{Sessioner}
+För att hålla reda på temporär information om besökare på webbplatser används sessioner. En session lagras oftast i en cookie lokalt på användarens dator och innehåller information om användarens tillstånd \citep{cookie}.\\\\
+Tjänster som autentisering kan utnyttja sessioner för att hålla reda på om användaren har fått tillträde eller ej. En säkerhetsrisk ligger i hur och vad som lagras i en session. En manipulerad session kan till exempel ge obehöriga tillträde till säkrade sidor \citep{cookie}. 
+\section{Språk och ramverk}
+Ramverk är skapade för att underlätta implementeringsarbetet för utvecklaren och därmed korta ner produktionstiden och motarbeta upprepning av kod. Detta sker genom att tillhandahålla utvecklaren med färdiga och välbeprövade funktioner. Användandet av ramverk hjälper också utvecklaren att följa MVC-modellen, vilket underlättar felsökning och ökar skalbarheten vid vidareutveckling.\\ \\
+Nedan följer en utvärdering av några av de mest använda programmeringsspråken och ramverken som är anpassade för webbutveckling. 
+Varje programmeringsspråk med tillhörande ramverk har utvärderats med avseende på följande mall:
+\subsection*{Mall för programmeringsspråk och ramverk}
+\begin{tabular}{ l p{8cm} }
+  \textbf{MVC:} & Inbyggt stöd för MVC-modellen \\
+  \textbf{Licens:} & Vilken programvarulicens som bestämmer villkor för programvaran.\\ 
+  \textbf{Databashanterare:} & Kompatibla databaser \\
+  \textbf{Multipla databaser:} & Om det stödjer mer än en databas \\
+  \textbf{Active Records / DB Objects:} & Stöd för Active Records\\
+  \textbf{Operativsystem:} & Kompatibla operativsystem\\
+  \textbf{Dokumenterade säkerhetshål:} & Hjälpfunktioner eller dokumentation \\
+  \textbf{CRUD:} & Create, Read, Update och Delete funktion för databasobjekt. Autogenererat eller stöd.\\
+  \textbf{Moduler:} & Moduler för XML-läsning och CSV-hantering.\\
+  \textbf{Versioner:} & Kompatibla versioner (endast ramverk)\\
+  \textbf{Autentisiering:} & Modul för användarautentisiering\\
+  \textbf{Testning:} & Säkerhet- eller funktionstestning\\
+  \textbf{Scaffolding:} & Autogenererar kod (endast ramverk)\\
+  \textbf{Organisation:} & Språket/ramverkets spridning och hjälpmedel. Exempelvis community, forum och API. 
+\end{tabular}
+\newpage
+\subsection{ASP}
+ASP lanserades 2002 av Microsoft och har därefter uppdaterats regelbundet, vilket är en anledning till dess stora spridning. Det ramverk som används i samband med programmeringsspråket ASP kallas .NET. ASP är ett av de bästa programmeringsspråken när det gäller skalbarhet \citep{asp_magazine}. Vid installation medföljer ingen webbserver, dock finns detta inbyggt i Windows. \\\\
+ASP.NET används på många webbsidor och av många stora företag. Några exempel på webbsidor som använder ASP.NET är sökmotorn bing.com och nyhetssidan msnbc.msn.com \citep{asp}. \\\\
+\begin{tabular}{ | l | p{8.7 cm} | }
+  \hline
+  \textbf{MVC:} & Ja \\ \hline
+  \textbf{Licens:} & Proprietär programvara (Microsoft-licens) \\ \hline
+  \textbf{Databashanterare:} & Alla. Standard: Microsoft SQL Server \\ \hline
+  \textbf{Multipla databaser:} & Ja \\ \hline
+  \textbf{Active Records / DB Objects:} & Ja, med tillägg \\ \hline
+  \textbf{Operativsystem:} & Windows \\ \hline
+  \textbf{Dokumenterade säkerhetshål:} & Ja \\ \hline
+  \textbf{CRUD:} & Ja \\ \hline
+  \textbf{Moduler (XML, CSV):} & XML, CSV \\ \hline
+  \textbf{Autentisering:} & Ja \\ \hline
+  \textbf{Testning:} & Ja \\ \hline
+  \textbf{Organisation:} & Forum, community, API \\ \hline
+\end{tabular}
+\newpage
+\subsection{JSP}
+JSP, Java Server Pages, är ett objektorienterat programmeringsspråk som lanserades 1999 av Sun Microsystems \citep{jsp}. Till språket finns flera ramverk som exempelvis Grails och Spring Roo.\\\\
+För att kompilera ett JSP-projekt behöver dels ett antal standardfiler skrivas, och dels en kompilator för JSP. För att underlätta kompileringen finns det servletmotorer som kan användas, exempelvis Apache Tomcat \citep{jsp}. Att det behövs både vissa speciella filer och en speciell kompilator beror på att JSP-sidor görs om till Java Servlets när de kompileras. En Java Servlet används för att utöka funktionaliteten i en server genom att acceptera förfrågningar och generera svar. Detta medför både snabbhet och skalbarhet i systemet, eftersom projektet endast kompileras en gång \citep{jsp}. \\\\
+Oracle.com är en av de största hemsidorna som använder JSP. \citep{oracle_web} \\\\
+\begin{tabular}{ | l | p{8.7 cm} | }
+  \hline
+  \textbf{MVC:} & Ja \\ \hline
+  \textbf{Licens:} & CDDL \\ \hline
+  \textbf{Databashanterare:} & Alla \\ \hline
+  \textbf{Multipla databaser:} & Nej \\ \hline
+  \textbf{Active Records / DB Objects:} & Nej \\ \hline
+  \textbf{Operativsystem:} & Windows, Linux, Mac OS X \\ \hline
+  \textbf{Dokumenterade säkerhetshål:} & Ja \\ \hline
+  \textbf{CRUD:} & Ja, genom vissa ramverk \\ \hline
+  \textbf{Moduler (XML, CSV):} & XML \\ \hline
+  \textbf{Autentisering:} & Nej \\ \hline
+  \textbf{Testning:} & Nej \\ \hline
+  \textbf{Organisation:} & Community, API \\ \hline
+\end{tabular}
+\newpage
+\subsection{PHP}
+PHP är ett skriptspråk som lanserades 1995. Ett skriptspråk innebär att det krävs en speciell miljö för att kunna exekvera koden. Språket är utvecklat av privatpersoner men underhålls idag av företaget Zend Technologies och är ett de mest använda språken för webbutveckling \citep{php_net}. \\\\
+För att kompilera och köra PHP-koden krävs en webbserver, vilket inte medföljer vid installation. Till språket finns många ramverk där några av de mest använda är Yii, CodeIgniter, CakePHP, Symfony och Zend \citep{php_net}. En utvärdering av ramverken finns i Bilaga B, Tabell~\ref{tab:framework}. \\\\
+Några stora webbsidor som delvis är skrivna i PHP är exempelvis Facebook och Wikipedia \citep{facebook}. \\\\
+\begin{tabular}{ | l | p{8.7 cm} | }
+  \hline
+  \textbf{MVC:} & Ja \\ \hline
+  \textbf{Licens:} & PHP license \\ \hline
+  \textbf{Databashanterare:} & Alla \\ \hline
+  \textbf{Multipla databaser:} & Ja \\ \hline
+  \textbf{Active Records / DB Objects:} & Ja \\ \hline
+  \textbf{Operativsystem:} & Windows, Linux, UNIX, Mac OS X \\ \hline
+  \textbf{Dokumenterade säkerhetshål:} & Ja \\ \hline
+  \textbf{CRUD:} & Ja, genom vissa ramverk \\ \hline
+  \textbf{Moduler (XML, CSV):} & XML, CSV \\ \hline
+  \textbf{Autentisering:} & Nej \\ \hline
+  \textbf{Testning:} & Ja \\ \hline
+  \textbf{Organisation:} & Forum, community, bloggar \\ \hline
+\end{tabular}
+\newpage
+\subsection{Django}
+Django är ett ramverk som är skrivet i programmeringsspråket Python och som lanserades 2005 av Django Software Foundation. Python tillåter multipla paradigmer: objektorienterad, imperativ och delvis funktionell programmering \citep{python}. 
+\\\\
+Django är framtaget för att utnyttja Pythons egenskaper i webbutveckling och konceptet DRY, Don’t Repeat Yourself, eftersträvas \citep{django}. DRY handlar om att använda generisk kod för att kunna återanvända kod.  \\\\
+Vid installationen av Django ingår en fristående webbserver för utveckling av mindre projekt och enkel testning. Med tilläggspaket blir Django kompatibelt med andra kända webbservrar.\\\\
+Ramverket stödjer MVC-modellen. En modelklass representerar en databastabell och en instans av klassen representerar en specifik läsning i tabellen \citep{django}. Detta innebär att utvecklaren inte arbetar direkt mot databasen utan endast mot modelklasser.\\\\
+Hemsidan till applikationen Instagram är ett av många projekt som är skrivna i Django \citep{instagram}.\\\\
+\begin{tabular}{ | l | p{8.7 cm} | }
+  \hline
+  \textbf{MVC:} & Ja \\ \hline
+  \textbf{Licens:} & BSD \\ \hline
+  \textbf{Databashanterare:} & Alla. Standard: PostgreSQL \\ \hline
+  \textbf{Multipla databaser:} & Ja \\ \hline
+  \textbf{Active Records / DB Objects:} & Ja \\ \hline
+  \textbf{Operativsystem:} & Windows, Linux, UNIX, Mac OS X \\ \hline
+  \textbf{Dokumenterade säkerhetshål:} & Ja \\ \hline
+  \textbf{CRUD:} & Ja \\ \hline
+  \textbf{Moduler (XML, CSV):} & XML, CSV \\ \hline
+  \textbf{Autentisering:} & Ja \\ \hline
+  \textbf{Testning:} & Ja \\ \hline
+  \textbf{Organisation:} & Mailinglista, Wikipedia, API, konferenser \citep{djangocon} \\ \hline
+\end{tabular}
+\newpage
+\subsection{Ruby on Rails}
+Ruby on Rails är ett ramverk till det objektorienterade programmeringsspråket Ruby \citep{ror}. Ramverket lanserades 2004 och är i första hand utvecklat av en privatperson - David Hansson - men idag bidrar över 2000 personer till utvecklingen \citep{ror_web}.\\\\
+Ruby on Rails använder principerna DRY samt COC, Convention over Configuration \citep{ror_web}. COC handlar om att använda konventioner, exempelvis på filnamn, för att låta ramverket sköta konfigurationen. Det innebär att filer med rätt namnkonvention kopplas till varandra med hjälp av ramverket.\\\\
+Ruby on Rails kommer med en egen webbserver, WEBrick, och finns tillgänglig i Rubys pakethanterare, RubyGems \citep{rubygems}. En stor applikation som till en början var byggd i Ruby on Rails  är Twitter.com \citep{twitter}. \\\\
+\begin{tabular}{ | l | p{8.7 cm} | }
+  \hline
+  \textbf{MVC:} & Ja \\ \hline
+  \textbf{Licens:} & MIT \\ \hline
+  \textbf{Databashanterare:} & Alla. Standard: SQLite \\ \hline
+  \textbf{Multipla databaser:} & Ja \\ \hline
+  \textbf{Active Records / DB Objects:} & Ja \\ \hline
+  \textbf{Operativsystem:} & Windows, Linux, UNIX, Mac OS X \\ \hline
+  \textbf{Dokumenterade säkerhetshål:} & Ja \\ \hline
+  \textbf{CRUD:} & Ja \\ \hline
+  \textbf{Moduler (XML, CSV):} & XML, CSV \\ \hline
+  \textbf{Autentisering:} & Nej \\ \hline
+  \textbf{Testning:} & Ja \\ \hline
+  \textbf{Organisation:} & Community, mailinglistor, Twitter, Wikipedia \\ \hline
+\end{tabular}
+\newpage
+\section{Databashanterare}
+Det finns olika typer av databashanterare, som stödjer olika databasmodeller. Ett exempel på en databasmodell är den hierarkiska modellen som bygger på en trädstruktur. En sådan struktur är väldigt effektiv att söka i men mycket ineffektiv att ändra i \citep{mysql}. \\ \\
+Den numera dominerande databasmodellen är relationsdatabaser. Denna innebär att databasen byggs upp av tabeller med rader och kolumner som relaterar data till varandra. Denna struktur innebär att det går att definiera relationer mellan tabellerna, vilket gör att komplexa strukturer kan konstrueras \citep{databaser}. En relationsdatabas är anpassad för att vara skalbar.\\\\
+Nedan följer en utvärdering av några av de mest använda databashanterarna. Varje databashanterare har utvärderats med avseende på följande mall:
+\subsection*{Mall för databashanterare}
+\begin{tabular}{ l p{9cm} }
+  \textbf{Typ:} & Typ av databashanterare\\
+  \textbf{Licens:} & Vilken programvarulicens som bestämmer villkor för programvaran.\\
+  \textbf{Operativsystem:} & Kompatibla operativsystem\\
+  \textbf{Programmeringsspråk:} & Kompatibla programmeringsspråk\\
+  \textbf{Organisation:} & Databashanterarens spridning och hjälpmedel. Exempelvis community, forum och API.\\
+\end{tabular}
+\subsection{DB2}
+DB2 lanserades 1983 av IBM \citep{db2_web}. IBM har lång erfarenhet av databaser och var även med och utvecklade språket SQL \citep{db2}.\\\\
+\begin{tabular}{ | l | p{10 cm} | }
+  \hline
+  \textbf{Typ:} & Relationsdatabashanterare\\ \hline
+  \textbf{Licens:} & Proprietär programvara (EULA) \\ \hline
+  \textbf{Operativsystem:} & Windows, Linux, UNIX \\ \hline
+  \textbf{Programmeringsspråk:} & Alla \\ \hline
+  \textbf{Organisation:} & Support, installationsguider \\ \hline
+\end{tabular}
+\newpage
+\subsection{Microsoft SQL Server}
+Microsoft SQL Server lanserades 1989 av Microsoft och används idag, förutom av företaget själva, av exempelvis SAS och Maersk \citep{sqlserver}. Databashanteraren är även kompatibel med Microsoft Office \citep{microsoft_web}.\\\\
+\begin{tabular}{ | l | p{10 cm} | }
+  \hline
+  \textbf{Typ:} & Relationsdatabashanterare\\ \hline
+  \textbf{Licens:} & Proprietär programvara (Microsoft-licens) \\ \hline
+  \textbf{Operativsystem:} & Windows \\ \hline
+  \textbf{Programmeringsspråk:} & Begränsat, .NET-ramverk måste användas \\ \hline
+  \textbf{Organisation:} & Support, guider \\ \hline
+\end{tabular}
+
+\subsection{MySQL}
+MySQL lanserades 1995 av privatpersoner men ägs numera av företaget Oracle och är en av de mest använda databashanterarna i världen. Idag används databashanteraren av många av världens största och snabbt växande företag, exempelvis Google, NASA och YouTube \citep{mysql_web}.\\\\
+Arkitekturen på databasen gör att den har hög prestanda och ger exempelvis snabba hämtningar och fulltextsökningar \citep{mysql}. Det finns också ett tillhörande GUI-verktyg, phpMyAdmin, som förenklar hanteringen av databasens struktur och innehåll.\\\\
+\begin{tabular}{ | l | p{10 cm} | }
+  \hline
+  \textbf{Typ:} & Relationsdatabashanterare\\ \hline
+  \textbf{Licens:} & GPL \\ \hline
+  \textbf{Operativsystem:} & Alla \\ \hline
+  \textbf{Programmeringsspråk:} & Alla \\ \hline
+  \textbf{Organisation:} & Support, community, dokumentation, installationguider \\ \hline
+\end{tabular}
+
+\subsection{Oracle}
+Databashanteraren Oracle lanserades 1979 av företaget Oracle \citep{oracle_web}. Oracle tillhör en av världens mest använda databashanterare. \citep{oracle}. Oracle har en stor och lättillgänglig support samt flera extra databasapplikationer som kan läggas till vid behov \citep{oracle_web}.\\\\
+\begin{tabular}{ | l | p{10 cm} | }
+  \hline
+  \textbf{Typ:} & Objektorienterad relationsdatabashanterare\\ \hline
+  \textbf{Licens:} & Proprietär programvara \\ \hline
+  \textbf{Operativsystem:} & Windows, Linux, UNIX \\ \hline
+  \textbf{Programmeringsspråk:} & Alla \\ \hline
+  \textbf{Organisation:} & Support, installationsguider \\ \hline
+\end{tabular}
+
+\subsection{PostgreSQL}
+PostgreSQL lanserades 1997 av PostgreSQL Global Development Group och är idag använt av många stora företag, däribland Skype och Sun Microsystems \citep{postgresql_web}.\\\\
+Databashanteraren använder en speciell lagringsteknik kallad Multiversion Concurrency Control, MVCC. MVCC är en metod som gör att flera användare kan få tillgång till databasen samtidigt och snabbt kunna hantera stora mängder data. Det finns också ett antal olika GUI-verktyg tillgängliga \citep{postgresql}.\\\\
+\begin{tabular}{ | l | p{10 cm} | }
+  \hline
+  \textbf{Typ:} & Objektorienterad relationsdatabashanterare\\ \hline
+  \textbf{Licens:} & BSD \\ \hline
+  \textbf{Operativsystem:} & Alla \\ \hline
+  \textbf{Programmeringsspråk:} & Alla \\ \hline
+  \textbf{Organisation:} & Support, Wikipedia, community, installationsguider \\ \hline
+\end{tabular}
+
+\section{Jämförelse}
+Med utgångspunkt från de utvärderingar som presenterades ovan (kapitel 2.3 och 2.4) gjordes en jämförelse mellan de olika produkterna. Syftet var att fastställa vilka verktyg som är mest lämpliga att använda i implementeringen av systemet. \\\\
+För att underlätta läsningen finns i Bilaga B en översikt av utvärderingarna. I Tabell~\ref{tab:progsprak} finns en sammanställning av programmeringsspråken, i Tabell~\ref{tab:framework} en sammanställning av PHP-ramverken och i Tabell~\ref{tab:databashanterare} en sammanställning av databashanterarna. \\\\
+Nedan följer en diskussion avseende jämförelser mellan olika programmeringsspråk och tillhörande ramverk, samt jämförelser mellan olika databashanterare som avslutas med ett teknikval.
+\subsubsection*{Utvärdering av programmeringsspråk och ramverk}
+Guider och andra former av lättillgänglig support var en viktig aspekt vid valet av programmeringsspråk och ramverk eftersom gruppmedlemmarna hade bristande erfarenheter inom webbutveckling. Det skulle enkelt gå att sätta sig in i syntaxen och metoderna för implementeringen.\\\\
+I urvalet gick JSP bort för att det saknar många projektrelevanta funktioner som de andra programmeringsspråken har, och det var komplicerat att komma igång med. Vi tycker att språket inte verkade populärt bland utvecklare och det framstår som föråldrat. Det verkade inte populärt eftersom guiderna enbart relaterar till Oracles sidor och det var svårt att hitta hemsidor som är utvecklade i språket. \\\\\\\\
+ASP.NET är ett intressant ramverk med en fullbordad autentisieringsmodul. Dock krävs en Windows-server med Microsoft-licens, vilket kostar pengar. Att det kräver en betallicens har en naturlig konsekvens: att många privatpersoner väljer bort det. Guider och hjälp finns tillgängligt, men genom Microsoft istället för oberoende utvecklare -- något som gruppen uppfattade som negativt. \\\\
+Ramverket Django är inte så utbrett, och det är svårt att hitta användbara guider och hjälpmedel för att komma igång. Visst stöd finns att tillgå -- men inte så mycket som projektgruppen behövde. Valet stod därför mellan PHP med ramverk och Ruby on Rails. \\\\
+Ruby on Rails är ett nytt ramverk som snabbt har blivit populärt, vilket märks genom att det finns många artiklar och publiceringar om ramverket. Positivt är att Ruby är objektorienterat i grunden, vilket utnyttjas i Ruby on Rails. Organisationen kring Ruby on Rails är imponerande, och de hjälpmedel som finns för att komma igång är enkla och tydliga. Det finns flera guider för nybörjare. \\\\
+Ramverken till PHP (Tabell~\ref{tab:framework}) imponerar också. Många av ramverken innehåller intressant funktionalitet och professionell dokumentation, trots att de ofta är framtagna av privatpersoner. Ramverken är enkla att komma igång med och skillnaden mellan dem är utvecklingsmetoderna.\\\\
+En del ramverk uppmuntrar till mer autogenererad kod än andra. Det märks på komplicerade mappstrukturer, vilket gör det svårt att förstå hur filerna hänger ihop. Det ramverk som utmärker sig positivt är CodeIgniter som ger mycket frihet vid användning av hjälpfunktionerna. Ramverket stödjer MVC med en enkel mappstruktur och Active Records för databashantering. Yii, CakePHP, Symfony och Zend är de ramverk som ger möjlighet till färdig autentisiering, men de kräver en längre inlärningskurva. CodeIgniter är det som enklast går att komma igång med och bygga en applikation i.\\\\
+Efter att PHP etablerat sig har det infört stöd för objektorienterad programmering men ej hunnit stabilisera sig, vilket vi tycker märks i både dokumentation och guider. Detta gjorde det svårt att komma igång och programmera objektorienterat. \\\\
+Gruppen har efter jämförelsen dragit slutsatsen att systemet bör implenteras i ramverket Ruby on Rails. Det som var avgörande för slutsatsen är att Ruby on Rails är objektorienterat i grunden, populärt och med tydlig dokumentation samt relevanta hjälpfunktioner.
+\newpage
+\subsubsection*{Utvärdering av databashanterare}
+Skillnaden mellan de olika databashanterarna är inte särskilt stora, vilket kan bero på att samtliga är relationsdatabashanterare. Skillnader som kan ses mellan databashanterarna är exempelvis att några av dem har proprietär programvara och begränsningar i kompatibilitet. \\\\
+MySQL är den ledande databashanteraren bland privatpersoner medan Oracle är den ledande bland företag, som vi har uppfattat det. Den databashanterare som har flest publiceringar och diskussionsgrupper är MySQL. \\\\
+Till MySQL finns ett grafiskt gränssnitt, phpMyAdmin, som underlättar hantering av databasen. Vi ansåg att detta vara viktigt, eftersom erfarenhet av databaser saknas sedan tidigare. PostgreSQL har också ett tillhörande grafiskt gränssnitt, men databashanteraren är inte lika populär som MySQL. De övriga databashanterarna var väldigt snarlika, men hade inget speciellt som vi tyckte utmärkte dem positivt. Valet föll därför på MySQL som är open source, en av de mest använda databashanterarna i världen och populärt bland privatpersoner -- vilket underlättar för kommittéen som byts ut varje år.
+\subsubsection*{Val efter CHARMks önskemål och krav}
+Vår teoretiska utvärdering visar att projektet bör implementeras i Ruby on Rails med MySQL som databashanterare. Däremot kan projektet inte fortlöpa utan att samspela med kunden, CHARMk.\\\\
+CHARMk hyr servrar genom Chalmers Studentkår och administrerar inte dessa själva. Deras önskemål var därför att systemet skulle implementeras i ett programmeringsspråk som inte kräver omkonfiguration. På servern finns PHP men inte stöd för Ruby on Rails. Den databas som används på servern är MySQL. \\\\
+Med CHARMks åsikt som uppdragsgivare blev slutsatsen att systemet skall implementeras i PHP med CodeIgniter som ramverk samt MySQL som databashanterare.

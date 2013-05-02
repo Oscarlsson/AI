@@ -1,0 +1,12 @@
+\newpage
+\clearpage
+\thispagestyle{empty}
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+This project concerns the machine learning task, text classification.	 In-domain sentimental analysis, Out-of-domain sentimental analysis and text categorization is performed and compared using five different classification algorithms: Naive Bayes, Perceptron, Average Perceptron, K-nearest neighbours and Support Vector Machines. The question of issue is weather there is a correlation between Out-of-domain sentimental analysis and text categorization. A slight correlation is found and discussed using Amazon data.
+ 
+\end{abstract}
+
+
+
+

@@ -1,0 +1,52 @@
+Let N = number of iterations through training set,
+and T = the size of the training set.
+
+Initialize the weight vector w to all zeros,
+and the average weight vector wa to all zeros,
+and the counter c to 0.
+
+Iterate N times through the training set:
+    For each x, y in the training set:
+        Let guess = classify(x) using our current w
+        If y is not equal to guess:
+            w := w + f(x, y) - f(x, guess)
+            average_weight := (N*T - c) / (N*T)
+            wa := wa + average_weight * (f(x, y) - f(x, guess))
+        Increase the counter c
+Return wa
+
+########################################################################
+
+Let N = number of iterations through training set
+Initialize the weight vector w to all zeros
+Iterate N times through the training set:
+    For each x, y in the training set:
+        Let guess = classify(x) using our current w
+        If y is not equal to guess:
+            w := w + f(x, y) - f(x, guess)
+Return w
+
+
+Perceptron is a linear, supervised classification algorithm.
+
+Boken säger:
+
+The perceptron algorithm consider a 0/1 classification problem. 
+The output w from the algorithm is a weigth vector with the same size as y.
+If the classification for a x in the training set is equal to y, the weigtht is unchanged. 
+If y is 1 and the classification 0, then w is increased. If y is 0 and the classification 1, then w is decreased.
+
+
+The averaged perceptron works in the same way except that it returns the average weight vector instead of the final.
+This averaged vector is build incrementally by updating it while we build the usual weight vector.
+
+
+###########################################################################
+sid 724 i boken. om perceptron
+
+
+sid 865 om text classification
+
+n-gram charachter - sid 861
+kap 22 bra kapitel! sid 860-
+ 

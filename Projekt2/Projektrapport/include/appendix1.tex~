@@ -1,0 +1,22 @@
+\chapter{Bilagor}
+
+\section{Kravspecifikation}
+
+
+\section{Kunskapsmall}
+\begin{itemize}
+ \item Finns det någon dokumentation/Community? - Vem ligger bakom? Privat/Företag
+ \item Skalbarhet - CHARM växer och därmed skall programmet göra det. Hur fungerar projektet när vi fyrdubblar alla användare?
+ \item Säkerhet - Får vi säkerhet på köpet eller kommer vi att behöva lägga stor fokus på det? Kan vi läsa oss till tips om det?
+ \item Fördelar/Nackdelar - Hur stor frihet har vi?
+ \item Hur skall det fungera för CHARM? Vad har de för tillgångar? T.ex. Operativsystem? Servrar?
+ \item Är det ett okänt/välkänt språk/framework?
+ \item Självtest - Kör igång och testa!
+ \item Potential att vidareutvecklas?
+ \item Användarvänlighet - Hur svårt är det att komma igång med?
+ \item Vilka operativsystem är det kompatibelt med?
+ \item Finns det någon bra versionshantering till detta?
+ \item Livslängd - Är det kompatibelt med tidigare versioner? Kommer det att dö ut inom de närmaste åren?)
+\end{itemize}
+
+

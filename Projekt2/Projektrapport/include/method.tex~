@@ -1,0 +1,26 @@
+\chapter{Arbetsmetod}
+Under projektets gång har individuellt arbete kombinerats med grupparbete. För att få vägledning i rätt riktning och sätta upp delmål har möten hållits varje vecka. Delmålen har handlat om att vissa kapitel skall vara färdigskrivna i rapporten
+eller att en del i implementeringen skall ha nått ett visst stadium. \\\\
+Inom gruppen har en rapportansvarig och en projektansvarig tillsatts. Den projektansvariges uppgift har varit att sammankalla möten, följa upp beslut och se till att projektet går framåt. \\\\ 
+Nedan följer beskrivning av processen från första mötet med CHARMk till den färdiga produkten. Detta innefattar att ta fram en kravspecifikation, en jämförelse av olika programmeringsspråk samt implementera utvalda delar av systemet. Under arbetets gång skall all kod dokumenteras och någon form av versionshantering måste finnas.
+\section{Förståelse av problemet}
+För att få förståelse för projektet och systemets krav upprättades en kravspecifikation, som arbetades fram genom möten och samtal med CHARMk.
+I kravspecifikationen beskrivs systemets struktur och funktionalitet i form av både krav på grundfunktionalitet samt funktioner för framtida vidareutveckling av projektet. Kravspecifikationen är uppdelad i olika prioritetskategorier baserat på projektets tidsbegränsningar samt CHARMks förväntningar på projektet. 
+\section{Val av implementeringsmetod}
+Valet av implementeringsmetod skedde genom att utvärdera och jämföra de bäst lämpade programmeringsspråken. \\\\
+Tillvägagångssättet för utvärderingarna var att genom individuellt arbete, där varje projektmedlem blev tilldelad två programmeringsspråk, inhämta kunskap och utvärdera informationen. Med hjälp av en utarbetad kunskapsmall kunde utvärderingen ske objektivt och korrekt. \\\\
+I jämförelsen togs hänsyn såväl till CHARMks önskemål som till gruppmedlemmarnas uppfattning av programmeringsspråken.
+\section{Implementering}
+Ur kravspecifikationen kan oberoende delproblem urskiljas. Implementeringen av delproblemen har gjorts individuellt av gruppmedlemmarna för att sedan kopplas samman. Nedan följer de mest grundläggande delproblemen.
+\subsection{Autentisering}
+Ett krav är att studenter och medlemmarna i CHARMk skall kunna logga in och se personliga sidor. Detta kräver en autentisering där obehöriga inte kan ändra eller se information.\\
+För att kunna implementera detta behövdes kunskap om säkerhet och sessioner samt vilka funktioner ramverket erbjuder.
+\subsection{Företagsimport}
+Information om företagen finns lagrad i en CSV-fil. För att implementera en företagsimport, som tar hänsyn till filens utseende, behövdes lämpliga mjukvarubibliotek studeras. 
+\subsection{Ansökningsformuläret}
+Kravet på ett flexibelt ansökningsformulär innebär att CHARMk skall kunna ändra hela formulärets utseende utan större programmeringskunskaper, vilket skulle kunna lösas genom att använda ett XML-formulär. Huvudsakligen innebar arbetet i det här delproblemet att XML-formulär och relevant funktionalitet i det valda ramverket studerades för att kunna genomföra implementeringen.
+\section{Versionshantering}
+Ett vanligt problem med flera utvecklare på samma projekt är att fel som uppstår kan vara svåra att spåra. För att lösa detta behövdes någon form av versionshantering. Valet föll på GitHub, eftersom det har stor spridning och är enkelt att komma igång med. Med hjälp av GitHub sparas alla versioner av de uppladdade filerna och det går enkelt att se vilken kod som är ändrad mellan två versioner. Projektet har en central lagring, på GitHub, där användare kopierar ned filer lokalt för att modifieras. Flera utveckare kan då arbeta på samma fil utan att påverka varandra.
+\section{Dokumentation}
+CHARMk ställer stora krav på dokumentation eftersom en ny kommitée varje år skall använda och underhålla systemet. En bra dokumentation underlättar även vid vidareutveckling. \\\\
+CodeIgniter erbjuder en mall på hur deras dokumentation ser ut. Denna mall kommer att användas för att dokumentera internsystemet och se till att all dokumentation följer samma standard. Varje utvecklare ansvarar för att dennes kod är dokumenterad. 

@@ -58,7 +58,7 @@ results? Is it possible to remove such words?
 %\subsection{Text classification}
 Text classification has become a popular subject within machine learning as the amount of information lately has rapidly grown \citep{joachims}. Text classification is to
 classify documents into a fixed number of predefined categories. The categories
-could be sentimental (positive / negative) or different topics that the
+could be sentimental (positive or negative) or different topics that the
 document concern \cite{ngrams_ai}.
 
 \subsection{Representing text}
@@ -94,7 +94,7 @@ features that represents the words.
         words. Unigram is one word and bigram is two words \citep{ngrams_ai}.
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
         words in the documents and give a number of how important each word is.
-        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}.
+        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}, where $f(t,d)$ is the number of occurrences of term $t$ in document $d$, and $D$ is the set of documents in the corpus.
 \end{itemize}
 
 \begin{equation}
@@ -145,14 +145,14 @@ score[$c$] $\leftarrow \log P(c)$\\
 
 \subsection{K-Nearest Neighbour (KNN)}
 %http://www.cse.chalmers.se/edu/course/TDA231/mlsli11.pdf
-K-nearest neighbours (KNN) algorithm is one of the simplest machine learning
+The K-Nearest Neighbour (KNN) algorithm is one of the simplest machine learning
 algorithms. The classification performed by KNN works as follows: Fix some
 number $k$. For any new $x \in X$, take the most common classification value among
 the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
 \\\\
 Even though the KNN algorithm
 seems extraordinary simple there are some things that one must take in
-consideration. First of all what is nearest? There is of course a natural
+consideration. First of all, how is distance defined? There is of course a natural
 distance function in a geometrical space but a proper definition in parameter
 space is not obvious. As it turn out a distance function can be defined in a lot
 of ways. The given attributes are overall very different in reality.

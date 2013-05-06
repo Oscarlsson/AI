@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> 
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Shrdlite</title>
+  <style type="text/css">
+    svg {border: 2px solid black; background-color: #dde}
+    body {background-color: #aac; font-family:Palatino,serif; margin:1em}
+    #response {font-style:italic}
+    #footer {padding-top:1em; font-size:0.8em}
+    #debugdiv {text-align:right; float:right; margin-right:2em}
+    #debug {display:none; background-color:#ccf; border-collapse:collapse}
+    #debug td {border:1px black solid; vertical-align:top; padding:2pt; font-size:0.8em}
+    #license {color:#555; text-align:left; float:left; margin-left:2em}
+    #inputexamples {width:1em}
+  </style> 
+  <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="world.js"></script>
+  <script type="text/javascript" src="shrdlite.js"></script>
+</head>
+<body>
+<center>
+<h1><a href="shrdlite.html">Shrdlite</a></h1>
+<div id="svgdiv"></div>
+<p id="response"></p>
+<form id="inputform">
+  <p><input type="text" id="userinput" size="100">
+    <select id="inputexamples"><option value=""></option></select>
+</form>
+
+<div id="footer">
+  <hr>
+  <div id="license">
+    <strong>shrdlite.html</strong> <br>
+    Copyright &copy; 2013, Peter Ljungl&ouml;f. <br>
+    This program comes with <em>absolutely no warranty</em>. <br>
+    This is free software, and you are welcome to redistribute it <br>
+    under certain conditions; 
+    read <a href='http://www.gnu.org/licenses/gpl.html'><em>the license</em></a> for details.
+  </div>
+  <div id="debugdiv">
+    <strong>debug</strong> <input type="checkbox" id="showdebug"> 
+    <table id="debug">
+      <tr><td><b>World</b></td><td id="debugworld"></td></tr>
+      <tr><td><b>Holding</b></td><td id="debugholding"></td></tr>
+      <tr><td><b>Trees</b></td><td id="debugtrees"></td></tr>
+      <tr><td><b>Plan</b></td><td id="debugplan"></td></tr>
+    </table>
+  </div>
+</div>
+</center>
+</body> 
+</html>

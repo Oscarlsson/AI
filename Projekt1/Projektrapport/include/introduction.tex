@@ -145,20 +145,19 @@ score[$c$] $\leftarrow \log P(c)$\\
 
 \subsection{K-Nearest Neighbour (KNN)}
 %http://www.cse.chalmers.se/edu/course/TDA231/mlsli11.pdf
-The K-Nearest Neighbour (KNN) algorithm is one of the simplest machine learning
-algorithms. The classification performed by KNN works as follows: Fix some
-number $k$. For any new $x \in X$, take the most common classification value among
-the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
+% The K-Nearest Neighbour (KNN) algorithm is one of the simplest machine learning algorithms. 
+The classification performed by K-Nearest Neighbour (KNN) works as follows: Fix some number $k$. For any new $x \in X$, take the most common classification value among the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
 \\\\
-Even though the KNN algorithm
-seems extraordinary simple there are some things that one must take in
-consideration. First of all, how is distance defined? There is of course a natural
-distance function in a geometrical space but a proper definition in parameter
-space is not obvious. As it turn out a distance function can be defined in a lot
-of ways. The given attributes are overall very different in reality.
-One may multiply each attribute variable by arbitrary factors or in other
-words stretch the coordinate axes arbitrary and independent. It is very easy to
-find examples when doing so will result in very different outcomes of the classifications.
+Even though the KNN algorithm seems extraordinary simple there are some things that one must take in consideration. 
+First of all one has to define what is nearest. There is of course a natural distance function in a geometrical space but a proper definition in parameter space is not obvious.
+There are various distance metrics that could be used. Euclidean distance, Manhattan distance and dot product is commonly used functions. 
+%First of all, how is distance defined? There is of course a natural
+%distance function in a geometrical space but a proper definition in parameter
+%space is not obvious. As it turn out a distance function can be defined in a lot
+%of ways. The given attributes are overall very different in reality.
+%One may multiply each attribute variable by arbitrary factors or in other
+%words stretch the coordinate axes arbitrary and independent. It is very easy to
+%find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
 should not do so \cite{ml_2011}. 
 %This phenomena is called \emph{curse of dimensionality}. One

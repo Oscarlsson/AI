@@ -1,16 +1,17 @@
 \chapter{Results and discussion}
-To find the feature set sizes for which each algorithm performs best we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data. The result is presented in Figure \ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm and the error bar height is one standard deviation. KNN has better performance with the lower feature set size of 100 while all other algorithms have better performance on larger feature sets.
+To find the feature set sizes for which each algorithm performs best we performed in-domain sentimental analysis on all algorithms with 11 pre-selected different feature vectors as input data, with all using snowball and unigram. The result is presented in Figure \ref{fig:featuresize} where each line corresponds to the classification error of a specific algorithm and the error bar height is one standard deviation. KNN has better performance with the lower feature set size of 100 while all other algorithms have better performance on larger feature sets.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{../Plottar/feature-size100-2500all.png}
-\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying feature vector sizes.}
+\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying feature vector sizes with snowball and unigram.}
 \label{fig:featuresize}
 \end{figure}\\
+\section{Training set size}
 We continue with measuring how the training set size would affect the classification by using each algorithm's optimal feature size, where 100 features is used for KNN and 2000 for all other algorithms. The result is shown in Figure \ref{fig:trainingsize} where each algorithm is plotted individually over varying fractions of the total training size on the x-axis.\\
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{../Plottar/training_size_k_2000allknn_100.png}
-\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying training set size $\in \{10\%, 100\%\}$.}
+\caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying training set size $\in \{10\%, 100\%\}$. The feature set size is given within the parenthesis and all feature vectors was created using Snowball and unigram.}
 \label{fig:trainingsize}
 \end{figure}\\
 The SVM-algorithm does not converge below a training set size of $~40\%$ (corresponding to just below $4 000$ documents in each step of the cross validation), which is the reason for it having a $100\%$ misclassification. With a small training size the algorithms performs only slightly better than random assignment (i.e. $50\%$ for this dataset), but as the training set size increases, there are slight differences in how the algorithms perform. The Naive Bayes variants perform best, followed by the Average Perceptron. Full figures on the full training set size is shown in \ref{tab:algorithm_best_performance}.
@@ -41,7 +42,7 @@ Another connection is that groups Books, DVD and Music (2, 3 and 5) have coincid
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{../Plottar/text_categorization.png}
-	\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis).}
+	\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis). The feature vector was of size 2000 and generated with snowball and unigram.}
 	\label{fig:textcategorization}
 \end{figure}  
 
@@ -53,7 +54,7 @@ The out-of-domain task is, just like the text classification task, performed usi
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{../Plottar/outofdomain.png}
-\caption{The sentiment analysis classification error results of training on a document class subset - represented by a group of bars, and testing on all classes - represented by individual bars.}
+\caption{The sentiment analysis classification error results of training on a document class subset - represented by a group of bars, and testing on all classes - represented by individual bars.The feature vector was of size 2000 and generated with snowball and unigram. }
 \label{fig:outofdomain}
 \end{figure}  
 

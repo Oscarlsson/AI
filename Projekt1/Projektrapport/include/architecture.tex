@@ -81,4 +81,4 @@ Both of the Perceptron algorithms run a fixed number of iterations (epochs\footn
 \caption{Plot over misclassifications for different \#iterations}
 \label{fig:number_iterations}
 \end{figure}\\
-Since the Perceptron algorithms are 0/1 classifiers there were some difficulties with classifying the data as classes. This was solved by: for all data and all classes classify if data belongs to this class or not. Finally choose the class it belonged to most.
+Since the Perceptron algorithms are 0/1 classifiers there were some difficulties with classifying the data as classes. This was solved by: for all data and all classes classify if data belongs to this class or not. This classification gives a number which in the sentimental classification was just signed to get if the document was classified as positive or negative. This can not be done for classes since then a document can belong to more than one class. Instead of signing the classification the results were compared as they were and the largest one was chosen, i.e. the class the document belonged to at most. 

@@ -1,6 +1,7 @@
 import PGF
 import Data.Maybe
 import Shrdlite
+import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
 type Block = String
 type Holding = Maybe Block
@@ -12,19 +13,29 @@ type State = (Holding, World)
 type Goal = State -- Kan behöva bestå av GF-haskell-typer
 
 -- 
-data Instruction = Drop Location | Pick Location
+data Instruction = Drop Location | Pick Location deriving (Show, Eq)
+instance Ord Instruction where
+	Pick l1 `compare` Pick l2 = l1 `compare` l2
+	Drop l1 `compare` Drop l2 = l1 `compare` l2
+	Pick l1 `compare` Drop l2 = l1 `compare` l2
+	Drop l1 `compare` Pick l2 = l1 `compare` l2
+---instance Eq Instruction where
+---	_ == _ = True
 
 initialState :: State
 initialState = (Nothing,
 	[[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
 	)
 
-allLegalMoves :: State -> [Instruction]
-allLegalMoves = undefined
+s2 :: State
+s2 = fromJust $ action initialState (Pick 1)
 
-finished :: State -> Goal -> Bool
-finished = undefined
+goal :: Goal
+goal = (Just "a",
+	[[], ["b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+	)
 
+-- Actions
 action :: State -> Instruction -> Maybe State
 action s@(_, world) i@(Pick location)
 	| isPossible s i = Just (Just pickedBlockId, s')
@@ -42,7 +53,18 @@ action s@(Just holding, world) i@(Drop location)
 
 --- Methods for legal moves
 legalDrop :: GBlock -> GBlock -> Bool
-legalDrop (Gblock _ _ _) (Gblock _ _ _) = True
+legalDrop (Gblock _ _ _) (Gblock Gpyramid _ _) = False
+legalDrop (Gblock _ _ _) (Gblock Gball _ _) = False
+legalDrop (Gblock _ Gsmall _) _ = True 
+legalDrop (Gblock _ Gtall _) _ = True 
+legalDrop (Gblock _ Gmedium _) (Gblock _ Gmedium _) = True
+legalDrop (Gblock _ Gmedium _) (Gblock _ Gwide _) = True
+legalDrop (Gblock _ Gmedium _) (Gblock _ Glarge _) = True
+legalDrop (Gblock _ Gwide _) (Gblock _ Gwide _) = True
+legalDrop (Gblock _ Gwide _) (Gblock _ Glarge _) = True
+legalDrop (Gblock _ Glarge _) (Gblock _ Glarge _) = True
+legalDrop (Gblock _ Glarge _) (Gblock _ Gwide _) = True
+legalDrop (Gblock _ _ _) (Gblock _ _ _) = False
 
 isPossible :: State -> Instruction -> Bool
 isPossible (Just _, _) (Pick _) = False
@@ -54,9 +76,14 @@ isPossible s@(_, world) (Drop location)
 	| otherwise = legalDrop (fromJust $ blockAtHolding s) (fromJust $ stack)
 	where stack = blockAtLocation s location
 
+allLegalMoves :: State -> [Instruction]
+allLegalMoves s@(Nothing, world) = 
+	filter (\instr -> isPossible s instr) (map (\i -> Pick i) [0..length world - 1])
+allLegalMoves s@(Just _, world) = 
+	filter (\instr -> isPossible s instr) (map (\i -> Drop i) [0..length world - 1])
 
-
-
+finished :: State -> Goal -> Bool
+finished s g = s == g
 
 --- Methods to retrieve GBlock
 blockAtHolding :: State -> Maybe GBlock
@@ -70,17 +97,74 @@ blockAtLocation (holding, world) location
 	where stack = world!!location 
 
 tempBlock :: String -> GBlock
-tempBlock "a" = Gblock Grectangle Gtall Gblue
-tempBlock "b" = Gblock Gball Gtall Gblue
-tempBlock "c" = Gblock Gsquare Gtall Gblue
-tempBlock "d" = Gblock Gpyramid Gtall Gblue
-tempBlock "e" = Gblock Gbox Gtall Gblue
-tempBlock "f" = Gblock Grectangle Gtall Gblue
-tempBlock "g" = Gblock Grectangle Gtall Gblue
-tempBlock "h" = Gblock Grectangle Gtall Gblue
-tempBlock "i" = Gblock Gpyramid Gtall Gblue
-tempBlock "j" = Gblock Gbox Gtall Gblue
-tempBlock "k" = Gblock Gball Gtall Gblue
-tempBlock "l" = Gblock Gbox Gtall Gblue
-tempBlock "m" = Gblock Gball Gtall Gblue
+tempBlock	"a"	=	Gblock	Grectangle	Gtall		Gblue  
+tempBlock	"b"	=	Gblock	Gball		Gsmall		Gwhite 
+tempBlock	"c"	=	Gblock	Gsquare		Glarge		Gred   
+tempBlock	"d"	=	Gblock	Gpyramid	Glarge		Ggreen 
+tempBlock	"e"	=	Gblock	Gbox		Glarge		Gwhite 
+tempBlock	"f"	=	Gblock	Grectangle	Gwide		Gblack 
+tempBlock	"g"	=	Gblock	Grectangle	Gwide		Gblue  
+tempBlock	"h"	=	Gblock	Grectangle	Gwide		Gred   
+tempBlock	"i"	=	Gblock	Gpyramid	Gmedium		Gyellow
+tempBlock	"j"	=	Gblock	Gbox		Glarge		Gred   
+tempBlock	"k"	=	Gblock	Gball		Gsmall		Gyellow
+tempBlock	"l"	=	Gblock	Gbox		Gmedium		Gred   
+tempBlock	"m"	=	Gblock	Gball		Gmedium		Gblue  
+
+
+
+
+
+
+
+
+
+-- A*
+heuristic :: State -> Int
+heuristic _ = 1
+
+type History = [Instruction]
+type Node = (State, History)
+type PQ = PSQ Node Int
+type Seen = [State]
+
+pq :: PQ
+pq = PSQ.singleton (initialState, []) (heuristic initialState)
+
+pop :: PQ -> (Node, PQ)
+pop pq = (n,pq')
+	where
+		n = key $ fromJust $ PSQ.findMin pq
+		pq' = PSQ.deleteMin pq
+
+--astaralg :: PQ -> Seen -> PQ -> Seen 
+--astraalg = undefined
+--astaralg pq s = map pop.insert pq (s') 
+--	where 
+--		(n,pq') = pop pq 
+--		s' = map action (allLegalMoves $ fst n)
+addAll :: PQ -> [Node] -> PQ
+addAll pq nodes = foldl (\pq' node -> PSQ.insert node (heuristic $ fst node) pq') pq nodes   
+						  
+
+successors :: Node -> [Node]
+successors n@(s,h) = nodes
+	where 
+		moves = allLegalMoves s
+		states = map (\m -> fromJust $ action s m) moves 
+		histories = map (\instr -> h++[instr]) moves
+		nodes = zip states histories
+
+astar :: State -> Goal -> History
+astar s g = 
+
+astar' :: PQ -> Seen -> (PQ, Maybe Node)
+astar' pq seen 
+		| finished n = pq'' 
+		| otherwise  = astar' pq'' seen'
+		where
+			(n,pq') = pop pq
+			seen' = (fst n):seen
+			succs = filter (\state -> not $ elem (fst state) seen' ) (successors n)
+			pq'' = addAll pq' succs
 

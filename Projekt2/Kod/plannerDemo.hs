@@ -23,17 +23,25 @@ instance Ord Instruction where
 ---	_ == _ = True
 
 initialState :: State
-initialState = (Nothing,
-	[[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
-	)
+initialState = (Nothing, [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
 
-s2 :: State
-s2 = fromJust $ action initialState (Pick 1)
+testInitial1 :: State
+testInitial1 = fromJust $ action initialState (Pick 1)
 
-goal :: Goal
-goal = (Just "a",
-	[[], ["b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
-	)
+goal1 :: Goal
+goal1 = (Just "a", [[], ["b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
+
+goal2 :: Goal
+goal2 = (Nothing, [[], [], ["c","a","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
+
+goal3 :: Goal
+goal3 = (Nothing, [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
+
+goal4 :: Goal
+goal4 = (Nothing, [[], ["a","b"], ["d"], [], ["c","e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
+
+goal5 :: Goal
+goal5 = (Nothing, [[], ["a","b"], ["c", "d"], [], ["e","f","g","h","i"], [], ["j","k"], [], [], ["l","m"]])
 
 -- Actions
 action :: State -> Instruction -> Maybe State
@@ -119,9 +127,11 @@ tempBlock	"m"	=	Gblock	Gball		Gmedium		Gblue
 
 
 
+stateDistance :: State -> Goal -> Int
+stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 -- A*
-heuristic :: State -> Int
-heuristic _ = 1
+heuristic :: State -> Goal -> Int
+heuristic s g = stateDistance s g
 
 type History = [Instruction]
 type Node = (State, History)
@@ -129,7 +139,7 @@ type PQ = PSQ Node Int
 type Seen = [State]
 
 pq :: State -> PQ
-pq s = PSQ.singleton (s, []) (heuristic s)
+pq s = PSQ.singleton (s, []) 0
 
 pop :: PQ -> (Node, PQ)
 pop pq = (n,pq')
@@ -143,8 +153,8 @@ pop pq = (n,pq')
 --	where 
 --		(n,pq') = pop pq 
 --		s' = map action (allLegalMoves $ fst n)
-addAll :: PQ -> [Node] -> PQ
-addAll pq nodes = foldl (\pq' node -> PSQ.insert node (heuristic $ fst node) pq') pq nodes   
+addAll :: PQ -> [Node] -> Goal -> PQ
+addAll pq nodes g = foldl (\pq' node -> PSQ.insert node ((length $ snd node) + (heuristic (fst node) g)) pq') pq nodes   
 						  
 
 successors :: Node -> [Node]
@@ -170,5 +180,12 @@ astar' pq seen goal
 			(n,pq') = pop pq
 			seen' = (fst n):seen
 			succs = filter (\state -> not $ elem (fst state) seen' ) (successors n)
-			pq'' = addAll pq' succs
+			pq'' = addAll pq' succs goal
+
+	
+
+
+
+
+
 

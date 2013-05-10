@@ -128,8 +128,8 @@ type Node = (State, History)
 type PQ = PSQ Node Int
 type Seen = [State]
 
-pq :: PQ
-pq = PSQ.singleton (initialState, []) (heuristic initialState)
+pq :: State -> PQ
+pq s = PSQ.singleton (s, []) (heuristic s)
 
 pop :: PQ -> (Node, PQ)
 pop pq = (n,pq')
@@ -155,13 +155,17 @@ successors n@(s,h) = nodes
 		histories = map (\instr -> h++[instr]) moves
 		nodes = zip states histories
 
-astar :: State -> Goal -> History
-astar s g = 
+astar :: State -> Goal -> Maybe History
+astar s g 
+	| isNothing result = Nothing
+	| otherwise = Just (snd $ fromJust result)
+	where result = snd $ astar' (pq s) [] g
 
-astar' :: PQ -> Seen -> (PQ, Maybe Node)
-astar' pq seen 
-		| finished n = pq'' 
-		| otherwise  = astar' pq'' seen'
+astar' :: PQ -> Seen -> Goal -> (PQ, Maybe Node)
+astar' pq seen goal 
+		| finished (fst n) goal = (pq'', Just n)
+--fail  | fail = (pq'', Nothing)
+		| otherwise = astar' pq'' seen' goal
 		where
 			(n,pq') = pop pq
 			seen' = (fst n):seen

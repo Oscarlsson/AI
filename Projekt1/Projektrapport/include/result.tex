@@ -34,7 +34,7 @@ The SVM-algorithm does not converge below a training set size of $~40\%$ (corres
 %* bättre eller sämre reslutat än förväntat? varför?
 %* jämför algoritmerna, hur bra är de? hur lång tid tar de?\\
 \section{Text categorization}
-For the two distinct best performing algorithms, Naive Bayes TF-IDF and the Averaged Perceptron, we perform 10-fold Cross Validation on the full training set, recording the classification of each document for both algorithms, and average their results. In Figure \ref{fig:textcategorization}, each group of bars corresponds to the distribution of classifications for a given document of the corresponding class on the x-axis. Each bar corresponds to a class and the height corresponds to the fraction of times that a document was classified as such.
+For the two distinct best performing algorithms, Naive Bayes TF-IDF and the Averaged Perceptron, we perform 10-fold Cross Validation on the full training set, recording the classification of each document for both algorithms, and average their results. In Figure \ref{fig:textcategorization}, each group of bars corresponds to the distribution of classifications for a given document of the corresponding class on the x-axis. Each bar corresponds to a class and the height corresponds to the fraction of times that a document was classified as such, thus each group of bars sum to one and the height of the largest bar in each group is thus not visible since the focus is on misclassifications.
 \\\\
 Notable examples are that for each category on the x-axis, the correct and corresponding bar for that category is largest. In each group of bars, the distribution of incorrect classifications is not uniform over the remaining classes. Instead, for instance, documents from the class Camera (leftmost bar group) are often misclassified as Health and Software documents. Likewise, documents of class Health (fourth bar group) are often misclassified as Camera and Software documents. The Software documents do not show the same distinct results, even though it is there.
 \\\\
@@ -42,7 +42,7 @@ Another connection is that groups Books, DVD and Music (2, 3 and 5) have coincid
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{../Plottar/text_categorization.png}
-	\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis). The feature vector was of size 2000 and generated with snowball and unigram.}
+	\caption{The total spread of classifications for the two algorithms Naive Bayes TFIDF and the Averaged Perceptron, showing the fraction of resulting classifications (bars) for each input document of a certain class (x-axis). The feature vector was of size 2000 and generated with snowball and unigram. Each group of bars sum to one since a document of the class on the x-axis can only be classified as one of the bar in the corresponding group. The scale is cut off on the y-axis to better demonstrate the correlation between misclassifications.}
 	\label{fig:textcategorization}
 \end{figure}  
 

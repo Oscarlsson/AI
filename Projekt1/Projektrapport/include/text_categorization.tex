@@ -18,13 +18,13 @@ All processed data were stored in different Matlab binary files depending on the
 different feature selections.
 \\\\
 The generated feature vector using bigrams differed a lot from the one using
-unigram. It appeard as the bigrams were to unique and each bigram was only
+unigram. It appeard as the bigrams were too unique and each bigram was only
 present in a small number of documents, making it hard to classify.  This is
-shown in Figure~\ref{fig:docperfeature}. The maximum number of documents that contain a certain feature is for unigrams 2941 documents and for bigram 106 documents.
+shown in Figure~\ref{fig:docperfeature}. The maximum number of documents that contain a certain feature is 2941 and 106 for unigram- and bigram documents respectively.
 \begin{figure}[h!]
 \centering
-        \includegraphics[scale = 0.6]{../Plottar/documents_per_feature.png}
-\caption{Number of documents that contain a certain feature}
+\includegraphics[scale = 0.6]{../Plottar/documents_per_feature.png}
+\caption{The number of documents that contain a certain feature for the two feature sets unigram (max 2941) and bigram (max 106), demonstrating that the bigram features are more specific to individual documents.}
 \label{fig:docperfeature}
 \end{figure}
 %Feature values corresponds to the term occurrence frequencies.

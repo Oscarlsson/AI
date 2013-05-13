@@ -1,3 +1,5 @@
+module NLPParser where
+
 import PGF
 import Data.Maybe
 import Shrdlite
@@ -34,23 +36,19 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"take the tall square"
         --"put a red block beside a blue block"    
         --"take the pyramid that is to the left of all boxes" 
-        --"put the white ball to the left of all blocks"
+        "put the white ball to the left of all blocks"
         --"move the red box left of all red boxes" #This is possible, we can motivate it
-        "take the red box that is to the left of all boxes"
+        --"take the red box that is to the left of all boxes"
+
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\"']) $ map toLower xs
 
-main :: IO ()
-main = do  
-    shrdPGF <- readPGF "Shrdlite.pgf"
-    print $ languages shrdPGF 
+runParser :: PGF ->  [Err Output]
+runParser shrdPGF = do  
+    --shrdPGF <- readPGF "Shrdlite.pgf"
     let lang = head $ languages shrdPGF
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString command 
-    let ex = if null exs then error "no parse" else head exs
-    print (fg ex :: GS)  
-    case traverseTree (fg ex) of 
-        Ok o -> print o 
-        Bad s -> print s 
+    map (traverseTree . fg) exs    
 
 world :: [[String]] 
 world = [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

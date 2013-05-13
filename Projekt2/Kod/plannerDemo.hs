@@ -3,6 +3,10 @@ import Data.Maybe
 import Shrdlite
 import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
+import qualified NLPParser as P
+import ErrM 
+import qualified Blocks as B
+
 type Block = String
 type Holding = Maybe Block
 type Location = Int
@@ -22,6 +26,25 @@ instance Ord Instruction where
 ---instance Eq Instruction where
 ---	_ == _ = True
 
+command :: String 
+command = --"Put the blue block that is to the left of a pyramid in a medium-sized box"
+         -- "put all red blocks left of a white box"
+        --"Put the blue block that is to the left of a pyramid in a medium-sized box."
+        --"Move all blocks inside a box on top of the red square?"
+        --"Put the wide blue block under the black rectangle."
+        --"move all wide rectangles into a red box"
+        --"put all blue blocks in a red box."
+        --"take the floor"
+        --"take the ball that is left of all blocks"
+        -- "take the ball beside the floor"
+        --"take the ball that is beside all blocks"
+        --"take the tall square"
+        --"put a red block beside a blue block"    
+        --"take the pyramid that is to the left of all boxes" 
+        "put the white ball to the left of all blocks"
+        --"move the red box left of all red boxes" #This is possible, we can motivate it
+        --"take the red box that is to the left of all boxes"
+		--
 initialState :: State
 initialState = (Nothing, [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
 
@@ -42,6 +65,12 @@ goal4 = (Nothing, [[], ["a","b"], ["d"], [], ["c","e","f","g","h","i"], [], [], 
 
 goal5 :: Goal
 goal5 = (Nothing, [[], ["a","b"], ["c", "d"], [], ["e","f","g","h","i"], [], ["j","k"], [], [], ["l","m"]])
+
+main :: IO ()
+main = do
+--- output <- readPGF "Shrdlite.pgf" >>= return . P.runParser
+	output <- readPGF "Shrdlite.pgf" 
+	print $ P.runParser output command
 
 -- Actions
 action :: State -> Instruction -> Maybe State

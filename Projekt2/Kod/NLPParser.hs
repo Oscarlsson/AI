@@ -43,11 +43,11 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\"']) $ map toLower xs
 
-runParser :: PGF ->  [Err Output]
-runParser shrdPGF = do  
+runParser :: PGF -> String -> [Err Output]
+runParser shrdPGF com = do  
     --shrdPGF <- readPGF "Shrdlite.pgf"
     let lang = head $ languages shrdPGF
-    let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString command 
+    let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com 
     map (traverseTree . fg) exs    
 
 world :: [[String]] 

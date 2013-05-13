@@ -44,7 +44,7 @@ instance Gf GFloat where
 data GBlock =
    Gblock GForm GSize GColor 
  | Gthatis GBlock GLocation 
-  deriving Show
+  deriving (Show,Eq)
 
 data GColor =
    Ganycolor 
@@ -54,7 +54,7 @@ data GColor =
  | Gred 
  | Gwhite 
  | Gyellow 
-  deriving Show
+  deriving (Show,Eq)
 
 data GForm =
    Ganyblock 
@@ -63,7 +63,7 @@ data GForm =
  | Gpyramid 
  | Grectangle 
  | Gsquare 
-  deriving Show
+  deriving (Show,Eq)
 
 data GLocation =
    Gabove GThing 
@@ -73,13 +73,13 @@ data GLocation =
  | Gontop GThing 
  | Grightof GThing 
  | Gunder GThing 
-  deriving Show
+  deriving (Show,Eq)
 
 data GS =
    Gmove GThing GLocation 
  | Gput GLocation 
  | Gtake GThing 
-  deriving Show
+  deriving (Show,Eq)
 
 data GSize =
    Ganysize 
@@ -88,14 +88,14 @@ data GSize =
  | Gsmall 
  | Gtall 
  | Gwide 
-  deriving Show
+  deriving (Show,Eq)
 
 data GThing =
    Gall GBlock 
  | Gany GBlock 
  | Gfloor 
  | Gthe GBlock 
-  deriving Show
+  deriving (Show,Eq)
 
 
 instance Gf GBlock where

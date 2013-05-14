@@ -145,8 +145,11 @@ isUnder ((b1,b2),xs) = name b1 `elem` xs && name b2 `elem` xs &&
 isOnTop :: ((Block,Block),[String]) -> Bool 
 isOnTop ((b1,b2),xs) = name b1 `elem` xs && name b2 `elem` xs && last xs == name b2 
 
+isHolding :: Block -> [[String]] -> Bool
+isHolding b w = not $ or $ map (\ss -> name b `elem` ss) w
+
 isLeftOf :: [[String]] -> (Block,Block) -> Bool 
-isLeftOf w (b1,b2) = or $ map (\ss -> name b2 `elem` ss) ys  
+isLeftOf w (b1,b2) = (not $ isHolding b1 w) && (or $ map (\ss -> name b2 `elem` ss) ys)
             where ys = takeWhile (\ss -> not $ name b1 `elem` ss) w 
 
 isRightOf :: [[String]] -> (Block,Block) -> Bool

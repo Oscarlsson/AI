@@ -11,7 +11,7 @@ type Block = String
 type Holding = Maybe Block
 type Location = Int
 
-type World = [[[Char]]]
+type World = [[Block]]
 type State = (Holding, World)
 
 ---type Goal = State -- Kan behöva bestå av GF-haskell-typer
@@ -32,12 +32,21 @@ heuristic s g = 1
 
 
 
-
+command :: String 
+command = --- "put the green pyramid to the left of the blue tall rectangle"
+		  "put the black block to the left of the green pyramid"
 main :: IO ()
 main = do
 	shrdPGF <- readPGF "Shrdlite.pgf" 
 	let o = handleOutput $ head $ P.runParser shrdPGF command
 	print $ finished initialState o
+	print command
+	print o
+	putStrLn ""
+	let s2 = fromJust $ action initialState (Pick 2)
+	case o of
+		(P.O P.Move (b1:bs) (P.LeftOf b2)) -> do
+			print $ P.isLeftOf (snd s2) (b2, b1)
 	case o of
 		(P.O P.Move (b1:bs) (P.LeftOf b2))
 			| P.isLeftOf (snd initialState) (b2, b1) -> do
@@ -49,6 +58,9 @@ main = do
 	print $ astar initialState o
 
 
+handleOutput :: Err P.Output -> P.Output
+handleOutput (Ok o) = o
+handleOutput (Bad s) = error "Hoho" 
 -- 
 data Instruction = Drop Location | Pick Location deriving (Show, Eq)
 instance Ord Instruction where
@@ -59,51 +71,8 @@ instance Ord Instruction where
 ---instance Eq Instruction where
 ---	_ == _ = True
 
-command :: String 
-command = --"Put the blue block that is to the left of a pyramid in a medium-sized box"
-         -- "put all red blocks left of a white box"
-        --"Put the blue block that is to the left of a pyramid in a medium-sized box."
-        --"Move all blocks inside a box on top of the red square?"
-        --"Put the wide blue block under the black rectangle."
-        --"move all wide rectangles into a red box"
-        --"put all blue blocks in a red box."
-        --"take the floor"
-        --"take the ball that is left of all blocks"
-        -- "take the ball beside the floor"
-        --"take the ball that is beside all blocks"
-        --"take the tall square"
-        --"put a red block beside a blue block"    
-        --"take the pyramid that is to the left of all boxes" 
-        ---"put the white ball to the left of all blocks"
-		"put the green pyramid to the left of the blue tall rectangle"
-        --"move the red box left of all red boxes" #This is possible, we can motivate it
-        --"take the red box that is to the left of all boxes"
-		--
 initialState :: State
 initialState = (Nothing, [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
-
-testInitial1 :: State
-testInitial1 = fromJust $ action initialState (Pick 1)
-
----goal1 :: Goal
----goal1 = (Just "a", [[], ["b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
----
----goal2 :: Goal
----goal2 = (Nothing, [[], [], ["c","a","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
----
----goal3 :: Goal
----goal3 = (Nothing, [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
----
----goal4 :: Goal
----goal4 = (Nothing, [[], ["a","b"], ["d"], [], ["c","e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]])
----
----goal5 :: Goal
----goal5 = (Nothing, [[], ["a","b"], ["c", "d"], [], ["e","f","g","h","i"], [], ["j","k"], [], [], ["l","m"]])
-
-
-handleOutput :: Err P.Output -> P.Output
-handleOutput (Ok o) = o
-handleOutput (Bad s) = error "Hoho" 
 
 -- Actions
 action :: State -> Instruction -> Maybe State

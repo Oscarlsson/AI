@@ -24,26 +24,6 @@ findBlockByName str w | isJust maybeBlock = maybeBlock
 
 --------------------------------------------------------------------------------
 
-pick :: Block -> World -> Maybe World 
-pick b w | validPick b w = return $ w {holding = Just b, ground = ground $ newWorld, indexes = indexes newWorld} 
-         | otherwise     = Nothing 
-            where newWorld = deleteBlock b w  
-
-deleteBlock :: Block -> World -> World 
-deleteBlock b w = w {ground = M.update (return . tail) i (ground w), indexes = M.delete b (indexes w)}  
-        where i = fromJust $ M.lookup b (indexes w)
-
-drop :: Int -> World -> Maybe World 
-drop i w | validDrop i w = return $ w {holding = Nothing, ground = ground $ newWorld, indexes = indexes newWorld}
-         | otherwise = Nothing 
-            where newWorld = addBlock i (fromJust $ holding w) w
-
-addBlock :: Int -> Block -> World -> World 
-addBlock i b w = w {indexes = M.insert b i (indexes w), ground = M.update (return . (b :)) i (ground w)} 
-        where i = fromJust $ M.lookup b (indexes w)
-
---------------------------------------------------------------------------------
-
 isLeftOf :: Block -> Block -> World -> Bool 
 isLeftOf b1 b2 w = isOnGround b1 w && isOnGround b2 w 
                 && fromJust (liftM2 (<)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))  

@@ -50,17 +50,17 @@ validPick b w | isJust $ holding w = False
 validDrop :: Int -> World -> Bool
 validDrop i w = case holding w  of 
                     Nothing -> False 
-                    Just hold_block  -> case M.lookup i (ground w) of 
+                    Just holdBlock  -> case M.lookup i (ground w) of 
                                          Just []     -> True
-                                         Just (ground_block:xs) -> ground_block <= hold_block
+                                         Just (groundBlock:xs) -> groundBlock <= holdBlock
                                          Nothing     -> False   
 
 --------------------------------------------------------------------------------
 
---Also check holding 
 findBlockByName :: String -> World -> Maybe Block 
-findBlockByName str w = liftM fst . find (\(b,_) -> name b == str) $ M.toList (indexes w)  
-
+findBlockByName str w | isJust maybeBlock = maybeBlock 
+                      | otherwise = if liftM name (holding w) == Just str then holding w else Nothing    
+                where maybeBlock = liftM fst . find (\(b,_) -> name b == str) $ M.toList (indexes w)  
 
 --------------------------------------------------------------------------------
 

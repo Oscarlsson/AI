@@ -13,9 +13,8 @@ We continue with measuring how the training set size would affect the classifica
 \includegraphics[width=1\linewidth]{../Plottar/training_size_k_2000allknn_100.png}
 \caption{In-domain sentiment analysis classification error (error bars of height $\sigma$) for the 6 algorithms on varying training set size $\in \{10\%, 100\%\}$. The feature set size is given within the parenthesis and all feature vectors was created using Snowball and unigram.}
 \label{fig:trainingsize}
-\end{figure}\\
-The SVM-algorithm does not converge below a training set size of $~40\%$ (corresponding to just below $4 000$ documents in each step of the cross validation), which is the reason for it having a $100\%$ misclassification. With a small training size the algorithms performs only slightly better than random assignment (i.e. $50\%$ for this dataset), but as the training set size increases, there are slight differences in how the algorithms perform. The Naive Bayes variants perform best, followed by the Average Perceptron. Full figures on the full training set size is shown in \ref{tab:algorithm_best_performance}.
-
+\end{figure}\\\\\\\\\\\\\\
+The SVM-algorithm does not converge below a training set size of $~40\%$ (corresponding to just below $4 000$ documents in each step of the cross validation), which is the reason for it having a $100\%$ misclassification. With a small training size the algorithms performs only slightly better than random assignment (i.e. $50\%$ for this dataset), but as the training set size increases, there are slight differences in how the algorithms perform. The Naive Bayes variants perform best, followed by the Average Perceptron. Full figures on the full training set size is shown in \ref{tab:algorithm_best_performance}.\\
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{ | c | c | } \hline
@@ -38,7 +37,7 @@ For the two distinct best performing algorithms, Naive Bayes TF-IDF and the Aver
 \\\\
 Notable examples are that for each category on the x-axis, the correct and corresponding bar for that category is largest. In each group of bars, the distribution of incorrect classifications is not uniform over the remaining classes. Instead, for instance, documents from the class Camera (leftmost bar group) are often misclassified as Health and Software documents. Likewise, documents of class Health (fourth bar group) are often misclassified as Camera and Software documents. The Software documents do not show the same distinct results, even though it is there.
 \\\\
-Another connection is that groups Books, DVD and Music (2, 3 and 5) have coinciding errors.\\\\\\\\\\\\\\\\
+Another connection is that groups Books, DVD and Music (2, 3 and 5) have coinciding errors.\\\\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{../Plottar/text_categorization.png}

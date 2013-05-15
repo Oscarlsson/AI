@@ -94,7 +94,7 @@ features that represents the words.
         words. Unigram is one word and bigram is two words \citep{ngrams_ai}.
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
         words in the documents and give a number of how important each word is.
-        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}, where $f(t,d)$ is the number of occurrences of term $t$ in document $d$, and $D$ is the set of documents in the corpus.
+        \\This is given by Equation~\ref{eq:tfidf} \citep{tfidf}, where $f(t,d)$ is the number of occurrences of term $t$ in document $d$, and $D$ is the set of documents in the corpus.
 \end{itemize}
 
 \begin{equation}
@@ -171,11 +171,11 @@ Another issue is to find a suitable $k$. A great choose of $k$ various
 depending on many circumstances. A keystone is that if the training set is large
 it is important to get rid of noise in the data, hence increase $k$. On the other
 hand a big $k$ requires more calculation \cite{ml_2011}. An example of a suitable $k$-value 
-is shown in Figure~\ref{fig:knn}.\\\\\\\\\\\\
+is shown in Figure~\ref{fig:knn}.\\\\\\\\\\\\\\\\\\
 %https://dl.dropbox.com/u/5139428/ml-course/Classification1.pdf
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.3]{../Plottar/KNN.png}
+\includegraphics[scale=0.27]{../Plottar/KNN.png}
 \caption{A classification done by KNN, $k = 5$.}
 \label{fig:knn}
 \end{figure}
@@ -192,7 +192,7 @@ The data points that is at the margin distance from the hyperplane is called the
 The equation of the hyperplane is given by
 \begin{equation}
 w \cdot x + b = 0
-\end{equation}
+\end{equation}\\\\\\\\
 where the training data points are $x_i \in R^d$ with labels $y_i \pm 1$. $s_i$ is a slack variable and $C$ a penalty parameter and these are used to allow misclassification which is necessary if the data is non-separable. The best separating hyperplane-problem is defined as
 \begin{equation}
 \begin{array}{l}

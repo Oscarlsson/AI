@@ -13,8 +13,8 @@ import Prelude hiding (drop)
 type Ground  = M.Map Int [Block]   
 type Indexes = M.Map Block Int 
 
-data World = W {holding :: Maybe Block , ground :: Ground, indexes :: Indexes, wsize :: Int} 
-    deriving (Show)
+data World = W {holding :: Maybe Block , ground :: Ground, indexes :: Indexes, wsize :: Int}
+    deriving (Show, Eq, Ord)
 
 --------------------------------------------------------------------------------
 
@@ -105,4 +105,4 @@ getBlocksOnGroundBy f w = filter f $ M.keys (indexes w)
 
 
 --for testing purposes 
-world = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

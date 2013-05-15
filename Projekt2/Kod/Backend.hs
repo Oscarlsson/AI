@@ -24,6 +24,19 @@ instance Ord Instruction where
 
 --------------------------------------------------------------------------------
 
+validInstruction :: Instruction -> World -> Bool
+validInstruction i w = case i of 
+				Pick x -> validPickId x w 
+				Drop x -> validDrop x w 
+
+validPickId :: Int -> World -> Bool
+validPickId i w 
+			  | isJust $ holding w = False
+			  | otherwise = case M.lookup i (ground w) of 
+					Nothing		-> False
+					Just []		-> False  
+					Just (x:xs) -> True
+
 validPick :: Block -> World -> Bool 
 validPick b w | isJust $ holding w = False      
               | otherwise = 
@@ -96,7 +109,9 @@ isOnGround b w = M.member b $ indexes w
 --------------------------------------------------------------------------------
 
 allLegalMoves :: World -> [Instruction]
-allLegalMoves = undefined 
+allLegalMoves w
+				| isJust $ holding w = filter (\instr -> validInstruction instr w) (map Drop (M.keys (ground w)))
+				| otherwise = filter (\instr -> validInstruction instr w) (map Pick (M.keys (ground w)))
 
 --------------------------------------------------------------------------------
 

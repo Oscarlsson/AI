@@ -27,11 +27,11 @@ findBlockByName str w | isJust maybeBlock = maybeBlock
 
 isLeftOf :: Block -> Block -> World -> Bool 
 isLeftOf b1 b2 w = isOnGround b1 w && isOnGround b2 w 
-                && fromJust (liftM2 (<)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))  
+                && fromJust (liftM2 (>)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))  
 
 isRightOf :: Block -> Block -> World -> Bool 
 isRightOf b1 b2 w = isOnGround b1 w && isOnGround b2 w 
-                && fromJust (liftM2 (>)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))    
+                && fromJust (liftM2 (<)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))    
 
 isAbove :: Block -> Block -> World -> Bool 
 isAbove b1 b2 w = isOnGround b1 w && isOnGround b2 w && b2 `elem` xs && 
@@ -110,7 +110,7 @@ getRightMost bs w | isNothing mIndexes = Nothing
 
 getLeftMost :: [Block] -> World -> Maybe Block 
 getLeftMost bs w | isNothing mIndexes = Nothing 
-                  | otherwise = return . snd $ 
+                 | otherwise = return . snd $ 
                         minimumBy (\p1 p2 -> compare (fst p1) (fst p2)) (fromJust mIndexes `zip` bs) 
         where mIndexes = mapM  (\b -> getBlockIndex b w) bs  
 

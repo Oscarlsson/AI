@@ -41,7 +41,12 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"put the white ball to the left of all blocks"
         --"move the red box left of all red boxes" #This is possible, we can motivate it
         --"take the red box that is to the left of all boxes"
-        "put the red block on the floor"
+        --"put the red block on the floor"
+        --"take the blue block left of all red boxes" --TODO takes two copies of the same block
+        "take the blue block right of all red boxes" --TODO takes a top on top of the right most red box
+                                                     -- this can be fixed in handle location in Grightof and 
+                                                     -- Gleftof by getting all blocks in "th" and chosse the 
+                                                     -- righmost or leftmost block  
 
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\"']) $ map toLower xs
@@ -50,7 +55,7 @@ modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\
 tmpMain :: IO () 
 tmpMain = do
     shrdPGF <- readPGF "Shrdlite.pgf"
-    case createWorld world "" blocks of 
+    case createWorld world "" blocks of
         Nothing -> putStrLn "can't parse world"
         Just w  -> print $ runParser shrdPGF command w 
 
@@ -58,7 +63,8 @@ runParser :: PGF -> String -> World -> [Err Output]
 runParser shrdPGF com w = do  
     --shrdPGF <- readPGF "Shrdlite.pgf"
     let lang = head $ languages shrdPGF
-    let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com 
+    let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com
+    error $ show $ (fg (head exs) :: GS) 
     map (\gs -> traverseTree (fg gs) w) exs    
 
 

@@ -2,12 +2,9 @@
 
 import cgi
 from subprocess import Popen, PIPE
-from os.path import expanduser
 
-home = expanduser("~")
-
-GF_LIB_PATH = home + "/.cabal/share/gf-3.4/lib"
-PARSER = [home + "/.cabal/bin/gf", "--gf-lib-path", GF_LIB_PATH,
+GF_LIB_PATH = "/usr/local/share/gf-3.4/lib"
+PARSER = ["/usr/local/bin/gf", "--gf-lib-path", GF_LIB_PATH, 
           "--run", "ShrdliteEng.gf", "ShrdliteSem.gf"]
 GFCOMMAND = 'p -lang=ShrdliteEng "%s" | l -lang=ShrdliteSem'
 
@@ -19,7 +16,7 @@ GF_ERRORS = ["None of these files exists",
              "  constant not found",
              "  no overload instance",
              "  function type expected",
-             "  missing record fields",
+             "  missing record fields", 
              "  cannot unify",
              ]
 
@@ -57,12 +54,13 @@ def parse_userinput(userinput):
 
 def main_cgi():
     print HEADER
-    form = cgi.FieldStorage()
+    form = cgi.FieldStorage() 
     userinput = form.getfirst("input")
     if not userinput:
         raise ValueError("I need a CGI parameter 'input'.")
-    for tree in parse_userinput(userinput):
-        print tree
+    print userinput
+    #for tree in parse_userinput(userinput):
+    #    print tree
 
 if __name__ == '__main__':
     try:

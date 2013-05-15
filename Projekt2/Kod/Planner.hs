@@ -28,7 +28,7 @@ initialWorld = fromJust $ createWorld initWorld2 "" blocks
 --------------------------------------------------------------------------------
 type Goal = P.Output 
 finished :: World -> Goal -> Bool
-finished w (P.O P.Move (b1:bs) (P.LeftOf b2)) = isLeftOf b1 b2 w
+finished w (P.O P.Move (b1:bs) (P.LeftOf b2)) = isLeftOf b1 b2 w -- && not (isOnPoss b1 4 w)
 ---stateDistance :: State -> Goal -> Int
 ---stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 heuristic :: World -> Goal -> Int
@@ -37,38 +37,48 @@ heuristic w g = 1
 
 command :: String
 command = "put the black block to the left of the green pyramid"
-main :: IO ()
-main = do
-	shrdPGF <- readPGF "Shrdlite.pgf" 
-	let o = handleOutput $ head $ P.runParser shrdPGF command
-	print $ finished initialWorld o
-	print command
-	print o
-	putStrLn ""
-	let w2 = fromJust $ action (Pick 2) initialWorld 
-	case o of
-		(P.O P.Move (b1:bs) (P.LeftOf b2)) -> do
-			print $ isLeftOf b2 b1 w2
-	case o of
-		(P.O P.Move (b1:bs) (P.LeftOf b2))
-			| isLeftOf b2 b1 initialWorld -> do
-				print initialWorld
-				print b1
-				print b2
-				print "foo"
-			| otherwise -> print "foobar"
-	print $ astar initialWorld o
+--command = "take the yellow ball"
+--  runPlan :: IO History
+--  runPlan = do shrdPGF <- readPGF "Shrdlite.pgf"
+--               let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
+--               return $ fromJust $ astar initialWorld o
+
+--  main :: IO ()
+--  main = do
+--      shrdPGF <- readPGF "Shrdlite.pgf" 
+--      let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
+--      print $ finished initialWorld o
+--      print command
+--      print o
+--      putStrLn ""
+--      let w2 = fromJust $ action (Pick 2) initialWorld 
+--      case o of
+--          (P.O P.Move (b1:bs) (P.LeftOf b2)) -> do
+--              print $ isLeftOf b2 b1 w2
+--      case o of
+--          (P.O P.Move (b1:bs) (P.LeftOf b2))
+--              | isLeftOf b2 b1 initialWorld -> do
+--                  print initialWorld
+--                  print b1
+--                  print b2
+--                  print "foo"
+--              | otherwise -> print "foobar"
+--      print $ astar initialWorld o
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o
-handleOutput (Bad s) = error "Hoho" 
+handleOutput (Bad s) = error s
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-data Instruction = Drop Int | Pick Int deriving (Show, Eq)
+data Instruction = Drop Int | Pick Int deriving (Eq)
+instance Show Instruction where
+    show (Pick l) = "pick " ++ (show l)
+    show (Drop l) = "drop " ++ (show l)
+
 instance Ord Instruction where
 	Pick l1 `compare` Pick l2 = l1 `compare` l2
 	Drop l1 `compare` Drop l2 = l1 `compare` l2

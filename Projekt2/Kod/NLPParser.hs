@@ -43,13 +43,14 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"take the red box that is to the left of all boxes"
         --"put the red block on the floor"
         --"take the blue block left of all red boxes" --TODO takes two copies of the same block
-        "take the blue block right of all red boxes" --TODO takes a top on top of the right most red box
+        --"take the blue block right of all red boxes" --TODO takes a top on top of the right most red box
                                                      -- this can be fixed in handle location in Grightof and 
                                                      -- Gleftof by getting all blocks in "th" and chosse the 
                                                      -- righmost or leftmost block  
+          "put the black box to the left of the green pyramid" -- Fails with "No such block" .. TODO
 
 modifyString :: String -> String 
-modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\"']) $ map toLower xs
+modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','[',']','\\','\"']) $ map toLower xs
 
 --For testing purposes 
 tmpMain :: IO () 
@@ -64,9 +65,8 @@ runParser shrdPGF com w = do
     --shrdPGF <- readPGF "Shrdlite.pgf"
     let lang = head $ languages shrdPGF
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com
-    error $ show $ (fg (head exs) :: GS) 
+--    error $ show $ (fg (head exs) :: GS) 
     map (\gs -> traverseTree (fg gs) w) exs    
-
 
 traverseTree :: GS -> World -> Err Output  
 traverseTree gs w = case gs of 

@@ -7,6 +7,7 @@ import Network.CGI
 import Data.Maybe (fromMaybe, fromJust)
 import Data.List (findIndex)
 import Control.Monad (liftM)
+import Planner
 
 type Block = String
 type World = [[Block]]
@@ -21,16 +22,7 @@ cgiMain = do setHeader "Content-type" "text/plain"
 
 
 findPlan :: Block -> World -> [Tree] -> [String]
-findPlan holding world trees 
-    = ["# Stupid Haskell planner!",
-       "# Holding: " ++ holding,
-       "# World: " ++ show world] ++ 
-      ["# Tree " ++ show n ++ ": " ++ t | 
-       (n, t) <- zip [0..] trees] ++ 
-      ["This is a stupid move!",
-       "pick " ++ show stacknr,
-       "drop " ++ show stacknr]
-    where stacknr = fromMaybe 0 (findIndex (not . null) world)
+findPlan holding word trees = ["pick 1", "drop 8"]
 
 
 cgiInput :: CGI (Block, World, [Tree])

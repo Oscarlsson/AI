@@ -58,8 +58,10 @@ def main_cgi():
     userinput = form.getfirst("input")
     if not userinput:
         raise ValueError("I need a CGI parameter 'input'.")
-    for tree in parse_userinput(userinput):
-        print tree
+    # parseing is done in planner.hs
+    print userinput
+    #for tree in parse_userinput(userinput):
+    #    print tree
 
 if __name__ == '__main__':
     try:

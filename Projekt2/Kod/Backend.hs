@@ -66,7 +66,8 @@ isEmptyIndex :: Int -> World -> Bool
 isEmptyIndex i w = case M.lookup i (ground w) of 
                         Just [] -> True
                         _       -> False  
-
+isOnPoss :: Block -> Int -> World -> Bool
+isOnPoss b i w = i ==  (fromJust $ getBlockIndex b w)
 --------------------------------------------------------------------------------
 
 createWorld :: [[String]] -> String -> [Block] -> Maybe World

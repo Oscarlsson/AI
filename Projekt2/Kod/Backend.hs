@@ -15,7 +15,12 @@ type Indexes = M.Map Block Int
 data World = W {holding :: Maybe Block , ground :: Ground, indexes :: Indexes} 
     deriving (Show)
 
-data Instruction = Pick | Drop 
+data Instruction = Drop Int | Pick Int deriving (Show, Eq)
+instance Ord Instruction where
+	Pick l1 `compare` Pick l2 = l1 `compare` l2
+	Drop l1 `compare` Drop l2 = l1 `compare` l2
+	Pick l1 `compare` Drop l2 = l1 `compare` l2
+	Drop l1 `compare` Pick l2 = l1 `compare` l2
 
 --------------------------------------------------------------------------------
 

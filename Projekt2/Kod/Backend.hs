@@ -12,7 +12,7 @@ import Data.Tuple (swap)
 type Ground  = M.Map Int [Block]   
 type Indexes = M.Map Block Int 
 
-data World = W {holding :: Maybe Block , ground :: Ground, indexes :: Indexes} 
+data World = W {holding :: Maybe Block , ground :: Ground, indexes :: Indexes, wsize :: Int} 
     deriving (Show)
 
 --------------------------------------------------------------------------------
@@ -32,8 +32,8 @@ isRightOf :: Block -> Block -> World -> Bool
 isRightOf b1 b2 w = isOnGround b1 w && isOnGround b2 w 
                 && fromJust (liftM2 (>)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))    
 
-isOnTopOf :: Block -> Block -> World -> Bool 
-isOnTopOf b1 b2 w = isOnGround b1 w && isOnGround b2 w && b2 `elem` xs && 
+isAbove :: Block -> Block -> World -> Bool 
+isAbove b1 b2 w = isOnGround b1 w && isOnGround b2 w && b2 `elem` xs && 
                 fromJust (liftM2 (<)  (findIndex (==b1) xs) (findIndex (==b2) xs))   
             where xs = fromJust $ M.lookup  (fromJust $ M.lookup b1 (indexes w)) (ground w) 
 
@@ -45,16 +45,37 @@ isUnder b1 b2 w = isOnGround b1 w && isOnGround b2 w && b2 `elem` xs &&
 isOnGround :: Block -> World -> Bool 
 isOnGround b w = M.member b $ indexes w   
 
+isOnTop :: Block -> Block -> World -> Bool 
+isOnTop b1 b2 w = liftM2 (==) mi1 mi2 == Just True && (head . fromJust $ M.lookup (fromJust mi1) (ground w)) == b2 
+            where (mi1, mi2) = (getBlockIndex b1 w, getBlockIndex b2 w) 
+    
+isOnBottom :: Block -> World -> Bool 
+isOnBottom b w | isJust mi = (last . fromJust $ M.lookup (fromJust mi) (ground w)) == b
+               | otherwise = False  
+            where mi = getBlockIndex b w 
+    
+
+isBeside :: Block -> Block -> World -> Bool 
+isBeside b1 b2 w = isLeftOf b1 b2 w || isRightOf b1 b2 w
+   
+isHolding :: Block -> World -> Bool
+isHolding b w = liftM (== name b) (liftM name (holding w)) == Just True  
+
+isEmptyIndex :: Int -> World -> Bool 
+isEmptyIndex i w = case M.lookup i (ground w) of 
+                        Just [] -> True
+                        _       -> False  
 
 --------------------------------------------------------------------------------
 
 createWorld :: [[String]] -> String -> [Block] -> Maybe World
 createWorld ss "" bs = case (createGround ss bs , createIndexes ss bs) of 
-                            (Just gr,Just ind) -> Just $ W {ground = gr , indexes = ind, holding = Nothing}
+                            (Just gr,Just ind) -> Just $ W {ground = gr , indexes = ind, 
+                                                            holding = Nothing, wsize = length ss}
                             _                  -> Nothing 
 createWorld ss hol bs = case (createGround ss bs , createIndexes ss bs,getBlock hol bs) of 
                             (Just gr,Just ind, Just hol') -> 
-                                Just $ W {ground = gr , indexes = ind, holding = Just hol'}
+                                Just $ W {ground = gr , indexes = ind, holding = Just hol', wsize = length ss}
                             _                             -> Nothing 
 
 createGround :: [[String]] -> [Block] -> Maybe Ground
@@ -70,7 +91,17 @@ createBlocks' :: Int -> [String] -> [Block] -> Maybe (Int,[Block])
 createBlocks' i ss bs = liftM (\bs -> (i,reverse bs)) $ mapM (\s -> getBlock s bs) ss    
 
 getBlock :: String -> [Block] -> Maybe Block 
-getBlock ss bs = find (\b -> name b == ss) bs   
- 
+getBlock ss bs = find (\b -> name b == ss) bs
+
+----------------------------------------------------------------------- 
+
+getBlockIndex :: Block -> World -> Maybe Int
+getBlockIndex b w = M.lookup b (indexes w)  
+
+getBlocksOnGroundBy :: (Block -> Bool) -> World -> [Block]    
+getBlocksOnGroundBy f w = filter f $ M.keys (indexes w)  
+
+
+
 --for testing purposes 
 world = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

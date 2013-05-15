@@ -1,4 +1,18 @@
+module Planner where
 
+import Backend
+import Blocks
+import Data.Maybe
+
+type History = [Instruction]
+type Node = (World, History)
+---type PQ = PSQ Node Int
+type Seen = [World]
+
+main :: IO ()
+main = do
+	print $ allLegalMoves w
+	where w = fromJust $ createWorld world "b" blocks
 
 
 
@@ -10,6 +24,13 @@ instance Ord Instruction where
 	Drop l1 `compare` Drop l2 = l1 `compare` l2
 	Pick l1 `compare` Drop l2 = l1 `compare` l2
 	Drop l1 `compare` Pick l2 = l1 `compare` l2
+
+--------------------------------------------------------------------------------
+
+allLegalMoves :: World -> [Instruction]
+allLegalMoves w
+				| isJust $ holding w = filter (\instr -> validInstruction instr w) (map Drop (M.keys (ground w)))
+				| otherwise = filter (\instr -> validInstruction instr w) (map Pick (M.keys (ground w)))
 
 --------------------------------------------------------------------------------
 

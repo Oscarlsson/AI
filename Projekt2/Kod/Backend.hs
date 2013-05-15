@@ -68,13 +68,6 @@ isOnGround b w = M.member b $ indexes w
 
 --------------------------------------------------------------------------------
 
-allLegalMoves :: World -> [Instruction]
-allLegalMoves w
-				| isJust $ holding w = filter (\instr -> validInstruction instr w) (map Drop (M.keys (ground w)))
-				| otherwise = filter (\instr -> validInstruction instr w) (map Pick (M.keys (ground w)))
-
---------------------------------------------------------------------------------
-
 createWorld :: [[String]] -> String -> [Block] -> Maybe World
 createWorld ss "" bs = case (createGround ss bs , createIndexes ss bs) of 
                             (Just gr,Just ind) -> Just $ W {ground = gr , indexes = ind, holding = Nothing}

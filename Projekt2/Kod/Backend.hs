@@ -8,6 +8,7 @@ import Control.Monad.State
 import Data.Maybe 
 import Data.List
 import Data.Tuple (swap) 
+import Prelude hiding (drop)
 
 type Ground  = M.Map Int [Block]   
 type Indexes = M.Map Block Int 

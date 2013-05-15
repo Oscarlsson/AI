@@ -102,7 +102,17 @@ getBlockIndex b w = M.lookup b (indexes w)
 getBlocksOnGroundBy :: (Block -> Bool) -> World -> [Block]    
 getBlocksOnGroundBy f w = filter f $ M.keys (indexes w)  
 
+getRightMost :: [Block] -> World -> Maybe Block 
+getRightMost bs w | isNothing mIndexes = Nothing 
+                  | otherwise = return . snd $ 
+                        maximumBy (\p1 p2 -> compare (fst p1) (fst p2)) (fromJust mIndexes `zip` bs) 
+        where mIndexes = mapM  (\b -> getBlockIndex b w) bs  
 
+getLeftMost :: [Block] -> World -> Maybe Block 
+getLeftMost bs w | isNothing mIndexes = Nothing 
+                  | otherwise = return . snd $ 
+                        minimumBy (\p1 p2 -> compare (fst p1) (fst p2)) (fromJust mIndexes `zip` bs) 
+        where mIndexes = mapM  (\b -> getBlockIndex b w) bs  
 
 --for testing purposes 
 initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

@@ -38,9 +38,10 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"take the tall square"
         --"put a red block beside a blue block"    
         --"take the pyramid that is to the left of all boxes" 
-        "put the white ball to the left of all blocks"
+        --"put the white ball to the left of all blocks"
         --"move the red box left of all red boxes" #This is possible, we can motivate it
         --"take the red box that is to the left of all boxes"
+        "put the red block on the floor"
 
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\"']) $ map toLower xs
@@ -48,7 +49,7 @@ modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'', '\
 --For testing purposes 
 tmpMain :: IO () 
 tmpMain = do
-    shrdPGF <- readPGF "Shdlite.pgf"
+    shrdPGF <- readPGF "Shrdlite.pgf"
     case createWorld world "" blocks of 
         Nothing -> putStrLn "can't parse world"
         Just w  -> print $ runParser shrdPGF command w 
@@ -60,8 +61,6 @@ runParser shrdPGF com w = do
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com 
     map (\gs -> traverseTree (fg gs) w) exs    
 
---world :: [[String]] 
---world = [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
 
 traverseTree :: GS -> World -> Err Output  
 traverseTree gs w = case gs of 
@@ -93,6 +92,7 @@ handleLocation loc bs w = case loc of
             Gabove (Gall (Gblock Ganyblock Ganysize Ganycolor))-> fail "can't find block above everything"
             Gabove th@(Gall (Gblock f s c))-> maybe (filterBlocks isAbove w th bs) 
                         (\_ -> fail "not possible") (find (\b -> form b == f || size b == s || color b == c) bs) 
+            --This is the same as Gontop Gfloor, we can motivate it   
             Gabove  Gfloor -> return $ filter (\b -> isOnBottom b w) bs       
             Gabove  th ->  filterBlocks isAbove w th bs      
             Gbeside (Gall (Gblock Ganyblock Ganysize Ganycolor))-> fail "can't find block beside everything"
@@ -114,6 +114,7 @@ handleLocation loc bs w = case loc of
             Gontop (Gall (Gblock Ganyblock Ganysize Ganycolor))-> fail "can't find block on top of everything"
             Gontop th@(Gall (Gblock f s c))-> maybe (filterBlocks isOnTop w th bs) 
                         (\_ -> fail "not possible") (find (\b -> form b == f || size b == s || color b == c) bs) 
+            --This is the same as Gabove Gfloor, we can motivate it   
             Gontop th  -> filterBlocks isOnTop w th bs       
             Grightof (Gall (Gblock Ganyblock Ganysize Ganycolor))-> fail "can't find block right of everything"
             Grightof th@(Gall (Gblock f s c))-> maybe (filterBlocks isRightOf w th bs) 
@@ -151,10 +152,9 @@ getRefLocation loc w = case loc of
             Ginside th -> case handleThing th w of
                             Ok [x]   -> if form x /= Gbox then fail "invalid form" else return (Inside x) 
                             _        -> fail "location reference must be one object"  
-            Gleftof Gfloor  -> fail "can't put a block left of the floor"
+            Gleftof Gfloor  -> fail "can't put a block lef. of the floor"
             Gleftof th -> case handleThing th w of 
-                            Ok ys@(_:_) -> return . LeftOf $ xMost  
-                                                    (minimumBy (\a b -> compare (fst a) (fst b))) ys  
+                            Ok ys@(_:_) -> return . LeftOf . fromJust $ getLeftMost ys w  
                             _      -> Bad "no such block"
             Gontop Gfloor ->  return . Floor $ filter (\i -> isEmptyIndex i w) [0 .. wsize w - 1]       
             Gontop th ->  case handleThing th w of 
@@ -163,8 +163,7 @@ getRefLocation loc w = case loc of
                             _ -> Bad "no such block"
             Grightof Gfloor  -> fail "can't put a block right of the floor"
             Grightof th -> case handleThing th w of 
-                             Ok ys@(_:_) -> return . RightOf $ xMost 
-                                                    (maximumBy (\a b -> compare (fst a) (fst b)))  ys  
+                             Ok ys@(_:_) -> return . RightOf . fromJust $ getRightMost ys w 
                              _  -> Bad "no such block"
             Gunder Gfloor  -> fail "can't put a block under the floor"
             Gunder th -> case handleThing th w of 
@@ -187,9 +186,7 @@ handleBlock gb w = case gb of
     (Gblock Ganyblock s c) -> getBlocksOnGroundBy (\b ->  size b == s && color b == c) w   
     (Gblock f s c) -> getBlocksOnGroundBy (\b ->  size b == s && form b == f && color b == c) w    
 
-xMost :: ([(Int,Block)] -> (Int,Block)) -> [Block] -> Block
-xMost f xs = snd . f $ map (\b -> (fromJust $ findIndex (\ss -> name b `elem` ss) world, b)) xs      
-
-
-
+--for debugging purposes 
+world :: [[String]] 
+world = [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
  

@@ -13,8 +13,9 @@ type Ground  = M.Map Int [Block]
 type Indexes = M.Map Block Int 
 
 data World = W {holding :: Maybe Block , ground :: Ground, indexes :: Indexes} 
-    deriving (Show) 
-data Instruction = Put | Get 
+    deriving (Show)
+
+data Instruction = Pick | Drop 
 
 --------------------------------------------------------------------------------
 
@@ -31,10 +32,10 @@ validPick b w | isJust $ holding w = False
 validDrop :: Int -> World -> Bool
 validDrop i w = case holding w  of 
                     Nothing -> False 
-                    Just b  -> case M.lookup i (ground w) of 
-                                    Just []     -> True
-                                    Just (x:xs) -> b <= x
-                                    Nothing     -> False   
+                    Just hold_block  -> case M.lookup i (ground w) of 
+                                         Just []     -> True
+                                         Just (ground_block:xs) -> ground_block <= hold_block
+                                         Nothing     -> False   
 
 --------------------------------------------------------------------------------
 

@@ -33,11 +33,9 @@ instance Ord Block where
                _        -> width b1 >= width b2
     b1 <= b2 =  
                case (form b1,form b2) of 
-               (Gpyramid,Gpyramid) -> False 
-               (Gpyramid,Gpyramid) -> False  
-               (Gpyramid,_)        -> True 
-               (Gball,_)           -> True 
-               _        -> width b1 <= width b2
+                 (Gpyramid,_)        -> False
+                 (Gball,_)           -> False
+                 _        -> width b1 <= width b2
     b1 `min` b2 = case form b1 of 
                Gpyramid -> b1 
                Gball    -> b1 

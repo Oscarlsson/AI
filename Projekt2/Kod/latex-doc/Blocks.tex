@@ -1,0 +1,36 @@
+\haddockmoduleheading{Blocks}
+\label{module:Blocks}
+\haddockbeginheader
+{\haddockverb\begin{verbatim}
+module Blocks (
+    Block(B, name, form, size, color, width, height),  blocks
+  ) where\end{verbatim}}
+\haddockendheader
+
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Block
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{B} & \\
+                    \haddockdecltt{name :: String} &
+                    \haddockdecltt{form :: GForm} &
+                    \haddockdecltt{size :: GSize} &
+                    \haddockdecltt{color :: GColor} &
+                    \haddockdecltt{width :: Double} &
+                    \haddockdecltt{height :: Double} &
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Block\\instance\ Ord\ Block\\instance\ Show\ Block
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+blocks\ ::\ {\char 91}Block{\char 93}
+\end{tabular}]\haddockbegindoc
+All current possible blocks 
+\par
+
+\end{haddockdesc}

@@ -1,0 +1,23 @@
+\haddockmoduleheading{ErrM}
+\label{module:ErrM}
+\haddockbeginheader
+{\haddockverb\begin{verbatim}
+module ErrM (
+    Err(Ok, Bad)
+  ) where\end{verbatim}}
+\haddockendheader
+
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Err\ a
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Ok a} & \\
+\haddockdecltt{|} & \haddockdecltt{Bad String} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Monad\ Err\\instance\ Functor\ Err\\instance\ MonadPlus\ Err\\instance\ Eq\ a\ =>\ Eq\ (Err\ a)\\instance\ Ord\ a\ =>\ Ord\ (Err\ a)\\instance\ Read\ a\ =>\ Read\ (Err\ a)\\instance\ Show\ a\ =>\ Show\ (Err\ a)
+\end{tabular}]
+\end{haddockdesc}

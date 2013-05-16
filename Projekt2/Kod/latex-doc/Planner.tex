@@ -1,0 +1,154 @@
+\haddockmoduleheading{Planner}
+\label{module:Planner}
+\haddockbeginheader
+{\haddockverb\begin{verbatim}
+module Planner (
+    initWorld2,  initialWorld,  Goal(G, goal, blockId),  createGoal,  finished, 
+    heuristic,  command,  tmpMainPlanner,  handleOutput, 
+    Instruction(Drop, Pick),  allLegalMoves,  validInstruction,  validPickId, 
+    validPick,  validDrop,  action,  pickId,  pick,  deleteBlock,  drop, 
+    addBlock,  History,  Node(N, world, history),  PQ,  Seen,  pq,  pop, 
+    addAll,  successors,  astarDebug,  astar,  astar'
+  ) where\end{verbatim}}
+\haddockendheader
+
+\begin{haddockdesc}
+\item[
+initWorld2\ ::\ {\char 91}{\char 91}{\char 91}Char{\char 93}{\char 93}{\char 93}
+]
+\item[
+initialWorld\ ::\ World
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Goal
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{G} & \\
+                    \haddockdecltt{goal :: Output} &
+                    \haddockdecltt{blockId :: [Int]} &
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+createGoal\ ::\ Output\ ->\ World\ ->\ Goal
+]
+\item[
+finished\ ::\ World\ ->\ Goal\ ->\ Bool
+]
+\item[
+heuristic\ ::\ World\ ->\ Goal\ ->\ Int
+]
+\item[
+command\ ::\ String
+]
+\item[
+tmpMainPlanner\ ::\ IO\ ()
+]
+\item[
+handleOutput\ ::\ Err\ Output\ ->\ Output
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Instruction
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Drop Int} & \\
+\haddockdecltt{|} & \haddockdecltt{Pick Int} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Instruction\\instance\ Ord\ Instruction\\instance\ Show\ Instruction
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+allLegalMoves\ ::\ World\ ->\ {\char 91}Instruction{\char 93}
+]
+\item[
+validInstruction\ ::\ Instruction\ ->\ World\ ->\ Bool
+]
+\item[
+validPickId\ ::\ Int\ ->\ World\ ->\ Bool
+]
+\item[
+validPick\ ::\ Block\ ->\ World\ ->\ Bool
+]
+\item[
+validDrop\ ::\ Int\ ->\ World\ ->\ Bool
+]
+\item[
+action\ ::\ Instruction\ ->\ World\ ->\ Maybe\ World
+]
+\item[
+pickId\ ::\ Int\ ->\ World\ ->\ Maybe\ World
+]
+\item[
+pick\ ::\ Block\ ->\ World\ ->\ Maybe\ World
+]
+\item[
+deleteBlock\ ::\ Block\ ->\ World\ ->\ World
+]
+\item[
+drop\ ::\ Int\ ->\ World\ ->\ Maybe\ World
+]
+\item[
+addBlock\ ::\ Int\ ->\ Block\ ->\ World\ ->\ World
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+type\ History\ =\ {\char 91}Instruction{\char 93}
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Node
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{N} & \\
+                    \haddockdecltt{world :: World} &
+                    \haddockdecltt{history :: History} &
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Node\\instance\ Ord\ Node\\instance\ Show\ Node
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+type\ PQ\ =\ PSQ\ Node\ Int
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+type\ Seen\ =\ {\char 91}World{\char 93}
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+pq\ ::\ World\ ->\ PQ
+]
+\item[
+pop\ ::\ PQ\ ->\ (Node,\ PQ)
+]
+\item[
+addAll\ ::\ PQ\ ->\ {\char 91}Node{\char 93}\ ->\ Goal\ ->\ PQ
+]
+\item[
+successors\ ::\ Node\ ->\ {\char 91}Node{\char 93}
+]
+\item[
+astarDebug\ ::\ World\ ->\ Goal\ ->\ (Maybe\ History,\ Int)
+]
+\item[
+astar\ ::\ World\ ->\ Goal\ ->\ Maybe\ History
+]
+\item[
+astar'\ ::\ PQ\ ->\ Seen\ ->\ Goal\ ->\ (PQ,\ Maybe\ Node)
+]
+\end{haddockdesc}

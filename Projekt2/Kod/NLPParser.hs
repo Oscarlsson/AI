@@ -42,17 +42,17 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"move the red box left of all red boxes" #This is possible, we can motivate it
         --"take the red box that is to the left of all boxes"
         --"put the red block on the floor"
-        --"take the blue block left of all red boxes" --TODO takes two copies of the same block
+        "take the blue block left of all red boxes" --TODO takes two copies of the same block
         --"take the blue block right of all red boxes" --TODO takes a top on top of the right most red box
                                                      -- this can be fixed in handle location in Grightof and 
                                                      -- Gleftof by getting all blocks in "th" and chosse the 
                                                      -- righmost or leftmost block  
-          "put the black box to the left of the green pyramid" -- Fails with "No such block" .. TODO
+        --  "put the red box to the left of the green pyramid" -- Fails with "No such block" .. TODO
 
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','[',']','\\','\"']) $ map toLower xs
 
---For testing purposes 
+-- |For testing purposes 
 tmpMain :: IO () 
 tmpMain = do
     shrdPGF <- readPGF "Shrdlite.pgf"
@@ -66,14 +66,15 @@ runParser shrdPGF com w = do
     let lang = head $ languages shrdPGF
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com
 --    error $ show $ (fg (head exs) :: GS) 
-    map (\gs -> traverseTree (fg gs) w) exs    
+    map (\gs -> traverseTree (fg gs) w) exs   
 
+-- |there can be copies of the same block in the final mBlocks, this is expected and solved by nub
 traverseTree :: GS -> World -> Err Output  
 traverseTree gs w = case gs of 
             (Gmove thing loc) -> let th = handleThing thing w in 
                                     case th of
                                         Ok []  -> fail "no such block" 
-                                        Ok th' -> liftM (\loc' -> initOutput {action = Move, mBlocks = th',
+                                        Ok th' -> liftM (\loc' -> initOutput {action = Move, mBlocks = nub th',
                                                    location = loc' }) $ getRefLocation loc w
                                         Bad s   -> fail s  
             (Gput loc)        -> liftM (\loc' -> initOutput {action = Put, location = loc' })
@@ -83,9 +84,9 @@ traverseTree gs w = case gs of
                                     case th of 
                                         Bad s  -> fail s 
                                         Ok []  -> fail "no such block"
-                                        Ok th' -> return $ initOutput {action = Take , mBlocks = th'} 
+                                        Ok th' -> return $ initOutput {action = Take , mBlocks = nub th'} 
 
--- TODO think about the differance between "the" and "all"  
+-- |TODO think about the differance between "the" and "all"  
 handleThing :: GThing -> World -> Err [Block] 
 handleThing th w = case th of 
         Gfloor  -> Bad "floor is not correct handeled"  
@@ -142,7 +143,7 @@ filterBlocks f w th bs = let hth = handleThing th w in
 pairBlocks :: [Block] -> [Block] -> [(Block,Block)] 
 pairBlocks th bs = concatMap (\b -> (iterate id b) `zip` bs) th       
 
---TODO it can be possbile to put something above all blocks depending on the world 
+-- |TODO it can be possbile to put something above all blocks depending on the world 
 getRefLocation :: GLocation -> World -> Err Location  
 getRefLocation loc w = case loc of
             Gabove Gfloor -> return . Floor $ filter (\i -> isEmptyIndex i w) [0 .. wsize w - 1]       
@@ -192,7 +193,7 @@ handleBlock gb w = case gb of
     (Gblock Ganyblock s c) -> getBlocksOnGroundBy (\b ->  size b == s && color b == c) w   
     (Gblock f s c) -> getBlocksOnGroundBy (\b ->  size b == s && form b == f && color b == c) w    
 
---for debugging purposes 
+-- |For debugging purposes 
 world :: [[String]] 
 world = [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
  

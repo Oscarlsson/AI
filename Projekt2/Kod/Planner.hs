@@ -34,6 +34,10 @@ initialWorld = fromJust $ createWorld initWorld2 "" blocks
 --------------------------------------------------------------------------------
 data Goal = G {goal :: P.Output , blockId :: [Int] }
 
+printHistory :: History -> String
+printHistory [] = ""
+printHistory (x:xs) = show x ++ ";" ++ printHistory xs
+
 createGoal :: P.Output -> World -> Goal
 createGoal p w = G {goal = p, blockId = listofID}
         where
@@ -119,40 +123,25 @@ tmpMainPlanner = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
     let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
     let g = createGoal o initialWorld
-    print $ finished initialWorld g
     print command
     print o
     print $ "Heuristic: " ++ (show $ heuristic initialWorld g)
-    let w2 = fromJust $ action (Pick 4) initialWorld
-    let w3 = fromJust $ action (Drop 5) w2
-    let w4 = fromJust $ action (Pick 2) w3
-    let w5 = fromJust $ action (Drop 0) w4
-    let w6 = fromJust $ action (Pick 4) w5
-    let w7 = fromJust $ action (Drop 2) w6
-    print $ "Heuristic: " ++ (show $ heuristic w2 g)
-    print $ "Heuristic: " ++ (show $ heuristic w3 g)
-    print $ "Heuristic: " ++ (show $ heuristic w4 g)
-    print $ "Heuristic: " ++ (show $ heuristic w5 g)
-    print $ "Heuristic: " ++ (show $ heuristic w6 g)
-    print $ "Heuristic: " ++ (show $ heuristic w7 g)
+--  let w2 = fromJust $ action (Pick 4) initialWorld
+--  let w3 = fromJust $ action (Drop 5) w2
+--  let w4 = fromJust $ action (Pick 2) w3
+--  let w5 = fromJust $ action (Drop 0) w4
+--  let w6 = fromJust $ action (Pick 4) w5
+--  let w7 = fromJust $ action (Drop 2) w6
+--  print $ "Heuristic: " ++ (show $ heuristic w2 g)
+--  print $ "Heuristic: " ++ (show $ heuristic w3 g)
+--  print $ "Heuristic: " ++ (show $ heuristic w4 g)
+--  print $ "Heuristic: " ++ (show $ heuristic w5 g)
+--  print $ "Heuristic: " ++ (show $ heuristic w6 g)
+--  print $ "Heuristic: " ++ (show $ heuristic w7 g)
     putStrLn ""
-    let w2 = fromJust $ action (Pick 2) initialWorld 
-    case o of
-        (P.O P.Move (b1:bs) (P.LeftOf b2)) -> do
-            print $ isLeftOf b2 b1 w2
-        (P.O P.Move (b1:bs) (P.OnTop b2)) -> do
-            print $ "b1: " ++ (show b1) ++ ", b2: " ++ show b2
-            print $ "isOnTop: " ++ (show $ isOnTop b2 b1 initialWorld)
-    case o of
-        (P.O P.Move (b1:bs) (P.LeftOf b2))
-            | isLeftOf b2 b1 initialWorld -> do
-                print initialWorld
-                print b1
-                print b2
-                print "foo"
-            | otherwise -> print "foobar"
-        _ -> print "hoho"
-    print $ astarDebug initialWorld g
+    let a = astarDebug initialWorld g
+    print $ "Nodes visited: " ++ (show $ snd a)
+    print $ (printHistory (fromJust $ fst a))
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o

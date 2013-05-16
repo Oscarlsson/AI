@@ -1,0 +1,150 @@
+\haddockmoduleheading{NLPParser}
+\label{module:NLPParser}
+\haddockbeginheader
+{\haddockverb\begin{verbatim}
+module NLPParser (
+    Action(Move, Put, Take, None), 
+    Location(Above,
+             Empty,
+             Beside,
+             Inside,
+             LeftOf,
+             OnTop,
+             RightOf,
+             Under,
+             Floor), 
+    Output(O, action, mBlocks, location),  initOutput,  command,  modifyString, 
+    tmpMain,  runParser,  traverseTree,  handleThing,  handleLocation, 
+    filterBlocks,  pairBlocks,  getRefLocation,  handleGBlock,  handleBlock, 
+    world
+  ) where\end{verbatim}}
+\haddockendheader
+
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Action
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Move} & \\
+\haddockdecltt{|} & \haddockdecltt{Put} & \\
+\haddockdecltt{|} & \haddockdecltt{Take} & \\
+\haddockdecltt{|} & \haddockdecltt{None} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Action\\instance\ Show\ Action
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Location
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Above Block} & \\
+\haddockdecltt{|} & \haddockdecltt{Empty} & \\
+\haddockdecltt{|} & \haddockdecltt{Beside [Block]} & \\
+\haddockdecltt{|} & \haddockdecltt{Inside Block} & \\
+\haddockdecltt{|} & \haddockdecltt{LeftOf Block} & \\
+\haddockdecltt{|} & \haddockdecltt{OnTop Block} & \\
+\haddockdecltt{|} & \haddockdecltt{RightOf Block} & \\
+\haddockdecltt{|} & \haddockdecltt{Under Block} & \\
+\haddockdecltt{|} & \haddockdecltt{Floor [Int]} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Location\\instance\ Show\ Location
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ Output
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{O} & \\
+                    \haddockdecltt{action :: Action} &
+                    \haddockdecltt{mBlocks :: [Block]} &
+                    \haddockdecltt{location :: Location} &
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Output\\instance\ Show\ Output
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+initOutput\ ::\ Output
+]
+\item[
+command\ ::\ String
+]
+\item[
+modifyString\ ::\ String\ ->\ String
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+tmpMain\ ::\ IO\ ()
+\end{tabular}]\haddockbegindoc
+For testing purposes 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+runParser\ ::\ PGF\ ->\ String\ ->\ World\ ->\ {\char 91}Err\ Output{\char 93}
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+traverseTree\ ::\ GS\ ->\ World\ ->\ Err\ Output
+\end{tabular}]\haddockbegindoc
+there can be copies of the same block in the final mBlocks, this is expected and solved by nub
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+handleThing\ ::\ GThing\ ->\ World\ ->\ Err\ {\char 91}Block{\char 93}
+\end{tabular}]\haddockbegindoc
+TODO think about the differance between \haddocktt{the} and \haddocktt{all}  
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+handleLocation\ ::\ GLocation\ ->\ {\char 91}Block{\char 93}\ ->\ World\ ->\ Err\ {\char 91}Block{\char 93}
+]
+\item[
+filterBlocks\ ::\ (Block\ ->\ Block\ ->\ World\ ->\ Bool)\\\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ->\ World\ ->\ GThing\ ->\ {\char 91}Block{\char 93}\ ->\ Err\ {\char 91}Block{\char 93}
+]
+\item[
+pairBlocks\ ::\ {\char 91}Block{\char 93}\ ->\ {\char 91}Block{\char 93}\ ->\ {\char 91}(Block,\ Block){\char 93}
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getRefLocation\ ::\ GLocation\ ->\ World\ ->\ Err\ Location
+\end{tabular}]\haddockbegindoc
+TODO it can be possbile to put something above all blocks depending on the world 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+handleGBlock\ ::\ GBlock\ ->\ World\ ->\ Err\ {\char 91}Block{\char 93}
+]
+\item[
+handleBlock\ ::\ GBlock\ ->\ World\ ->\ {\char 91}Block{\char 93}
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+world\ ::\ {\char 91}{\char 91}String{\char 93}{\char 93}
+\end{tabular}]\haddockbegindoc
+For debugging purposes 
+\par
+
+\end{haddockdesc}

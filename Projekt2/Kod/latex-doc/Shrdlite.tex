@@ -1,0 +1,195 @@
+\haddockmoduleheading{Shrdlite}
+\label{module:Shrdlite}
+\haddockbeginheader
+{\haddockverb\begin{verbatim}
+module Shrdlite (
+    Gf(gf, fg),  GString(GString),  GInt(GInt),  GFloat(GFloat), 
+    GBlock(Gblock, Gthatis), 
+    GColor(Ganycolor, Gblack, Gblue, Ggreen, Gred, Gwhite, Gyellow), 
+    GForm(Ganyblock, Gball, Gbox, Gpyramid, Grectangle, Gsquare), 
+    GLocation(Gabove, Gbeside, Ginside, Gleftof, Gontop, Grightof, Gunder), 
+    GS(Gmove, Gput, Gtake), 
+    GSize(Ganysize, Glarge, Gmedium, Gsmall, Gtall, Gwide), 
+    GThing(Gall, Gany, Gfloor, Gthe)
+  ) where\end{verbatim}}
+\haddockendheader
+
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+class\ Gf\ a\ where
+\end{tabular}]\haddockbegindoc
+\haddockpremethods{}\textbf{Methods}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+gf\ ::\ a\ ->\ Tree
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+fg\ ::\ Tree\ ->\ a
+\end{tabular}]
+\end{haddockdesc}
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Gf\ GThing\\instance\ Gf\ GSize\\instance\ Gf\ GS\\instance\ Gf\ GLocation\\instance\ Gf\ GForm\\instance\ Gf\ GColor\\instance\ Gf\ GBlock\\instance\ Gf\ GFloat\\instance\ Gf\ GInt\\instance\ Gf\ GString
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+newtype\ GString
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{GString String} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Show\ GString\\instance\ Gf\ GString
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+newtype\ GInt
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{GInt Int} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Show\ GInt\\instance\ Gf\ GInt
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+newtype\ GFloat
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{GFloat Double} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Show\ GFloat\\instance\ Gf\ GFloat
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GBlock
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Gblock GForm GSize GColor} & \\
+\haddockdecltt{|} & \haddockdecltt{Gthatis GBlock GLocation} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GBlock\\instance\ Show\ GBlock\\instance\ Gf\ GBlock
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GColor
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Ganycolor} & \\
+\haddockdecltt{|} & \haddockdecltt{Gblack} & \\
+\haddockdecltt{|} & \haddockdecltt{Gblue} & \\
+\haddockdecltt{|} & \haddockdecltt{Ggreen} & \\
+\haddockdecltt{|} & \haddockdecltt{Gred} & \\
+\haddockdecltt{|} & \haddockdecltt{Gwhite} & \\
+\haddockdecltt{|} & \haddockdecltt{Gyellow} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GColor\\instance\ Show\ GColor\\instance\ Gf\ GColor
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GForm
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Ganyblock} & \\
+\haddockdecltt{|} & \haddockdecltt{Gball} & \\
+\haddockdecltt{|} & \haddockdecltt{Gbox} & \\
+\haddockdecltt{|} & \haddockdecltt{Gpyramid} & \\
+\haddockdecltt{|} & \haddockdecltt{Grectangle} & \\
+\haddockdecltt{|} & \haddockdecltt{Gsquare} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GForm\\instance\ Show\ GForm\\instance\ Gf\ GForm
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GLocation
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Gabove GThing} & \\
+\haddockdecltt{|} & \haddockdecltt{Gbeside GThing} & \\
+\haddockdecltt{|} & \haddockdecltt{Ginside GThing} & \\
+\haddockdecltt{|} & \haddockdecltt{Gleftof GThing} & \\
+\haddockdecltt{|} & \haddockdecltt{Gontop GThing} & \\
+\haddockdecltt{|} & \haddockdecltt{Grightof GThing} & \\
+\haddockdecltt{|} & \haddockdecltt{Gunder GThing} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GLocation\\instance\ Show\ GLocation\\instance\ Gf\ GLocation
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GS
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Gmove GThing GLocation} & \\
+\haddockdecltt{|} & \haddockdecltt{Gput GLocation} & \\
+\haddockdecltt{|} & \haddockdecltt{Gtake GThing} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GS\\instance\ Show\ GS\\instance\ Gf\ GS
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GSize
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Ganysize} & \\
+\haddockdecltt{|} & \haddockdecltt{Glarge} & \\
+\haddockdecltt{|} & \haddockdecltt{Gmedium} & \\
+\haddockdecltt{|} & \haddockdecltt{Gsmall} & \\
+\haddockdecltt{|} & \haddockdecltt{Gtall} & \\
+\haddockdecltt{|} & \haddockdecltt{Gwide} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GSize\\instance\ Show\ GSize\\instance\ Gf\ GSize
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ GThing
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Gall GBlock} & \\
+\haddockdecltt{|} & \haddockdecltt{Gany GBlock} & \\
+\haddockdecltt{|} & \haddockdecltt{Gfloor} & \\
+\haddockdecltt{|} & \haddockdecltt{Gthe GBlock} & \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ GThing\\instance\ Show\ GThing\\instance\ Gf\ GThing
+\end{tabular}]
+\end{haddockdesc}

@@ -1,0 +1,264 @@
+\haddockmoduleheading{Backend}
+\label{module:Backend}
+\haddockbeginheader
+{\haddockverb\begin{verbatim}
+module Backend (
+    Ground,  Indexes,  World(W, holding, ground, indexes, wsize), 
+    findBlockByName,  isLeftOf,  isRightOf,  isAbove,  isUnder,  isOnGround, 
+    isOnTop,  isOnBottom,  isBeside,  isHolding,  isEmptyIndex,  isOnPoss, 
+    createWorld,  createGround,  createIndexes,  createBlocks,  createBlocks', 
+    getBlock,  getBlockIndex,  getBlocksAt,  getBlocksOnGroundBy, 
+    getRightMost,  getLeftMost,  getUnderMost,  getUpperMost, 
+    getUpperUnderMost,  initWorld
+  ) where\end{verbatim}}
+\haddockendheader
+
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+type\ Ground\ =\ Map\ Int\ {\char 91}Block{\char 93}
+\end{tabular}]\haddockbegindoc
+The key is the x-coordinate and the value is the blocks at this index
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+type\ Indexes\ =\ Map\ Block\ Int
+\end{tabular}]\haddockbegindoc
+The key is a block in the world and the value the x-coordinate of this block 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+data\ World
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{W} & \\
+                    \haddockdecltt{holding :: Maybe Block} &
+                    \haddockdecltt{ground :: Ground} &
+                    \haddockdecltt{indexes :: Indexes} &
+                    \haddockdecltt{wsize :: Int} &
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ World\\instance\ Ord\ World\\instance\ Show\ World
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+findBlockByName\ ::\ String\ ->\ World\ ->\ Maybe\ Block
+\end{tabular}]\haddockbegindoc
+Takes the name of a block and returns this block if it exist in the world 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isLeftOf\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if the first input block is to the left of the second input block 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isRightOf\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if the first input block is to the right of the second input block 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isAbove\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if the first input block is above the second input block 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isUnder\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if the first input block is under the second input block 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isOnGround\ ::\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+check if a block is on the ground in a world or equally the block exists in the world and 
+  is not the current holding 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+isOnTop\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isOnBottom\ ::\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if a block is at the bottom of any stack in a world     
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isBeside\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if the first input block is either left or right of secondond input block in a given world 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isHolding\ ::\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if a block is a holding in the world 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isEmptyIndex\ ::\ Int\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if a there exist blocks on a given x-coordinate in world 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isOnPoss\ ::\ Block\ ->\ Int\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+check if a x-coordinate holds the input block  
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+createWorld\ ::\ {\char 91}{\char 91}String{\char 93}{\char 93}\ ->\ String\ ->\ {\char 91}Block{\char 93}\ ->\ Maybe\ World
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+createGround\ ::\ {\char 91}{\char 91}String{\char 93}{\char 93}\ ->\ {\char 91}Block{\char 93}\ ->\ Maybe\ Ground
+\end{tabular}]\haddockbegindoc
+Used by createWorld
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+createIndexes\ ::\ {\char 91}{\char 91}String{\char 93}{\char 93}\ ->\ {\char 91}Block{\char 93}\ ->\ Maybe\ Indexes
+\end{tabular}]\haddockbegindoc
+Used by createWorld
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+createBlocks\ ::\ Int\ ->\ {\char 91}String{\char 93}\ ->\ {\char 91}Block{\char 93}\ ->\ Maybe\ {\char 91}(Block,\ Int){\char 93}
+\end{tabular}]\haddockbegindoc
+Used by createWorld
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+createBlocks'\ ::\ Int\ ->\ {\char 91}String{\char 93}\ ->\ {\char 91}Block{\char 93}\ ->\ Maybe\ (Int,\ {\char 91}Block{\char 93})
+\end{tabular}]\haddockbegindoc
+Used by createWorld
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getBlock\ ::\ String\ ->\ {\char 91}Block{\char 93}\ ->\ Maybe\ Block
+\end{tabular}]\haddockbegindoc
+Input : a name of a block , any list of blocks
+  Output: The block with the given name from the list if it exist
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getBlockIndex\ ::\ Block\ ->\ World\ ->\ Maybe\ Int
+\end{tabular}]\haddockbegindoc
+Input: Any block, a word
+  return x-coordinate of the given block if it exist in the world
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getBlocksAt\ ::\ Int\ ->\ World\ ->\ Maybe\ {\char 91}Block{\char 93}
+\end{tabular}]\haddockbegindoc
+Input:  A x-coordinate, a world 
+  Output: All blocks at the given index if the index exists in the world
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getBlocksOnGroundBy\ ::\ (Block\ ->\ Bool)\ ->\ World\ ->\ {\char 91}Block{\char 93}
+\end{tabular}]\haddockbegindoc
+Input: a function, a world
+  Output Returns all blocks an the ground that satifies the given function 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getRightMost\ ::\ {\char 91}Block{\char 93}\ ->\ World\ ->\ Maybe\ Block
+\end{tabular}]\haddockbegindoc
+Input:  Any list a blocks, a world 
+  Output: The first occurance of a block with the biggest x-coordinate 
+        if all given blocks exist on the ground in the given list
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getLeftMost\ ::\ {\char 91}Block{\char 93}\ ->\ World\ ->\ Maybe\ Block
+\end{tabular}]\haddockbegindoc
+The same as rightmost but with smallest index
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getUnderMost\ ::\ {\char 91}Block{\char 93}\ ->\ World\ ->\ Maybe\ Block
+\end{tabular}]\haddockbegindoc
+Input: any list of blocks, a world
+  Output: If the input blocks havn't the same index nothing is returned else the bottom block from the 
+        input list in the stack  
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+getUpperMost\ ::\ {\char 91}Block{\char 93}\ ->\ World\ ->\ Maybe\ Block
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getUpperUnderMost\ ::\ ({\char 91}Block{\char 93}\ ->\ Block)\\\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ->\ {\char 91}Block{\char 93}\ ->\ World\ ->\ Maybe\ Block
+\end{tabular}]\haddockbegindoc
+Used by getUnderMost and getUpperMost 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+initWorld\ ::\ {\char 91}{\char 91}{\char 91}Char{\char 93}{\char 93}{\char 93}
+\end{tabular}]\haddockbegindoc
+For testing purposes 
+\par
+
+\end{haddockdesc}

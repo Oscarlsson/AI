@@ -31,12 +31,12 @@ findBlockByName str w | isJust maybeBlock = maybeBlock
 -- |Check if the first input block is to the left of the second input block 
 isLeftOf :: Block -> Block -> World -> Bool 
 isLeftOf b1 b2 w = isOnGround b1 w && isOnGround b2 w 
-                && fromJust (liftM2 (>)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))  
+                && fromJust (liftM2 (<)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))  
 
 -- |Check if the first input block is to the right of the second input block 
 isRightOf :: Block -> Block -> World -> Bool 
 isRightOf b1 b2 w = isOnGround b1 w && isOnGround b2 w 
-                && fromJust (liftM2 (<)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))    
+                && fromJust (liftM2 (>)  (M.lookup b1 (indexes w)) (M.lookup b2 (indexes w)))    
 
 -- |Check if the first input block is above the second input block 
 isAbove :: Block -> Block -> World -> Bool 

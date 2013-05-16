@@ -11,24 +11,42 @@ import Backend
 import ErrM 
 import Blocks 
 
--- | Which action to do
 data Action = Move | Put | Take | None 
-    deriving (Show,Eq) 
-    
--- | Put block at location. For example: 
--- | "Above Block" means put the block above Block
--- | "Beside [Block]" means put block beside all blocks in [Block], i.e. the block is not allowed to be at the same stack index as any block in [Block]
--- | "Floor [Int]" means put the block on the floor at any of the stack indexes in [Int]. [Int] is the list of stack indexes where the stack is empty 
-data Location =  Above Block | Empty  
-                | Beside [Block] | Inside Block | LeftOf Block | OnTop Block | RightOf Block | Under Block 
+    deriving (Show,Eq)
+
+data Location =  
+    -- |Argument is the block that one should put blocks above. Mustn't be directly 
+    -- above this block.    
+                  Above Block 
+    -- |Needed for initialization. 
+                | Empty  
+    -- |Argument is the list of possible blocks that one can choose to put blocks beside of.
+                | Beside [Block] 
+    -- |Argument is the list of possible blocks that one can choose to put blocks inside. 
+                | Inside [Block] 
+    -- |Argument is the block that one should put blocks to the left of. 
+                | LeftOf Block 
+    -- |Argument is the block that one should check the index of and then put blocks on top
+    -- of the stack which corresponds to that index.
+                | OnTop Block 
+    -- |Argument is the block that one should put blocks right of. 
+                | RightOf Block 
+    -- |Argument is the block that one should put blocks under. Mustn't be directly 
+    -- under this block.
+                | Under Block 
+    -- |Argument is indexes that one can choose to put blocks at.     
                 | Floor [Int] 
     deriving (Show,Eq) 
 
--- | The output given to the planner, which takes 3 parts: one Action, a list of blocks which could (should) be moved and a location where to move the block chosen from the list of blocks
-data Output = O {action :: Action , mBlocks :: [Block], location :: Location}
+data Output = O {
+    -- | An action to take. 
+    action :: Action , 
+    -- | Blocks to move. 
+    mBlocks :: [Block],
+    -- | An location to put the blocks at.  
+    location :: Location}
     deriving (Show,Eq)
 
--- | Initialize output to empty
 initOutput :: Output 
 initOutput = O {action = None, location = Empty, mBlocks = []}  
 
@@ -36,9 +54,9 @@ command :: String
 command = --"Put the blue block that is to the left of a pyramid in a medium-sized box"
          -- "put all red blocks left of a white box"
         --"Put the blue block that is to the left of a pyramid in a medium-sized box."
-        --"Move all blocks inside a box on top of the red square?"
+        --"Move all blocks inside a box on top of the red square?" --TODO not working yet 
         --"Put the wide blue block under the black rectangle."
-        --"move all wide rectangles into a red box"
+        "move all wide rectangles into a red box"
         --"put all blue blocks in a red box."
         --"take the floor"
         --"take the ball that is left of all blocks"
@@ -51,14 +69,14 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"move the red box left of all red boxes" #This is possible, we can motivate it
         --"take the red box that is to the left of all boxes"
         --"put the red block on the floor"
-        "take the blue block left of all red boxes" --TODO takes two copies of the same block
+        --"take the blue block left of all red boxes" --TODO takes two copies of the same block
         --"take the blue block right of all red boxes" --TODO takes a top on top of the right most red box
                                                      -- this can be fixed in handle location in Grightof and 
                                                      -- Gleftof by getting all blocks in "th" and chosse the 
                                                      -- righmost or leftmost block  
         --  "put the red box to the left of the green pyramid" -- Fails with "No such block" .. TODO
-
--- | Modify the string to be parsed (this was usually done by parser.cgi)
+        --"Take the block that is above a red block" --make the same mistake as "Move all blocks inside a box on top 
+                                                   --of the red square?" takes everything under  
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','[',']','\\','\"']) $ map toLower xs
 
@@ -70,14 +88,12 @@ tmpMain = do
         Nothing -> putStrLn "can't parse world"
         Just w  -> print $ runParser shrdPGF command w 
 
--- | Run the parser given shrdPGF, a command and a world
 runParser :: PGF -> String -> World -> [Err Output]
 runParser shrdPGF com w = do  
-    --shrdPGF <- readPGF "Shrdlite.pgf"
     let lang = head $ languages shrdPGF
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com
---    error $ show $ (fg (head exs) :: GS) 
-    map (\gs -> traverseTree (fg gs) w) exs   
+    map (\gs -> traverseTree (fg gs) w) (reverse exs)   
+    --map (\gs -> traverseTree (fg gs) w) exs -- this is correct the above line is for debugging    
 
 -- |there can be copies of the same block in the final mBlocks, this is expected and solved by nub
 traverseTree :: GS -> World -> Err Output  
@@ -102,7 +118,7 @@ handleThing :: GThing -> World -> Err [Block]
 handleThing th w = case th of 
         Gfloor  -> Bad "floor is not correct handeled"  
         Gall b  -> handleGBlock b w  
-        Gany b  -> liftM (take 1) $ handleGBlock b w 
+        Gany b  -> handleGBlock b w --liftM (take 1) $ handleGBlock b w 
         Gthe b  -> handleGBlock b w 
 
 handleLocation :: GLocation -> [Block] -> World -> Err [Block] 
@@ -122,7 +138,7 @@ handleLocation loc bs w = case loc of
             Ginside Gfloor -> fail "can't find block inside the floor"
             Ginside th@(Gall (Gblock f s c))-> maybe (filterBlocks isAbove w th bs) 
                         (\_ -> fail "not possible") (find (\b -> form b == f || size b == s || color b == c) bs) 
-            Ginside th -> filterBlocks isAbove w th bs  
+            Ginside th -> filterBlocks isAbove w th bs --something tricky here works with isUnder!?  
             Gleftof (Gall (Gblock Ganyblock Ganysize Ganycolor))-> fail "can't find block left of everything"
             Gleftof th@(Gall (Gblock f s c))-> maybe (filterBlocks isLeftOf w th bs) 
                         (\_ -> fail "not possible") (find (\b -> form b == f || size b == s || color b == c) bs) 
@@ -149,10 +165,10 @@ filterBlocks :: (Block -> Block -> World -> Bool) -> World -> GThing -> [Block] 
 filterBlocks f w th bs = let hth = handleThing th w in
                             case hth of 
                                 Bad s -> fail s 
-                                Ok a  -> return . map snd $ filter (\(b1,b2) -> f b1 b2 w) (pairBlocks a bs)        
+                                Ok a  -> return . map fst $ filter (\(b1,b2) -> f b1 b2 w) (pairBlocks bs a)        
 
 pairBlocks :: [Block] -> [Block] -> [(Block,Block)] 
-pairBlocks th bs = concatMap (\b -> (iterate id b) `zip` bs) th       
+pairBlocks bs1 bs2 = concatMap (\b -> (iterate id b) `zip` bs2) bs1       
 
 -- |TODO it can be possbile to put something above all blocks depending on the world 
 getRefLocation :: GLocation -> World -> Err Location  
@@ -165,11 +181,13 @@ getRefLocation loc w = case loc of
             Gbeside Gfloor  -> fail "can't put a block beside the floor"
             Gbeside th -> case handleThing th w of 
                             Ok ys@(_:_) -> Ok (Beside ys)  
-                            _        -> Bad "no such block"
+                            _           -> Bad "no such block"
             Ginside Gfloor  -> fail "can't put a block inside the floor"
             Ginside th -> case handleThing th w of
-                            Ok [x]   -> if form x /= Gbox then fail "invalid form" else return (Inside x) 
-                            _        -> fail "location reference must be one object"  
+                            Ok ys@(_:_) -> if or $ map (\x -> form x /= Gbox) ys then fail "invalid form" 
+                                                else return (Inside ys)
+                            --Ok (_:_) -> fail "location reference must be one object"   
+                            _        -> fail "no such block"  
             Gleftof Gfloor  -> fail "can't put a block lef. of the floor"
             Gleftof th -> case handleThing th w of 
                             Ok ys@(_:_) -> return . LeftOf . fromJust $ getLeftMost ys w  

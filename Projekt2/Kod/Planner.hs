@@ -57,19 +57,20 @@ heuristic w g
                                 where
                                     stackIndex1 = M.lookup b1 (indexes w)
                                     stack1 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex1
-                                    h1 = fromJust $ maybe (Just 0) (L.elemIndex b1) stack1
+                                    h1 = 2 * (fromJust $ maybe (Just 0) (L.elemIndex b1) stack1)
                                     stackIndex2 = M.lookup b2 (indexes w)
                                     stack2 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex2
-                                    h2 = fromJust $ maybe (Just 0) (L.elemIndex b2) stack2
+                                    h2 = 2 * (fromJust $ maybe (Just 1) (L.elemIndex b2) stack2)
 
 command :: String
 --command = "put the black block to the left of the green pyramid"
 --command = "put the black block to the left of the red square"
 -- Takes a long time and returns: pick 2,drop 6,pick 4,drop 8,pick 4,drop 2
 -- Explores 6^6 moves ~= 47 000
-command = "put the red wide block on top of the red square"
+-------command = "put the red wide block on top of the red square"
 ---------------------------------------------------------------------------
-----command = "put the blue wide block on top of the red square"
+---command = "put the blue wide block on top of the red square"
+command = "put the black wide block on top of the red square"
 --command = "put the red wide block on top of the red square"
 --command = "put the white ball on top of the red square"
 --command = "take the yellow ball"

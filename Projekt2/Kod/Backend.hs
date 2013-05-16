@@ -92,13 +92,16 @@ createBlocks i ss bs = mapM (\s -> liftM (\b -> (b,i)) $ getBlock s bs) ss
 createBlocks' :: Int -> [String] -> [Block] -> Maybe (Int,[Block]) 
 createBlocks' i ss bs = liftM (\bs -> (i,reverse bs)) $ mapM (\s -> getBlock s bs) ss    
 
+----------------------------------------------------------------------- 
+
 getBlock :: String -> [Block] -> Maybe Block 
 getBlock ss bs = find (\b -> name b == ss) bs
 
------------------------------------------------------------------------ 
-
 getBlockIndex :: Block -> World -> Maybe Int
 getBlockIndex b w = M.lookup b (indexes w)  
+
+getBlocksAt :: Int -> World -> Maybe [Block]
+getBlocksAt  i w = M.lookup i $ ground w  
 
 getBlocksOnGroundBy :: (Block -> Bool) -> World -> [Block]    
 getBlocksOnGroundBy f w = filter f $ M.keys (indexes w)  
@@ -115,5 +118,21 @@ getLeftMost bs w | isNothing mIndexes = Nothing
                         minimumBy (\p1 p2 -> compare (fst p1) (fst p2)) (fromJust mIndexes `zip` bs) 
         where mIndexes = mapM  (\b -> getBlockIndex b w) bs  
 
+--If the blocks havn't the same index nothing is returned 
+getUnderMost :: [Block] -> World -> Maybe Block 
+getUnderMost bs w | null bs || isNothing mBlocks  = Nothing
+                  | otherwise  = if length (intersect (fromJust mBlocks)  bs) == length bs then Just (last bs) 
+                                    else Nothing
+                        where mBlocks = case getBlockIndex (head bs) w of 
+                                                    Just i  -> getBlocksAt i w   
+                                                    Nothing -> Nothing 
+
+getUpperMost :: [Block] -> World -> Maybe Block 
+getUpperMost bs w | null bs || isNothing mBlocks  = Nothing
+                  | otherwise  = if length (intersect (fromJust mBlocks)  bs) == length bs then Just (head bs) 
+                                    else Nothing
+                        where mBlocks = case getBlockIndex (head bs) w of 
+                                                    Just i  -> getBlocksAt i w   
+                                                    Nothing -> Nothing 
 --for testing purposes 
 initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

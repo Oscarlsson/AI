@@ -96,7 +96,7 @@ command :: String
 -------command = "put the red wide block on top of the red square"
 ---------------------------------------------------------------------------
 ---command = "put the blue wide block on top of the red square"
-command = "put the black wide block on top of the red square"
+command = "put the red wide block on top of the red square"
 --command = "put the red wide block on top of the red square"
 --command = "put the white ball on top of the red square"
 --command = "take the yellow ball"

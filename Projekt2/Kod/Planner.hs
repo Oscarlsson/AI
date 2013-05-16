@@ -5,8 +5,8 @@ import Data.Maybe
 import Shrdlite
 import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
-import qualified Data.Set as S 
-import qualified Data.Map as M 
+import qualified Data.Set  as S 
+import qualified Data.Map  as M 
 import qualified Data.List as L
 import qualified NLPParser as P
 import Blocks
@@ -43,6 +43,8 @@ createGoal p w = G {goal = p, blockId = listofID}
 
 
 finished :: World -> Goal -> Bool
+-- The implementation of put should be identical to Move as long as
+--     b1 is a reference to the holding-block in the initial state.
 finished w ( G (P.O P.Put (b1:bs) loc) id) = 
             case loc of
                 (P.Beside bs) -> False
@@ -104,6 +106,11 @@ heuristic' w g
         successorWorlds = map world $ successors (N w [])
         heuristics2 = map (\s -> heuristic s g) successorWorlds  
 
+--------------------------------------------------------------------------------
+-----------------------                                     --------------------
+-----------------------             Here be tests           --------------------
+-----------------------                                     --------------------
+--------------------------------------------------------------------------------
 testStatement :: String -> IO ()
 testStatement stmt = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
@@ -128,9 +135,8 @@ handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o
 handleOutput (Bad s) = error s
 --------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+-----------------------        \(^v^)/                      --------------------
+-----------------------                "No more tests!"     --------------------
 --------------------------------------------------------------------------------
 
 data Instruction = Drop Int | Pick Int deriving (Eq)

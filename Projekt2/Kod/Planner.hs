@@ -32,50 +32,96 @@ initialWorld = fromJust $ createWorld initWorld2 "" blocks
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-type Goal = P.Output 
+data Goal = G {goal :: P.Output , blockId :: [Int] }
+
+createGoal :: P.Output -> World -> Goal
+createGoal p w = G {goal = p, blockId = listofID}
+        where
+            blocks   = P.mBlocks p
+            listofID = map (\b -> fromJust $ M.lookup b (indexes w)) blocks
+
+
 finished :: World -> Goal -> Bool
-finished w (P.O P.Move (b1:bs) loc) = 
-            case loc of 
-                (P.LeftOf b2) -> isLeftOf b2 b1 w -- && not (isOnPoss b1 4 w)
-                (P.OnTop b2) -> isOnTop b2 b1 w -- && not (isOnPoss b1 4 w)
+finished w ( G (P.O P.Put (b1:bs) loc) id) = 
+            case loc of
+                (P.Beside bs) -> False
+                (P.Inside b)  -> False
+                (P.LeftOf b)  -> False
+                (P.OnTop  b2)  -> isOnTop b2 b1 w
+                (P.RightOf b2) -> isRightOf b2 b1 w
+                (P.Under b2)   -> isUnder b2 b1 w
+                (P.Floor is)  -> False
+finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
+            case loc of
+                (P.Beside bs)  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Inside b)   -> isOnTop b1 b w
+                (P.LeftOf b2)  -> isLeftOf b2 b1 w
+                (P.OnTop  b2)  -> isOnTop b2 b1 w
+                (P.RightOf b2) -> isRightOf b2 b1 w
+                (P.Under b2)   -> isUnder b2 b1 w
+                (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
+
+finished w ( G (P.O P.Take (b1:bs) loc ) _ ) = 
+            case loc of
+                (P.Beside bs) -> False
+                (P.Inside b)  -> False
+                (P.LeftOf b)  -> False
+                (P.OnTop  b)  -> False
+                (P.RightOf b) -> False
+                (P.Under b)   -> False
+                (P.Floor is)  -> False
+finished w ( G (P.O P.None (b1:bs) loc ) _ ) = False
 ---stateDistance :: State -> Goal -> Int
 ---stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 heuristic :: World -> Goal -> Int
 ---heuristic s g = stateDistance s g
-heuristic w g = case g of
+heuristic w g 
+                | finished w g = 0
+                | otherwise = case goal g of
                     (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
                         h1 + h2
                                 where
                                     stackIndex1 = M.lookup b1 (indexes w)
                                     stack1 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex1
-                                    h1 = fromJust $ maybe (Just 0) (L.elemIndex b1) stack1
+                                    h1 = 2 * (fromJust $ maybe (Just 0) (L.elemIndex b1) stack1)
                                     stackIndex2 = M.lookup b2 (indexes w)
                                     stack2 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex2
-                                    h2 = fromJust $ maybe (Just 0) (L.elemIndex b2) stack2
+                                    h2 = 2 * (fromJust $ maybe (Just 1) (L.elemIndex b2) stack2)
 
 command :: String
 --command = "put the black block to the left of the green pyramid"
 --command = "put the black block to the left of the red square"
 -- Takes a long time and returns: pick 2,drop 6,pick 4,drop 8,pick 4,drop 2
 -- Explores 6^6 moves ~= 47 000
-command = "put the red wide block on top of the red square"
+-------command = "put the red wide block on top of the red square"
 ---------------------------------------------------------------------------
+---command = "put the blue wide block on top of the red square"
+command = "put the red wide block on top of the red square"
 --command = "put the red wide block on top of the red square"
 --command = "put the white ball on top of the red square"
 --command = "take the yellow ball"
-runPlan :: IO History
-runPlan = do shrdPGF <- readPGF "Shrdlite.pgf"
-             let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
-             return $ fromJust $ astar initialWorld o
 
-main :: IO ()
-main = do
+tmpMainPlanner :: IO ()
+tmpMainPlanner = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
     let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
-    print $ finished initialWorld o
+    let g = createGoal o initialWorld
+    print $ finished initialWorld g
     print command
     print o
-    print $ "Heuristic: " ++ (show $ heuristic initialWorld o)
+    print $ "Heuristic: " ++ (show $ heuristic initialWorld g)
+    let w2 = fromJust $ action (Pick 4) initialWorld
+    let w3 = fromJust $ action (Drop 5) w2
+    let w4 = fromJust $ action (Pick 2) w3
+    let w5 = fromJust $ action (Drop 0) w4
+    let w6 = fromJust $ action (Pick 4) w5
+    let w7 = fromJust $ action (Drop 2) w6
+    print $ "Heuristic: " ++ (show $ heuristic w2 g)
+    print $ "Heuristic: " ++ (show $ heuristic w3 g)
+    print $ "Heuristic: " ++ (show $ heuristic w4 g)
+    print $ "Heuristic: " ++ (show $ heuristic w5 g)
+    print $ "Heuristic: " ++ (show $ heuristic w6 g)
+    print $ "Heuristic: " ++ (show $ heuristic w7 g)
     putStrLn ""
     let w2 = fromJust $ action (Pick 2) initialWorld 
     case o of
@@ -93,7 +139,7 @@ main = do
                 print "foo"
             | otherwise -> print "foobar"
         _ -> print "hoho"
-    print $ astar initialWorld o
+    print $ astarDebug initialWorld g
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o
@@ -222,12 +268,22 @@ successors (N w h) = nodes
 		histories = map (\instr -> h++[instr]) moves
 		nodes = map (\t -> (N (fst t) (snd t))) $ zip worlds histories
 
+astarDebug :: World -> Goal -> (Maybe History, Int)
+astarDebug w g 
+    --- TODO : maybe default (\x -> ) result
+	| isNothing (fst result) = (Nothing, 0)
+	| otherwise = (Just (history $ fromJust (fst result)), snd result)
+	--where result = snd $ astar' (pq w) [] g
+	where 
+            y = astar' (pq w) [] g
+            result = (snd $ y, PSQ.size $ fst y)
+
 astar :: World -> Goal -> Maybe History
 astar w g 
     --- TODO : maybe default (\x -> ) result
 	| isNothing result = Nothing
 	| otherwise = Just (history $ fromJust result)
-	where result = snd $ astar' (pq w) [] g
+    where result = snd $ astar' (pq w) [] g
 
 astar' :: PQ -> Seen -> Goal -> (PQ, Maybe Node)
 astar' pq seen goal 

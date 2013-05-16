@@ -49,7 +49,9 @@ finished w ( G (P.O P.Move (b1:bs) loc ) _ ) =
 ---stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 heuristic :: World -> Goal -> Int
 ---heuristic s g = stateDistance s g
-heuristic w g = case goal g of
+heuristic w g 
+                | finished w g = 0
+                | otherwise = case goal g of
                     (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
                         h1 + h2
                                 where
@@ -67,6 +69,7 @@ command :: String
 -- Explores 6^6 moves ~= 47 000
 command = "put the red wide block on top of the red square"
 ---------------------------------------------------------------------------
+----command = "put the blue wide block on top of the red square"
 --command = "put the red wide block on top of the red square"
 --command = "put the white ball on top of the red square"
 --command = "take the yellow ball"
@@ -80,6 +83,18 @@ tmpMainPlanner = do
     print command
     print o
     print $ "Heuristic: " ++ (show $ heuristic initialWorld g)
+    let w2 = fromJust $ action (Pick 4) initialWorld
+    let w3 = fromJust $ action (Drop 5) w2
+    let w4 = fromJust $ action (Pick 2) w3
+    let w5 = fromJust $ action (Drop 0) w4
+    let w6 = fromJust $ action (Pick 4) w5
+    let w7 = fromJust $ action (Drop 2) w6
+    print $ "Heuristic: " ++ (show $ heuristic w2 g)
+    print $ "Heuristic: " ++ (show $ heuristic w3 g)
+    print $ "Heuristic: " ++ (show $ heuristic w4 g)
+    print $ "Heuristic: " ++ (show $ heuristic w5 g)
+    print $ "Heuristic: " ++ (show $ heuristic w6 g)
+    print $ "Heuristic: " ++ (show $ heuristic w7 g)
     putStrLn ""
     let w2 = fromJust $ action (Pick 2) initialWorld 
     case o of
@@ -97,7 +112,7 @@ tmpMainPlanner = do
                 print "foo"
             | otherwise -> print "foobar"
         _ -> print "hoho"
-    print $ astar initialWorld g
+    print $ astarDebug initialWorld g
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o
@@ -226,12 +241,22 @@ successors (N w h) = nodes
 		histories = map (\instr -> h++[instr]) moves
 		nodes = map (\t -> (N (fst t) (snd t))) $ zip worlds histories
 
+astarDebug :: World -> Goal -> (Maybe History, Int)
+astarDebug w g 
+    --- TODO : maybe default (\x -> ) result
+	| isNothing (fst result) = (Nothing, 0)
+	| otherwise = (Just (history $ fromJust (fst result)), snd result)
+	--where result = snd $ astar' (pq w) [] g
+	where 
+            y = astar' (pq w) [] g
+            result = (snd $ y, PSQ.size $ fst y)
+
 astar :: World -> Goal -> Maybe History
 astar w g 
     --- TODO : maybe default (\x -> ) result
 	| isNothing result = Nothing
 	| otherwise = Just (history $ fromJust result)
-	where result = snd $ astar' (pq w) [] g
+    where result = snd $ astar' (pq w) [] g
 
 astar' :: PQ -> Seen -> Goal -> (PQ, Maybe Node)
 astar' pq seen goal 

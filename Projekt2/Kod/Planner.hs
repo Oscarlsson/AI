@@ -105,6 +105,16 @@ heuristic w g
                         stackValue2 = (fromJust $ maybe (Just 0) (L.elemIndex b2) stack2)
                         h2 = holding2 + (2*(0+stackValue2))
 
+-- Peek ahead 1
+heuristic' :: World -> Goal -> Int
+heuristic' w g 
+    | finished w g = 0
+ -- | otherwise = heuristic w g
+    | otherwise = 1 + (L.minimum heuristics2)
+    where
+        successorWorlds = map world $ successors (N w [])
+        heuristics2 = map (\s -> heuristic s g) successorWorlds  
+
 command :: String
 --command = "put the black block to the left of the green pyramid"
 --command = "put the black block to the left of the red square"
@@ -260,7 +270,7 @@ pop pq = (n,pq')
 		pq' = PSQ.deleteMin pq
 
 addAll :: PQ -> [Node] -> Goal -> PQ
-addAll pq nodes g = foldl (\pq' node -> PSQ.insert node ((length $ history node) + (heuristic (world node) g)) pq') pq nodes   
+addAll pq nodes g = foldl (\pq' node -> PSQ.insert node ((length $ history node) + (heuristic' (world node) g)) pq') pq nodes   
 						  
 successors :: Node -> [Node]
 successors (N w h) = nodes

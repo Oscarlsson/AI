@@ -76,17 +76,30 @@ finished w ( G (P.O P.None (b1:bs) loc ) _ ) = False
 heuristic :: World -> Goal -> Int
 ---heuristic s g = stateDistance s g
 heuristic w g 
-                | finished w g = 0
-                | otherwise = case goal g of
-                    (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
-                        h1 + h2
-                                where
-                                    stackIndex1 = M.lookup b1 (indexes w)
-                                    stack1 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex1
-                                    h1 = 2 * (fromJust $ maybe (Just 0) (L.elemIndex b1) stack1)
-                                    stackIndex2 = M.lookup b2 (indexes w)
-                                    stack2 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex2
-                                    h2 = 2 * (fromJust $ maybe (Just 1) (L.elemIndex b2) stack2)
+        | finished w g = 0
+        | otherwise = case goal g of
+            (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
+                h1 + h2
+                    where
+                        holding0 -- Holding something
+                            | isNothing (holding w) = 0
+                            | otherwise = 1
+                        -- To move
+                        stackIndex1 = M.lookup b1 (indexes w)
+                        stack1 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex1
+                        holding1
+                            | isNothing stack1 = 1 -- Holding target, drop it
+                            | otherwise = 2 + holding0 -- 2 = pickup/drop target. + holding0 = drop holding
+                        stackValue1 = (fromJust $ maybe (Just 0) (L.elemIndex b1) stack1)
+                        h1 = holding1 + (2*(stackValue1))
+                        -- On top of this
+                        stackIndex2 = M.lookup b2 (indexes w)
+                        stack2 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex2
+                        holding2
+                            | isNothing stack2 = 1 -- Holding target, drop it
+                            | otherwise = holding0 -- Drop w/e holding
+                        stackValue2 = (fromJust $ maybe (Just 0) (L.elemIndex b2) stack2)
+                        h2 = holding2 + (2*(0+stackValue2))
 
 command :: String
 --command = "put the black block to the left of the green pyramid"
@@ -96,7 +109,7 @@ command :: String
 -------command = "put the red wide block on top of the red square"
 ---------------------------------------------------------------------------
 ---command = "put the blue wide block on top of the red square"
-command = "put the red wide block on top of the red square"
+command = "put the black wide block on top of the red square"
 --command = "put the red wide block on top of the red square"
 --command = "put the white ball on top of the red square"
 --command = "take the yellow ball"

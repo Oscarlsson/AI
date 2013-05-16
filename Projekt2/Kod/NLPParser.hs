@@ -11,15 +11,24 @@ import Backend
 import ErrM 
 import Blocks 
 
+-- | Which action to do
 data Action = Move | Put | Take | None 
     deriving (Show,Eq) 
+    
+-- | Put block at location. For example: 
+-- | "Above Block" means put the block above Block
+-- | "Beside [Block]" means put block beside all blocks in [Block], i.e. the block is not allowed to be at the same stack index as any block in [Block]
+-- | "Floor [Int]" means put the block on the floor at any of the stack indexes in [Int]. [Int] is the list of stack indexes where the stack is empty 
 data Location =  Above Block | Empty  
                 | Beside [Block] | Inside Block | LeftOf Block | OnTop Block | RightOf Block | Under Block 
                 | Floor [Int] 
     deriving (Show,Eq) 
+
+-- | The output given to the planner, which takes 3 parts: one Action, a list of blocks which could (should) be moved and a location where to move the block chosen from the list of blocks
 data Output = O {action :: Action , mBlocks :: [Block], location :: Location}
     deriving (Show,Eq)
 
+-- | Initialize output to empty
 initOutput :: Output 
 initOutput = O {action = None, location = Empty, mBlocks = []}  
 
@@ -49,6 +58,7 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
                                                      -- righmost or leftmost block  
         --  "put the red box to the left of the green pyramid" -- Fails with "No such block" .. TODO
 
+-- | Modify the string to be parsed (this was usually done by parser.cgi)
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','[',']','\\','\"']) $ map toLower xs
 
@@ -60,6 +70,7 @@ tmpMain = do
         Nothing -> putStrLn "can't parse world"
         Just w  -> print $ runParser shrdPGF command w 
 
+-- | Run the parser given shrdPGF, a command and a world
 runParser :: PGF -> String -> World -> [Err Output]
 runParser shrdPGF com w = do  
     --shrdPGF <- readPGF "Shrdlite.pgf"

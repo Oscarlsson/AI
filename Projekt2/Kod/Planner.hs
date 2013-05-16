@@ -31,9 +31,9 @@ initialWorld = fromJust $ createWorld initWorld2 "" blocks
 --------------------------------------------------------------------------------
 data Goal = G {goal :: P.Output , blockId :: [Int] }
 
-printHistory :: History -> String
-printHistory [] = ""
-printHistory (x:xs) = show x ++ ";" ++ printHistory xs
+showHistory :: History -> String
+showHistory [] = ""
+showHistory (x:xs) = show x ++ ";" ++ showHistory xs
 
 createGoal :: P.Output -> World -> Goal
 createGoal p w = G {goal = p, blockId = listofID}
@@ -120,7 +120,7 @@ testStatement stmt = do
     print stmt
     putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
     putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-    putStrLn $ "\t" ++ ( show $ (printHistory (fromJust $ fst a)) )
+    putStrLn $ "\t" ++ ( show $ (showHistory (fromJust $ fst a)) )
 
 runTests :: IO ()
 runTests = do
@@ -134,6 +134,13 @@ runTests = do
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o
 handleOutput (Bad s) = error s
+
+-- This method is just for quickly testing the parser.
+printObject :: String -> IO ()
+printObject stmt = do
+    shrdPGF <- readPGF "Shrdlite.pgf" 
+    let o = handleOutput $ head $ P.runParser shrdPGF stmt initialWorld
+    print o
 --------------------------------------------------------------------------------
 -----------------------        \(^v^)/                      --------------------
 -----------------------                "No more tests!"     --------------------

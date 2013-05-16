@@ -7,6 +7,7 @@ import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
 import qualified Data.Set as S 
 import qualified Data.Map as M 
+import qualified Data.List as L
 import qualified NLPParser as P
 import Blocks
 import ErrM 
@@ -16,7 +17,12 @@ import Backend
 import Prelude hiding (drop)
 
 ---initWorld2 = [[], ["a"], ["d","c"], [], ["e","f","i","h","g"], [], [], ["j","k"], [], ["l","m"]]
-initWorld2 = [[], ["a", "b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+--initWorld2 = [[], ["a", "b"], [], [], ["e","f","g","h","i"], [], ["c"], ["j","k"], ["d"], ["l","m"]]
+--
+--
+initWorld2 = [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+--
+--
 initialWorld :: World
 initialWorld = fromJust $ createWorld initWorld2 "" blocks
 
@@ -28,42 +34,66 @@ initialWorld = fromJust $ createWorld initWorld2 "" blocks
 --------------------------------------------------------------------------------
 type Goal = P.Output 
 finished :: World -> Goal -> Bool
-finished w (P.O P.Move (b1:bs) (P.LeftOf b2)) = isLeftOf b1 b2 w -- && not (isOnPoss b1 4 w)
+finished w (P.O P.Move (b1:bs) loc) = 
+            case loc of 
+                (P.LeftOf b2) -> isLeftOf b2 b1 w -- && not (isOnPoss b1 4 w)
+                (P.OnTop b2) -> isOnTop b2 b1 w -- && not (isOnPoss b1 4 w)
 ---stateDistance :: State -> Goal -> Int
 ---stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 heuristic :: World -> Goal -> Int
 ---heuristic s g = stateDistance s g
-heuristic w g = 1
+heuristic w g = case g of
+                    (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
+                        h1 + h2
+                                where
+                                    stackIndex1 = M.lookup b1 (indexes w)
+                                    stack1 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex1
+                                    h1 = fromJust $ maybe (Just 0) (L.elemIndex b1) stack1
+                                    stackIndex2 = M.lookup b2 (indexes w)
+                                    stack2 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex2
+                                    h2 = fromJust $ maybe (Just 0) (L.elemIndex b2) stack2
 
 command :: String
-command = "put the black block to the left of the green pyramid"
+--command = "put the black block to the left of the green pyramid"
+--command = "put the black block to the left of the red square"
+-- Takes a long time and returns: pick 2,drop 6,pick 4,drop 8,pick 4,drop 2
+-- Explores 6^6 moves ~= 47 000
+command = "put the red wide block on top of the red square"
+---------------------------------------------------------------------------
+--command = "put the red wide block on top of the red square"
+--command = "put the white ball on top of the red square"
 --command = "take the yellow ball"
---  runPlan :: IO History
---  runPlan = do shrdPGF <- readPGF "Shrdlite.pgf"
---               let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
---               return $ fromJust $ astar initialWorld o
+runPlan :: IO History
+runPlan = do shrdPGF <- readPGF "Shrdlite.pgf"
+             let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
+             return $ fromJust $ astar initialWorld o
 
---  main :: IO ()
---  main = do
---      shrdPGF <- readPGF "Shrdlite.pgf" 
---      let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
---      print $ finished initialWorld o
---      print command
---      print o
---      putStrLn ""
---      let w2 = fromJust $ action (Pick 2) initialWorld 
---      case o of
---          (P.O P.Move (b1:bs) (P.LeftOf b2)) -> do
---              print $ isLeftOf b2 b1 w2
---      case o of
---          (P.O P.Move (b1:bs) (P.LeftOf b2))
---              | isLeftOf b2 b1 initialWorld -> do
---                  print initialWorld
---                  print b1
---                  print b2
---                  print "foo"
---              | otherwise -> print "foobar"
---      print $ astar initialWorld o
+main :: IO ()
+main = do
+    shrdPGF <- readPGF "Shrdlite.pgf" 
+    let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
+    print $ finished initialWorld o
+    print command
+    print o
+    print $ "Heuristic: " ++ (show $ heuristic initialWorld o)
+    putStrLn ""
+    let w2 = fromJust $ action (Pick 2) initialWorld 
+    case o of
+        (P.O P.Move (b1:bs) (P.LeftOf b2)) -> do
+            print $ isLeftOf b2 b1 w2
+        (P.O P.Move (b1:bs) (P.OnTop b2)) -> do
+            print $ "b1: " ++ (show b1) ++ ", b2: " ++ show b2
+            print $ "isOnTop: " ++ (show $ isOnTop b2 b1 initialWorld)
+    case o of
+        (P.O P.Move (b1:bs) (P.LeftOf b2))
+            | isLeftOf b2 b1 initialWorld -> do
+                print initialWorld
+                print b1
+                print b2
+                print "foo"
+            | otherwise -> print "foobar"
+        _ -> print "hoho"
+    print $ astar initialWorld o
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o

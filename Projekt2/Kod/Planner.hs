@@ -16,11 +16,8 @@ import Backend
 
 import Prelude hiding (drop)
 
----initWorld2 = [[], ["a"], ["d","c"], [], ["e","f","i","h","g"], [], [], ["j","k"], [], ["l","m"]]
---initWorld2 = [[], ["a", "b"], [], [], ["e","f","g","h","i"], [], ["c"], ["j","k"], ["d"], ["l","m"]]
---
---
-initWorld2 = [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+initWorld2 = [[], ["a", "b"], ["c", "d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+--initWorld2 = [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
 --
 --
 initialWorld :: World
@@ -65,23 +62,15 @@ finished w ( G (P.O P.Move (b1:bs) loc ) _ ) =
                 (P.Under b2)   -> isUnder b2 b1 w
                 (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
 
-finished w ( G (P.O P.Take (b1:bs) loc ) _ ) = 
-            case loc of
-                (P.Beside bs) -> False
-                (P.Inside b)  -> False
-                (P.LeftOf b)  -> False
-                (P.OnTop  b)  -> False
-                (P.RightOf b) -> False
-                (P.Under b)   -> False
-                (P.Floor is)  -> False
-finished w ( G (P.O P.None (b1:bs) loc ) _ ) = False
----stateDistance :: State -> Goal -> Int
----stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
+finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
+
+finished _ ( G (P.O P.None _ _) _ ) = False
+
 heuristic :: World -> Goal -> Int
----heuristic s g = stateDistance s g
 heuristic w g 
         | finished w g = 0
         | otherwise = case goal g of
+            (P.O P.Take (b1:bs) _) -> 1
             (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
                 h1 + h2
                     where
@@ -115,43 +104,25 @@ heuristic' w g
         successorWorlds = map world $ successors (N w [])
         heuristics2 = map (\s -> heuristic s g) successorWorlds  
 
-command :: String
+testStatement :: String -> IO ()
+testStatement stmt = do
+    shrdPGF <- readPGF "Shrdlite.pgf" 
+    let o = handleOutput $ head $ P.runParser shrdPGF stmt initialWorld
+    let g = createGoal o initialWorld
+    let a = astarDebug initialWorld g
+    print stmt
+    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
+    putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
+    putStrLn $ "\t" ++ ( show $ (printHistory (fromJust $ fst a)) )
+
+runTests :: IO ()
+runTests = do
+    testStatement "take the red square"
+    testStatement "take the green pyramid"
+    testStatement "put the black wide block on top of the red square"
+
 --command = "put the black block to the left of the green pyramid"
 --command = "put the black block to the left of the red square"
--- Takes a long time and returns: pick 2,drop 6,pick 4,drop 8,pick 4,drop 2
--- Explores 6^6 moves ~= 47 000
--------command = "put the red wide block on top of the red square"
----------------------------------------------------------------------------
----command = "put the blue wide block on top of the red square"
-command = "put the black wide block on top of the red square"
---command = "put the red wide block on top of the red square"
---command = "put the white ball on top of the red square"
---command = "take the yellow ball"
-
-tmpMainPlanner :: IO ()
-tmpMainPlanner = do
-    shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
-    let g = createGoal o initialWorld
-    print command
-    print o
-    print $ "Heuristic: " ++ (show $ heuristic initialWorld g)
---  let w2 = fromJust $ action (Pick 4) initialWorld
---  let w3 = fromJust $ action (Drop 5) w2
---  let w4 = fromJust $ action (Pick 2) w3
---  let w5 = fromJust $ action (Drop 0) w4
---  let w6 = fromJust $ action (Pick 4) w5
---  let w7 = fromJust $ action (Drop 2) w6
---  print $ "Heuristic: " ++ (show $ heuristic w2 g)
---  print $ "Heuristic: " ++ (show $ heuristic w3 g)
---  print $ "Heuristic: " ++ (show $ heuristic w4 g)
---  print $ "Heuristic: " ++ (show $ heuristic w5 g)
---  print $ "Heuristic: " ++ (show $ heuristic w6 g)
---  print $ "Heuristic: " ++ (show $ heuristic w7 g)
-    putStrLn ""
-    let a = astarDebug initialWorld g
-    print $ "Nodes visited: " ++ (show $ snd a)
-    print $ (printHistory (fromJust $ fst a))
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o

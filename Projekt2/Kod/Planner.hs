@@ -40,11 +40,37 @@ createGoal p w = G {goal = p, blockId = listofID}
             blocks   = P.mBlocks p
             listofID = map (\b -> fromJust $ M.lookup b (indexes w)) blocks
 
+
 finished :: World -> Goal -> Bool
+finished w ( G (P.O P.Put (b1:bs) loc) id) = 
+            case loc of
+                (P.Beside bs) -> False
+                (P.Inside b)  -> False
+                (P.LeftOf b)  -> False
+                (P.OnTop  b2)  -> isOnTop b2 b1 w
+                (P.RightOf b2) -> isRightOf b2 b1 w
+                (P.Under b2)   -> isUnder b2 b1 w
+                (P.Floor is)  -> False
 finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
-            case loc of 
-                (P.LeftOf b2) -> isLeftOf b2 b1 w -- && not (isOnPoss b1 4 w)
-                (P.OnTop b2) -> isOnTop b2 b1 w -- && not (isOnPoss b1 4 w)
+            case loc of
+                (P.Beside bs)  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Inside b)   -> isOnTop b1 b w
+                (P.LeftOf b2)  -> isLeftOf b2 b1 w
+                (P.OnTop  b2)  -> isOnTop b2 b1 w
+                (P.RightOf b2) -> isRightOf b2 b1 w
+                (P.Under b2)   -> isUnder b2 b1 w
+                (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
+
+finished w ( G (P.O P.Take (b1:bs) loc ) _ ) = 
+            case loc of
+                (P.Beside bs) -> False
+                (P.Inside b)  -> False
+                (P.LeftOf b)  -> False
+                (P.OnTop  b)  -> False
+                (P.RightOf b) -> False
+                (P.Under b)   -> False
+                (P.Floor is)  -> False
+finished w ( G (P.O P.None (b1:bs) loc ) _ ) = False
 ---stateDistance :: State -> Goal -> Int
 ---stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 heuristic :: World -> Goal -> Int

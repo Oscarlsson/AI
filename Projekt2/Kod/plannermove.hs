@@ -21,9 +21,9 @@ cgiMain = do setHeader "Content-type" "text/plain"
              -- gör om trees till input sträng.
              -- Hitta planerade rutten
              shrdPGF <- liftIO $ readPGF "/home/oscar/Dev/TIN171AI/Projekt2/Kod/www/cgi-bin/Shrdlite.pgf"
-             let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
 --             error $ show o 
              let w = getWorld holding world
+             let o = createGoal (handleOutput $ head $ P.runParser shrdPGF command w) w
              let plan = findPlan w o
              output (unlines plan)
 

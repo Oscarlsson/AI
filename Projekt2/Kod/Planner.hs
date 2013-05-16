@@ -32,9 +32,16 @@ initialWorld = fromJust $ createWorld initWorld2 "" blocks
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-type Goal = P.Output 
+data Goal = G {goal :: P.Output , blockId :: [Int] }
+
+createGoal :: P.Output -> World -> Goal
+createGoal p w = G {goal = p, blockId = listofID}
+        where
+            blocks   = P.mBlocks p
+            listofID = map (\b -> fromJust $ M.lookup b (indexes w)) blocks
+
 finished :: World -> Goal -> Bool
-finished w (P.O P.Move (b1:bs) loc) = 
+finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
             case loc of 
                 (P.LeftOf b2) -> isLeftOf b2 b1 w -- && not (isOnPoss b1 4 w)
                 (P.OnTop b2) -> isOnTop b2 b1 w -- && not (isOnPoss b1 4 w)
@@ -42,7 +49,7 @@ finished w (P.O P.Move (b1:bs) loc) =
 ---stateDistance s g = sum $ map (\tuple -> if (fst tuple == snd tuple) then 0 else 1) (zip (snd s) (snd g))
 heuristic :: World -> Goal -> Int
 ---heuristic s g = stateDistance s g
-heuristic w g = case g of
+heuristic w g = case goal g of
                     (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
                         h1 + h2
                                 where
@@ -63,19 +70,16 @@ command = "put the red wide block on top of the red square"
 --command = "put the red wide block on top of the red square"
 --command = "put the white ball on top of the red square"
 --command = "take the yellow ball"
-runPlan :: IO History
-runPlan = do shrdPGF <- readPGF "Shrdlite.pgf"
-             let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
-             return $ fromJust $ astar initialWorld o
 
-main :: IO ()
-main = do
+tmpMainPlanner :: IO ()
+tmpMainPlanner = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
     let o = handleOutput $ head $ P.runParser shrdPGF command initialWorld
-    print $ finished initialWorld o
+    let g = createGoal o initialWorld
+    print $ finished initialWorld g
     print command
     print o
-    print $ "Heuristic: " ++ (show $ heuristic initialWorld o)
+    print $ "Heuristic: " ++ (show $ heuristic initialWorld g)
     putStrLn ""
     let w2 = fromJust $ action (Pick 2) initialWorld 
     case o of
@@ -93,7 +97,7 @@ main = do
                 print "foo"
             | otherwise -> print "foobar"
         _ -> print "hoho"
-    print $ astar initialWorld o
+    print $ astar initialWorld g
 
 handleOutput :: Err P.Output -> P.Output
 handleOutput (Ok o) = o

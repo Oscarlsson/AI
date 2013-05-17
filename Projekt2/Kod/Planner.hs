@@ -57,7 +57,10 @@ finished w ( G (P.O P.Put (b1:bs) loc) id) =
 finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
             case loc of
                 (P.Beside bs)  -> False--map (\b -> isBeside b1 b w) bs
-                (P.Inside b)   -> isOnTop b1 b w
+                (P.Inside (b:bs)) -> isOnTop b1 b w --changed since Inside now takes a list 
+                                                    --of possible blocks to put other blocks inside.
+                                                    --I guess every such block should be taken in consideration
+                                                    --(for now the first block is always taken)
                 (P.LeftOf b2)  -> isLeftOf b2 b1 w
                 (P.OnTop  b2)  -> isOnTop b2 b1 w
                 (P.RightOf b2) -> isRightOf b2 b1 w

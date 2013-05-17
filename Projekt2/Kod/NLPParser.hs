@@ -56,7 +56,7 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"Put the blue block that is to the left of a pyramid in a medium-sized box."
         --"Move all blocks inside a box on top of the red square?" --TODO not working yet 
         --"Put the wide blue block under the black rectangle."
-        "move all wide rectangles into a red box"
+        --"move all wide rectangles into a red box"
         --"put all blue blocks in a red box."
         --"take the floor"
         --"take the ball that is left of all blocks"
@@ -77,6 +77,9 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --  "put the red box to the left of the green pyramid" -- Fails with "No such block" .. TODO
         --"Take the block that is above a red block" --make the same mistake as "Move all blocks inside a box on top 
                                                    --of the red square?" takes everything under  
+        --"take the black wide rectangle in the white box" 
+        "put it on the floor"   
+        
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','[',']','\\','\"']) $ map toLower xs
 
@@ -84,7 +87,7 @@ modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','['
 tmpMain :: IO () 
 tmpMain = do
     shrdPGF <- readPGF "Shrdlite.pgf"
-    case createWorld world "" blocks of
+    case createWorld world "a" blocks of
         Nothing -> putStrLn "can't parse world"
         Just w  -> print $ runParser shrdPGF command w 
 
@@ -92,7 +95,7 @@ runParser :: PGF -> String -> World -> [Err Output]
 runParser shrdPGF com w = do  
     let lang = head $ languages shrdPGF
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com
-    map (\gs -> traverseTree (fg gs) w) (reverse exs)   
+    map (\gs -> traverseTree (fg gs) w) exs   
     --map (\gs -> traverseTree (fg gs) w) exs -- this is correct the above line is for debugging    
 
 -- |there can be copies of the same block in the final mBlocks, this is expected and solved by nub
@@ -104,7 +107,9 @@ traverseTree gs w = case gs of
                                         Ok th' -> liftM (\loc' -> initOutput {action = Move, mBlocks = nub th',
                                                    location = loc' }) $ getRefLocation loc w
                                         Bad s   -> fail s  
-            (Gput loc)        -> liftM (\loc' -> initOutput {action = Put, location = loc' })
+            (Gput loc)        -> if isNothing (holding w) then fail "holding no block" 
+                                   else liftM (\loc' -> initOutput {action = Put, location = loc',mBlocks =
+                                        [fromJust (holding w)] })
                                         $ getRefLocation loc w 
             (Gtake thing)     -> if thing == Gfloor then fail "can't take the floor" else 
                                  let th = handleThing thing w in 
@@ -224,5 +229,5 @@ handleBlock gb w = case gb of
 
 -- |For debugging purposes 
 world :: [[String]] 
-world = [[], ["a","b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+world = [[], ["b"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
  

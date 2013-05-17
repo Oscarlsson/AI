@@ -13,6 +13,8 @@ import Blocks
 import PGF 
 import NLPParser as P
 import ErrM 
+import System.Directory 
+
 --type Block = String
 --type World = [[Block]]
 
@@ -21,16 +23,15 @@ cgiMain = do setHeader "Content-type" "text/plain"
              (holding, world, command) <- cgiInput
              -- gör om trees till input sträng.
              -- Hitta planerade rutten
-             shrdPGF <- liftIO $ readPGF "/home/oskar/programming/AI/TIN171AI/Projekt2/Kod/www/cgi-bin/Shrdlite.pgf"
+             path <- liftIO $ getCurrentDirectory 
+             shrdPGF <- liftIO $ readPGF (path ++ "/cgi-bin/Shrdlite.pgf")
              let w = getWorld holding world
              case liftM (\parse -> createGoal parse w) (head $ P.runParser shrdPGF command w) of 
                 Ok  o  ->  output . unlines $ findPlan w o
                 Bad s  ->  output s   
 
-
 getWorld :: String -> [[String]] -> World
 getWorld holding world = fromJust $ createWorld world holding blocks 
-
 
 findPlan :: World -> Goal ->[String]
 findPlan w o = map show (fromJust $  astar w o)

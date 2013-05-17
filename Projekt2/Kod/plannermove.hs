@@ -1,4 +1,4 @@
-
+module Main where 
 -- How to use: 
 --   compile this file into planner.cgi:
 --   ghc -o www/cgi-bin/planner.cgi --make plannermove.hs
@@ -12,6 +12,7 @@ import Backend
 import Blocks
 import PGF 
 import NLPParser as P
+import ErrM 
 --type Block = String
 --type World = [[Block]]
 
@@ -20,12 +21,11 @@ cgiMain = do setHeader "Content-type" "text/plain"
              (holding, world, command) <- cgiInput
              -- gör om trees till input sträng.
              -- Hitta planerade rutten
-             shrdPGF <- liftIO $ readPGF "/home/oscar/Dev/TIN171AI/Projekt2/Kod/www/cgi-bin/Shrdlite.pgf"
---             error $ show o 
+             shrdPGF <- liftIO $ readPGF "/home/oskar/programming/AI/TIN171AI/Projekt2/Kod/www/cgi-bin/Shrdlite.pgf"
              let w = getWorld holding world
-             let o = createGoal (handleOutput $ head $ P.runParser shrdPGF command w) w
-             let plan = findPlan w o
-             output (unlines plan)
+             case liftM (\parse -> createGoal parse w) (head $ P.runParser shrdPGF command w) of 
+                Ok  o  ->  output . unlines $ findPlan w o
+                Bad s  ->  output s   
 
 
 getWorld :: String -> [[String]] -> World

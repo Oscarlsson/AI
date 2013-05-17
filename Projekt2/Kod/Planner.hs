@@ -117,13 +117,17 @@ heuristic' w g
 testStatement :: String -> IO ()
 testStatement stmt = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = handleOutput $ head $ P.runParser shrdPGF stmt initialWorld
-    let g = createGoal o initialWorld
-    let a = astarDebug initialWorld g
-    print stmt
-    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
-    putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-    putStrLn $ "\t" ++ ( show $ (showHistory (fromJust $ fst a)) )
+    let o = head $ P.runParser shrdPGF stmt initialWorld
+    case o of 
+        Ok o' -> do 
+            let g = createGoal o' initialWorld
+            let a = astarDebug initialWorld g
+            print stmt
+            putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
+            putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
+            putStrLn $ "\t" ++ ( show $ (showHistory (fromJust $ fst a)) )
+        Bad s -> putStrLn s 
+    
 
 runTests :: IO ()
 runTests = do
@@ -134,16 +138,14 @@ runTests = do
 --command = "put the black block to the left of the green pyramid"
 --command = "put the black block to the left of the red square"
 
-handleOutput :: Err P.Output -> P.Output
-handleOutput (Ok o) = o
-handleOutput (Bad s) = error s
-
 -- This method is just for quickly testing the parser.
 printObject :: String -> IO ()
 printObject stmt = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = handleOutput $ head $ P.runParser shrdPGF stmt initialWorld
-    print o
+    let o = head $ P.runParser shrdPGF stmt initialWorld
+    case o of 
+        Ok   o' -> print o'
+        Bad  s  -> putStrLn s       
 --------------------------------------------------------------------------------
 -----------------------        \(^v^)/                      --------------------
 -----------------------                "No more tests!"     --------------------

@@ -42,7 +42,7 @@ instance Ord Block where
                _        -> if width b1 > width b2 then b1 else b2   
     compare b1 b2 = (name b1) `compare` (name b2)
 
-
+-- |All current possible blocks 
 blocks :: [Block]
 blocks = [
     B {name = "a" , form = Grectangle, size = Gtall, color = Gblue, width = 0.50, height = 1.00 },

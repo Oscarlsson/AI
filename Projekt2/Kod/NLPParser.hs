@@ -14,29 +14,33 @@ import Blocks
 data Action = Move | Put | Take | None 
     deriving (Show,Eq)
 
-data Location =  
+data Reference = Above | Beside | Inside | LeftOf | OnTop | RightOf | Under
+    deriving (Show,Eq)
+data Location = Empty | Location Reference [Block] | Floor [Int]
+    deriving (Show,Eq)
+---data Location =  
     -- |Argument is the block that one should put blocks above. Mustn't be directly 
     -- above this block.    
-                  Above [Block]
+                  ---Above [Block]
     -- |Needed for initialization. 
-                | Empty  
+--                | Empty  
     -- |Argument is the list of possible blocks that one can choose to put blocks beside of.
-                | Beside [Block] 
+ --               | Beside [Block] 
     -- |Argument is the list of possible blocks that one can choose to put blocks inside. 
-                | Inside [Block] 
+  --              | Inside [Block] 
     -- |Argument is the block that one should put blocks to the left of. 
-                | LeftOf [Block]
+   --             | LeftOf [Block]
     -- |Argument is the block that one should check the index of and then put blocks on top
     -- of the stack which corresponds to that index.
-                | OnTop [Block]
+    --            | OnTop [Block]
     -- |Argument is the block that one should put blocks right of. 
-                | RightOf [Block]
+     --           | RightOf [Block]
     -- |Argument is the block that one should put blocks under. Mustn't be directly 
     -- under this block.
-                | Under [Block]
+      --          | Under [Block]
     -- |Argument is indexes that one can choose to put blocks at.     
-                | Floor [Int] 
-    deriving (Show,Eq) 
+       --         | Floor [Int] 
+--    deriving (Show,Eq) 
 
 data Output = O {
     -- | An action to take. 
@@ -181,34 +185,34 @@ getRefLocation loc w = case loc of
             Gabove Gfloor -> return . Floor $ filter (\i -> isEmptyIndex i w) [0 .. wsize w - 1]       
             Gabove th ->  case handleThing th w of 
                             Ok [x] -> if form x == Gpyramid || form x == Gball then fail "invalid form" 
-                                        else return (Above [x])  
+                                        else return (Location Above [x])  
                             _      -> fail "no such block" -- TODO should maybe not just be singelton list 
             Gbeside Gfloor  -> fail "can't put a block beside the floor"
             Gbeside th -> case handleThing th w of 
-                            Ok ys@(_:_) -> Ok (Beside ys)  
+                            Ok ys@(_:_) -> Ok (Location Beside ys)  
                             _           -> Bad "no such block"
             Ginside Gfloor  -> fail "can't put a block inside the floor"
             Ginside th -> case handleThing th w of
                             Ok ys@(_:_) -> if or $ map (\x -> form x /= Gbox) ys then fail "invalid form" 
-                                                else return (Inside ys)
+                                                else return (Location Inside ys)
                             --Ok (_:_) -> fail "location reference must be one object"   
                             _        -> fail "no such block"  
             Gleftof Gfloor  -> fail "can't put a block lef. of the floor"
             Gleftof th -> case handleThing th w of 
-                            Ok ys@(_:_) -> return . LeftOf $ [fromJust $ getLeftMost ys w]
+                            Ok ys@(_:_) -> return . Location LeftOf $ [fromJust $ getLeftMost ys w]
                             _      -> Bad "no such block"
             Gontop Gfloor ->  return . Floor $ filter (\i -> isEmptyIndex i w) [0 .. wsize w - 1]       
             Gontop th ->  case handleThing th w of 
                             Ok [x] -> if form x == Gpyramid || form x == Gball then fail "invalid form" 
-                                        else return (OnTop [x])  
+                                        else return (Location OnTop [x])  
                             _ -> Bad "no such block"
             Grightof Gfloor  -> fail "can't put a block right of the floor"
             Grightof th -> case handleThing th w of 
-                             Ok ys@(_:_) -> return . RightOf $ [fromJust $ getRightMost ys w]
+                             Ok ys@(_:_) -> return . Location RightOf $ [fromJust $ getRightMost ys w]
                              _  -> Bad "no such block"
             Gunder Gfloor  -> fail "can't put a block under the floor"
             Gunder th -> case handleThing th w of 
-                            Ok (x:xs) -> Ok (Under [x])
+                            Ok (x:xs) -> Ok (Location Under [x])
                             _ -> Bad "no such block"
 
 handleGBlock :: GBlock -> World -> Err [Block]   

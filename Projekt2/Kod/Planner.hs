@@ -47,52 +47,61 @@ finished :: World -> Goal -> Bool
 --     b1 is a reference to the holding-block in the initial state.
 finished w ( G (P.O P.Put (b1:bs) loc) id) = 
             case loc of
-                (P.Beside (b2:bs)) -> False
-                (P.Inside (b2:bs))  -> False
-                (P.LeftOf (b2:bs))  -> False
-                (P.OnTop (b2:bs))  -> isOnTop b2 b1 w
-                (P.RightOf (b2:bs)) -> isRightOf b2 b1 w
-                (P.Under (b2:bs))   -> isUnder b2 b1 w
+                (P.Location P.Beside (b2:bs)) -> False
+                (P.Location P.Inside (b2:bs))  -> False
+                (P.Location P.LeftOf (b2:bs))  -> False
+                (P.Location P.OnTop (b2:bs))  -> isOnTop b2 b1 w
+                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
+                (P.Location P.Under (b2:bs))   -> isUnder b2 b1 w
                 (P.Floor is)  -> False
 finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
             case loc of
-                (P.Beside (b2:bs))  -> False--map (\b -> isBeside b1 b w) bs
-                (P.Inside (b:bs)) -> isOnTop b1 b w --changed since Inside now takes a list 
+                (P.Location P.Beside (b2:bs))  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Location P.Inside (b:bs)) -> isOnTop b1 b w --changed since Inside now takes a list 
                                                     --of possible blocks to put other blocks inside.
                                                     --I guess every such block should be taken in consideration
                                                     --(for now the first block is always taken)
-                (P.LeftOf (b2:bs))  -> isLeftOf b2 b1 w
-                (P.OnTop (b2:bs))  -> isOnTop b2 b1 w
-                (P.RightOf (b2:bs)) -> isRightOf b2 b1 w
-                (P.Under (b2:bs))   -> isUnder b2 b1 w
+                (P.Location P.LeftOf (b2:bs))  -> isLeftOf b2 b1 w
+                (P.Location P.OnTop (b2:bs))  -> isOnTop b2 b1 w
+                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
+                (P.Location P.Under (b2:bs))   -> isUnder b2 b1 w
                 (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
 
 finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
 
 finished _ ( G (P.O P.None _ _) _ ) = False
 
+
 heuristic :: World -> Goal -> Int
 heuristic w g 
         | finished w g = 0
-        | otherwise = case goal g of
-            (P.O P.Take (b1:bs) _) -> 1
-            (P.O action (b1:bs) location) -> 
-                case location of
-                    P.OnTop (b2:bs) -> h1 + h2
-                        where
-                            holding1
-                                | isHolding b1 w = 1 -- Holding target =  drop it
-                                | isJust (holding w) = 3 -- Holding sth else = drop it + pick target + drop target
-                                | otherwise = 2 -- Holding nothing =  pick target + drop target
-                            holding2
-                                | isHolding b2 w = 1 -- Holding target, drop it
-                                | otherwise = 0
-                            -- To move
-                            stackValue1 = maybe 0 id $ blocksAbove b1 w
-                            h1 = holding1 + 2*stackValue1
-                            -- On top of this
-                            stackValue2 = maybe 0 id $ blocksAbove b2 w
-                            h2 = holding2 + (2*(0+stackValue2))
+        | otherwise = case goal g of                            -- 1 is just temporary
+            ( P.O P.Take _          _           )               -> 1
+            ( P.O P.Put  _          _           )               -> 1
+            ( P.O _      _          P.Empty     )               -> 1
+            ( P.O _      _          (P.Floor _) )               -> 1
+            ( P.O _      (b1:b1s)   (P.Location loc (b2:b2s)))  ->
+                let 
+                    blocksAbove2 = maybe 0 id $ blocksAbove b2 w
+                    h2 = 2*blocksAbove2
+                    blocksAbove1 = maybe 0 id $ blocksAbove b1 w
+                    h1 = 2*blocksAbove1
+                in case loc of
+                    P.OnTop -> h1 + h2 + (holdingHeuristic g w)
+                    P.Under -> h1 + h2 + (holdingHeuristic g w)
+
+holdingHeuristic :: Goal -> World -> Int
+holdingHeuristic g w = objectHolding + targetHolding
+    where
+        objectHolding = case goal g of
+            P.O P.Move (b1:b1s) _
+                | isHolding b1 w -> 1 -- Holding target =  drop it
+                | isJust (holding w) -> 3 -- Holding sth else = drop it + pick target + drop target
+                | otherwise -> 2 -- Holding nothing =  pick target + drop target
+        targetHolding = case P.location . goal $ g of
+            P.Location P.OnTop (b2:bs)
+                | isHolding b2 w -> 1 -- Holding target, drop it
+                | otherwise -> 0
 
 blocksAbove :: Block -> World -> Maybe Int
 blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack

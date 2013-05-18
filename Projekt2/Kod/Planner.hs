@@ -47,24 +47,24 @@ finished :: World -> Goal -> Bool
 --     b1 is a reference to the holding-block in the initial state.
 finished w ( G (P.O P.Put (b1:bs) loc) id) = 
             case loc of
-                (P.Beside bs) -> False
-                (P.Inside b)  -> False
-                (P.LeftOf b)  -> False
-                (P.OnTop  b2)  -> isOnTop b2 b1 w
-                (P.RightOf b2) -> isRightOf b2 b1 w
-                (P.Under b2)   -> isUnder b2 b1 w
+                (P.Beside (b2:bs)) -> False
+                (P.Inside (b2:bs))  -> False
+                (P.LeftOf (b2:bs))  -> False
+                (P.OnTop (b2:bs))  -> isOnTop b2 b1 w
+                (P.RightOf (b2:bs)) -> isRightOf b2 b1 w
+                (P.Under (b2:bs))   -> isUnder b2 b1 w
                 (P.Floor is)  -> False
 finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
             case loc of
-                (P.Beside bs)  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Beside (b2:bs))  -> False--map (\b -> isBeside b1 b w) bs
                 (P.Inside (b:bs)) -> isOnTop b1 b w --changed since Inside now takes a list 
                                                     --of possible blocks to put other blocks inside.
                                                     --I guess every such block should be taken in consideration
                                                     --(for now the first block is always taken)
-                (P.LeftOf b2)  -> isLeftOf b2 b1 w
-                (P.OnTop  b2)  -> isOnTop b2 b1 w
-                (P.RightOf b2) -> isRightOf b2 b1 w
-                (P.Under b2)   -> isUnder b2 b1 w
+                (P.LeftOf (b2:bs))  -> isLeftOf b2 b1 w
+                (P.OnTop (b2:bs))  -> isOnTop b2 b1 w
+                (P.RightOf (b2:bs)) -> isRightOf b2 b1 w
+                (P.Under (b2:bs))   -> isUnder b2 b1 w
                 (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
 
 finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
@@ -76,9 +76,9 @@ heuristic w g
         | finished w g = 0
         | otherwise = case goal g of
             (P.O P.Take (b1:bs) _) -> 1
-            (P.O a (b1:bs) loc) -> 
-                case loc of
-                    P.OnTop b2 -> h1 + h2
+            (P.O action (b1:bs) location) -> 
+                case location of
+                    P.OnTop (b2:bs) -> h1 + h2
                         where
                             holding1
                                 | isHolding b1 w = 1 -- Holding target =  drop it

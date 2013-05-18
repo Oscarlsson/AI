@@ -76,34 +76,36 @@ heuristic w g
         | finished w g = 0
         | otherwise = case goal g of
             (P.O P.Take (b1:bs) _) -> 1
-            (P.O P.Move (b1:bs) (P.OnTop b2)) -> 
-                h1 + h2
+            (P.O a (b1:bs) loc) -> 
+                case loc of
+                    P.OnTop b2 -> h1 + h2
+                        where
+                            holding1
+                                | isHolding b1 w = 1 -- Holding target =  drop it
+                                | isJust (holding w) = 3 -- Holding sth else = drop it + pick target + drop target
+                                | otherwise = 2 -- Holding nothing =  pick target + drop target
+                            holding2
+                                | isHolding b2 w = 1 -- Holding target, drop it
+                                | otherwise = 0
+                            -- To move
+                            stackValue1 = maybe 0 id $ blocksAbove b1 w
+                            h1 = holding1 + 2*stackValue1
+                            -- On top of this
+                            stackValue2 = maybe 0 id $ blocksAbove b2 w
+                            h2 = holding2 + (2*(0+stackValue2))
+
+blocksAbove :: Block -> World -> Maybe Int
+blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
                     where
-                        holding0 -- Holding something
-                            | isNothing (holding w) = 0
-                            | otherwise = 1
-                        -- To move
-                        stackIndex1 = M.lookup b1 (indexes w)
-                        stack1 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex1
-                        holding1
-                            | isNothing stack1 = 1 -- Holding target, drop it
-                            | otherwise = 2 + holding0 -- 2 = pickup/drop target. + holding0 = drop holding
-                        stackValue1 = (fromJust $ maybe (Just 0) (L.elemIndex b1) stack1)
-                        h1 = holding1 + (2*(stackValue1))
-                        -- On top of this
-                        stackIndex2 = M.lookup b2 (indexes w)
-                        stack2 = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex2
-                        holding2
-                            | isNothing stack2 = 1 -- Holding target, drop it
-                            | otherwise = holding0 -- Drop w/e holding
-                        stackValue2 = (fromJust $ maybe (Just 0) (L.elemIndex b2) stack2)
-                        h2 = holding2 + (2*(0+stackValue2))
+                        stackIndex = M.lookup b (indexes w)
+                        stack = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex
 
 -- Peek ahead 1
 heuristic' :: World -> Goal -> Int
 heuristic' w g 
     | finished w g = 0
  -- | otherwise = heuristic w g
+    | otherwise = heuristic w g
     | otherwise = 1 + (L.minimum heuristics2)
     where
         successorWorlds = map world $ successors (N w [])

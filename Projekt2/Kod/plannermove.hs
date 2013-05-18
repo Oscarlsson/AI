@@ -26,16 +26,22 @@ cgiMain = do setHeader "Content-type" "text/plain"
              path <- liftIO $ getCurrentDirectory 
              shrdPGF <- liftIO $ readPGF (path ++ "/cgi-bin/Shrdlite.pgf")
              let w = getWorld holding world
-             case liftM (\parse -> createGoal parse w) (head $ P.runParser shrdPGF command w) of 
-                Ok  o  ->  output . unlines $ findPlan w o
-                Bad s  ->  output s   
+             let xs = map (\x -> liftM (\parse -> createGoal parse w) x) (P.runParser shrdPGF command w)
+             runFindPlan xs w 
+
+runFindPlan :: [Err Goal] -> World -> CGI CGIResult 
+runFindPlan []  _     = output "no parse results"
+runFindPlan [Bad s] _ = output s 
+runFindPlan (x : xs)  w = case x of 
+            Ok o  -> output . unlines $ findPlan w o
+            _     -> runFindPlan xs w  
+
 
 getWorld :: String -> [[String]] -> World
 getWorld holding world = fromJust $ createWorld world holding blocks 
 
 findPlan :: World -> Goal ->[String]
 findPlan w o = map show (fromJust $  astar w o)
-
 
 cgiInput :: CGI (String, [[String]], String)
 cgiInput = do holding <- liftM (fromMaybe "") (getInput "holding")
@@ -44,7 +50,6 @@ cgiInput = do holding <- liftM (fromMaybe "") (getInput "holding")
               treesStr <- liftM (fromMaybe "") (getInput "trees")
               let trees = treesStr
               return (holding, world, trees)
-
 
 split :: Char -> String -> [String]
 split delim str

@@ -104,7 +104,7 @@ blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
 heuristic' :: World -> Goal -> Int
 heuristic' w g 
     | finished w g = 0
- -- | otherwise = heuristic w g
+ --  otherwise = heuristic w g
     | otherwise = heuristic w g
     | otherwise = 1 + (L.minimum heuristics2)
     where

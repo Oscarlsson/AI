@@ -15,8 +15,8 @@ data Action = Move | Put | Take | None
     deriving (Show,Eq)
 
 data Location =  
-    -- |Argument is the block that one should put blocks above. Mustn't be directly 
-    -- above this block.    
+    -- |Argument is the list of possible blocks that one can choose to put blocks above. Mustn't be directly 
+    -- above such a block.    
                   Above [Block]
     -- |Needed for initialization. 
                 | Empty  
@@ -96,7 +96,6 @@ runParser shrdPGF com w = do
     let lang = head $ languages shrdPGF
     let exs = parse shrdPGF lang (startCat shrdPGF) $ modifyString com
     map (\gs -> traverseTree (fg gs) w) exs   
-    --map (\gs -> traverseTree (fg gs) w) exs -- this is correct the above line is for debugging    
 
 -- |there can be copies of the same block in the final mBlocks, this is expected and solved by nub
 traverseTree :: GS -> World -> Err Output  

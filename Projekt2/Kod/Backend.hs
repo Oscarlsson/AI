@@ -180,6 +180,10 @@ getUpperUnderMost f bs w | null bs || isNothing mBlocks  = Nothing
                                                     Just i  -> getBlocksAt i w   
                                                     Nothing -> Nothing 
 
+-- |Returns the minimum stack height in the world 
+getMinimumStackHeight :: World -> Int 
+getMinimumStackHeight w = length . snd $ minimumBy 
+                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ M.toList (ground w)   
 
 -- |For testing purposes 
 initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

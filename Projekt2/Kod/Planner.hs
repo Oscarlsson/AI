@@ -57,13 +57,17 @@ finished w ( G (P.O P.Put (b1:bs) loc) id) =
 finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) = 
             case loc of
                 (P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
-                (P.Location P.Inside (b2:b2s))  -> isAbove b1 b2 w
+                (P.Location P.Inside (b2:b2s))  -> 
+                        case b1s of 
+                            [] -> isOnTop' b1 b2 w 
+                            _ -> and $ map (\b1x -> isAbove b1x b2 w) b1S
                 (P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
                 --(P.Location P.OnTop (b2:[]))    -> isOnTop' b2 b1 w
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
-                        [] -> isOnTop' b2 b1 w
-                        _  -> and $ map (\b1x -> isAbove b2 b1x w) b1S
+                        [] -> isOnTop' b1 b2 w
+                        _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
+
                 (P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
                 (P.Location P.Under (b2:bs))    -> isUnder b2 b1 w
                 (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
@@ -77,15 +81,24 @@ heuristic :: World -> Goal -> Int
 heuristic w g 
         | finished w g = 0
         | otherwise = case goal g of                            -- 1 is just temporary
-            ( P.O P.Take _          _           )               -> 1
-            ( P.O P.Put  _          _           )               -> 1
-            ( P.O _      _          P.Empty     )               -> 1
-            ( P.O _      _          (P.Floor _) )               -> 1
-            ( P.O _      mblocks   (P.Location loc (b2:b2s)))  ->
+            ( P.O P.Take    mblocks    _         )               -> (holdingHeuristic g w) + (maybe 0 id $ blocksAbove (head mblocks) w) -- Det kan finnas fler block att välja på
+            ( P.O _          _          (P.Empty))               -> 1
+            ( P.O _          _          (P.Floor _))             -> 1 --getMinimumStackHeight passar bra
+            -- Vi har alltid holding satt i PUT.
+            ( P.O P.Put  mblocks    (P.Location loc bl@(b2:b2s)))   -> 
+                case loc of 
+                    P.OnTop   -> 2*(maybe 0 id $ blocksAbove b2 w) -- Behöver flytta allt som är ovanför
+                    P.RightOf -> 1 --Beror på vad som finns till höger
+                    P.LeftOf  -> 1
+                    P.Beside  -> 1
+                    P.Above   -> 1 
+                    P.Inside  -> 1
+                    P.Under   -> 1
+            ( P.O _      mblocks    (P.Location loc (b2:b2s)))       ->
                 let 
                     blocksAbove2 = maybe 0 id $ blocksAbove b2 w
                     h2 = 2*blocksAbove2
-                    blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
+                    blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) (filter (\b1x -> isUnder b1x b2 w) mblocks)
                     h1 = 2*blocksAbove1
                 in case loc of
                     P.OnTop -> h1 + h2 + (holdingHeuristic g w)
@@ -95,6 +108,10 @@ holdingHeuristic :: Goal -> World -> Int
 holdingHeuristic g w = objectHolding + targetHolding
     where
         objectHolding = case goal g of
+            P.O P.Take (b1:b1s) _ 
+                | isHolding b1 w -> 0
+                | isJust (holding w) -> 2 
+                | otherwise          -> 1
             P.O P.Move (b1:b1s) _
                 | isHolding b1 w -> 1 -- Holding target =  drop it
                 | isJust (holding w) -> 3 -- Holding sth else = drop it + pick target + drop target
@@ -198,32 +215,32 @@ instance Show Instruction where
     show (Drop l) = "drop " ++ (show l)
 
 instance Ord Instruction where
-	Pick l1 `compare` Pick l2 = l1 `compare` l2
-	Drop l1 `compare` Drop l2 = l1 `compare` l2
-	Pick l1 `compare` Drop l2 = l1 `compare` l2
-	Drop l1 `compare` Pick l2 = l1 `compare` l2
+    Pick l1 `compare` Pick l2 = l1 `compare` l2
+    Drop l1 `compare` Drop l2 = l1 `compare` l2
+    Pick l1 `compare` Drop l2 = l1 `compare` l2
+    Drop l1 `compare` Pick l2 = l1 `compare` l2
 
 --------------------------------------------------------------------------------
 
 allLegalMoves :: World -> [Instruction]
 allLegalMoves w
-				| isJust $ holding w = filter (\instr -> validInstruction instr w) (map Drop (M.keys (ground w)))
-				| otherwise = filter (\instr -> validInstruction instr w) (map Pick (M.keys (ground w)))
+                | isJust $ holding w = filter (\instr -> validInstruction instr w) (map Drop (M.keys (ground w)))
+                | otherwise = filter (\instr -> validInstruction instr w) (map Pick (M.keys (ground w)))
 
 --------------------------------------------------------------------------------
 
 validInstruction :: Instruction -> World -> Bool
 validInstruction i w = case i of 
-				Pick x -> validPickId x w 
-				Drop x -> validDrop x w 
+                Pick x -> validPickId x w 
+                Drop x -> validDrop x w 
 
 validPickId :: Int -> World -> Bool
 validPickId i w 
-			  | isJust $ holding w = False
-			  | otherwise = case M.lookup i (ground w) of 
-					Nothing		-> False
-					Just []		-> False  
-					Just (x:xs) -> True
+              | isJust $ holding w = False
+              | otherwise = case M.lookup i (ground w) of 
+                    Nothing     -> False
+                    Just []     -> False  
+                    Just (x:xs) -> True
 
 validPick :: Block -> World -> Bool 
 validPick b w | isJust $ holding w = False
@@ -296,46 +313,46 @@ pq w = PSQ.singleton (N {world = w, history = []}) 0
 
 pop :: PQ -> (Node, PQ)
 pop pq = (n,pq')
-	where
-		n = key $ fromJust $ PSQ.findMin pq
-		pq' = PSQ.deleteMin pq
+    where
+        n = key $ fromJust $ PSQ.findMin pq
+        pq' = PSQ.deleteMin pq
 
 addAll :: PQ -> [Node] -> Goal -> PQ
-addAll pq nodes g = foldl (\pq' node -> PSQ.insert node ((length $ history node) + (heuristic' (world node) g)) pq') pq nodes   
-						  
+addAll pq nodes g = foldl (\pq' node -> PSQ.insert node ((length $ history node) + (heuristic (world node) g)) pq') pq nodes   
+                          
 successors :: Node -> [Node]
 successors (N w h) = nodes
-	where 
-		moves = allLegalMoves w
-		worlds = map (\m -> fromJust $ action m w) moves 
-		histories = map (\instr -> h++[instr]) moves
-		nodes = map (\t -> (N (fst t) (snd t))) $ zip worlds histories
+    where 
+        moves = allLegalMoves w
+        worlds = map (\m -> fromJust $ action m w) moves 
+        histories = map (\instr -> h++[instr]) moves
+        nodes = map (\t -> (N (fst t) (snd t))) $ zip worlds histories
 
 astarDebug :: World -> Goal -> (Maybe History, Int)
 astarDebug w g 
     --- TODO : maybe default (\x -> ) result
-	| isNothing (fst result) = (Nothing, 0)
-	| otherwise = (Just (history $ fromJust (fst result)), snd result)
-	--where result = snd $ astar' (pq w) [] g
-	where 
+    | isNothing (fst result) = (Nothing, 0)
+    | otherwise = (Just (history $ fromJust (fst result)), snd result)
+    --where result = snd $ astar' (pq w) [] g
+    where 
             y = astar' (pq w) [] g
             result = (snd $ y, PSQ.size $ fst y)
 
 astar :: World -> Goal -> Maybe History
 astar w g 
     --- TODO : maybe default (\x -> ) result
-	| isNothing result = Nothing
-	| otherwise = Just (history $ fromJust result)
+    | isNothing result = Nothing
+    | otherwise = Just (history $ fromJust result)
     where result = snd $ astar' (pq w) [] g
 
 astar' :: PQ -> Seen -> Goal -> (PQ, Maybe Node)
 astar' pq seen goal 
-		| finished (world n) goal = (pq'', Just n)
+        | finished (world n) goal = (pq'', Just n)
 --fail  | fail = (pq'', Nothing)
-		| otherwise = astar' pq'' seen' goal
-		where
-			(n,pq') = pop pq
-			seen' = (world n):seen
-			succs = filter (\n -> not $ elem (world n) seen' ) (successors n)
-			pq'' = addAll pq' succs goal
+        | otherwise = astar' pq'' seen' goal
+        where
+            (n,pq') = pop pq
+            seen' = (world n):seen
+            succs = filter (\n -> not $ elem (world n) seen' ) (successors n)
+            pq'' = addAll pq' succs goal
 

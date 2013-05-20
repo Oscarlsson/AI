@@ -14,34 +14,22 @@ import Blocks
 data Action = Move | Put | Take | None 
     deriving (Show,Eq)
 
-data Reference = Above | Beside | Inside | LeftOf | OnTop | RightOf | Under
-    deriving (Show,Eq)
+data Reference = 
+        -- |Mustn't be directly above a block.    
+        Above 
+        -- | Either left of or right of  
+        | Beside
+        | Inside 
+        | LeftOf 
+        -- |Uppermost possition i.e. ontop of a stack 
+        | OnTop 
+        | RightOf 
+        -- |Mustn't be directly above a block.    
+        | Under
+            deriving (Show,Eq)
+
 data Location = Empty | Location Reference [Block] | Floor [Int]
     deriving (Show,Eq)
-
---data Location =  
-    -- |Argument is the list of possible blocks that one can choose to put blocks above. Mustn't be directly 
-    -- above such a block.    
---                  Above [Block]
-    -- |Needed for initialization. 
---                | Empty  
-    -- |Argument is the list of possible blocks that one can choose to put blocks beside of.
- --               | Beside [Block] 
-    -- |Argument is the list of possible blocks that one can choose to put blocks inside. 
---                | Inside [Block] 
-    -- |Argument is the list of possible block that one can choose to put blocks to the left of. 
---                | LeftOf [Block]
-    -- |Argument is the list of possible blocks that one can choose to check the index of and then put blocks on top
-    -- of the stack which corresponds to that index.
---                | OnTop [Block]
-    -- |Argument is the list of blocks that one can choose to put blocks right of. 
---                | RightOf [Block]
-    -- |Argument is the list of blocks that one can choose to put blocks under. Mustn't be directly 
-    -- under this block.
-      --          | Under [Block]
-    -- |Argument is indexes that one can choose to put blocks at.     
-       --         | Floor [Int] 
---    deriving (Show,Eq) 
 
 data Output = O {
     -- | An action to take. 

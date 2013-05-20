@@ -55,11 +55,12 @@ isUnder b1 b2 w = isOnGround b1 w && isOnGround b2 w && b2 `elem` xs &&
 isOnGround :: Block -> World -> Bool 
 isOnGround b w = M.member b $ indexes w   
 
---Check if a block is on the top of any stack in a world     
+-- |Check if a block is on the top of any stack in a world     
 isOnTop :: Block -> Block -> World -> Bool 
 isOnTop b1 b2 w = liftM2 (==) mi1 mi2 == Just True && (head . fromJust $ M.lookup (fromJust mi1) (ground w)) == b2 
             where (mi1, mi2) = (getBlockIndex b1 w, getBlockIndex b2 w) 
 
+-- |Check if the first input block lies directly over the second input block 
 isOnTop' :: Block -> Block -> World -> Bool
 isOnTop' b1 b2 w = sameStack && ontop
     where   s1 = M.lookup b1 (indexes w)
@@ -179,6 +180,10 @@ getUpperUnderMost f bs w | null bs || isNothing mBlocks  = Nothing
                                                     Just i  -> getBlocksAt i w   
                                                     Nothing -> Nothing 
 
+-- |Returns the minimum stack height in the world 
+getMinimumStackHeight :: World -> Int 
+getMinimumStackHeight w = length . snd $ minimumBy 
+                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ M.toList (ground w)   
 
 -- |For testing purposes 
 initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

@@ -81,11 +81,11 @@ heuristic w g
             ( P.O P.Put  _          _           )               -> 1
             ( P.O _      _          P.Empty     )               -> 1
             ( P.O _      _          (P.Floor _) )               -> 1
-            ( P.O _      (b1:b1s)   (P.Location loc (b2:b2s)))  ->
+            ( P.O _      mblocks   (P.Location loc (b2:b2s)))  ->
                 let 
                     blocksAbove2 = maybe 0 id $ blocksAbove b2 w
                     h2 = 2*blocksAbove2
-                    blocksAbove1 = maybe 0 id $ blocksAbove b1 w
+                    blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
                     h1 = 2*blocksAbove1
                 in case loc of
                     P.OnTop -> h1 + h2 + (holdingHeuristic g w)

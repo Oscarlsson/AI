@@ -60,6 +60,17 @@ isOnTop :: Block -> Block -> World -> Bool
 isOnTop b1 b2 w = liftM2 (==) mi1 mi2 == Just True && (head . fromJust $ M.lookup (fromJust mi1) (ground w)) == b2 
             where (mi1, mi2) = (getBlockIndex b1 w, getBlockIndex b2 w) 
 
+isOnTop' :: Block -> Block -> World -> Bool
+isOnTop' b1 b2 w = sameStack && ontop
+    where   s1 = M.lookup b1 (indexes w)
+            s2 = M.lookup b2 (indexes w)
+            sameStack = s1 == s2 -- Both cannot be Nothing
+            stack = fromJust $ M.lookup (fromJust s1) (ground w)
+            i1 = fromJust $ elemIndex b1 stack
+            i2 = fromJust $ elemIndex b2 stack
+            ontop = i1 == (i2 + 1)
+
+
 -- |Check if a block is at the bottom of any stack in a world     
 isOnBottom :: Block -> World -> Bool 
 isOnBottom b w | isJust mi = (last . fromJust $ M.lookup (fromJust mi) (ground w)) == b

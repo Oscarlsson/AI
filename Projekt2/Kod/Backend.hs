@@ -92,6 +92,7 @@ isEmptyIndex i w = case M.lookup i (ground w) of
                         Just [] -> True
                         _       -> False  
 
+
 -- |check if a x-coordinate holds the input block  
 isOnPoss :: Block -> Int -> World -> Bool
 isOnPoss b i w = i ==  (fromJust $ getBlockIndex b w)
@@ -182,8 +183,18 @@ getUpperUnderMost f bs w | null bs || isNothing mBlocks  = Nothing
 
 -- |Returns the minimum stack height in the world 
 getMinimumStackHeight :: World -> Int 
-getMinimumStackHeight w = length . snd $ minimumBy 
-                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ M.toList (ground w)   
+getMinimumStackHeight w = getMinimumStackHeightFrom w 0  
+
+getMinimumStackHeightFrom :: World -> Int -> Int 
+getMinimumStackHeightFrom w i = length . snd $ minimumBy 
+                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ drop i (M.toList (ground w)) 
+
+getMinimumStackHeightUntil :: World -> Int -> Int 
+getMinimumStackHeightUntil w i = length . snd $ minimumBy 
+                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ take i (M.toList (ground w)) 
 
 -- |For testing purposes 
 initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+
+
+

@@ -47,9 +47,9 @@ command :: String
 command = --"Put the blue block that is to the left of a pyramid in a medium-sized box"
          -- "put all red blocks left of a white box"
         --"Put the blue block that is to the left of a pyramid in a medium-sized box."
-        --"Move all blocks inside a box on top of the red square?" --TODO not working yet 
+        --"Move all blocks inside a box on top of the red square?"  
         --"Put the wide blue block under the black rectangle."
-        --"move all wide rectangles into a red box"
+        "move all wide rectangles into a red box"
         --"put all blue blocks in a red box."
         --"take the floor"
         --"take the ball that is left of all blocks"
@@ -71,7 +71,7 @@ command = --"Put the blue block that is to the left of a pyramid in a medium-siz
         --"Take the block that is above a red block" --make the same mistake as "Move all blocks inside a box on top 
                                                    --of the red square?" takes everything under  
         --"take the black wide rectangle in the white box" 
-        "put it on the floor"   
+        --"put it on the floor"   
         
 modifyString :: String -> String 
 modifyString xs = filter (\c -> not $ c `elem` ['.',',','!','?',';',':','\'','[',']','\\','\"']) $ map toLower xs
@@ -115,7 +115,7 @@ handleThing :: GThing -> World -> Err [Block]
 handleThing th w = case th of 
         Gfloor  -> Bad "floor is not correct handeled"  
         Gall b  -> handleGBlock b w  
-        Gany b  -> handleGBlock b w --liftM (take 1) $ handleGBlock b w 
+        Gany b  -> liftM (take 1) $ handleGBlock b w 
         Gthe b  -> handleGBlock b w 
 
 handleLocation :: GLocation -> [Block] -> World -> Err [Block] 

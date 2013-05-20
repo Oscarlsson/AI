@@ -59,13 +59,13 @@ finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) =
                 (P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
                 (P.Location P.Inside (b2:b2s))  -> 
                         case b1s of 
-                            [] -> isOnTop' b1 b2 w 
+                            [] -> isOnTop' b2 b1 w 
                             _ -> and $ map (\b1x -> isAbove b1x b2 w) b1S
                 (P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
                 --(P.Location P.OnTop (b2:[]))    -> isOnTop' b2 b1 w
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
-                        [] -> isOnTop' b1 b2 w
+                        [] -> isOnTop' b2 b1 w
                         _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
 
                 (P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
@@ -101,7 +101,8 @@ heuristic w g
                                 False -> 2 -- Jobbigt!
                                 
                     P.OnTop   -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO: Behöver flytta allt som är ovanför
-                    P.Above   -> 1 + 2*(length $ takeWhile (\b2 -> b2 > hold) (fromJust $ getBlocksAt (fromJust $ getBlockIndex b2 w) w))
+                    P.Above   -> 1 + 2*(length $ takeWhile (\b2 -> b2 > hold) 
+                            (fromJust $ getBlocksAt (fromJust $ getBlockIndex b2 w) w))
                     P.Inside  -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO 
                     P.Under   -> 1
             ( P.O P.Move      mblocks    (P.Location loc (b2:b2s)))       ->
@@ -121,7 +122,8 @@ heuristic w g
                         where 
                             blocksAbove2 = maybe 0 id $ blocksAbove b2 w
                             h2 = 2*blocksAbove2
-                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) (filter (\b1x -> isUnder b1x b2 w) mblocks)
+                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) 
+                                    (filter (\b1x -> isUnder b1x b2 w) mblocks)
                             h1 = 2*blocksAbove1
 
 holdingHeuristic :: Goal -> World -> Int
@@ -190,8 +192,12 @@ testStatement stmt = do
     print stmt
     putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
     putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-    putStrLn $ "\t" ++ ( show $ (showHistory (fromJust $ fst a)) )
+    putStrLn $ "\t" ++ ( show $ (showHistory (fromErr $ fst a)) )
     
+fromErr :: Err a -> a 
+fromErr (Ok a)  = a 
+fromErr (Bad s) = error s 
+
 
 runTests :: IO ()
 runTests = do
@@ -341,6 +347,7 @@ addBlock i b w = w {indexes = M.insert b i (indexes w), ground = M.update (retur
 type History = [Instruction]
 ---type Node = (World, History)
 data Node = N { world :: World , history :: History } deriving (Eq, Ord, Show)
+
 type PQ = PSQ Node Int
 type Seen = [World]
 
@@ -364,28 +371,34 @@ successors (N w h) = nodes
         histories = map (\instr -> h++[instr]) moves
         nodes = map (\t -> (N (fst t) (snd t))) $ zip worlds histories
 
-astarDebug :: World -> Goal -> (Maybe History, Int)
-astarDebug w g 
+astarDebug :: World -> Goal -> (Err History, Int)
+astarDebug w g = 
+    case fst result of 
+        Bad s -> (Bad s , 0)
+        Ok  n -> (Ok (history $ n), snd result)
+
     --- TODO : maybe default (\x -> ) result
-    | isNothing (fst result) = (Nothing, 0)
-    | otherwise = (Just (history $ fromJust (fst result)), snd result)
+    -- | isNothing (fst result) = (Nothing, 0)
+   --  | otherwise = (Just (history $ fromJust (fst result)), snd result)
     --where result = snd $ astar' (pq w) [] g
     where 
-            y = astar' (pq w) [] g
+            y = astar' 100 (pq w) [] g
             result = (snd $ y, PSQ.size $ fst y)
 
-astar :: World -> Goal -> Maybe History
-astar w g 
+astar :: Int -> World -> Goal -> Err History
+astar to w g =  
     --- TODO : maybe default (\x -> ) result
-    | isNothing result = Nothing
-    | otherwise = Just (history $ fromJust result)
-    where result = snd $ astar' (pq w) [] g
+    case result of 
+        Bad s  -> Bad s 
+        Ok n   -> Ok (history $ n)
+    where result = snd $ astar' to (pq w) [] g
 
-astar' :: PQ -> Seen -> Goal -> (PQ, Maybe Node)
-astar' pq seen goal 
-        | finished (world n) goal = (pq'', Just n)
---fail  | fail = (pq'', Nothing)
-        | otherwise = astar' pq'' seen' goal
+astar' :: Int -> PQ -> Seen -> Goal -> (PQ, Err Node)
+astar' to pq seen goal 
+        | finished (world n) goal = (pq'', Ok n)
+        | to == 0  = (pq'',Ok n)
+        -- | to == 0   = (pq'', Bad $ "timed out with world =" ++ (show $ world n))
+        | otherwise = astar' (to - 1) pq'' seen' goal
         where
             (n,pq') = pop pq
             seen' = (world n):seen

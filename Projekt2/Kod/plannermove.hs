@@ -42,9 +42,9 @@ getWorld :: String -> [[String]] -> Maybe World
 getWorld holding world = createWorld world holding blocks 
 
 findPlan :: World -> Goal ->[String]
-findPlan w o = case astar w o of 
-                    Just xs -> map show xs 
-                    _       -> ["error in astar algorithm"]
+findPlan w o = case astar 1000 w o of 
+                    Ok xs -> map show xs 
+                    Bad s -> [s]
 
 cgiInput :: CGI (String, [[String]], String)
 cgiInput = do holding <- liftM (fromMaybe "") (getInput "holding")

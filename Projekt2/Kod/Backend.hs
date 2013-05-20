@@ -192,7 +192,7 @@ getMinimumStackHeightFrom w i = length . snd $ minimumBy
                 (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ drop i (M.toList (ground w)) 
 
 -- |Works like getMinimumStackHeight but uses a last index to look at
---  getMinimumStackHeight w == getMinimumStackHeightFrom w 0 
+--  getMinimumStackHeight w == getMinimumStackHeightUntil w (wordsize - 1) 
 getMinimumStackHeightUntil :: World -> Int -> Int 
 getMinimumStackHeightUntil w i = length . snd $ minimumBy 
                 (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ take i (M.toList (ground w)) 

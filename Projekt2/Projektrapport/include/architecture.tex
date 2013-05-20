@@ -3,8 +3,22 @@
 \section{Programs and tools}
 Haskell was used to implement the parser and the planner. The given grammar was written in GF and the interface uses JavaScript. A Python script is used to handle the communication between the Haskell files and the JavaScripts.\\\\
 The search algorithm A* was implemented to get an efficient planner.
-\section{Parser}
 
+\section{Backend structure}
+The parser and the planner share a number of common functions and structures, which were defined in Backend.hs and Blocks.hs. Blocks.hs defines a block and the list of blocks the world contains. Backend.hs defines how to create a world from the given input and contains functions to check where a certain block is relative to another block. Backend.hs also contains functions to get blocks at a certain position, given different information such as name or an index. 
+
+\section{Parser}
+The input string was first parsed using the GF grammar. To be able to use pattern matching on the generated output from the GF parser, the GF grammar was also translated into Haskell data types, which was automatically generated (Shrdlite.hs). From this grammar an abstract syntax were generated for the input to be used for pattern matching. If the input was ambiguous, several parse trees could be generated and all trees must be handled. \\\\
+For each parse tree, the tree was translated to an instruction which was given to the planner. Since some parse trees could refer to, for example, non existing objects in the world the parser used an Error Monad (defined in Err.hs) to tell if the given tree was OK or not. \\\\
+The instruction given to the planner consists of three parts:
+\begin{itemize}
+\item An action to do ($Move$, $Put$ or $Take$)
+\item A list of blocks to be moved
+\item A location where to move the blocks, which consists of an reference ($Above$, $Beside$, $Inside$, $LeftOf$, $OnTop$, $RightOf$ or $Under$) and a list of blocks which the reference refers to. An location could also be $Floor$ and a list of stack indexes where the stack is empty.
+\end{itemize}
+The output differs dependeing on which action to do. For example $Take$ do not have a location and $Put$ would only have the block in holding as the list of blocks to be moved. If holding is $null$, $Put$ would not do anything.\\\\
+Beacuse of this output, the parser will always find out if the blocks the input refers to even exists. If not, an error is given. The parser also checks that some of the laws of physics holds. For example a block can only be above or on top of the floor. It is also impossible to take a block left of or right of all blocks, since this refers to the block itself. It is not allowed to take the floor either or to put something on top of or above a pyramid or ball. It is also forbidden to put something inside a block that is not a box. All these things will return an error. \\\\
+If a block should be put left of or right of several blocks, the parser returns the leftmost or rightmost block as a reference block. Other physical laws, such as small blocks cannot hold bigger blocks is handled in the planner.
 
 \section{Planner}
 

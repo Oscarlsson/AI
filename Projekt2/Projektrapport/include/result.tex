@@ -20,4 +20,7 @@ Move all wide rectangles into a red box. & ( move ( all ( block rectangle wide \
 --nåt som inte går?
 
 \section{Discussion}
+A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
+Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we find a library which could convert between GF grammar as concrete and abstract syntax. \\\\
+We also choosed to implement a planning algorithm by graph traversal, by implementing A*. Another possibility would been to use for example predicate logic instead. 
 

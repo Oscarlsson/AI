@@ -83,26 +83,46 @@ heuristic w g
         | otherwise = case goal g of                            -- 1 is just temporary
             ( P.O P.Take    mblocks    _         )               -> (holdingHeuristic g w) + (maybe 0 id $ blocksAbove (head mblocks) w) -- Det kan finnas fler block att välja på
             ( P.O _          _          (P.Empty))               -> 1
-            ( P.O _          _          (P.Floor _))             -> 1 --getMinimumStackHeight passar bra
+            ( P.O _          _          (P.Floor is))            -> 2*(getMinimumStackHeight w)+1 
             -- Vi har alltid holding satt i PUT.
-            ( P.O P.Put  mblocks    (P.Location loc bl@(b2:b2s)))   -> 
+            ( P.O P.Put  (hold:_)    (P.Location loc bl@(b2:b2s)))   -> 
                 case loc of 
-                    P.OnTop   -> 2*(maybe 0 id $ blocksAbove b2 w) -- Behöver flytta allt som är ovanför
-                    P.RightOf -> 1 --Beror på vad som finns till höger
+                    P.RightOf ->                    --- GetRightMost??
+                        case (putRightOf hold w) of 
+                                True  -> 1
+                                False -> 2*(getMinimumStackHeightFrom w (fromJust $ getBlockIndex hold w))+1 
+                    P.LeftOf  -> 
+                        case (putLeftOf hold w) of 
+                                True  -> 1
+                                False -> 2*(getMinimumStackHeightUntil w (fromJust $ getBlockIndex hold w)-1)+1 
+                    P.Beside  -> 
+                        case ((putLeftOf hold w) || (putRightOf hold w)) of
+                                True  -> 1
+                                False -> 2 -- Jobbigt!
+                                
+                    P.OnTop   -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO: Behöver flytta allt som är ovanför
+                    P.Above   -> 1 + 2*(length $ takeWhile (\b2 -> b2 > hold) (fromJust $ getBlocksAt (fromJust $ getBlockIndex b2 w) w))
+                    P.Inside  -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO 
+                    P.Under   -> 1
+            ( P.O P.Move      mblocks    (P.Location loc (b2:b2s)))       ->
+                case loc of
+                    P.RightOf  -> 1
                     P.LeftOf  -> 1
                     P.Beside  -> 1
-                    P.Above   -> 1 
-                    P.Inside  -> 1
-                    P.Under   -> 1
-            ( P.O _      mblocks    (P.Location loc (b2:b2s)))       ->
-                let 
-                    blocksAbove2 = maybe 0 id $ blocksAbove b2 w
-                    h2 = 2*blocksAbove2
-                    blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) (filter (\b1x -> isUnder b1x b2 w) mblocks)
-                    h1 = 2*blocksAbove1
-                in case loc of
-                    P.OnTop -> h1 + h2 + (holdingHeuristic g w)
+                    P.OnTop  -> h1 + h2 + (holdingHeuristic g w)
+                        where
+                            blocksAbove2 = maybe 0 id $ blocksAbove b2 w
+                            h2 = 2*blocksAbove2
+                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
+                            h1 = 2*blocksAbove1
+                    P.Under  -> 1
+                    P.Above  -> 1 
                     P.Inside -> h1 + h2 + (holdingHeuristic g w)
+                        where 
+                            blocksAbove2 = maybe 0 id $ blocksAbove b2 w
+                            h2 = 2*blocksAbove2
+                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) (filter (\b1x -> isUnder b1x b2 w) mblocks)
+                            h1 = 2*blocksAbove1
 
 holdingHeuristic :: Goal -> World -> Int
 holdingHeuristic g w = objectHolding + targetHolding
@@ -116,6 +136,7 @@ holdingHeuristic g w = objectHolding + targetHolding
                 | isHolding b1 w -> 1 -- Holding target =  drop it
                 | isJust (holding w) -> 3 -- Holding sth else = drop it + pick target + drop target
                 | otherwise -> 2 -- Holding nothing =  pick target + drop target
+            _ -> 1
         targetHolding = case P.location . goal $ g of
             P.Location P.OnTop (b2:bs)
                 | isHolding b2 w -> 1 -- Holding target, drop it
@@ -123,6 +144,21 @@ holdingHeuristic g w = objectHolding + targetHolding
             P.Location P.Inside (b2:bs) -- WRONg FIX
                 | isHolding b2 w -> 1 -- Holding target, drop it
                 | otherwise -> 0
+            _ -> 1
+
+-- Requires holding block
+putRightOf :: Block -> World -> Bool
+putRightOf b1 w = maybe False (\i -> or $ listofdrops i) idtoright
+                    where
+                    idtoright = getBlockIndex b1 w
+                    listofdrops i = map (\id -> validDrop id w) [i .. (wsize w-1)]
+                    
+
+putLeftOf :: Block -> World -> Bool
+putLeftOf b1 w = maybe False (\i -> or $ listofdrops i) idtoright
+                    where
+                    idtoright = getBlockIndex b1 w
+                    listofdrops i = map (\id -> validDrop id w) [0 .. i]
 
 blocksAbove :: Block -> World -> Maybe Int
 blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack

@@ -1,4 +1,5 @@
 \chapter{Architecture}
+In our project a parser and a planner was implemented. The parser was made to handle the input and check that the input was valid. The planner finds a planning of how to move the blocks to reach the goal state determined by the parser. 
 
 \section{Programs and tools}
 Haskell was used to implement the parser and the planner. The given grammar was written in GF and the interface uses JavaScript. A Python script is used to handle the communication between the Haskell files and the JavaScripts.\\\\
@@ -8,7 +9,7 @@ The search algorithm A* was implemented to get an efficient planner.
 The parser and the planner share a number of common functions and structures, which were defined in Backend.hs and Blocks.hs. Blocks.hs defines a block and the list of blocks the world contains. Backend.hs defines how to create a world from the given input and contains functions to check where a certain block is relative to another block. Backend.hs also contains functions to get blocks at a certain position, given different information such as name or an index. 
 
 \section{Parser}
-The input string was first parsed using the GF grammar. To be able to use pattern matching on the generated output from the GF parser, the GF grammar was also translated into Haskell data types, which was automatically generated (Shrdlite.hs). From this grammar an abstract syntax were generated for the input to be used for pattern matching. If the input was ambiguous, several parse trees could be generated and all trees must be handled. \\\\
+The input string was first modified to remove unnessesary characters, such as ''.'', ''!'' and ''?''. Also, all characters are changed to be lower case so it could be given and parsed by the GF grammar. To be able to use pattern matching on the generated output from the GF parser, the GF grammar was also translated into Haskell data types, which was automatically generated (Shrdlite.hs). From this grammar an abstract syntax were generated for the input to be used for pattern matching. If the input was ambiguous, several parse trees could be generated and all trees must be handled. \\\\
 For each parse tree, the tree was translated to an instruction which was given to the planner. Since some parse trees could refer to, for example, non existing objects in the world the parser used an Error Monad (defined in Err.hs) to tell if the given tree was OK or not. \\\\
 The instruction given to the planner consists of three parts:
 \begin{itemize}

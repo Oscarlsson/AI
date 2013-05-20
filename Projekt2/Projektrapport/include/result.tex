@@ -1,4 +1,26 @@
 \chapter{Results and discussion}
 
+The following result is given by the parser and planner when given the four example inputs.
+\begin{table}[h!]
+\centering
+\begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
+\hline
+\textbf{Input} & \textbf{Parse trees (concrete syntax)} & \textbf{Planning} \\ \hline
+Put the blue block that is to the left of a pyramid in a medium-sized box. & ( move ( the ( thatis ( block \_ \_ blue ) ( leftof ( any ( block pyramid \_ \_ ) ) ) ) ) ( inside ( any ( block box medium \_ ) ) ) ) & pick 0 \newline drop 0\\ \hline
+Move all blocks inside a box on top of the red square. & ( move ( all ( block \_ \_ \_ ) ) ( inside ( any ( thatis ( block box \_ \_ ) ( ontop ( the ( block square \_ red ) ) ) ) ) ) ) \newline \newline
+( move ( all ( thatis ( block \_ \_ \_ ) ( inside ( any ( block box \_ \_ ) ) ) ) ) ( ontop ( the ( block square \_ red ) ) ) ) & pick 0 \newline drop 0\\ \hline
+Put the wide blue block under the black rectangle. & ( move ( the ( block \_ wide blue ) ) ( under ( the ( block rectangle \_ black ) ) ) ) & pick 0 \newline drop 0\\ \hline
+Move all wide rectangles into a red box. & ( move ( all ( block rectangle wide \_ ) ) ( inside ( any ( block box \_ red ) ) ) ) & pick 0 \newline drop 0\\ \hline
+\end{tabular}
+\caption{Result of the given example input}
+\label{tab:exampleinput}
+\end{table}\\
+--några andra meningar vi klarar?
+\\\\
+--nåt som inte går?
+
 \section{Discussion}
+A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
+Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we find a library which could convert between GF grammar as concrete and abstract syntax. \\\\
+We also choosed to implement a planning algorithm by graph traversal, by implementing A*. Another possibility would been to use for example predicate logic instead. 
 

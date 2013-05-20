@@ -55,10 +55,22 @@ isUnder b1 b2 w = isOnGround b1 w && isOnGround b2 w && b2 `elem` xs &&
 isOnGround :: Block -> World -> Bool 
 isOnGround b w = M.member b $ indexes w   
 
---Check if a block is on the top of any stack in a world     
+-- |Check if a block is on the top of any stack in a world     
 isOnTop :: Block -> Block -> World -> Bool 
 isOnTop b1 b2 w = liftM2 (==) mi1 mi2 == Just True && (head . fromJust $ M.lookup (fromJust mi1) (ground w)) == b2 
             where (mi1, mi2) = (getBlockIndex b1 w, getBlockIndex b2 w) 
+
+-- |Check if the first input block lies directly over the second input block 
+isOnTop' :: Block -> Block -> World -> Bool
+isOnTop' b1 b2 w = sameStack && ontop
+    where   s1 = M.lookup b1 (indexes w)
+            s2 = M.lookup b2 (indexes w)
+            sameStack = s1 == s2 -- Both cannot be Nothing
+            stack = fromJust $ M.lookup (fromJust s1) (ground w)
+            i1 = fromJust $ elemIndex b1 stack
+            i2 = fromJust $ elemIndex b2 stack
+            ontop = i1 == (i2 + 1)
+
 
 -- |Check if a block is at the bottom of any stack in a world     
 isOnBottom :: Block -> World -> Bool 

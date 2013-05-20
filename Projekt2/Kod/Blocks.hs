@@ -4,7 +4,10 @@ import PGF
 import Shrdlite
 
 data Block = B {name :: String ,form :: GForm , size :: GSize , color :: GColor , width :: Double, height :: Double}
-    deriving (Show)
+    --deriving (Show)
+
+instance Show Block where
+    show b = show $ name b
 
 
 --Don't use "compare" when comparing sizes of blocks since they will always be different
@@ -29,8 +32,8 @@ instance Ord Block where
                _        -> width b1 >= width b2
     b1 <= b2 =  
                case (form b1,form b2) of 
-                 (Gpyramid,_)        -> False
-                 (Gball,_)           -> False
+                 (_,Gpyramid)        -> False
+                 (_,Gball)           -> False
                  _        -> width b1 <= width b2
     b1 `min` b2 = case form b1 of 
                Gpyramid -> b1 

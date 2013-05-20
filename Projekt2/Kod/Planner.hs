@@ -50,21 +50,22 @@ finished w ( G (P.O P.Put (b1:bs) loc) id) =
                 (P.Location P.Beside (b2:bs)) -> False
                 (P.Location P.Inside (b2:bs))  -> False
                 (P.Location P.LeftOf (b2:bs))  -> False
-                (P.Location P.OnTop (b2:bs))  -> isOnTop b2 b1 w
+                (P.Location P.OnTop (b2:bs))  -> isOnTop' b2 b1 w
                 (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
-                (P.Location P.Under (b2:bs))   -> isUnder b2 b1 w
+                (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
                 (P.Floor is)  -> False
-finished w ( G (P.O P.Move (b1:bs) loc ) _ ) = 
+finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) = 
             case loc of
-                (P.Location P.Beside (b2:bs))  -> False--map (\b -> isBeside b1 b w) bs
-                (P.Location P.Inside (b:bs)) -> isOnTop b1 b w --changed since Inside now takes a list 
-                                                    --of possible blocks to put other blocks inside.
-                                                    --I guess every such block should be taken in consideration
-                                                    --(for now the first block is always taken)
-                (P.Location P.LeftOf (b2:bs))  -> isLeftOf b2 b1 w
-                (P.Location P.OnTop (b2:bs))  -> isOnTop b2 b1 w
-                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
-                (P.Location P.Under (b2:bs))   -> isUnder b2 b1 w
+                (P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Location P.Inside (b2:b2s))  -> isAbove b1 b2 w
+                (P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
+                --(P.Location P.OnTop (b2:[]))    -> isOnTop' b2 b1 w
+                (P.Location P.OnTop (b2:_))     -> 
+                    case b1s of 
+                        [] -> isOnTop' b2 b1 w
+                        _  -> and $ map (\b1x -> isAbove b2 b1x w) b1S
+                (P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
+                (P.Location P.Under (b2:bs))    -> isUnder b2 b1 w
                 (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
 
 finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
@@ -88,7 +89,7 @@ heuristic w g
                     h1 = 2*blocksAbove1
                 in case loc of
                     P.OnTop -> h1 + h2 + (holdingHeuristic g w)
-                    P.Under -> h1 + h2 + (holdingHeuristic g w)
+                    P.Inside -> h1 + h2 + (holdingHeuristic g w)
 
 holdingHeuristic :: Goal -> World -> Int
 holdingHeuristic g w = objectHolding + targetHolding
@@ -102,6 +103,9 @@ holdingHeuristic g w = objectHolding + targetHolding
             P.Location P.OnTop (b2:bs)
                 | isHolding b2 w -> 1 -- Holding target, drop it
                 | otherwise -> 0
+            P.Location P.Inside (b2:bs) -- WRONg FIX
+                | isHolding b2 w -> 1 -- Holding target, drop it
+                | otherwise -> 0
 
 blocksAbove :: Block -> World -> Maybe Int
 blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
@@ -113,7 +117,6 @@ blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
 heuristic' :: World -> Goal -> Int
 heuristic' w g 
     | finished w g = 0
- --  otherwise = heuristic w g
     | otherwise = heuristic w g
     | otherwise = 1 + (L.minimum heuristics2)
     where
@@ -128,16 +131,13 @@ heuristic' w g
 testStatement :: String -> IO ()
 testStatement stmt = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = head $ P.runParser shrdPGF stmt initialWorld
-    case o of 
-        Ok o' -> do 
-            let g = createGoal o' initialWorld
-            let a = astarDebug initialWorld g
-            print stmt
-            putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
-            putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-            putStrLn $ "\t" ++ ( show $ (showHistory (fromJust $ fst a)) )
-        Bad s -> putStrLn s 
+    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
+    let g = createGoal o initialWorld
+    let a = astarDebug initialWorld g
+    print stmt
+    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
+    putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
+    putStrLn $ "\t" ++ ( show $ (showHistory (fromJust $ fst a)) )
     
 
 runTests :: IO ()
@@ -145,18 +145,48 @@ runTests = do
     testStatement "take the red square"
     testStatement "take the green pyramid"
     testStatement "put the black wide block on top of the red square"
+    --testStatement "put the black wide block on top of a medium-sized box."
+    testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
+    testStatement "Move all wide blocks inside a box on top of the red square."
 
---command = "put the black block to the left of the green pyramid"
---command = "put the black block to the left of the red square"
+testTest :: String -> IO ()
+testTest stmt = do
+    shrdPGF <- readPGF "Shrdlite.pgf" 
+    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
+    let g = createGoal o initialWorld
+    print stmt
+    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
+    let w2 = fromJust $ action (Pick 1) initialWorld
+    let w3 = fromJust $ action (Drop 8) w2
+    let w4 = fromJust $ action (Pick 1) w3
+    let w5 = fromJust $ action (Drop 9) w4
+    --let w6 = fromJust $ action (Pick 1) w5
+    --let w7 = fromJust $ action (Drop 9) w6
+    putStrLn $ "\t" ++ ( show $ "Heuristics w2 " ++ (show $ heuristic w2 g) )
+    putStrLn $ "\t" ++ ( show $ "Heuristics w3 " ++ (show $ heuristic w3 g) )
+    putStrLn $ "\t" ++ ( show $ "Heuristics w4 " ++ (show $ heuristic w4 g) )
+    putStrLn $ "\t" ++ ( show $ "Heuristics w5 " ++ (show $ heuristic w5 g) )
+    -- putStrLn $ "\t" ++ ( show $ "Heuristics w6 " ++ (show $ heuristic w6 g) )
+    print w4
+    print w5
+
+    print $ validInstruction (Drop 9) w4 
+    print $ validDrop 9 w4
+    putStrLn $ "\t" ++ ( show $ "finished w5 " ++ (show $ finished w5 g) )
+    putStrLn $ "\t" ++ ( show $ "Heuristics w5 " ++ (show $ heuristic w5 g) )
 
 -- This method is just for quickly testing the parser.
 printObject :: String -> IO ()
 printObject stmt = do
     shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = head $ P.runParser shrdPGF stmt initialWorld
-    case o of 
-        Ok   o' -> print o'
-        Bad  s  -> putStrLn s       
+    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
+    print o
+
+firstOk :: [Err a] -> a
+firstOk ([]) = error "No ok"
+firstOk ((Ok o):_) = o
+firstOk ((Bad _):xs) = firstOk xs
+
 --------------------------------------------------------------------------------
 -----------------------        \(^v^)/                      --------------------
 -----------------------                "No more tests!"     --------------------
@@ -210,7 +240,8 @@ validDrop i w = case holding w  of
                     Nothing -> False 
                     Just holdBlock  -> case M.lookup i (ground w) of 
                                          Just []     -> True
-                                         Just (groundBlock:xs) -> groundBlock <= holdBlock
+                                         --Just (groundBlock:xs) -> groundBlock <= holdBlock
+                                         Just (groundBlock:xs) -> holdBlock <= groundBlock
                                          Nothing     -> False   
 
 --------------------------------------------------------------------------------

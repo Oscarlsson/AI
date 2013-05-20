@@ -25,9 +25,11 @@ cgiMain = do setHeader "Content-type" "text/plain"
              -- Hitta planerade rutten
              path <- liftIO $ getCurrentDirectory 
              shrdPGF <- liftIO $ readPGF (path ++ "/cgi-bin/Shrdlite.pgf")
-             let w = getWorld holding world
-             let xs = map (\x -> liftM (\parse -> createGoal parse w) x) (P.runParser shrdPGF command w)
-             runFindPlan xs w 
+             case getWorld holding world of 
+                  Just w -> do 
+                        let xs = map (\x -> liftM (\parse -> createGoal parse w) x) (P.runParser shrdPGF command w)
+                        runFindPlan xs w 
+                  _      -> output "error when parsing world"
 
 runFindPlan :: [Err Goal] -> World -> CGI CGIResult 
 runFindPlan []  _     = output "no parse results"
@@ -37,8 +39,8 @@ runFindPlan (x : xs)  w = case x of
             _     -> runFindPlan xs w  
 
 
-getWorld :: String -> [[String]] -> World
-getWorld holding world = fromJust $ createWorld world holding blocks 
+getWorld :: String -> [[String]] -> Maybe World
+getWorld holding world = createWorld world holding blocks 
 
 findPlan :: World -> Goal ->[String]
 findPlan w o = map show (fromJust $  astar w o)

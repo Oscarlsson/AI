@@ -115,7 +115,7 @@ handleThing :: GThing -> World -> Err [Block]
 handleThing th w = case th of 
         Gfloor  -> Bad "floor is not correct handeled"  
         Gall b  -> handleGBlock b w  
-        Gany b  -> liftM (take 1) $ handleGBlock b w 
+        Gany b  -> handleGBlock b w--liftM (take 1) $ handleGBlock b w 
         Gthe b  -> handleGBlock b w 
 
 handleLocation :: GLocation -> [Block] -> World -> Err [Block] 

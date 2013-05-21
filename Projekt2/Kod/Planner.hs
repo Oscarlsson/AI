@@ -45,32 +45,32 @@ createGoal p w = G {goal = p, blockId = listofID}
 finished :: World -> Goal -> Bool
 -- The implementation of put should be identical to Move as long as
 --     b1 is a reference to the holding-block in the initial state.
-finished w ( G (P.O P.Put (b1:bs) loc) id) = 
-            case loc of
-                (P.Location P.Beside (b2:bs)) -> False
-                (P.Location P.Inside (b2:bs))  -> False
-                (P.Location P.LeftOf (b2:bs))  -> False
-                (P.Location P.OnTop (b2:bs))  -> isOnTop' b1 b2 w
-                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
-                (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
-                (P.Floor is)  -> False
+--finished w ( G (P.O P.Put (b1:bs) loc) id) = 
+--            case loc of
+--                (P.Location P.Beside (b2:bs)) -> False
+--                (P.Location P.Inside (b2:bs))  -> False
+--                (P.Location P.LeftOf (b2:bs))  -> False
+--                (P.Location P.OnTop (b2:bs))  -> isOnTop' b1 b2 w
+--                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
+--                (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
+--                (P.Floor is)  -> False
 finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) = 
             case loc of
-                (P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
+                --(P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
                 (P.Location P.Inside (b2:b2s))  -> 
                         case b1s of 
                             [] -> isOnTop' b1 b2 w 
                             _ -> and $ map (\b1x -> isAbove b1x b2 w) b1S
-                (P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
+                --(P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
                 --(P.Location P.OnTop (b2:[]))    -> isOnTop' b1 b2 w
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
                         [] -> isOnTop' b1 b2 w
                         _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
 
-                (P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
-                (P.Location P.Under (b2:bs))    -> isUnder b2 b1 w
-                (P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
+                --(P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
+                (P.Location P.Under (b2:bs))    -> isUnder b1 b2 w
+                --(P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
 
 finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
 
@@ -85,39 +85,45 @@ heuristic w g
             ( P.O _          _          (P.Empty))               -> 1
             ( P.O _          _          (P.Floor is))            -> 2*(getMinimumStackHeight w)+1 
             -- Vi har alltid holding satt i PUT.
-            ( P.O P.Put  (hold:_)    (P.Location loc bl@(b2:b2s)))   -> 
-                case loc of 
-                    P.RightOf ->                    --- GetRightMost??
-                        case (putRightOf hold w) of 
-                                True  -> 1
-                                False -> 2*(getMinimumStackHeightFrom w (fromJust $ getBlockIndex hold w))+1 
-                    P.LeftOf  -> 
-                        case (putLeftOf hold w) of 
-                                True  -> 1
-                                False -> 2*(getMinimumStackHeightUntil w (fromJust $ getBlockIndex hold w)-1)+1 
-                    P.Beside  -> 
-                        case ((putLeftOf hold w) || (putRightOf hold w)) of
-                                True  -> 1
-                                False -> 2 -- Jobbigt!
-                                
-                    P.OnTop   -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO: Behöver flytta allt som är ovanför
-                    P.Above   -> 1 + 2*(length $ takeWhile (\b2 -> b2 > hold) 
-                            (fromJust $ getBlocksAt (fromJust $ getBlockIndex b2 w) w))
-                    P.Inside  -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO 
-                    P.Under   -> 1
+--            ( P.O P.Put  (hold:_)    (P.Location loc bl@(b2:b2s)))   -> 
+--                case loc of 
+--                    P.RightOf ->                    --- GetRightMost??
+--                        case (putRightOf hold w) of 
+--                                True  -> 1
+--                                False -> 2*(getMinimumStackHeightFrom w (fromJust $ getBlockIndex hold w))+1 
+--                    P.LeftOf  -> 
+--                        case (putLeftOf hold w) of 
+--                                True  -> 1
+--                                False -> 2*(getMinimumStackHeightUntil w (fromJust $ getBlockIndex hold w)-1)+1 
+--                    P.Beside  -> 
+--                        case ((putLeftOf hold w) || (putRightOf hold w)) of
+--                                True  -> 1
+--                                False -> 2 -- Jobbigt!
+--                                
+--                    P.OnTop   -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO: Behöver flytta allt som är ovanför
+--                    P.Above   -> 1 + 2*(length $ takeWhile (\b2 -> b2 > hold) 
+--                            (fromJust $ getBlocksAt (fromJust $ getBlockIndex b2 w) w))
+--                    P.Inside  -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO 
+--                    P.Under   -> 1
             ( P.O P.Move      mblocks    (P.Location loc (b2:b2s)))       ->
                 case loc of
                     P.RightOf  -> 1
                     P.LeftOf  -> 1
                     P.Beside  -> 1
+                    P.Above  -> 1 
                     P.OnTop  -> h1 + h2 + (holdingHeuristic g w)
                         where
                             blocksAbove2 = maybe 0 id $ blocksAbove b2 w
                             h2 = 2*blocksAbove2
                             blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
                             h1 = 2*blocksAbove1
-                    P.Under  -> 1
-                    P.Above  -> 1 
+                    P.Under  -> h1 + h2 + (holdingHeuristic g w)
+                        where
+                            blocksAbove2 = maybe 0 id $ blocksAbove b2 w
+                            h2 = 2*blocksAbove2
+                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
+                            h1 = 2*blocksAbove1
+                    --P.Under  -> 1
                     P.Inside -> h1 + h2 + (holdingHeuristic g w)
                         where 
                             blocksAbove2 = maybe 0 id $ blocksAbove b2 w
@@ -134,6 +140,10 @@ holdingHeuristic g w = objectHolding + targetHolding
                 | isHolding b1 w -> 0
                 | isJust (holding w) -> 2 
                 | otherwise          -> 1
+            P.O P.Move (b1:b1s) (P.Location P.Under _)
+                | isHolding b1 w -> 3 
+                | isJust (holding w) -> 1
+                | otherwise -> 2
             P.O P.Move (b1:b1s) _
                 | isHolding b1 w -> 1 -- Holding target =  drop it
                 | isJust (holding w) -> 3 -- Holding sth else = drop it + pick target + drop target
@@ -146,6 +156,10 @@ holdingHeuristic g w = objectHolding + targetHolding
             P.Location P.Inside (b2:bs) -- WRONg FIX
                 | isHolding b2 w -> 1 -- Holding target, drop it
                 | otherwise -> 0
+            P.Location P.Under (b2:bs) -- WRONg FIX
+                | isHolding b2 w -> 3 -- Holding target, drop it
+                | isJust (holding w) -> 1 -- Holding something, not sure if object, but at least >=1 
+                | otherwise -> 2
             _ -> 1
 
 -- Requires holding block
@@ -189,10 +203,10 @@ testStatement stmt = do
     let o = firstOk $ P.runParser shrdPGF stmt initialWorld
     let g = createGoal o initialWorld
     let a = astarDebug initialWorld g
-    print stmt
-    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
-    putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-    putStrLn $ "\t" ++ ( show $ (showHistory (fromErr $ fst a)) )
+    putStrLn $ "\t" ++ stmt
+    putStrLn $ "\t\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
+    putStrLn $ "\t\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
+    putStrLn $ "\t\t" ++ ( show $ (showHistory (fromErr $ fst a)) )
     
 fromErr :: Err a -> a 
 fromErr (Ok a)  = a 
@@ -201,11 +215,14 @@ fromErr (Bad s) = error s
 
 runTests :: IO ()
 runTests = do
+    putStrLn "*** Some base cases, not part of real project test"
     testStatement "take the red square"
     testStatement "take the green pyramid"
     testStatement "put the black wide block on top of the red square"
-    --testStatement "put the black wide block on top of a medium-sized box."
+    putStrLn "*** Real test cases"
     testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
+    testStatement "Put the wide blue block under the black rectangle."
+    putStrLn "*** Test cases that don't quite work yet"
     testStatement "Move all wide blocks inside a box on top of the red square."
 
 testTest :: String -> IO ()
@@ -382,7 +399,7 @@ astarDebug w g =
    --  | otherwise = (Just (history $ fromJust (fst result)), snd result)
     --where result = snd $ astar' (pq w) [] g
     where 
-            y = astar' 1000 (pq w) [] g
+            y = astar' 1000000 (pq w) [] g
             result = (snd $ y, PSQ.size $ fst y)
 
 astar :: Int -> World -> Goal -> Err History

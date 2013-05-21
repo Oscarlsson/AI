@@ -183,19 +183,23 @@ getUpperUnderMost f bs w | null bs || isNothing mBlocks  = Nothing
 
 -- |Returns the minimum stack height in the world 
 getMinimumStackHeight :: World -> Int 
-getMinimumStackHeight w = getMinimumStackHeightFrom w 0  
+getMinimumStackHeight w = fromJust $ getMinimumStackHeightFrom w 0  
 
 -- |Works like getMinimumStackHeight but uses a start index to look from
 --  getMinimumStackHeight w == getMinimumStackHeightFrom w 0 
-getMinimumStackHeightFrom :: World -> Int -> Int 
-getMinimumStackHeightFrom w i = length . snd $ minimumBy 
-                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ drop i (M.toList (ground w)) 
+getMinimumStackHeightFrom :: World -> Int -> Maybe Int 
+getMinimumStackHeightFrom w i | null xs = Nothing  
+                              | otherwise = Just $ length . snd $ minimumBy 
+                                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ xs 
+                    where xs = drop i (M.toList (ground w))  
 
+getMinimumStackHeightUntil :: World -> Int -> Maybe Int 
+getMinimumStackHeightUntil w i | null xs = Nothing  
+                              | otherwise = Just $ length . snd $ minimumBy 
+                                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ xs 
+                    where xs = take i (M.toList (ground w))  
 -- |Works like getMinimumStackHeight but uses a last index to look at
 --  getMinimumStackHeight w == getMinimumStackHeightUntil w (worldsize - 1) 
-getMinimumStackHeightUntil :: World -> Int -> Int 
-getMinimumStackHeightUntil w i = length . snd $ minimumBy 
-                (\p1 p2 -> compare (length $ snd p1) (length $ snd p2)) $ take i (M.toList (ground w)) 
 
 -- |For testing purposes 
 initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]

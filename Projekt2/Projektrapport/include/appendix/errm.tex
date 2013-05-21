@@ -1,0 +1,23 @@
+\section{ErrM}
+\begin{center}
+\line(1,0){450}
+\end{center}
+\begin{verbatim}
+module ErrM (
+    Err(Ok, Bad)
+) where
+\end{verbatim}
+\begin{center}
+\line(1,0){450}
+\end{center}
+\begin{verbatim}
+data Err a = Ok a | Bad String
+
+instance Monad Err
+instance Functor Err
+instance MonadPlus Err
+instance Eq a => Eq (Err a)
+instance Ord a => Ord (Err a)
+instance Read a => Read (Err a)
+instance Show a => Show (Err a)
+\end{verbatim}

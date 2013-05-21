@@ -1,0 +1,32 @@
+\section{Blocks}
+\begin{center}
+\line(1,0){450}
+\end{center}
+\begin{verbatim}
+module Blocks (
+    Block(B, name, form, size, color, width, height), blocks
+) where
+\end{verbatim}
+\begin{center}
+\line(1,0){450}
+\end{center}
+\begin{verbatim}
+data Block = B
+        name :: String
+        form :: GForm
+        size :: GSize
+        color :: GColor
+        width :: Double
+        height :: Double
+
+instance Eq Block
+instance Ord Block
+instance Show Block
+\end{verbatim}
+\begin{verbatim}
+blocks :: [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> All current possible blocks
+\end{tabbing}

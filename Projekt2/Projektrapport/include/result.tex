@@ -1,5 +1,11 @@
 \chapter{Results and discussion}
-The implemented parser and planner makes a correct parsing and planning for four different example inputs, which are shown in in Table \ref{tab:exampleinput}. As seen at the second example input, it also handles ambiguous inputs and handles multiple parse trees. The first tree both refers to move all blocks in the world and an non-existing block, which is the reason for the error message ''no such block''. All the plannings below assumes that holding is null and the inital world is: ; a,b ; c,d ; ; e,f,g,h,i ; ; ; j,k ; ; l,m. 
+The implemented parser and planner makes a correct parsing and planning for four different example inputs, which are shown in Table \ref{tab:exampleinput}. As seen in the second example sentence, it also handles ambiguous sentences, i.e. handles multiple parse trees. The first parse tree both refers to move all blocks in the world and an non-existing block, which is the reason for the error message ''no such block''. All the plannings below assumes that holding is null and the inital world shown in Figure \ref{fig:initworld}.\\
+\begin{figure}[h!]
+\centering
+\includegraphics[scale = 0.4]{fig/1.png}
+\caption{The initial world\\ $[[],[a,b],[c,d], [], [e,f,g,h,i],[],[],[j,k], [], [l,m]]$}
+\label{fig:initworld}
+\end{figure}\\
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
@@ -52,10 +58,10 @@ drop 7\linebreak
 pick 4\linebreak
 drop 7\linebreak\\ \hline
 \end{tabular}
-\caption{Result of the given example input}
+\caption{Result of the given example sentences in the initial world}
 \label{tab:exampleinput}
 \end{table}\\
-All the examples above refers to a $Move$ action. An example of how the planning is done is shown in Figure \ref{fig:moveex}. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}. The put action assumes that there is a block in holding, in this case the red square.
+All the examples in Table \ref{tab:exampleinput} refers to a $Move$ action. An example of how the planning is done is shown in Figure \ref{fig:moveex}. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}. The $Put$ action assumes that there is a block in holding, in this case the world is the same as above but with holding the red square.
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
@@ -67,7 +73,7 @@ drop 8\linebreak
 pick 2\linebreak\\ \hline
 Put it on the floor & ( put ( ontop floor) ) & drop 6\linebreak \\ \hline
 \end{tabular}
-\caption{Result of actions $Take$ and $Put$}
+\caption{Result of actions $Take$ and $Put$ (when holding the block from the $Take$ action}
 \label{tab:put_take}
 \end{table}\\
 \begin{figure}
@@ -142,11 +148,16 @@ Put it on the floor & ( put ( ontop floor) ) & drop 6\linebreak \\ \hline
 box.''}
 \label{fig:moveex}
 \end{figure}\\\\\\
-Of course there is several inputs which is not handled by the parser and the planner. An example of a such input is "Move all blocks inside a box on top of the red square." which results in a timeout due to our translation of the command. The parser returns a list of all blocks that is inside of a box, to be moved. This is impossible to perform for the initial world since there is two boxes with a ball inside and balls can never be put on each other. Then the planner will not find a solution, which results in a timeout.\\\\
-The planner does not print what it does, such as ''I move the topmost block from stack X to stack Y''. The planning is just shown visually and in form of pick and drop instructions.
+Of course there is several sentences which is not handled by the parser and the planner. An example of a such sentence is "Move all blocks inside a box on top of the red square." which results in a timeout due to our translation of the command. The parser returns a list of all blocks that is inside of a box, to be moved. This is impossible to perform in the initial world since there is two boxes with a ball inside and balls can never be put on each other. Then the planner will not find a solution, which results in a timeout.\\\\
+The planner does not print what it does, such as ''I move the topmost block from stack X to stack Y''. The planning is just shown visually and in form of pick and drop instructions. \\\\
+The planner will not try to optimize the time it takes to perform the instructions, i.e. it might not drop blocks at the closest available stack. This does not affect the number of instructions, which we try to optimize. Also, the planner will not try to restore blocks to their inital positions if it has move them to reach another block or position. The planner does not guarantee that we move the right block, i.e. if block A should be moved to the left of block B the planner might move block B to the right of block A instead. 
+\\\\
+If the sentence is ambiguous, the parser will return multiple parse tree but the planner will only choose the first valid parse tree. In the example sentence 2, the first parse tree is treated as invalid.
+
+\newpage
 \section{Discussion}
 A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
-Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we find a library which could convert between GF grammar as concrete and abstract syntax. \\\\
+Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we found a library which could convert between GF grammar as concrete and abstract syntax. \\\\
 We also choosed to implement a planning algorithm by graph traversal, by implementing A*. Another possibility would been to use for example First-Order Logic instead. 
 \\\\
--- skriv nåt om heuristikfunktionen
+We did a lot of tweaking with the heuristic function and notice how instable it was. There might be cases that we miss and there is a lot of ways of making a heuristic function.

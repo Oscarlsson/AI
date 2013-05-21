@@ -1,6 +1,5 @@
 \chapter{Results and discussion}
-
-The following result is given by the parser and planner when given the four example inputs.
+The following result is given by the parser and the planner when given the four example inputs.
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
@@ -15,12 +14,14 @@ Move all wide rectangles into a red box. & ( move ( all ( block rectangle wide \
 \caption{Result of the given example input}
 \label{tab:exampleinput}
 \end{table}\\
---några andra meningar vi klarar?
+-- några andra meningar vi klarar?
 \\\\
---nåt som inte går?
+-- nåt som inte går?
 
 \section{Discussion}
 A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
 Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we find a library which could convert between GF grammar as concrete and abstract syntax. \\\\
 We also choosed to implement a planning algorithm by graph traversal, by implementing A*. Another possibility would been to use for example First-Order Logic instead. 
+\\\\
+-- skriv nåt om heuristikfunktionen
 

@@ -1,0 +1,240 @@
+\section{Backend}
+\begin{center}
+\line(1,0){418}
+\end{center}
+\begin{verbatim}
+module Backend (
+    Ground, Indexes, World(W, holding, ground, indexes, wsize),
+    findBlockByName, isLeftOf, isRightOf, isAbove, isUnder, isOnGround,
+    isOnTop, isOnBottom, isBeside, isHolding, isEmptyIndex, isOnPoss,
+    createWorld, createGround, createIndexes, createBlocks, createBlocks’,
+    getBlock, getBlockIndex, getBlocksAt, getBlocksOnGroundBy,
+    getRightMost, getLeftMost, getUnderMost, getUpperMost,
+    getUpperUnderMost, initWorld
+) where
+\end{verbatim}
+\begin{center}
+\line(1,0){450}
+\end{center}
+\begin{verbatim}
+type Ground = Map Int [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> The key is the x-coordinate and the value is the blocks at this index
+\end{tabbing}
+\begin{verbatim}
+type Indexes = Map Block Int
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> The key is a block in the world and the value the x-coordinate of this block
+\end{tabbing}
+\begin{verbatim}
+data World = W 
+        holding :: Maybe Block
+        ground :: Ground
+        indexes :: Indexes
+        wsize :: Int
+
+instance Eq World
+instance Ord World
+instance Show World
+\end{verbatim}
+\begin{verbatim}
+findBlockByName :: String -> World -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Takes the name of a block and returns this block if it exist in the world
+\end{tabbing}
+\begin{verbatim}
+isLeftOf :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if the first input block is to the left of the second input block
+\end{tabbing}
+\begin{verbatim}
+isRightOf :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if the first input block is to the right of the second input block
+\end{tabbing}
+\begin{verbatim}
+isAbove :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if the first input block is above the second input block
+\end{tabbing}
+\begin{verbatim}
+isUnder :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if the first input block is under the second input block
+\end{tabbing}
+\begin{verbatim}
+isOnGround :: Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if a block is on the ground in a world or equally the block exists in the \\
+\> world and is not the current holding
+\end{tabbing}
+\begin{verbatim}
+isOnTop :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+isOnBottom :: Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> CCheck if a block is at the bottom of any stack in a world
+\end{tabbing}
+\begin{verbatim}
+isBeside :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if the first input block is either left or right of second input block in a \\
+\> given world
+\end{tabbing}
+\begin{verbatim}
+isHolding :: Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if a block is a holding in the world
+\end{tabbing}
+\begin{verbatim}
+isEmptyIndex :: Int -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if a there exist blocks on a given x-coordinate in world
+\end{tabbing}
+\begin{verbatim}
+isOnPoss :: Block -> Int -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if a x-coordinate holds the input block
+\end{tabbing}
+\begin{verbatim}
+createWorld :: [[String]] -> String -> [Block] -> Maybe World
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+createGround :: [[String]] -> [Block] -> Maybe Ground
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Used by createWorld
+\end{tabbing}
+\begin{verbatim}
+createIndexes :: [[String]] -> [Block] -> Maybe Indexes
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Used by createWorld
+\end{tabbing}
+\begin{verbatim}
+createBlocks :: Int -> [String] -> [Block] -> Maybe [(Block, Int)]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Used by createWorld
+\end{tabbing}
+\begin{verbatim}
+createBlocks’ :: Int -> [String] -> [Block] -> Maybe (Int, [Block])
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Used by createWorld
+\end{tabbing}
+\begin{verbatim}
+getBlock :: String -> [Block] -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Input : a name of a block , any list of blocks Output: The block with the given \\
+\> name from the list if it exist
+\end{tabbing}
+\begin{verbatim}
+getBlockIndex :: Block -> World -> Maybe Int
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Innput: Any block, a word return x-coordinate of the given block if it exist \\
+\> in the world
+\end{tabbing}
+\begin{verbatim}
+getBlocksAt :: Int -> World -> Maybe [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Input: A x-coordinate, a world Output: All blocks at the given index if the \\
+\> index exists in the world
+\end{tabbing}
+\begin{verbatim}
+getBlocksOnGroundBy :: (Block -> Bool) -> World -> [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Input: a function, a world Output Returns all blocks an the ground that \\
+\> satifies the given function
+\end{tabbing}
+\begin{verbatim}
+getRightMost :: [Block] -> World -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Input: Any list a blocks, a world Output: The first occurance of a block with \\
+\> the biggest x-coordinate if all given blocks exist on the ground in the given list
+\end{tabbing}
+\begin{verbatim}
+getLeftMost :: [Block] -> World -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> The same as rightmost but with smallest index
+\end{tabbing}
+\begin{verbatim}
+getUnderMost :: [Block] -> World -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Input: any list of blocks, a world Output: If the input blocks havn’t the same \\
+\> index nothing is returned else the bottom block from the input list in the stack
+\end{tabbing}
+\begin{verbatim}
+getUpperMost :: [Block] -> World -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+getUpperUnderMost :: ([Block] -> Block) -> [Block] -> World -> Maybe Block
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Used by getUnderMost and getUpperMost
+\end{tabbing}
+\begin{verbatim}
+initWorld :: [[[Char]]]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> For testing purposes
+\end{tabbing}

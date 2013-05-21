@@ -41,7 +41,8 @@ data Location = Above Block
 
 instance Eq Location
 instance Show Location
-\end{verbatim}\\
+\end{verbatim}
+\newpage
 \begin{verbatim}
 data Output = O 
         action :: Action

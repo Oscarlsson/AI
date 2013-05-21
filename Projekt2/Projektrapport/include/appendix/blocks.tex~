@@ -1,6 +1,6 @@
 \section{Blocks}
 \begin{center}
-\line(1,0){418}
+\line(1,0){416}
 \end{center}
 \begin{verbatim}
 module Blocks (
@@ -8,7 +8,7 @@ module Blocks (
 ) where
 \end{verbatim}
 \begin{center}
-\line(1,0){418}
+\line(1,0){416}
 \end{center}
 \begin{verbatim}
 data Block = B

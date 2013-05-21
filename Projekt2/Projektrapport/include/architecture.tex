@@ -24,5 +24,28 @@ The parser would always find out if the blocks the input refered to exists and i
 If a block should be put left of or right of several blocks, the parser returns the leftmost or rightmost block as a reference block. 
 
 \section{Planner}
-
-
+* goal, finished \\
+* heuristic function\\
+* A*, nodes and edges, timeout\\
+* instructions, valid, comparator\\
+* pseudo code A*\\\\
+Successors på en värld returnerar alla möjliga världar man kan komma till genom att göra en tillåten instruktion. Add räknar ut f(n) på varje värld
+\begin{algorithm}[h!]
+ \SetAlgoLined
+ \KwData{TimeoutInt, World, Goal}
+ \KwResult{History}
+ Initialize priority queue $PQ$ with world, empty history and value 0\;
+ $Seen \leftarrow empty$\;
+ \While{not timeout}{
+   $World$, $History$ $\leftarrow$ pop $PQ$\;
+   \If {$World == Goal$}{
+    break\;
+   }
+   $Seen \leftarrow World + Seen$\; 
+   $Succ \leftarrow$ successors of $World$ not in $Seen$\;
+   $PQ' \leftarrow$ add $Succ$\;
+ }
+ \Return $History$
+ \caption{A*}
+ \label{algorithm:astar}
+\end{algorithm}

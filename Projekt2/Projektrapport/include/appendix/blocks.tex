@@ -20,6 +20,9 @@ data Block = B
         height :: Double
 
 instance Eq Block
+        Don’t use compare when comparing sizes of blocks since they will 
+        always be different —if they don’t have equal name
+
 instance Ord Block
 instance Show Block
 \end{verbatim}

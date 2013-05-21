@@ -6,11 +6,12 @@
 module Backend (
     Ground, Indexes, World(W, holding, ground, indexes, wsize),
     findBlockByName, isLeftOf, isRightOf, isAbove, isUnder, isOnGround,
-    isOnTop, isOnBottom, isBeside, isHolding, isEmptyIndex, isOnPoss,
-    createWorld, createGround, createIndexes, createBlocks, createBlocks’,
-    getBlock, getBlockIndex, getBlocksAt, getBlocksOnGroundBy,
-    getRightMost, getLeftMost, getUnderMost, getUpperMost,
-    getUpperUnderMost, initWorld
+    isOnTop, isOnTop’, isOnBottom, isBeside, isHolding, isEmptyIndex,
+    isOnPoss, createWorld, createGround, createIndexes, createBlocks,
+    createBlocks’, getBlock, getBlockIndex, getBlocksAt,
+    getBlocksOnGroundBy, getRightMost, getLeftMost, getUnderMost,
+    getUpperMost, getUpperUnderMost, getMinimumStackHeight,
+    getMinimumStackHeightFrom, getMinimumStackHeightUntil, initWorld
 ) where
 \end{verbatim}
 \begin{center}
@@ -89,14 +90,21 @@ isOnTop :: Block -> Block -> World -> Bool
 \end{verbatim}
 \begin{tabbing}
 \hspace*{1cm}\= \kill
-\> 
+\> Check if a block is on the top of any stack in a world
+\end{tabbing}
+\begin{verbatim}
+isOnTop’ :: Block -> Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Check if the first input block lies directly over the second input block
 \end{tabbing}
 \begin{verbatim}
 isOnBottom :: Block -> World -> Bool
 \end{verbatim}
 \begin{tabbing}
 \hspace*{1cm}\= \kill
-\> CCheck if a block is at the bottom of any stack in a world
+\> Check if a block is at the bottom of any stack in a world
 \end{tabbing}
 \begin{verbatim}
 isBeside :: Block -> Block -> World -> Bool
@@ -175,7 +183,7 @@ getBlockIndex :: Block -> World -> Maybe Int
 \end{verbatim}
 \begin{tabbing}
 \hspace*{1cm}\= \kill
-\> Innput: Any block, a word return x-coordinate of the given block if it exist \\
+\> Input: Any block, a word return x-coordinate of the given block if it exist \\
 \> in the world
 \end{tabbing}
 \begin{verbatim}
@@ -230,6 +238,28 @@ getUpperUnderMost :: ([Block] -> Block) -> [Block] -> World -> Maybe Block
 \begin{tabbing}
 \hspace*{1cm}\= \kill
 \> Used by getUnderMost and getUpperMost
+\end{tabbing}
+\begin{verbatim}
+getMinimumStackHeight :: World -> Int
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Returns the minimum stack height in the world
+\end{tabbing}
+\begin{verbatim}
+getMinimumStackHeightFrom :: World -> Int -> Maybe Int
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Works like getMinimumStackHeight but uses a start index to look from\\
+\> getMinimumStackHeight w == getMinimumStackHeightFrom w 0
+\end{tabbing}
+\begin{verbatim}
+getMinimumStackHeightUntil :: World -> Int -> Maybe Int
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Works like getMinimumStackHeight but uses a last index to look at \\ \> getMinimumStackHeight w == getMinimumStackHeightUntil w (worldsize - 1)
 \end{tabbing}
 \begin{verbatim}
 initWorld :: [[[Char]]]

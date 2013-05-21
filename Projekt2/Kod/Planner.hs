@@ -140,6 +140,10 @@ holdingHeuristic g w = objectHolding + targetHolding
                 | isHolding b1 w -> 0
                 | isJust (holding w) -> 2 
                 | otherwise          -> 1
+            P.O P.Move (b1:b1s) (P.Location P.Under _)
+                | isHolding b1 w -> 3 
+                | isJust (holding w) -> 1
+                | otherwise -> 2
             P.O P.Move (b1:b1s) _
                 | isHolding b1 w -> 1 -- Holding target =  drop it
                 | isJust (holding w) -> 3 -- Holding sth else = drop it + pick target + drop target
@@ -152,6 +156,10 @@ holdingHeuristic g w = objectHolding + targetHolding
             P.Location P.Inside (b2:bs) -- WRONg FIX
                 | isHolding b2 w -> 1 -- Holding target, drop it
                 | otherwise -> 0
+            P.Location P.Under (b2:bs) -- WRONg FIX
+                | isHolding b2 w -> 3 -- Holding target, drop it
+                | isJust (holding w) -> 1 -- Holding something, not sure if object, but at least >=1 
+                | otherwise -> 2
             _ -> 1
 
 -- Requires holding block

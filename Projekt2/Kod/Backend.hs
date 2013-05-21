@@ -69,7 +69,7 @@ isOnTop' b1 b2 w = sameStack && ontop
             stack = fromJust $ M.lookup (fromJust s1) (ground w)
             i1 = fromJust $ elemIndex b1 stack
             i2 = fromJust $ elemIndex b2 stack
-            ontop = i1 == (i2 + 1)
+            ontop = i1 == (i2 - 1)
 
 
 -- |Check if a block is at the bottom of any stack in a world     

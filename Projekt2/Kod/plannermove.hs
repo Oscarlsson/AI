@@ -42,7 +42,7 @@ getWorld :: String -> [[String]] -> Maybe World
 getWorld holding world = createWorld world holding blocks 
 
 findPlan :: World -> Goal ->[String]
-findPlan w o = case astar 1000 w o of 
+findPlan w o = case astar aStarTimeout w o of 
                     Ok xs -> map show xs 
                     Bad s -> [s]
 

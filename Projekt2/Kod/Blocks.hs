@@ -3,7 +3,7 @@ module Blocks where
 import PGF
 import Shrdlite
 
-data Block = B {name :: String ,form :: GForm , size :: GSize , color :: GColor , width :: Double, height :: Double}
+data Block = B {name :: String ,form :: GForm , size :: GSize , color :: GColor , width :: Double, height :: Double} | NullBlock
     --deriving (Show)
 
 instance Show Block where

@@ -10,8 +10,8 @@ instance Show Block where
     show b = show $ name b
 
 
---Don't use "compare" when comparing sizes of blocks since they will always be different
---if they don't have equal name  
+-- |Don't use "compare" when comparing sizes of blocks since they will always be different
+-- |if they don't have equal name  
 
 instance Eq Block where 
     b1 == b2 = name b1 == name b2 

@@ -1,5 +1,5 @@
 \chapter{Results and discussion}
-The implemented parser and planner makes a correct parsing and planning for four different example inputs, which are shown in Table \ref{tab:exampleinput}. As seen in the second example sentence, it also handles ambiguous sentences, i.e. handles multiple parse trees. The first parse tree both refers to move all blocks in the world and an non-existing block, which is the reason for the error message ''no such block''. All the plannings below assumes that holding is null and the inital world shown in Figure \ref{fig:initworld}.\\
+The implemented parser and planner makes a correct parsing and planning for four different example inputs, which are shown in Table \ref{tab:exampleinput} and Table \ref{tab:exampleinput2}. As seen in the second example sentence, it also handles ambiguous sentences, i.e. handles multiple parse trees. The first parse tree both refers to move all blocks in the world and an non-existing block, which is the reason for the error message ''no such block''. All the plannings below assumes that holding is null and the inital world shown in Figure \ref{fig:initworld}.\\
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.4]{fig/1.png}
@@ -19,7 +19,7 @@ drop 6\linebreak
 pick 1\linebreak
 drop 9
 \linebreak\\ \hline
-Move all wide blocks inside a box on top of the red square. & ( move ( all ( block \_ wide \_ ) ) ( inside ( any ( thatis ( block box \_ \_ ) ( ontop ( the ( block square \_ red ) ) ) ) ) ) ) \newline \newline \newline
+Move all wide blocks inside a box on top of the red square. & ( move ( all ( block \_ wide \_ ) ) ( inside ( any ( thatis ( block box \_ \_ ) ( ontop ( the ( block square \_ red ) ) ) ) ) ) )  \newline \newline \newline
 ( move ( all ( thatis ( block \_ wide \_ ) ( inside ( any ( block box \_ \_ ) ) ) ) ) ( ontop ( the ( block square \_ red ) ) ) ) & "no such block" \newline \newline \newline \newline \newline
 pick 4\linebreak
 drop 8\linebreak
@@ -32,6 +32,8 @@ drop 2\linebreak
 pick 4\linebreak
 drop 2\linebreak\\ \hline
 \end{tabular}
+\caption{Result of the given example sentences in the initial world}
+\label{tab:exampleinput}
 \end{table}\\
 \begin{table}[h!]
 \centering
@@ -59,9 +61,9 @@ pick 4\linebreak
 drop 7\linebreak\\ \hline
 \end{tabular}
 \caption{Result of the given example sentences in the initial world}
-\label{tab:exampleinput}
+\label{tab:exampleinput2}
 \end{table}\\
-All the examples in Table \ref{tab:exampleinput} refers to a $Move$ action. An example of how the planning is done is shown in Figure \ref{fig:moveex}. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}. The $Put$ action assumes that there is a block in holding, in this case the world is the same as above but with holding the red square.
+All the examples in Table \ref{tab:exampleinput} and Table \ref{tab:exampleinput2} refers to a $Move$ action. An example of how the planning is done is shown in Figure \ref{fig:moveex}. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}. The $Put$ action assumes that there is a block in holding, in this case the world is the same as above but with holding the red square.\\\\
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
@@ -75,7 +77,7 @@ Put it on the floor & ( put ( ontop floor) ) & drop 6\linebreak \\ \hline
 \end{tabular}
 \caption{Result of actions $Take$ and $Put$ (when holding the block from the $Take$ action}
 \label{tab:put_take}
-\end{table}\\
+\end{table}\\\\
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -147,14 +149,12 @@ Put it on the floor & ( put ( ontop floor) ) & drop 6\linebreak \\ \hline
 \caption{The figure shows how the blocks are moved for the action: ''Move all wide rectangles into a red 
 box.''}
 \label{fig:moveex}
-\end{figure}\\\\\\
+\end{figure}\\
 Of course there is several sentences which is not handled by the parser and the planner. An example of a such sentence is "Move all blocks inside a box on top of the red square." which results in a timeout due to our translation of the command. The parser returns a list of all blocks that is inside of a box, to be moved. This is impossible to perform in the initial world since there is two boxes with a ball inside and balls can never be put on each other. Then the planner will not find a solution, which results in a timeout.\\\\
-The planner does not print what it does, such as ''I move the topmost block from stack X to stack Y''. The planning is just shown visually and in form of pick and drop instructions. \\\\
+The planner does not print what it does, such as ''I move the topmost block from stack X to stack Y''. The planning is just shown visually and in form of pick and drop instructions. \\\\\\\\
 The planner will not try to optimize the time it takes to perform the instructions, i.e. it might not drop blocks at the closest available stack. This does not affect the number of instructions, which we try to optimize. Also, the planner will not try to restore blocks to their inital positions if it has move them to reach another block or position. The planner does not guarantee that we move the right block, i.e. if block A should be moved to the left of block B the planner might move block B to the right of block A instead. 
 \\\\
 If the sentence is ambiguous, the parser will return multiple parse tree but the planner will only choose the first valid parse tree. In the example sentence 2, the first parse tree is treated as invalid.
-
-\newpage
 \section{Discussion}
 A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
 Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we found a library which could convert between GF grammar as concrete and abstract syntax. \\\\

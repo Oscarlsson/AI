@@ -3,7 +3,6 @@ module Planner where
 import Data.Maybe
 import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
---import qualified Data.Set  as S 
 import qualified Data.Map  as M 
 import qualified Data.List as L
 import qualified NLPParser as P

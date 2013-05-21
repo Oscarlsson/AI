@@ -50,7 +50,7 @@ finished w ( G (P.O P.Put (b1:bs) loc) id) =
                 (P.Location P.Beside (b2:bs)) -> False
                 (P.Location P.Inside (b2:bs))  -> False
                 (P.Location P.LeftOf (b2:bs))  -> False
-                (P.Location P.OnTop (b2:bs))  -> isOnTop' b2 b1 w
+                (P.Location P.OnTop (b2:bs))  -> isOnTop' b1 b2 w
                 (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
                 (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
                 (P.Floor is)  -> False
@@ -59,13 +59,13 @@ finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) =
                 (P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
                 (P.Location P.Inside (b2:b2s))  -> 
                         case b1s of 
-                            [] -> isOnTop' b2 b1 w 
+                            [] -> isOnTop' b1 b2 w 
                             _ -> and $ map (\b1x -> isAbove b1x b2 w) b1S
                 (P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
-                --(P.Location P.OnTop (b2:[]))    -> isOnTop' b2 b1 w
+                --(P.Location P.OnTop (b2:[]))    -> isOnTop' b1 b2 w
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
-                        [] -> isOnTop' b2 b1 w
+                        [] -> isOnTop' b1 b2 w
                         _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
 
                 (P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
@@ -382,7 +382,7 @@ astarDebug w g =
    --  | otherwise = (Just (history $ fromJust (fst result)), snd result)
     --where result = snd $ astar' (pq w) [] g
     where 
-            y = astar' 100 (pq w) [] g
+            y = astar' 1000 (pq w) [] g
             result = (snd $ y, PSQ.size $ fst y)
 
 astar :: Int -> World -> Goal -> Err History

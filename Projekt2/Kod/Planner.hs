@@ -3,7 +3,6 @@ module Planner where
 import Data.Maybe
 import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
---import qualified Data.Set  as S 
 import qualified Data.Map  as M 
 import qualified Data.List as L
 import qualified NLPParser as P
@@ -119,9 +118,6 @@ heuristic w g
                         where
                             hObject = 2 * obstructingBlocks mblocks t isUnder w
                             hTarget = (*) 2 $ length $ filter (\x -> isAbove x t w) (blocksInSameStack t w)
---                          hObjectsOutOfPlace 
---                              | hTarget == 0  = (*) 2 $ length $ filter (\m -> not $ isAbove m t w) mblocks
---                              | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
 
 -- |Returns the list of blocks inside the same stack as the queried block. Assumes that the block is not in holding.
 blocksInSameStack :: Block -> World -> [Block]
@@ -200,7 +196,6 @@ astar to w g =
 astar' :: Int -> PQ -> Seen -> Goal -> (PQ, Err Node)
 astar' to pq seen goal 
         | finished (world n) goal = (pq'', Ok n)
-        -- | to == 0  = (pq'',Ok n)
         | to == 0   = (pq'', Bad $ "Impossible command. Last visited world: " ++ (show $ world n))
         | otherwise = astar' (to - 1) pq'' seen' goal
         where

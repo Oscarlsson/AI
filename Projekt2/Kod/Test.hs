@@ -122,10 +122,6 @@ astarDebug w g =
     case fst result of 
         Bad s -> (Bad s , 0)
         Ok  n -> (Ok (history $ n), snd result)
-    --- TODO : maybe default (\x -> ) result
-    -- | isNothing (fst result) = (Nothing, 0)
-   --  | otherwise = (Just (history $ fromJust (fst result)), snd result)
-    --where result = snd $ astar' (pq w) [] g
     where 
             y = astar' aStarTimeout (pq w) [] g
             result = (snd $ y, PSQ.size $ fst y)

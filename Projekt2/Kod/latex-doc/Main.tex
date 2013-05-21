@@ -3,11 +3,29 @@
 \haddockbeginheader
 {\haddockverb\begin{verbatim}
 module Main (
-    main
+    cgiMain,  runFindPlan,  getWorld,  findPlan,  cgiInput,  split,  main
   ) where\end{verbatim}}
 \haddockendheader
 
 \begin{haddockdesc}
+\item[
+cgiMain\ ::\ CGI\ CGIResult
+]
+\item[
+runFindPlan\ ::\ {\char 91}Err\ Goal{\char 93}\ ->\ World\ ->\ CGI\ CGIResult
+]
+\item[
+getWorld\ ::\ String\ ->\ {\char 91}{\char 91}String{\char 93}{\char 93}\ ->\ Maybe\ World
+]
+\item[
+findPlan\ ::\ World\ ->\ Goal\ ->\ {\char 91}String{\char 93}
+]
+\item[
+cgiInput\ ::\ CGI\ (String,\ {\char 91}{\char 91}String{\char 93}{\char 93},\ String)
+]
+\item[
+split\ ::\ Char\ ->\ String\ ->\ {\char 91}String{\char 93}
+]
 \item[
 main\ ::\ IO\ ()
 ]

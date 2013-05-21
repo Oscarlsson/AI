@@ -4,19 +4,11 @@
 {\haddockverb\begin{verbatim}
 module NLPParser (
     Action(Move, Put, Take, None), 
-    Location(Above,
-             Empty,
-             Beside,
-             Inside,
-             LeftOf,
-             OnTop,
-             RightOf,
-             Under,
-             Floor), 
-    Output(O, action, mBlocks, location),  initOutput,  command,  modifyString, 
-    tmpMain,  runParser,  traverseTree,  handleThing,  handleLocation, 
-    filterBlocks,  pairBlocks,  getRefLocation,  handleGBlock,  handleBlock, 
-    world
+    Reference(Above, Beside, Inside, LeftOf, OnTop, RightOf, Under), 
+    Location(Empty, Location, Floor),  Output(O, action, mBlocks, location), 
+    initOutput,  command,  modifyString,  tmpMain,  runParser,  traverseTree, 
+    handleThing,  handleLocation,  filterBlocks,  pairBlocks,  getRefLocation, 
+    handleGBlock,  handleBlock,  world
   ) where\end{verbatim}}
 \haddockendheader
 
@@ -38,17 +30,34 @@ instance\ Eq\ Action\\instance\ Show\ Action
 \end{haddockdesc}
 \begin{haddockdesc}
 \item[\begin{tabular}{@{}l}
+data\ Reference
+\end{tabular}]\haddockbegindoc
+\haddockbeginconstrs
+\haddockdecltt{=} & \haddockdecltt{Above} & Mustn't be directly above a block.    
+ \\
+\haddockdecltt{|} & \haddockdecltt{Beside} & Either left of or right of  
+ \\
+\haddockdecltt{|} & \haddockdecltt{Inside} & \\
+\haddockdecltt{|} & \haddockdecltt{LeftOf} & \\
+\haddockdecltt{|} & \haddockdecltt{OnTop} & Uppermost possition i.e. ontop of a stack 
+ \\
+\haddockdecltt{|} & \haddockdecltt{RightOf} & \\
+\haddockdecltt{|} & \haddockdecltt{Under} & Mustn't be directly above a block.    
+ \\
+\end{tabulary}\par
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Eq\ Reference\\instance\ Show\ Reference
+\end{tabular}]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
 data\ Location
 \end{tabular}]\haddockbegindoc
 \haddockbeginconstrs
-\haddockdecltt{=} & \haddockdecltt{Above Block} & \\
-\haddockdecltt{|} & \haddockdecltt{Empty} & \\
-\haddockdecltt{|} & \haddockdecltt{Beside [Block]} & \\
-\haddockdecltt{|} & \haddockdecltt{Inside Block} & \\
-\haddockdecltt{|} & \haddockdecltt{LeftOf Block} & \\
-\haddockdecltt{|} & \haddockdecltt{OnTop Block} & \\
-\haddockdecltt{|} & \haddockdecltt{RightOf Block} & \\
-\haddockdecltt{|} & \haddockdecltt{Under Block} & \\
+\haddockdecltt{=} & \haddockdecltt{Empty} & \\
+\haddockdecltt{|} & \haddockdecltt{Location Reference [Block]} & \\
 \haddockdecltt{|} & \haddockdecltt{Floor [Int]} & \\
 \end{tabulary}\par
 \end{haddockdesc}
@@ -63,9 +72,12 @@ data\ Output
 \end{tabular}]\haddockbegindoc
 \haddockbeginconstrs
 \haddockdecltt{=} & \haddockdecltt{O} & \\
-                    \haddockdecltt{action :: Action} &
-                    \haddockdecltt{mBlocks :: [Block]} &
-                    \haddockdecltt{location :: Location} &
+                    \haddockdecltt{action :: Action} & An action to take. 
+
+                    \haddockdecltt{mBlocks :: [Block]} & Blocks to move. 
+
+                    \haddockdecltt{location :: Location} & An location to put the blocks at.  
+
 \end{tabulary}\par
 \end{haddockdesc}
 \begin{haddockdesc}

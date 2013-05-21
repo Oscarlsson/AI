@@ -5,11 +5,12 @@
 module Backend (
     Ground,  Indexes,  World(W, holding, ground, indexes, wsize), 
     findBlockByName,  isLeftOf,  isRightOf,  isAbove,  isUnder,  isOnGround, 
-    isOnTop,  isOnBottom,  isBeside,  isHolding,  isEmptyIndex,  isOnPoss, 
-    createWorld,  createGround,  createIndexes,  createBlocks,  createBlocks', 
-    getBlock,  getBlockIndex,  getBlocksAt,  getBlocksOnGroundBy, 
-    getRightMost,  getLeftMost,  getUnderMost,  getUpperMost, 
-    getUpperUnderMost,  initWorld
+    isOnTop,  isOnTop',  isOnBottom,  isBeside,  isHolding,  isEmptyIndex, 
+    isOnPoss,  createWorld,  createGround,  createIndexes,  createBlocks, 
+    createBlocks',  getBlock,  getBlockIndex,  getBlocksAt, 
+    getBlocksOnGroundBy,  getRightMost,  getLeftMost,  getUnderMost, 
+    getUpperMost,  getUpperUnderMost,  getMinimumStackHeight, 
+    getMinimumStackHeightFrom,  getMinimumStackHeightUntil,  initWorld
   ) where\end{verbatim}}
 \haddockendheader
 
@@ -96,9 +97,20 @@ check if a block is on the ground in a world or equally the block exists in the 
 
 \end{haddockdesc}
 \begin{haddockdesc}
-\item[
+\item[\begin{tabular}{@{}l}
 isOnTop\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
-]
+\end{tabular}]\haddockbegindoc
+Check if a block is on the top of any stack in a world     
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+isOnTop'\ ::\ Block\ ->\ Block\ ->\ World\ ->\ Bool
+\end{tabular}]\haddockbegindoc
+Check if the first input block lies directly over the second input block 
+\par
+
 \end{haddockdesc}
 \begin{haddockdesc}
 \item[\begin{tabular}{@{}l}
@@ -256,8 +268,33 @@ Used by getUnderMost and getUpperMost
 \end{haddockdesc}
 \begin{haddockdesc}
 \item[\begin{tabular}{@{}l}
+getMinimumStackHeight\ ::\ World\ ->\ Int
+\end{tabular}]\haddockbegindoc
+Returns the minimum stack height in the world 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+getMinimumStackHeightFrom\ ::\ World\ ->\ Int\ ->\ Maybe\ Int
+\end{tabular}]\haddockbegindoc
+Works like getMinimumStackHeight but uses a start index to look from
+  getMinimumStackHeight w == getMinimumStackHeightFrom w 0 
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[
+getMinimumStackHeightUntil\ ::\ World\ ->\ Int\ ->\ Maybe\ Int
+]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
 initWorld\ ::\ {\char 91}{\char 91}{\char 91}Char{\char 93}{\char 93}{\char 93}
 \end{tabular}]\haddockbegindoc
+Works like getMinimumStackHeight but uses a last index to look at
+  getMinimumStackHeight w == getMinimumStackHeightUntil w (worldsize - 1) 
+\par
 For testing purposes 
 \par
 

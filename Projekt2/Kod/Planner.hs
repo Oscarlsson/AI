@@ -25,14 +25,22 @@ finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
 finished _ ( G (P.O P.None _ _) _ ) = False
 finished w ( G (P.O _ b1S@(b1:b1s) loc ) _ ) = 
             case loc of
-                --(P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
-                (P.Location P.LeftOf (b2:b2s))  -> and $ map (\b -> isLeftOf b b2 w) b1S
-                --(P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Location P.LeftOf (b2:_))  -> and $ map (\b -> isLeftOf  b b2 w) b1S
+                (P.Location P.RightOf (b2:_)) -> and $ map (\b -> isRightOf b b2 w) b1S
+                (P.Location P.Beside (b2:_))       -> finishedLeft || finishedRight
+                    where
+                        finishedLeft  = and $ map (\b -> isLeftOf  b b2 w) b1S
+                        finishedRight = and $ map (\b -> isRightOf b b2 w) b1S
+                        
                 (P.Floor _)                     -> isOnBottom b1 w
-                (P.Location P.Inside (b2:b2s))  -> 
+                (P.Location P.Inside (b2:_))  -> 
                         case b1s of 
-                            [] -> isOnTop' b1 b2 w 
-                            _ -> and $ map (\b1x -> isAbove b1x b2 w) b1S
+                            [] -> isAbove b1 b2 w 
+                            _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
+                (P.Location P.Above (b2:_))   -> 
+                        case b1s of 
+                            [] -> isAbove b1 b2 w 
+                            _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
                         [] -> isOnTop' b1 b2 w
@@ -40,7 +48,7 @@ finished w ( G (P.O _ b1S@(b1:b1s) loc ) _ ) =
                             where 
                                 allAbove = and $ map (\b1x -> isAbove b1x b2 w) b1S
                                 oneOnTop = or $ map (\b1x -> isOnTop' b1x b2 w) b1S
-                (P.Location P.Under (b2:bs))    -> isUnder b1 b2 w
+                (P.Location P.Under (b2:bs))    -> isUnder b1 b2 w ----------------------------------------------------------------------
 
 obstructingBlocks :: [Block] -> Block -> (Block -> Block -> World -> Bool) -> World -> Int
 obstructingBlocks mblocks target premise w = sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ premise m target w)) (blocksInSameStack m w)) mblocks
@@ -54,15 +62,27 @@ heuristic w g
             ( P.O _         mblocks     (P.Floor is)                ) -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment
                         where
                             hObject = 2 * obstructingBlocks mblocks NullBlock (\m _ w -> isOnBottom m w) w
-                            hTarget = 2*(getMinimumStackHeight w)
+                            hTarget = 2 * (getMinimumStackHeight w)
                             hObjectsOutOfPlace = (*) 2 $ length $ filter (\m -> not $ isOnBottom m w) mblocks 
                             holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
 
-            ( P.O _         mblocks     (P.Location loc tS@(t:_))   ) -> -- tS är ALTERNATIVE TARGETS
+            o@( P.O _         mblocks     (P.Location loc tS@(t:_))   ) -> 
                 case loc of
-                    P.Above     -> 1 
-                    P.RightOf   -> 1
-                    P.Beside    -> 1
+                    P.Beside    -> min hLeft hRight
+                        where
+                            hLeft  = heuristic w (g{ goal = o{ P.location = P.Location P.LeftOf  tS } })
+                            hRight = heuristic w (g{ goal = o{ P.location = P.Location P.RightOf tS } })
+                    P.RightOf 
+                        | isHolding t w -> maxBound - aStarTimeout -- Just some arbitrary large value.
+                        | otherwise     -> hTarget + hObject + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
+                        where
+                            hObject = 2 * obstructingBlocks mblocks t isRightOf w
+                            hTarget = case map (\stack -> (*) 2 $ length $ filter (\b -> or $ map ((<) b) mblocks) stack) (drop (1 + (fromJust $ getBlockIndex t w)) $ M.elems $ ground w) of
+                                [] -> 0 -- No possible solution; will timeout...
+                                xs -> minimum xs
+                            hObjectsOutOfPlace = (*) 2 $ length $ filter (\m -> not $ isRightOf m t w) mblocks 
+                            holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isRightOf m t w) mblocks)
+                            holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
                     P.LeftOf 
                         | isHolding t w -> maxBound - aStarTimeout -- Just some arbitrary large value.
                         | otherwise     -> hTarget + hObject + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
@@ -94,6 +114,7 @@ heuristic w g
                             hTargetsOutOfPlace = 0
                             holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
                             holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
+                    P.Above     -> heuristic w (g{ goal = o{ P.location = P.Location P.Inside tS } })
                     P.Under     -> hObject + hTarget
                         where
                             hObject = 2 * obstructingBlocks mblocks t isUnder w

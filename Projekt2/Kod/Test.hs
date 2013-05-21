@@ -61,10 +61,12 @@ runTests = do
     testStatement "take the green pyramid"
     testStatement "put the black wide block on top of the red square"
     testStatement "put the blue wide rectangle to the left of the red square"
+    testStatement "Move all wide rectangles above the red large box"
+    testStatement "Move all wide rectangles inside the red large box"
     putStrLn "*** Real test cases"
     testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
     testStatement "Move all wide blocks inside a box on top of the red square."
-    testStatement "Put the wide blue block UNDER the black rectangle."
+    testStatement "Put the wide blue block under the black rectangle."
     testStatement "Move all wide rectangles into a red box."
 
 -- Delete this
@@ -103,6 +105,7 @@ printObject stmt = do
 firstOk :: [Err a] -> a
 firstOk ([]) = error "No ok"
 firstOk ((Ok o):_) = o
+firstOk [Bad s] = error s
 firstOk ((Bad _):xs) = firstOk xs
 
 testFinished :: IO ()

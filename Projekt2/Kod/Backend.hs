@@ -6,9 +6,8 @@ import qualified Data.Set as S
 import qualified Data.Map as M 
 import Control.Monad.State
 import Data.Maybe 
-import Data.List
+import Data.List hiding (drop)
 import Data.Tuple (swap) 
-import Prelude hiding (drop)
 
 -- |The key is the x-coordinate and the value is the blocks at this index
 type Ground  = M.Map Int [Block]   
@@ -201,8 +200,61 @@ getMinimumStackHeightUntil w i | null xs = Nothing
 -- |Works like getMinimumStackHeight but uses a last index to look at
 --  getMinimumStackHeight w == getMinimumStackHeightUntil w (worldsize - 1) 
 
--- |For testing purposes 
-initWorld = [[], ["a"], ["c","d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
+-------------------------------------------------------------------------------------------------------
 
+-- |Returns true if picking the topmost block from stack with index 'i' is a valid instruction in the world
+validPickId :: Int -> World -> Bool
+validPickId i w 
+              | isJust $ holding w = False
+              | otherwise = case M.lookup i (ground w) of 
+                    Nothing     -> False
+                    Just []     -> False  
+                    Just (x:xs) -> True
 
+-- |Returns true if block b is the topmost object in its stack and no block is already in holding 
+validPick :: Block -> World -> Bool 
+validPick b w | isJust $ holding w = False
+              | otherwise = 
+                case M.lookup b (indexes w) of 
+                 Nothing -> False  
+                 Just i  -> case M.lookup i (ground w) of 
+                                    Nothing     -> False 
+                                    Just (x:xs) -> x == b 
+                                    Just []     -> False  
 
+-- |Returns true if the world physics allows the block in holding to be put on top of the stack at index i
+validDrop :: Int -> World -> Bool
+validDrop i w = case holding w  of 
+                    Nothing -> False 
+                    Just holdBlock  -> case M.lookup i (ground w) of 
+                                         Just []     -> True
+                                         Just (groundBlock:xs) -> not $ groundBlock < holdBlock
+                                         Nothing     -> False   
+
+-- |Returns a Just updated world where the block at stack index i has been picked up, or Nothing if the pick is not legal
+pickId :: Int -> World -> Maybe World
+pickId i w = case M.lookup i (ground w) of
+                Nothing -> Nothing
+                Just [] -> Nothing
+                Just (b:bs) -> pick b w
+
+-- |Returns a Just updated world where the block b is removed from its stack if it is a valid move.
+pick :: Block -> World -> Maybe World 
+pick b w | validPick b w = return $ w {holding = Just b, ground = ground $ newWorld, indexes = indexes newWorld} 
+         | otherwise     = Nothing 
+            where newWorld = deleteBlock b w  
+
+-- |Returns a Just updated world where the block b is added to the stack index i if it is a valid move
+dropBlock :: Int -> World -> Maybe World 
+dropBlock i w | validDrop i w = return $ w {holding = Nothing, ground = ground $ newWorld, indexes = indexes newWorld}
+         | otherwise = Nothing 
+            where newWorld = addBlock i (fromJust $ holding w) w
+
+-- |Returns a new world where only the deleted block has been removed but the holding state is left unchanged.
+deleteBlock :: Block -> World -> World 
+deleteBlock b w = w {ground = M.update (return . tail) i (ground w), indexes = M.delete b (indexes w)}  
+        where i = fromJust $ M.lookup b (indexes w)
+
+-- |Returns a new world where only the block b has been added to stack index i without updating the holding state.
+addBlock :: Int -> Block -> World -> World 
+addBlock i b w = w {indexes = M.insert b i (indexes w), ground = M.update (return . (b :)) i (ground w)} 

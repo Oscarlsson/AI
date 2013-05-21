@@ -12,6 +12,7 @@ import ErrM
 
 import Backend
 
+import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
 initWorld2 = [[], ["a", "b"], ["c", "d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
 --initWorld2 = [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
@@ -60,10 +61,12 @@ runTests = do
     testStatement "take the green pyramid"
     testStatement "put the black wide block on top of the red square"
     testStatement "put the blue wide rectangle to the left of the red square"
+    testStatement "Move all wide rectangles above the red large box"
+    testStatement "Move all wide rectangles inside the red large box"
     putStrLn "*** Real test cases"
     testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
     testStatement "Move all wide blocks inside a box on top of the red square."
-    testStatement "Put the wide blue block UNDER the black rectangle."
+    testStatement "Put the wide blue block under the black rectangle."
     testStatement "Move all wide rectangles into a red box."
 
 -- Delete this
@@ -102,6 +105,7 @@ printObject stmt = do
 firstOk :: [Err a] -> a
 firstOk ([]) = error "No ok"
 firstOk ((Ok o):_) = o
+firstOk [Bad s] = error s
 firstOk ((Bad _):xs) = firstOk xs
 
 testFinished :: IO ()
@@ -113,4 +117,16 @@ testFinished = do
     print initialWorldFinished
     print initialWorld
 
+astarDebug :: World -> Goal -> (Err History, Int)
+astarDebug w g = 
+    case fst result of 
+        Bad s -> (Bad s , 0)
+        Ok  n -> (Ok (history $ n), snd result)
+    --- TODO : maybe default (\x -> ) result
+    -- | isNothing (fst result) = (Nothing, 0)
+   --  | otherwise = (Just (history $ fromJust (fst result)), snd result)
+    --where result = snd $ astar' (pq w) [] g
+    where 
+            y = astar' aStarTimeout (pq w) [] g
+            result = (snd $ y, PSQ.size $ fst y)
 

@@ -1,0 +1,17 @@
+To run the server, first make sure that you have installed Python with
+the included CGIHTTPServer script, GF 3.4 via Cabal, and also that the
+.gf files are located at ~/.cabal/share/gf-3.4/lib/.
+
+Then cd to Kod/ and run:
+$./run_http_server.sh 
+to access the server at http://localhost:8000/shrdlite.html
+
+The supplied file planner.cgi can be recompiled using:
+$ ghc --make -o www/cgi-bin/planner.cgi plannermove.hs
+
+The program can also be tested using the methods for testing in Test.hs
+by running:
+$ ghci Test.hs
+and then using for instance the command 'runTests', which will run
+several test cases that were used during the development, and output
+the number of nodes in the frontier at termination of each test case.

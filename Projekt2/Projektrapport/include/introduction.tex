@@ -1,11 +1,13 @@
 \chapter{Introduction}
 This project was about planning in a virtual world. Planning is about devising a plan of actions to reach a specific goal \citep{planning_ai}. There is several different methods that can be used for the planning part, such as building a search graph or using logic. 
-Planning could be used to determine a route, for example schedule flights. In this project, planning was applied using natural language in a dialogue system for a robot. The task was to, depending on the message given, determine a planning and perform this planning in the given world. 
+Planning could be used to determine a route, for example schedule flights. In this project, planning was applied using natural language in a dialogue system for a robot. The task was to, depending on the message given, determine a planning and perform this planning in the given world. Natural language processing is used as an important part in for example automated online assistents that provide customer service on a web page. 
 
 \section{Problem description}
 The project was about implementing a dialogue system for a robot in a two-dimentional virtual world, where the robot had an arm to pick up and drop blocks in the world. The dialogue system was a written dialogue were the user wrote natural language commands which the system translated to a planning and resulting commands to the robot. The project then had two parts: parse the given input command and to make and perform a planning. The planning should also be efficient. \\\\
+Our ambition was to be able to parse at least four different inputs and to make and perform an efficient planning for these. 
+\\\\
 A problem in the world was that the blocks had different forms and different sizes and all moves should follow the laws of physics, for example nothing can be put on a ball and small blocks cannot hold bigger blocks. \\\\
-Another problem that always occurs when working with natural languages is ambiguity \citep{naturallang_ai}. In this project there was a problemwith the input commands that could be ambiguous and therefore result in several possible plannings. 
+Another problem that always occurs when working with natural languages is ambiguity \citep{naturallang_ai}. For example, how to read "He saw her duck"? This could mean that he saw a duck that belongs to her or that he saw her move to avoid something. In this project there was a problem with the input commands which could be ambiguous and therefore result in several possible plannings. 
 
 \section{Theory}
 This project is inspired by a Phd project called SHRDLU which also is a dialogue system but more advanced and it operates in a 3D-world. This project contains a subset of the functionality included in SHRDLU. To parse the natural language commands Grammatical Framework were used and the search algorithm A* were use to get a planning. The project operates in the blocks world.

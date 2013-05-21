@@ -24,12 +24,49 @@ The parser would always find out if the blocks the input refered to exists and i
 If a block should be put left of or right of several blocks, the parser returns the leftmost or rightmost block as a reference block. 
 
 \section{Planner}
-* goal, finished \\
-* heuristic function\\
-* A*, nodes and edges, timeout\\
-* instructions, valid, comparator\\
-* pseudo code A*\\\\
-Successors på en värld returnerar alla möjliga världar man kan komma till genom att göra en tillåten instruktion. Add räknar ut f(n) på varje värld
+Planner uses $A^*$ similar to the algorithm in (\ref{algorithm:astar}). The
+successor function in a world returns every possible worlds that can be reached
+by applying any valid instruction. The add function is responsible for
+calculating the heuristics of every node.
+
+Varje nod är en värld och en historia som består av en sekvens av instruktioner.
+Noderna sparas i en prioritetskö och två lika dana värdar sparas aldrig mer än
+en gång. Om vi poppar en värld ur prioritetskön som också uppfyller finished så är vi färdiga till
+skillnad från om vi hade hittat en succsessor som var finishid för då kan vi inte
+garantera optimalitet. Detta på grund utav att vi måste ta hänsyn till
+heuristiken. 
+
+För att veta om vi är färdiga så måste världen uppfylla ett antal logiska satser
+som vi generar utifrån vår tolkning av den meningen som användaren anger. Dessa
+logiska satser skiljer mellan olika parseträd.
+
+Vi har en timeout på $A^*$ som innebär att vi avbryter om det visar sig att
+algoritmen tar för lång tid. Oftast på grund utav att det inte finns någon
+lösning. 
+
+Fysiken sköts av en jämnförelseoperator på block. En pyramid eller en boll är alltid
+mindre än allt annat och vi kan bara lägga mindre block på större block. På så
+sätt är det aldrig möjligt att lägga någonting på en boll eller en pyramid.  
+
+
+Heuristikfunktionen antar att vi har ett oändligt antal liga platser i världen.
+Dvs vi antar alltid att vi kan flytta ett block inom ramen av två steg. 
+%* goal, finished \\
+
+
+%* heuristic function\\
+
+
+%* A*, nodes and edges, timeout\\
+
+
+%* instructions, valid, comparator\\
+
+
+%* pseudo code A*\\\\
+
+Successors på en värld returnerar alla möjliga världar man kan komma till genom
+att göra en tillåten instruktion. Add räknar ut f(n) på varje värld
 \begin{algorithm}[h!]
  \SetAlgoLined
  \KwData{TimeoutInt, World, Goal}

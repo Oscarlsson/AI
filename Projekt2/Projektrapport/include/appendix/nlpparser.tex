@@ -5,19 +5,11 @@
 \begin{verbatim}
 module NLPParser (
     Action(Move, Put, Take, None),
-    Location(Above,
-             Empty,
-             Beside,
-             Inside,
-             LeftOf,
-             OnTop,
-             RightOf,
-             Under,
-             Floor),
-    Output(O, action, mBlocks, location), initOutput, command, modifyString,
-    tmpMain, runParser, traverseTree, handleThing, handleLocation,
-    filterBlocks, pairBlocks, getRefLocation, handleGBlock, handleBlock,
-    world
+    Reference(Above, Beside, Inside, LeftOf, OnTop, RightOf, Under),
+    Location(Empty, Location, Floor), Output(O, action, mBlocks, location),
+    initOutput, command, modifyString, tmpMain, runParser, traverseTree,
+    handleThing, handleLocation, filterBlocks, pairBlocks, getRefLocation,
+    handleGBlock, handleBlock, world
 ) where
 \end{verbatim}
 \begin{center}
@@ -29,14 +21,19 @@ data Action = Move | Put | Take | None
 instance Eq Action
 instance Show Action
 
-data Location = Above Block
-              | Empty
-              | Beside [Block]
-              | Inside Block
-              | LeftOf Block
-              | OnTop Block
-              | RightOf Block
-              | Under Block
+data Reference = Above
+               | Beside     - Mustn’t be directly above a block.
+               | Inside     - Either left of or right of
+               | LeftOf
+               | OnTop      - Uppermost possition i.e. ontop of a stack
+               | RightOf
+               | Under      - Mustn’t be directly above a block.
+
+instance Eq Reference
+instance Show Reference
+
+data Location = Empty 
+              | Location Reference [Block] 
               | Floor [Int]
 
 instance Eq Location
@@ -45,9 +42,9 @@ instance Show Location
 \newpage
 \begin{verbatim}
 data Output = O 
-        action :: Action
-        mblocks :: [Block]
-        location :: Location
+        action :: Action        - An action to take.
+        mblocks :: [Block]      - Blocks to move. 
+        location :: Location    - An location to put the blocks at.
 
 instance Eq Output
 instance Show Output

@@ -4,8 +4,11 @@
 \end{center}
 \begin{verbatim}
 module Planner (
-    initWorld2, initialWorld, Goal(G, goal, blockId), createGoal, finished,
-    heuristic, command, tmpMainPlanner, handleOutput,
+    initWorld2, initialWorld, initWorld3, initialWorldFinished,
+    Goal(G, goal, blockId), showHistory, createGoal, finished,
+    testHeuristic, heuristic, blocksInSameStack, blocksAbove,
+    holdingHeuristic, putRightOf, putLeftOf, heuristic’, testStatement,
+    fromErr, runTests, testTest, printObject, firstOk, testFinished,
     Instruction(Drop, Pick), allLegalMoves, validInstruction, validPickId,
     validPick, validDrop, action, pickId, pick, deleteBlock, drop,
     addBlock, History, Node(N, world, history), PQ, Seen, pq, pop,
@@ -30,10 +33,31 @@ initialWorld :: World
 \> 
 \end{tabbing}
 \begin{verbatim}
+initWorld3 :: [[[Char]]]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+initialWorldFinished :: World
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
 data Goal = G
         goal :: Output
         blockID :: [Int]
 \end{verbatim}
+\begin{verbatim}
+showHistory :: History -> String
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
 \begin{verbatim}
 createGoal :: Output -> World -> Goal
 \end{verbatim}
@@ -49,6 +73,13 @@ finished :: World -> Goal -> Bool
 \> 
 \end{tabbing}
 \begin{verbatim}
+testHeuristic :: String -> World -> IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
 heuristic :: World -> Goal -> Int
 \end{verbatim}
 \begin{tabbing}
@@ -56,21 +87,92 @@ heuristic :: World -> Goal -> Int
 \> 
 \end{tabbing}
 \begin{verbatim}
-command :: String
+blocksInSameStack :: Block -> World -> [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Returns the list of blocks inside the same stack as the queried block.\\
+\> Assumes that the block is not in holding.
+\end{tabbing}
+\begin{verbatim}
+blocksAbove :: Block -> World -> Maybe Int
 \end{verbatim}
 \begin{tabbing}
 \hspace*{1cm}\= \kill
 \> 
 \end{tabbing}
 \begin{verbatim}
-tmpMainPlanner :: IO ()
+holdingHeuristic :: Goal -> World -> Int
 \end{verbatim}
 \begin{tabbing}
 \hspace*{1cm}\= \kill
 \> 
 \end{tabbing}
 \begin{verbatim}
-handleOutput :: Err Output -> Output
+putRightOf :: Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+putLeftOf :: Block -> World -> Bool
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+heuristic’ :: World -> Goal -> Int
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+testStatement :: String -> IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+fromErr :: Err a -> a
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+runTests :: IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+testTest :: String -> IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+printObject :: String -> IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+firstOk :: [Err a] -> a
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+testFinished :: IO ()
 \end{verbatim}
 \begin{tabbing}
 \hspace*{1cm}\= \kill

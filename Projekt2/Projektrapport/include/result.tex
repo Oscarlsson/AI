@@ -55,7 +55,7 @@ drop 7\linebreak\\ \hline
 \caption{Result of the given example input}
 \label{tab:exampleinput}
 \end{table}\\
-All the examples above refers to a $Move$ action. An example of how the planning is done is shown in Figure \ref{fig:moveex}. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}.
+All the examples above refers to a $Move$ action. An example of how the planning is done is shown in Figure \ref{fig:moveex}. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}. The put action assumes that there is a block in holding, in this case the red square.
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
@@ -65,12 +65,11 @@ Take the red square! & 	(take (the (block square \_ red ) ) ) &
 pick 2\linebreak
 drop 8\linebreak
 pick 2\linebreak\\ \hline
-&& \\ \hline
+Put it on the floor & ( put ( ontop floor) ) & drop 6\linebreak \\ \hline
 \end{tabular}
 \caption{Result of actions $Take$ and $Put$}
 \label{tab:put_take}
 \end{table}\\
-Of course there is several inputs which is not handled by the parser and the planner. An example of a such input is XX which results in XX due to XX. \\\\
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -139,11 +138,12 @@ Of course there is several inputs which is not handled by the parser and the pla
   \caption{Drop the black rectangle}
   \label{fig:11}
 \end{subfigure}
-\caption{The figure shows how the blocks are moved for the instruction: ''Move all wide rectangles into a red 
+\caption{The figure shows how the blocks are moved for the action: ''Move all wide rectangles into a red 
 box.''}
 \label{fig:moveex}
-\end{figure}
-
+\end{figure}\\\\\\
+Of course there is several inputs which is not handled by the parser and the planner. An example of a such input is "Move all blocks inside a box on top of the red square." which results in a timeout due to our translation of the command. The parser returns a list of all blocks that is inside of a box, to be moved. This is impossible to perform for the initial world since there is two boxes with a ball inside and balls can never be put on each other. Then the planner will not find a solution, which results in a timeout.\\\\
+The planner does not print what it does, such as ''I move the topmost block from stack X to stack Y''. The planning is just shown visually and in form of pick and drop instructions.
 \section{Discussion}
 A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
 Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we find a library which could convert between GF grammar as concrete and abstract syntax. \\\\

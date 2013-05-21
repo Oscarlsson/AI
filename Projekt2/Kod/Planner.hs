@@ -61,15 +61,19 @@ finished :: World -> Goal -> Bool
 --                (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
 --                (P.Floor is)  -> False
 -- b1S never empty
-finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) = 
+finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
+finished _ ( G (P.O P.None _ _) _ ) = False
+finished w ( G (P.O _ b1S@(b1:b1s) loc ) _ ) = 
             case loc of
+                --(P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
+                (P.Floor _)   -> isOnBottom b1 w
+                --(P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
+                --(P.Location P.OnTop (b2:[]))    -> isOnTop' b1 b2 w
                 --(P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
                 (P.Location P.Inside (b2:b2s))  -> 
                         case b1s of 
                             [] -> isOnTop' b1 b2 w 
                             _ -> and $ map (\b1x -> isAbove b1x b2 w) b1S
-                --(P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
-                --(P.Location P.OnTop (b2:[]))    -> isOnTop' b1 b2 w
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
                         [] -> isOnTop' b1 b2 w
@@ -78,13 +82,8 @@ finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) =
                                 allAbove = and $ map (\b1x -> isAbove b1x b2 w) b1S
                                 oneOnTop = or $ map (\b1x -> isOnTop' b1x b2 w) b1S
 
-                --(P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
                 (P.Location P.Under (b2:bs))    -> isUnder b1 b2 w
-                --(P.Floor is)   -> isOnPoss b1 (head is) w --Instead of head: closest
 
-finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
-
-finished _ ( G (P.O P.None _ _) _ ) = False
 
 testHeuristic :: String -> World -> IO ()
 testHeuristic stmt w = do
@@ -98,16 +97,23 @@ heuristic :: World -> Goal -> Int
 heuristic w g 
         | finished w g = 0
         | otherwise = case goal g of                            -- 1 is just temporary
-            ( P.O P.Take    mblocks    _         )               -> (holdingHeuristic g w) + (maybe 0 id $ blocksAbove (head mblocks) w) -- Det kan finnas fler block att välja på
-            ( P.O _          _          (P.Empty))               -> 1
-            ( P.O _          _          (P.Floor is))            -> 2*(getMinimumStackHeight w)+1 
-            ( P.O P.Move      mblocks    (P.Location loc tS@(t:_)))       -> -- tS är ALTERNATIVE TARGETS
+            ( P.O P.Take    mblocks     _                           ) -> (holdingHeuristic g w) + (maybe 0 id $ blocksAbove (head mblocks) w) -- Det kan finnas fler block att välja på
+            ( P.O _          _          (P.Empty)                   ) -> 1
+            ( P.O _         mblocks     (P.Floor is)                ) -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment
+                        where
+                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isOnBottom m w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hTarget = 2*(getMinimumStackHeight w)
+                            hObjectsOutOfPlace = (*) 2 $ length $ filter (\m -> not $ isOnBottom m w) mblocks 
+                            -- TODO TODO TODO TODO These methods look horrible, FIX
+                            holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
+
+            ( P.O _         mblocks     (P.Location loc tS@(t:_))   ) -> -- tS är ALTERNATIVE TARGETS
                 case loc of
                     P.RightOf   -> 1
                     P.LeftOf    -> 1
                     P.Beside    -> 1
                     P.Above     -> 1 
-                    P.OnTop     -> hObject + hTarget + hObjectsOutOfPlace + holdingTargetAdjustment + holdingSomethingOtherThanTargetAdjustment
+                    P.OnTop     -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
                         where
                             hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
                             hTarget = (*) 2 $ length $ filter (\b -> (not $ b `elem` mblocks) && (isOnTop' b t w)) (blocksInSameStack t w) -- TODO: Test & comment
@@ -116,9 +122,9 @@ heuristic w g
                                 | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
                             hTargetsOutOfPlace = 0 -- Possible tweak: Check isOnPoss (original position, has not moved)
                             -- TODO TODO TODO TODO These methods look horrible, FIX
-                            holdingTargetAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
+                            holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
                             holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
-                    P.Inside     -> hObject + hTarget + hObjectsOutOfPlace + holdingTargetAdjustment + holdingSomethingOtherThanTargetAdjustment
+                    P.Inside     -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
                         where
                             hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
                                                               ---------------------------------
@@ -129,7 +135,7 @@ heuristic w g
                                 | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
                             hTargetsOutOfPlace = 0 -- Possible tweak: Check isOnPoss (original position, has not moved)
                             -- TODO TODO TODO TODO These methods look horrible, FIX
-                            holdingTargetAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
+                            holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
                             holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
                     P.Under     -> hObject + hTarget
                         where
@@ -448,8 +454,8 @@ astar to w g =
 astar' :: Int -> PQ -> Seen -> Goal -> (PQ, Err Node)
 astar' to pq seen goal 
         | finished (world n) goal = (pq'', Ok n)
-        | to == 0  = (pq'',Ok n)
-        -- | to == 0   = (pq'', Bad $ "timed out with world =" ++ (show $ world n))
+        -- | to == 0  = (pq'',Ok n)
+        | to == 0   = (pq'', Bad $ "timed out with world =" ++ (show $ world n))
         | otherwise = astar' (to - 1) pq'' seen' goal
         where
             (n,pq') = pop pq

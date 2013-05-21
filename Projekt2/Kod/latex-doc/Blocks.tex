@@ -23,7 +23,16 @@ data\ Block
 \end{haddockdesc}
 \begin{haddockdesc}
 \item[\begin{tabular}{@{}l}
-instance\ Eq\ Block\\instance\ Ord\ Block\\instance\ Show\ Block
+instance\ Eq\ Block
+\end{tabular}]\haddockbegindoc
+Don't use \haddocktt{compare} when comparing sizes of blocks since they will always be different
+ |if they don't have equal name  
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+instance\ Ord\ Block\\instance\ Show\ Block
 \end{tabular}]
 \end{haddockdesc}
 \begin{haddockdesc}

@@ -3,8 +3,11 @@
 \haddockbeginheader
 {\haddockverb\begin{verbatim}
 module Planner (
-    initWorld2,  initialWorld,  Goal(G, goal, blockId),  createGoal,  finished, 
-    heuristic,  command,  tmpMainPlanner,  handleOutput, 
+    initWorld2,  initialWorld,  initWorld3,  initialWorldFinished, 
+    Goal(G, goal, blockId),  showHistory,  createGoal,  finished, 
+    testHeuristic,  heuristic,  blocksInSameStack,  blocksAbove, 
+    holdingHeuristic,  putRightOf,  putLeftOf,  heuristic',  testStatement, 
+    fromErr,  runTests,  testTest,  printObject,  firstOk,  testFinished, 
     Instruction(Drop, Pick),  allLegalMoves,  validInstruction,  validPickId, 
     validPick,  validDrop,  action,  pickId,  pick,  deleteBlock,  drop, 
     addBlock,  History,  Node(N, world, history),  PQ,  Seen,  pq,  pop, 
@@ -19,6 +22,12 @@ initWorld2\ ::\ {\char 91}{\char 91}{\char 91}Char{\char 93}{\char 93}{\char 93}
 \item[
 initialWorld\ ::\ World
 ]
+\item[
+initWorld3\ ::\ {\char 91}{\char 91}{\char 91}Char{\char 93}{\char 93}{\char 93}
+]
+\item[
+initialWorldFinished\ ::\ World
+]
 \end{haddockdesc}
 \begin{haddockdesc}
 \item[\begin{tabular}{@{}l}
@@ -32,22 +41,65 @@ data\ Goal
 \end{haddockdesc}
 \begin{haddockdesc}
 \item[
+showHistory\ ::\ History\ ->\ String
+]
+\item[
 createGoal\ ::\ Output\ ->\ World\ ->\ Goal
 ]
 \item[
 finished\ ::\ World\ ->\ Goal\ ->\ Bool
 ]
 \item[
+testHeuristic\ ::\ String\ ->\ World\ ->\ IO\ ()
+]
+\item[
 heuristic\ ::\ World\ ->\ Goal\ ->\ Int
 ]
+\end{haddockdesc}
+\begin{haddockdesc}
+\item[\begin{tabular}{@{}l}
+blocksInSameStack\ ::\ Block\ ->\ World\ ->\ {\char 91}Block{\char 93}
+\end{tabular}]\haddockbegindoc
+Returns the list of blocks inside the same stack as the queried block. Assumes that the block is not in holding.
+\par
+
+\end{haddockdesc}
+\begin{haddockdesc}
 \item[
-command\ ::\ String
+blocksAbove\ ::\ Block\ ->\ World\ ->\ Maybe\ Int
 ]
 \item[
-tmpMainPlanner\ ::\ IO\ ()
+holdingHeuristic\ ::\ Goal\ ->\ World\ ->\ Int
 ]
 \item[
-handleOutput\ ::\ Err\ Output\ ->\ Output
+putRightOf\ ::\ Block\ ->\ World\ ->\ Bool
+]
+\item[
+putLeftOf\ ::\ Block\ ->\ World\ ->\ Bool
+]
+\item[
+heuristic'\ ::\ World\ ->\ Goal\ ->\ Int
+]
+\item[
+testStatement\ ::\ String\ ->\ IO\ ()
+]
+\item[
+fromErr\ ::\ Err\ a\ ->\ a
+]
+\item[
+runTests\ ::\ IO\ ()
+]
+\item[
+testTest\ ::\ String\ ->\ IO\ ()
+]
+\item[
+printObject\ ::\ String\ ->\ IO\ ()
+]
+\item[
+firstOk\ ::\ {\char 91}Err\ a{\char 93}\ ->\ a
+]
+\item[
+testFinished\ ::\ IO\ ()
 ]
 \end{haddockdesc}
 \begin{haddockdesc}
@@ -143,12 +195,12 @@ addAll\ ::\ PQ\ ->\ {\char 91}Node{\char 93}\ ->\ Goal\ ->\ PQ
 successors\ ::\ Node\ ->\ {\char 91}Node{\char 93}
 ]
 \item[
-astarDebug\ ::\ World\ ->\ Goal\ ->\ (Maybe\ History,\ Int)
+astarDebug\ ::\ World\ ->\ Goal\ ->\ (Err\ History,\ Int)
 ]
 \item[
-astar\ ::\ World\ ->\ Goal\ ->\ Maybe\ History
+astar\ ::\ Int\ ->\ World\ ->\ Goal\ ->\ Err\ History
 ]
 \item[
-astar'\ ::\ PQ\ ->\ Seen\ ->\ Goal\ ->\ (PQ,\ Maybe\ Node)
+astar'\ ::\ Int\ ->\ PQ\ ->\ Seen\ ->\ Goal\ ->\ (PQ,\ Err\ Node)
 ]
 \end{haddockdesc}

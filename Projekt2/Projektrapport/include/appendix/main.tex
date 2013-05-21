@@ -1,0 +1,61 @@
+\section{Main}
+\begin{center}
+\line(1,0){418}
+\end{center}
+\begin{verbatim}
+module Main (
+    cgiMain, runFindPlan, getWorld, findPlan, cgiInput, split, main
+) where
+\end{verbatim}
+\begin{center}
+\line(1,0){418}
+\end{center}
+\begin{verbatim}
+cgiMain :: CGI CGIResult
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+runFindPlan :: [Err Goal] -> World -> CGI CGIResult
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+getWorld :: String -> [[String]] -> Maybe World
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+findPlan :: World -> Goal -> [String]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+cgiInput :: CGI (String, [[String]], String)
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+split :: Char -> String -> [String]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+main :: IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}

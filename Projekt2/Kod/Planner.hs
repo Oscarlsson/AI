@@ -1,11 +1,9 @@
 module Planner where
 
-import PGF
 import Data.Maybe
-import Shrdlite
 import Data.PSQueue as PSQ hiding (null, foldl, foldr)
 
-import qualified Data.Set  as S 
+--import qualified Data.Set  as S 
 import qualified Data.Map  as M 
 import qualified Data.List as L
 import qualified NLPParser as P
@@ -16,30 +14,8 @@ import Backend
 
 import Prelude hiding (drop)
 
-initWorld2 = [[], ["a", "b"], ["c", "d"], [], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
---initWorld2 = [[], ["a"], ["c","b"], ["d"], ["e","f","g","h","i"], [], [], ["j","k"], [], ["l","m"]]
---
---
-initialWorld :: World
-initialWorld = fromJust $ createWorld initWorld2 "" blocks
 
--- Finished test
---initWorld3 = [[], ["a", "b"], ["d"], ["c","j","f","g","h"], ["e"], ["i"], [], ["k"], [], ["l","m"]]
-initWorld3 = [[], ["a", "b"], ["d"], ["c","f","g","h"], ["e"], ["i"], [], ["j","k"], [], ["l","m"]]
-initialWorldFinished :: World
-initialWorldFinished = fromJust $ createWorld initWorld3 "" blocks
-
---------------------------------------------------------------------------------
---- TEST
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 data Goal = G {goal :: P.Output , blockId :: [Int] }
-
-showHistory :: History -> String
-showHistory [] = ""
-showHistory (x:xs) = show x ++ ";" ++ showHistory xs
 
 createGoal :: P.Output -> World -> Goal
 createGoal p w = G {goal = p, blockId = listofID}
@@ -47,20 +23,7 @@ createGoal p w = G {goal = p, blockId = listofID}
             blocks   = P.mBlocks p
             listofID = map (\b -> fromJust $ M.lookup b (indexes w)) blocks
 
-
 finished :: World -> Goal -> Bool
--- The implementation of put should be identical to Move as long as
---     b1 is a reference to the holding-block in the initial state.
---finished w ( G (P.O P.Put (b1:bs) loc) id) = 
---            case loc of
---                (P.Location P.Beside (b2:bs)) -> False
---                (P.Location P.Inside (b2:bs))  -> False
---                (P.Location P.LeftOf (b2:bs))  -> False
---                (P.Location P.OnTop (b2:bs))  -> isOnTop' b1 b2 w
---                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
---                (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
---                (P.Floor is)  -> False
--- b1S never empty
 finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
 finished _ ( G (P.O P.None _ _) _ ) = False
 finished w ( G (P.O _ b1S@(b1:b1s) loc ) _ ) = 
@@ -80,22 +43,10 @@ finished w ( G (P.O _ b1S@(b1:b1s) loc ) _ ) =
                             where 
                                 allAbove = and $ map (\b1x -> isAbove b1x b2 w) b1S
                                 oneOnTop = or $ map (\b1x -> isOnTop' b1x b2 w) b1S
-
                 (P.Location P.Under (b2:bs))    -> isUnder b1 b2 w
-
-
-testHeuristic :: String -> World -> IO ()
-testHeuristic stmt w = do
-    shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
-    let g = createGoal o initialWorld
-    putStrLn $ "Initial heuristic: " ++ (show $ heuristic w g)
-    mapM_ (print) $ map (\a -> (a, heuristic (fromJust $ action a w) g)) (allLegalMoves w)
-
 
 obstructingBlocks :: [Block] -> Block -> (Block -> Block -> World -> Bool) -> World -> Int
 obstructingBlocks mblocks target premise w = sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ premise m target w)) (blocksInSameStack m w)) mblocks
-
 
 heuristic :: World -> Goal -> Int
 heuristic w g 
@@ -171,93 +122,6 @@ blocksInSameStack b w
     | blockIndex /= Nothing = fromJust $ getBlocksAt (fromJust $ blockIndex) w
     | otherwise = []
         where blockIndex = getBlockIndex b w 
-
---------------------------------------------------------------------------------
------------------------                                     --------------------
------------------------             Here be tests           --------------------
------------------------                                     --------------------
---------------------------------------------------------------------------------
-testStatement :: String -> IO ()
-testStatement stmt = do
-    shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
-    let g = createGoal o initialWorld
-    let a = astarDebug initialWorld g
-    putStrLn $ "\t" ++ stmt
-    putStrLn $ "\t\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
-    putStrLn $ "\t\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-    putStrLn $ "\t\t" ++ ( show $ (showHistory (fromErr $ fst a)) )
-    
-fromErr :: Err a -> a 
-fromErr (Ok a)  = a 
-fromErr (Bad s) = error s 
-
-
-runTests :: IO ()
-runTests = do
-    putStrLn "*** Some base cases, not part of real project test"
-    testStatement "take the red square"
-    testStatement "take the green pyramid"
-    testStatement "put the black wide block on top of the red square"
-    testStatement "put the blue wide rectangle to the left of the red square"
-    putStrLn "*** Real test cases"
-    testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
-    testStatement "Move all wide blocks inside a box on top of the red square."
-    testStatement "Put the wide blue block UNDER the black rectangle."
-    testStatement "Move all wide rectangles into a red box."
-
-testTest :: String -> IO ()
-testTest stmt = do
-    shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
-    let g = createGoal o initialWorld
-    print stmt
-    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
-    let w2 = fromJust $ action (Pick 1) initialWorld
-    let w3 = fromJust $ action (Drop 8) w2
-    let w4 = fromJust $ action (Pick 1) w3
-    let w5 = fromJust $ action (Drop 9) w4
-    --let w6 = fromJust $ action (Pick 1) w5
-    --let w7 = fromJust $ action (Drop 9) w6
-    putStrLn $ "\t" ++ ( show $ "Heuristics w2 " ++ (show $ heuristic w2 g) )
-    putStrLn $ "\t" ++ ( show $ "Heuristics w3 " ++ (show $ heuristic w3 g) )
-    putStrLn $ "\t" ++ ( show $ "Heuristics w4 " ++ (show $ heuristic w4 g) )
-    putStrLn $ "\t" ++ ( show $ "Heuristics w5 " ++ (show $ heuristic w5 g) )
-    -- putStrLn $ "\t" ++ ( show $ "Heuristics w6 " ++ (show $ heuristic w6 g) )
-    print w4
-    print w5
-
-    print $ validInstruction (Drop 9) w4 
-    print $ validDrop 9 w4
-    putStrLn $ "\t" ++ ( show $ "finished w5 " ++ (show $ finished w5 g) )
-    putStrLn $ "\t" ++ ( show $ "Heuristics w5 " ++ (show $ heuristic w5 g) )
-
--- This method is just for quickly testing the parser.
-printObject :: String -> IO ()
-printObject stmt = do
-    shrdPGF <- readPGF "Shrdlite.pgf" 
-    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
-    print o
-
-firstOk :: [Err a] -> a
-firstOk ([]) = error "No ok"
-firstOk ((Ok o):_) = o
-firstOk ((Bad _):xs) = firstOk xs
-
-testFinished :: IO ()
-testFinished = do
-    shrdPGF <- readPGF "Shrdlite.pgf" 
-    let stmt = "Move all wide blocks inside a box on top of the red square"
-    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
-    print $ finished initialWorldFinished (createGoal o initialWorld)
-    print initialWorldFinished
-    print initialWorld
-
-
---------------------------------------------------------------------------------
------------------------        \(^v^)/                      --------------------
------------------------                "No more tests!"     --------------------
---------------------------------------------------------------------------------
 
 data Instruction = Drop Int | Pick Int deriving (Eq)
 instance Show Instruction where
@@ -344,14 +208,6 @@ addBlock :: Int -> Block -> World -> World
 addBlock i b w = w {indexes = M.insert b i (indexes w), ground = M.update (return . (b :)) i (ground w)} 
         --where i = fromJust $ M.lookup b (indexes w)
 
---------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
 type History = [Instruction]
 ---type Node = (World, History)
 data Node = N { world :: World , history :: History } deriving (Eq, Ord, Show)
@@ -415,4 +271,3 @@ astar' to pq seen goal
             seen' = (world n):seen
             succs = filter (\n -> not $ elem (world n) seen' ) (successors n)
             pq'' = addAll pq' succs goal
-

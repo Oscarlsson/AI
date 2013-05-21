@@ -23,6 +23,12 @@ initWorld2 = [[], ["a", "b"], ["c", "d"], [], ["e","f","g","h","i"], [], [], ["j
 initialWorld :: World
 initialWorld = fromJust $ createWorld initWorld2 "" blocks
 
+-- Finished test
+--initWorld3 = [[], ["a", "b"], ["d"], ["c","j","f","g","h"], ["e"], ["i"], [], ["k"], [], ["l","m"]]
+initWorld3 = [[], ["a", "b"], ["d"], ["c","f","g","h"], ["e"], ["i"], [], ["j","k"], [], ["l","m"]]
+initialWorldFinished :: World
+initialWorldFinished = fromJust $ createWorld initWorld3 "" blocks
+
 --------------------------------------------------------------------------------
 --- TEST
 --------------------------------------------------------------------------------
@@ -54,6 +60,7 @@ finished :: World -> Goal -> Bool
 --                (P.Location P.RightOf (b2:bs)) -> isRightOf b2 b1 w
 --                (P.Location P.Under (b2:bs))   -> isAbove b2 b1 w
 --                (P.Floor is)  -> False
+-- b1S never empty
 finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) = 
             case loc of
                 --(P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
@@ -66,7 +73,10 @@ finished w ( G (P.O P.Move b1S@(b1:b1s) loc ) _ ) =
                 (P.Location P.OnTop (b2:_))     -> 
                     case b1s of 
                         [] -> isOnTop' b1 b2 w
-                        _  -> and $ map (\b1x -> isAbove b1x b2 w) b1S
+                        _  -> allAbove && oneOnTop
+                            where 
+                                allAbove = and $ map (\b1x -> isAbove b1x b2 w) b1S
+                                oneOnTop = or $ map (\b1x -> isOnTop' b1x b2 w) b1S
 
                 --(P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
                 (P.Location P.Under (b2:bs))    -> isUnder b1 b2 w
@@ -76,6 +86,13 @@ finished w ( G (P.O P.Take (b1:bs) _ ) _ ) = maybe False (b1==) (holding w)
 
 finished _ ( G (P.O P.None _ _) _ ) = False
 
+testHeuristic :: String -> World -> IO ()
+testHeuristic stmt w = do
+    shrdPGF <- readPGF "Shrdlite.pgf" 
+    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
+    let g = createGoal o initialWorld
+    putStrLn $ "Initial heuristic: " ++ (show $ heuristic w g)
+    mapM_ (print) $ map (\a -> (a, heuristic (fromJust $ action a w) g)) (allLegalMoves w)
 
 heuristic :: World -> Goal -> Int
 heuristic w g 
@@ -84,53 +101,67 @@ heuristic w g
             ( P.O P.Take    mblocks    _         )               -> (holdingHeuristic g w) + (maybe 0 id $ blocksAbove (head mblocks) w) -- Det kan finnas fler block att välja på
             ( P.O _          _          (P.Empty))               -> 1
             ( P.O _          _          (P.Floor is))            -> 2*(getMinimumStackHeight w)+1 
-            -- Vi har alltid holding satt i PUT.
---            ( P.O P.Put  (hold:_)    (P.Location loc bl@(b2:b2s)))   -> 
---                case loc of 
---                    P.RightOf ->                    --- GetRightMost??
---                        case (putRightOf hold w) of 
---                                True  -> 1
---                                False -> 2*(getMinimumStackHeightFrom w (fromJust $ getBlockIndex hold w))+1 
---                    P.LeftOf  -> 
---                        case (putLeftOf hold w) of 
---                                True  -> 1
---                                False -> 2*(getMinimumStackHeightUntil w (fromJust $ getBlockIndex hold w)-1)+1 
---                    P.Beside  -> 
---                        case ((putLeftOf hold w) || (putRightOf hold w)) of
---                                True  -> 1
---                                False -> 2 -- Jobbigt!
---                                
---                    P.OnTop   -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO: Behöver flytta allt som är ovanför
---                    P.Above   -> 1 + 2*(length $ takeWhile (\b2 -> b2 > hold) 
---                            (fromJust $ getBlocksAt (fromJust $ getBlockIndex b2 w) w))
---                    P.Inside  -> 1+2*(maybe 0 id $ blocksAbove b2 w) -- TODO 
---                    P.Under   -> 1
-            ( P.O P.Move      mblocks    (P.Location loc (b2:b2s)))       ->
+            ( P.O P.Move      mblocks    (P.Location loc tS@(t:_)))       -> -- tS är ALTERNATIVE TARGETS
                 case loc of
-                    P.RightOf  -> 1
-                    P.LeftOf  -> 1
-                    P.Beside  -> 1
-                    P.Above  -> 1 
-                    P.OnTop  -> h1 + h2 + (holdingHeuristic g w)
+                    P.RightOf   -> 1
+                    P.LeftOf    -> 1
+                    P.Beside    -> 1
+                    P.Above     -> 1 
+                    P.OnTop     -> hObject + hTarget + hObjectsOutOfPlace + holdingTargetAdjustment + holdingSomethingOtherThanTargetAdjustment
                         where
-                            blocksAbove2 = maybe 0 id $ blocksAbove b2 w
-                            h2 = 2*blocksAbove2
-                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
-                            h1 = 2*blocksAbove1
-                    P.Under  -> h1 + h2 + (holdingHeuristic g w)
+                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hTarget = (*) 2 $ length $ filter (\b -> (not $ b `elem` mblocks) && (isOnTop' b t w)) (blocksInSameStack t w) -- TODO: Test & comment
+                            hObjectsOutOfPlace 
+                                | hTarget == 0  = (*) 2 $ length $ filter (\m -> not $ isAbove m t w) mblocks
+                                | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
+                            hTargetsOutOfPlace = 0 -- Possible tweak: Check isOnPoss (original position, has not moved)
+                            -- TODO TODO TODO TODO These methods look horrible, FIX
+                            holdingTargetAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
+                            holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
+                    P.Inside     -> hObject + hTarget + hObjectsOutOfPlace + holdingTargetAdjustment + holdingSomethingOtherThanTargetAdjustment
                         where
-                            blocksAbove2 = maybe 0 id $ blocksAbove b2 w
-                            h2 = 2*blocksAbove2
-                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) mblocks
-                            h1 = 2*blocksAbove1
+                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                                                              ---------------------------------
+                                                              ---- Mindre än något mblock -----
+                            hTarget = (*) 2 $ length $ filter (\b -> or $ map ((<) b) mblocks) (blocksInSameStack t w)
+                            hObjectsOutOfPlace 
+                                | hTarget == 0  = (*) 2 $ length $ filter (\m -> not $ isAbove m t w) mblocks
+                                | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
+                            hTargetsOutOfPlace = 0 -- Possible tweak: Check isOnPoss (original position, has not moved)
+                            -- TODO TODO TODO TODO These methods look horrible, FIX
+                            holdingTargetAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isHolding m w) mblocks)
+                            holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
+                    P.Under     -> hObject + hTarget
+                        where
+                                                                                                                                     ----------------------
+                                                                                                                                     ---- Correct pos -----
+                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isUnder m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hTarget = (*) 2 $ length $ filter (\x -> isAbove x t w) (blocksInSameStack t w)
+--                          hObjectsOutOfPlace 
+--                              | hTarget == 0  = (*) 2 $ length $ filter (\m -> not $ isAbove m t w) mblocks
+--                              | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
+--                  P.Under  -> h1 + h2 + (holdingHeuristic g w)
+--                      where
+--                          blocksAbove2 = maybe 0 id $ blocksAbove t w
+--                          h2 = 2*blocksAbove2
+--                          blocksAbove1 = sum $ map (\mblock -> maybe 0 id $ blocksAbove mblock w) mblocks
+--                          h1 = 2*blocksAbove1
                     --P.Under  -> 1
-                    P.Inside -> h1 + h2 + (holdingHeuristic g w)
-                        where 
-                            blocksAbove2 = maybe 0 id $ blocksAbove b2 w
-                            h2 = 2*blocksAbove2
-                            blocksAbove1 = sum $ map (\b1 -> maybe 0 id $ blocksAbove b1 w) 
-                                    (filter (\b1x -> isUnder b1x b2 w) mblocks)
-                            h1 = 2*blocksAbove1
+
+-- |Returns the list of blocks inside the same stack as the queried block. Assumes that the block is not in holding.
+blocksInSameStack :: Block -> World -> [Block]
+blocksInSameStack b w 
+    | blockIndex /= Nothing = fromJust $ getBlocksAt (fromJust $ blockIndex) w
+    | otherwise = []
+        where blockIndex = getBlockIndex b w 
+
+
+blocksAbove :: Block -> World -> Maybe Int
+blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
+                    where
+                        stackIndex = M.lookup b (indexes w)
+                        stack = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex
+
 
 holdingHeuristic :: Goal -> World -> Int
 holdingHeuristic g w = objectHolding + targetHolding
@@ -176,12 +207,6 @@ putLeftOf b1 w = maybe False (\i -> or $ listofdrops i) idtoright
                     idtoright = getBlockIndex b1 w
                     listofdrops i = map (\id -> validDrop id w) [0 .. i]
 
-blocksAbove :: Block -> World -> Maybe Int
-blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
-                    where
-                        stackIndex = M.lookup b (indexes w)
-                        stack = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex
-
 -- Peek ahead 1
 heuristic' :: World -> Goal -> Int
 heuristic' w g 
@@ -221,9 +246,9 @@ runTests = do
     testStatement "put the black wide block on top of the red square"
     putStrLn "*** Real test cases"
     testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
-    testStatement "Put the wide blue block under the black rectangle."
-    putStrLn "*** Test cases that don't quite work yet"
     testStatement "Move all wide blocks inside a box on top of the red square."
+    testStatement "Put the wide blue block UNDER the black rectangle."
+    testStatement "Move all wide rectangles into a red box."
 
 testTest :: String -> IO ()
 testTest stmt = do
@@ -262,6 +287,16 @@ firstOk :: [Err a] -> a
 firstOk ([]) = error "No ok"
 firstOk ((Ok o):_) = o
 firstOk ((Bad _):xs) = firstOk xs
+
+testFinished :: IO ()
+testFinished = do
+    shrdPGF <- readPGF "Shrdlite.pgf" 
+    let stmt = "Move all wide blocks inside a box on top of the red square"
+    let o = firstOk $ P.runParser shrdPGF stmt initialWorld
+    print $ finished initialWorldFinished (createGoal o initialWorld)
+    print initialWorldFinished
+    print initialWorld
+
 
 --------------------------------------------------------------------------------
 -----------------------        \(^v^)/                      --------------------
@@ -317,7 +352,7 @@ validDrop i w = case holding w  of
                     Just holdBlock  -> case M.lookup i (ground w) of 
                                          Just []     -> True
                                          --Just (groundBlock:xs) -> groundBlock <= holdBlock
-                                         Just (groundBlock:xs) -> holdBlock <= groundBlock
+                                         Just (groundBlock:xs) -> not $ groundBlock < holdBlock
                                          Nothing     -> False   
 
 --------------------------------------------------------------------------------

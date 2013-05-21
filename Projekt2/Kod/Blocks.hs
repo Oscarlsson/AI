@@ -19,25 +19,25 @@ instance Eq Block where
 
 
 instance Ord Block where 
-    b1 < b2 = case form b2 of 
-                 Gpyramid -> False
-                 Gball    -> False
+    b1 < b2 = case form b1 of 
+                 Gpyramid -> True
+                 Gball    -> True
                  _        -> width b1 < width b2
   
-    b1 > b2 = case form b2 of 
-               Gpyramid -> True 
-               Gball    -> True 
+    b1 > b2 = case form b1 of 
+               Gpyramid -> False 
+               Gball    -> False 
                _        -> width b1 > width b2
 
     b1 >= b2 =  
-               case form b2 of 
-               Gpyramid -> True 
-               Gball    -> True 
+               case form b1 of 
+               Gpyramid -> False 
+               Gball    -> False 
                _        -> width b1 >= width b2
     b1 <= b2 =  
-               case form b2 of 
-                 Gpyramid        -> False
-                 Gball           -> False
+               case form b1 of 
+                 Gpyramid        -> True
+                 Gball           -> True
                  _        -> width b1 <= width b2
     b1 `min` b2 = case form b1 of 
                Gpyramid -> b1 

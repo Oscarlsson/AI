@@ -1,22 +1,33 @@
 \chapter{Results and discussion}
-The following result is given by the parser and the planner when given the four example inputs.
+The implemented parser and planner makes a correct parsing and planning for four different example inputs, which are shown in in Table \ref{tab:exampleinput}. As seen at the second example input, it also handles ambiguous inputs and handles multiple parse trees. The first tree both refers to move all blocks in the world and an non-existing block, which is the reason for the error message ''no such block''. 
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
 \hline
 \textbf{Input} & \textbf{Parse trees (concrete syntax)} & \textbf{Planning} \\ \hline
-Put the blue block that is to the left of a pyramid in a medium-sized box. & ( move ( the ( thatis ( block \_ \_ blue ) ( leftof ( any ( block pyramid \_ \_ ) ) ) ) ) ( inside ( any ( block box medium \_ ) ) ) ) & pick 0 \newline drop 0\\ \hline
-Move all blocks inside a box on top of the red square. & ( move ( all ( block \_ \_ \_ ) ) ( inside ( any ( thatis ( block box \_ \_ ) ( ontop ( the ( block square \_ red ) ) ) ) ) ) ) \newline \newline
-( move ( all ( thatis ( block \_ \_ \_ ) ( inside ( any ( block box \_ \_ ) ) ) ) ) ( ontop ( the ( block square \_ red ) ) ) ) & pick 0 \newline drop 0\\ \hline
-Put the wide blue block under the black rectangle. & ( move ( the ( block \_ wide blue ) ) ( under ( the ( block rectangle \_ black ) ) ) ) & pick 0 \newline drop 0\\ \hline
-Move all wide rectangles into a red box. & ( move ( all ( block rectangle wide \_ ) ) ( inside ( any ( block box \_ red ) ) ) ) & pick 0 \newline drop 0\\ \hline
+Put the blue block that is to the left of a pyramid in a medium-sized box. & ( move ( the ( thatis ( block \_ \_ blue ) ( leftof ( any ( block pyramid \_ \_ ) ) ) ) ) ( inside ( any ( block box medium \_ ) ) ) ) & pick 0 \linebreak drop 0\linebreak pick 0 \linebreak drop 0\linebreak\\ \hline
+Move all wide blocks inside a box on top of the red square. & ( move ( all ( block \_ wide \_ ) ) ( inside ( any ( thatis ( block box \_ \_ ) ( ontop ( the ( block square \_ red ) ) ) ) ) ) ) \newline \newline \newline
+( move ( all ( thatis ( block \_ wide \_ ) ( inside ( any ( block box \_ \_ ) ) ) ) ) ( ontop ( the ( block square \_ red ) ) ) ) & "no such block" \newline \newline \newline \newline \newline
+pick 0 \linebreak drop 0 \linebreak pick 0 \linebreak drop 0 \linebreak\\ \hline
+Put the wide blue block under the black rectangle. & ( move ( the ( block \_ wide blue ) ) ( under ( the ( block rectangle \_ black ) ) ) ) & pick 0 \linebreak drop 0\linebreak \\ \hline
+Move all wide rectangles into a red box. & ( move ( all ( block rectangle wide \_ ) ) ( inside ( any ( block box \_ red ) ) ) ) & pick 0 \linebreak drop 0\linebreak\\ \hline
 \end{tabular}
 \caption{Result of the given example input}
 \label{tab:exampleinput}
 \end{table}\\
--- några andra meningar vi klarar?
-\\\\
--- nåt som inte går?
+All the examples above refers to a $Move$ action. The implemented parser and planner also handles the actions $Take$ and $Put$. Examples of these are shown below in Table \ref{tab:put_take}.
+\begin{table}[h!]
+\centering
+\begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }
+\hline
+\textbf{Input} & \textbf{Parse trees (concrete syntax)} & \textbf{Planning} \\ \hline
+&& \\ \hline
+&& \\ \hline
+\end{tabular}
+\caption{Result of actions $Take$ and $Put$}
+\label{tab:put_take}
+\end{table}\\
+Of course there is several inputs which is not handled by the parser and the planner. An example of a such input is XX which results in XX due to XX. 
 
 \section{Discussion}
 A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\

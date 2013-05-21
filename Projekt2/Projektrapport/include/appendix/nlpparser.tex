@@ -1,0 +1,148 @@
+\section{NLPParser}
+\begin{center}
+\line(1,0){418}
+\end{center}
+\begin{verbatim}
+module NLPParser (
+    Action(Move, Put, Take, None),
+    Location(Above,
+             Empty,
+             Beside,
+             Inside,
+             LeftOf,
+             OnTop,
+             RightOf,
+             Under,
+             Floor),
+    Output(O, action, mBlocks, location), initOutput, command, modifyString,
+    tmpMain, runParser, traverseTree, handleThing, handleLocation,
+    filterBlocks, pairBlocks, getRefLocation, handleGBlock, handleBlock,
+    world
+) where
+\end{verbatim}
+\begin{center}
+\line(1,0){418}
+\end{center}
+\begin{verbatim}
+data Action = Move | Put | Take | None
+
+instance Eq Action
+instance Show Action
+
+data Location = Above Block
+              | Empty
+              | Beside [Block]
+              | Inside Block
+              | LeftOf Block
+              | OnTop Block
+              | RightOf Block
+              | Under Block
+              | Floor [Int]
+
+instance Eq Location
+instance Show Location
+\end{verbatim}
+\newpage
+\begin{verbatim}
+data Output = O 
+        action :: Action
+        mblocks :: [Block]
+        location :: Location
+
+instance Eq Output
+instance Show Output
+\end{verbatim}
+\begin{verbatim}
+initOutput :: Output
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+command :: String
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+modifyString :: String -> String
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+
+\begin{verbatim}
+tmpMain :: IO ()
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> For testing purposes
+\end{tabbing}
+\begin{verbatim}
+runParser :: PGF -> String -> World -> [Err Output]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+traverseTree :: GS -> World -> Err Output
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> there can be copies of the same block in the final mBlocks, this is expected and \\
+\> solved by nub
+\end{tabbing}
+\begin{verbatim}
+handleThing :: GThing -> World -> Err [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+filterBlocks :: (Block -> Block -> World -> Bool) -> World -> GThing 
+                -> [Block] -> Err [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+pairBlocks :: [Block] -> [Block] -> [(Block, Block)]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+getRefLocation :: GLocation -> World -> Err Location
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+handleGBlock :: GBlock -> World -> Err [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+handleBlock :: GBlock -> World -> [Block]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> 
+\end{tabbing}
+\begin{verbatim}
+world :: [[String]]
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> For debugging purposes
+\end{tabbing}

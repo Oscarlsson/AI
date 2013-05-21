@@ -215,10 +215,10 @@ testStatement stmt = do
     let o = firstOk $ P.runParser shrdPGF stmt initialWorld
     let g = createGoal o initialWorld
     let a = astarDebug initialWorld g
-    print stmt
-    putStrLn $ "\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
-    putStrLn $ "\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
-    putStrLn $ "\t" ++ ( show $ (showHistory (fromErr $ fst a)) )
+    putStrLn $ "\t" ++ stmt
+    putStrLn $ "\t\t" ++ ( show $ "Initial heuristic: " ++ (show $ heuristic initialWorld g) )
+    putStrLn $ "\t\t" ++ ( show $ "Nodes visited: " ++ (show $ snd a) )
+    putStrLn $ "\t\t" ++ ( show $ (showHistory (fromErr $ fst a)) )
     
 fromErr :: Err a -> a 
 fromErr (Ok a)  = a 
@@ -227,11 +227,14 @@ fromErr (Bad s) = error s
 
 runTests :: IO ()
 runTests = do
+    putStrLn "*** Some base cases, not part of real project test"
     testStatement "take the red square"
     testStatement "take the green pyramid"
     testStatement "put the black wide block on top of the red square"
-    --testStatement "put the black wide block on top of a medium-sized box."
+    putStrLn "*** Real test cases"
     testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
+    testStatement "Put the wide blue block under the black rectangle."
+    putStrLn "*** Test cases that don't quite work yet"
     testStatement "Move all wide blocks inside a box on top of the red square."
 
 testTest :: String -> IO ()

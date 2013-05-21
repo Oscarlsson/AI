@@ -66,10 +66,9 @@ finished _ ( G (P.O P.None _ _) _ ) = False
 finished w ( G (P.O _ b1S@(b1:b1s) loc ) _ ) = 
             case loc of
                 --(P.Location P.RightOf (b2:bs))  -> isRightOf b2 b1 w
-                (P.Floor _)   -> isOnBottom b1 w
-                --(P.Location P.LeftOf (b2:b2s))  -> isLeftOf b2 b1 w
-                --(P.Location P.OnTop (b2:[]))    -> isOnTop' b1 b2 w
+                (P.Location P.LeftOf (b2:b2s))  -> and $ map (\b -> isLeftOf b b2 w) b1S
                 --(P.Location P.Beside (b2:b2s))  -> False--map (\b -> isBeside b1 b w) bs
+                (P.Floor _)                     -> isOnBottom b1 w
                 (P.Location P.Inside (b2:b2s))  -> 
                         case b1s of 
                             [] -> isOnTop' b1 b2 w 
@@ -93,15 +92,21 @@ testHeuristic stmt w = do
     putStrLn $ "Initial heuristic: " ++ (show $ heuristic w g)
     mapM_ (print) $ map (\a -> (a, heuristic (fromJust $ action a w) g)) (allLegalMoves w)
 
+
+obstructingBlocks :: [Block] -> Block -> (Block -> Block -> World -> Bool) -> World -> Int
+obstructingBlocks mblocks target premise w = sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ premise m target w)) (blocksInSameStack m w)) mblocks
+
+
 heuristic :: World -> Goal -> Int
 heuristic w g 
         | finished w g = 0
         | otherwise = case goal g of                            -- 1 is just temporary
-            ( P.O P.Take    mblocks     _                           ) -> (holdingHeuristic g w) + (maybe 0 id $ blocksAbove (head mblocks) w) -- Det kan finnas fler block att välja på
+            ( P.O P.Take    mblocks     _                           ) -> obstructingBlocks mblocks NullBlock (\_ _ _ -> True) w
             ( P.O _          _          (P.Empty)                   ) -> 1
             ( P.O _         mblocks     (P.Floor is)                ) -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment
                         where
-                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isOnBottom m w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                        --  hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isOnBottom m w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hObject = 2 * obstructingBlocks mblocks NullBlock (\m _ w -> isOnBottom m w) w
                             hTarget = 2*(getMinimumStackHeight w)
                             hObjectsOutOfPlace = (*) 2 $ length $ filter (\m -> not $ isOnBottom m w) mblocks 
                             -- TODO TODO TODO TODO These methods look horrible, FIX
@@ -109,13 +114,27 @@ heuristic w g
 
             ( P.O _         mblocks     (P.Location loc tS@(t:_))   ) -> -- tS är ALTERNATIVE TARGETS
                 case loc of
-                    P.RightOf   -> 1
-                    P.LeftOf    -> 1
-                    P.Beside    -> 1
                     P.Above     -> 1 
+                    P.RightOf   -> 1
+                    P.Beside    -> 1
+                    P.LeftOf 
+                        | isHolding t w -> maxBound - aStarTimeout -- Just some arbitrary large value.
+                        -- | otherwise     -> error $ "foo" ++ show hObject --hTarget + hObject
+                        | otherwise     -> hTarget + hObject + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
+                        where
+                            -- hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isLeftOf m t w))  (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hObject = 2 * obstructingBlocks mblocks t isLeftOf w
+                            hTarget = case map (\stack -> (*) 2 $ length $ filter (\b -> or $ map ((<) b) mblocks) stack) (take (fromJust $ getBlockIndex t w) $ M.elems $ ground w) of
+                                [] -> 0 -- No possible solution; will timeout...
+                                xs -> minimum xs
+                            hObjectsOutOfPlace = (*) 2 $ length $ filter (\m -> not $ isLeftOf m t w) mblocks 
+                            holdingObjectAdjustment = (\c -> if c then -1 else 0) (or $ map (\m -> isLeftOf m t w) mblocks)
+                            holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
+
                     P.OnTop     -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
                         where
-                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                        --  hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hObject = 2 * obstructingBlocks mblocks t isAbove w
                             hTarget = (*) 2 $ length $ filter (\b -> (not $ b `elem` mblocks) && (isOnTop' b t w)) (blocksInSameStack t w) -- TODO: Test & comment
                             hObjectsOutOfPlace 
                                 | hTarget == 0  = (*) 2 $ length $ filter (\m -> not $ isAbove m t w) mblocks
@@ -126,7 +145,8 @@ heuristic w g
                             holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
                     P.Inside     -> hObject + hTarget + hObjectsOutOfPlace + holdingObjectAdjustment + holdingSomethingOtherThanTargetAdjustment
                         where
-                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                         -- hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isAbove m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hObject = 2 * obstructingBlocks mblocks t isAbove w
                                                               ---------------------------------
                                                               ---- Mindre än något mblock -----
                             hTarget = (*) 2 $ length $ filter (\b -> or $ map ((<) b) mblocks) (blocksInSameStack t w)
@@ -139,20 +159,11 @@ heuristic w g
                             holdingSomethingOtherThanTargetAdjustment = (\c -> if c then 1 else 0) ((isJust $ holding w) && (not $ or $ map (\m -> isHolding m w) mblocks))
                     P.Under     -> hObject + hTarget
                         where
-                                                                                                                                     ----------------------
-                                                                                                                                     ---- Correct pos -----
-                            hObject = (*) 2 $ sum $ map (\m -> length $ filter (\b -> (not $ b `elem` mblocks) && (isAbove b m w) && (not $ isUnder m t w)) (blocksInSameStack m w)) mblocks -- TODO: Test & comment
+                            hObject = 2 * obstructingBlocks mblocks t isUnder w
                             hTarget = (*) 2 $ length $ filter (\x -> isAbove x t w) (blocksInSameStack t w)
 --                          hObjectsOutOfPlace 
 --                              | hTarget == 0  = (*) 2 $ length $ filter (\m -> not $ isAbove m t w) mblocks
 --                              | otherwise     = (*) 2 $ length $ mblocks -- Possible tweak.
---                  P.Under  -> h1 + h2 + (holdingHeuristic g w)
---                      where
---                          blocksAbove2 = maybe 0 id $ blocksAbove t w
---                          h2 = 2*blocksAbove2
---                          blocksAbove1 = sum $ map (\mblock -> maybe 0 id $ blocksAbove mblock w) mblocks
---                          h1 = 2*blocksAbove1
-                    --P.Under  -> 1
 
 -- |Returns the list of blocks inside the same stack as the queried block. Assumes that the block is not in holding.
 blocksInSameStack :: Block -> World -> [Block]
@@ -160,68 +171,6 @@ blocksInSameStack b w
     | blockIndex /= Nothing = fromJust $ getBlocksAt (fromJust $ blockIndex) w
     | otherwise = []
         where blockIndex = getBlockIndex b w 
-
-
-blocksAbove :: Block -> World -> Maybe Int
-blocksAbove b w = maybe (Nothing) (L.elemIndex b) stack
-                    where
-                        stackIndex = M.lookup b (indexes w)
-                        stack = maybe Nothing (\si -> M.lookup si (ground w)) stackIndex
-
-
-holdingHeuristic :: Goal -> World -> Int
-holdingHeuristic g w = objectHolding + targetHolding
-    where
-        objectHolding = case goal g of
-            P.O P.Take (b1:b1s) _ 
-                | isHolding b1 w -> 0
-                | isJust (holding w) -> 2 
-                | otherwise          -> 1
-            P.O P.Move (b1:b1s) (P.Location P.Under _)
-                | isHolding b1 w -> 3 
-                | isJust (holding w) -> 1
-                | otherwise -> 2
-            P.O P.Move (b1:b1s) _
-                | isHolding b1 w -> 1 -- Holding target =  drop it
-                | isJust (holding w) -> 3 -- Holding sth else = drop it + pick target + drop target
-                | otherwise -> 2 -- Holding nothing =  pick target + drop target
-            _ -> 1
-        targetHolding = case P.location . goal $ g of
-            P.Location P.OnTop (b2:bs)
-                | isHolding b2 w -> 1 -- Holding target, drop it
-                | otherwise -> 0
-            P.Location P.Inside (b2:bs) -- WRONg FIX
-                | isHolding b2 w -> 1 -- Holding target, drop it
-                | otherwise -> 0
-            P.Location P.Under (b2:bs) -- WRONg FIX
-                | isHolding b2 w -> 3 -- Holding target, drop it
-                | isJust (holding w) -> 1 -- Holding something, not sure if object, but at least >=1 
-                | otherwise -> 2
-            _ -> 1
-
--- Requires holding block
-putRightOf :: Block -> World -> Bool
-putRightOf b1 w = maybe False (\i -> or $ listofdrops i) idtoright
-                    where
-                    idtoright = getBlockIndex b1 w
-                    listofdrops i = map (\id -> validDrop id w) [i .. (wsize w-1)]
-                    
-
-putLeftOf :: Block -> World -> Bool
-putLeftOf b1 w = maybe False (\i -> or $ listofdrops i) idtoright
-                    where
-                    idtoright = getBlockIndex b1 w
-                    listofdrops i = map (\id -> validDrop id w) [0 .. i]
-
--- Peek ahead 1
-heuristic' :: World -> Goal -> Int
-heuristic' w g 
-    | finished w g = 0
-    | otherwise = heuristic w g
-    | otherwise = 1 + (L.minimum heuristics2)
-    where
-        successorWorlds = map world $ successors (N w [])
-        heuristics2 = map (\s -> heuristic s g) successorWorlds  
 
 --------------------------------------------------------------------------------
 -----------------------                                     --------------------
@@ -250,6 +199,7 @@ runTests = do
     testStatement "take the red square"
     testStatement "take the green pyramid"
     testStatement "put the black wide block on top of the red square"
+    testStatement "put the blue wide rectangle to the left of the red square"
     putStrLn "*** Real test cases"
     testStatement "Put the blue block that is to the left of a pyramid in a medium-sized box."
     testStatement "Move all wide blocks inside a box on top of the red square."
@@ -429,6 +379,9 @@ successors (N w h) = nodes
         histories = map (\instr -> h++[instr]) moves
         nodes = map (\t -> (N (fst t) (snd t))) $ zip worlds histories
 
+aStarTimeout :: Int
+aStarTimeout = 1000
+
 astarDebug :: World -> Goal -> (Err History, Int)
 astarDebug w g = 
     case fst result of 
@@ -440,7 +393,7 @@ astarDebug w g =
    --  | otherwise = (Just (history $ fromJust (fst result)), snd result)
     --where result = snd $ astar' (pq w) [] g
     where 
-            y = astar' 1000000 (pq w) [] g
+            y = astar' aStarTimeout (pq w) [] g
             result = (snd $ y, PSQ.size $ fst y)
 
 astar :: Int -> World -> Goal -> Err History
@@ -455,7 +408,7 @@ astar' :: Int -> PQ -> Seen -> Goal -> (PQ, Err Node)
 astar' to pq seen goal 
         | finished (world n) goal = (pq'', Ok n)
         -- | to == 0  = (pq'',Ok n)
-        | to == 0   = (pq'', Bad $ "timed out with world =" ++ (show $ world n))
+        | to == 0   = (pq'', Bad $ "Impossible command. Last visited world: " ++ (show $ world n))
         | otherwise = astar' (to - 1) pq'' seen' goal
         where
             (n,pq') = pop pq

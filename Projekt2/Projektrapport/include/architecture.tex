@@ -1,27 +1,59 @@
 \chapter{Architecture}
-The parser and the planner was implemented in Haskell. The parser interpreted what blocks the sentence refered to and the planner found a planning of how to move these blocks to reach the goal state determined by the parser. 
+The parser and the planner was implemented in Haskell. The parser interpreted
+what blocks the sentence refered to and the planner found a planning of how to
+move these blocks to reach the goal state determined by the parser. 
 
 \section{Programs and tools}
-Haskell was used to implement the parser and the planner. The given grammar was written in GF and the interface used CGI and JavaScript. A Python script is used to handle the communication between the Haskell files and the JavaScripts.
+Haskell was used to implement the parser and the planner. The given grammar was
+written in GF and the interface used CGI and JavaScript. A Python script is
+used to handle the communication between the Haskell files and the JavaScripts.
 \\\\
 The planner was implemented using a standard library priority queue \citep{psq_url}. 
 
 \section{Backend structure}
-The parser and the planner shared a number of common functions and structures, which were defined in two separate modules found in Appendix B.1 and Appendix B.2. These modules defined how to create a representation of a world from the given sentence and functions such as to check whether a certain block is relative to another block or not. 
+The parser and the planner shared a number of common functions and structures,
+which were defined in two separate modules found in Appendix B.1 and Appendix
+B.2. These modules defined how to create a representation of a world from the
+given sentence and functions such as to check whether a certain block is
+relative to another block or not. 
 
 \section{Parser}
-The sentence was first modified by removing unnessesary characters, such as ''.'', ''!'' and ''?''. Also, all characters were changed to lower case so it could be given and parsed by the GF grammar. To be able to use pattern matching on the generated output from the GF parser, the GF grammar was translated into Haskell data types, which were automatically generated (See Appendix B.7). From this grammar an abstract syntax was generated for the input to be used for pattern matching. If the input was ambiguous, several parse trees were generated and passed to the planner. \\\\
-For each parse tree, the tree was translated to an output which was given to the planner. Since some parse trees could refer to, for example, non existing objects in the world the parser used an Error Monad to tell if the given tree was OK or not. \\\\
+The sentence was first modified by removing unnessesary characters, such as
+''.'', ''!'' and ''?''. Also, all characters were changed to lower case so it
+could be given and parsed by the GF grammar. To be able to use pattern matching
+on the generated output from the GF parser, the GF grammar was translated into
+Haskell data types, which were automatically generated (See Appendix B.7). From
+this grammar an abstract syntax was generated for the input to be used for
+pattern matching. If the input was ambiguous, several parse trees were
+generated and passed to the planner. \\\\
+For each parse tree, the tree was translated to an output which was given to
+the planner. Since some parse trees could refer to, for example, non existing
+objects in the world the parser used an Error Monad to tell if the given tree
+was OK or not. \\\\
 The output to the planner (fully stated in Appendix B.5) consists of three parts:
 \begin{itemize}
 \item An action to do ($Move$, $Put$ or $Take$)
 \item A list of blocks to be moved
-\item A location where to move the blocks, which consists of an reference ($Above$, $Beside$, $Inside$, $LeftOf$, $OnTop$, $RightOf$ or $Under$) and a list of blocks which the reference refers to or $Floor$ and a list of stack indexes where the stack is empty.
+\item A location where to move the blocks, which consists of an reference
+        ($Above$, $Beside$, $Inside$, $LeftOf$, $OnTop$, $RightOf$ or $Under$)
+        and a list of blocks which the reference refers to or $Floor$ and a
+        list of stack indexes where the stack is empty.
 \end{itemize}
-The output differed depending on which action to do. E.g. the action $Take$ did not have a location and the action $Put$ would only have the block in holding as the list of blocks to be moved. If holding is $null$, $Put$ would do nothing since it assumes that there is a block in holding in contrast to the action $Move$.\\\\
-The parser would always find out if the blocks the input refered to exists and if not, give an error. All laws of physics except where the robot is allowed to drop blocks is preserved within the parser. It would be impossible to take a block left of or right of all blocks, since this refers to the block itself. And it would not be allowed to take the floor or put something inside a block that is not a box. All blocks must also be above the floor. If any of these laws were violated, an error were returned.
+The output differed depending on which action to do. E.g. the action $Take$ did
+not have a location and the action $Put$ would only have the block in holding
+as the list of blocks to be moved. If holding is $null$, $Put$ would do nothing
+since it assumes that there is a block in holding in contrast to the action
+$Move$.\\\\
+The parser would always find out if the blocks the input referred to exists and
+if not, give an error. All laws of physics except where the robot is allowed to
+drop blocks is preserved within the parser. It would be impossible to take a
+block left of or right of all blocks, since this refers to the block itself.
+And it would not be allowed to take the floor or put something inside a block
+that is not a box. All blocks must also be above the floor. If any of these
+laws were violated, an error were returned.
  \\\\
-If a block should be put left of or right of several blocks, the parser returns the leftmost or rightmost block as a reference block. 
+If a block should be put left of or right of several blocks, the parser returns
+the leftmost or rightmost block as a reference block. 
 
 \section{Planner}
 Planner uses $A^*$ similar to the algorithm in (\ref{algorithm:astar}). The
@@ -29,16 +61,23 @@ successor function in a world returns every possible worlds that can be reached
 by applying any valid instruction. The add function is responsible for
 calculating the heuristics of every node.
 
-Varje nod är en värld och en historia som består av en sekvens av instruktioner.
-Noderna sparas i en prioritetskö och två lika dana värdar sparas aldrig mer än
-en gång. Om vi poppar en värld ur prioritetskön som också uppfyller finished så är vi färdiga till
-skillnad från om vi hade hittat en succsessor som var finishid för då kan vi inte
-garantera optimalitet. Detta på grund utav att vi måste ta hänsyn till
-heuristiken. 
+Every node in a world consist of a history which is a sequence of instructions. 
+The nodes was saved in a priority queue and to equal words are never saved more
+then once. If an world from the queue is popped that satisfy an finished state
+then the algorithm has found a solution and terminates.   
 
-För att veta om vi är färdiga så måste världen uppfylla ett antal logiska satser
-som vi generar utifrån vår tolkning av den meningen som användaren anger. Dessa
-logiska satser skiljer mellan olika parseträd.
+Varje nod är en värld och en historia som består av en sekvens av
+instruktioner.  Noderna sparas i en prioritetskö och två lika dana värdar
+sparas aldrig mer än en gång. 
+
+Om vi poppar en värld ur prioritetskön som också
+uppfyller finished så är vi färdiga till skillnad från om vi hade hittat en
+succsessor som var finishid för då kan vi inte garantera optimalitet. Detta på
+grund utav att vi måste ta hänsyn till heuristiken. 
+
+För att veta om vi är färdiga så måste världen uppfylla ett antal logiska
+satser som vi generar utifrån vår tolkning av den meningen som användaren
+anger. Dessa logiska satser skiljer mellan olika parseträd.
 
 Vi har en timeout på $A^*$ som innebär att vi avbryter om det visar sig att
 algoritmen tar för lång tid. Oftast på grund utav att det inte finns någon

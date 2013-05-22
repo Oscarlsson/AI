@@ -13,18 +13,18 @@ reflects on how important a word is to a document in a collection or corpus
  in the classification.
 \end{enumerate}
 Each document was assigned a label corresponding to its sentimentality
-(positive / negative) and another label corresponding to its topic.
+(positive or negative) and another label corresponding to its topic.
 All processed data were stored in different Matlab binary files depending on the
 different feature selections.
 \\\\
 The generated feature vector using bigrams differed a lot from the one using
 unigram. It appeard as the bigrams were to unique and each bigram was only
-present in a small number of documents, making it hard to classify. This is
-shown in Figure~\ref{fig:docperfeature}
+present in a small number of documents, making it hard to classify.  This is
+shown in Figure~\ref{fig:docperfeature}. The maximum number of documents that contain a certain feature is for unigrams 2941 documents and for bigram 106 documents.
 \begin{figure}[h!]
 \centering
         \includegraphics[scale = 0.6]{../Plottar/documents_per_feature.png}
-\caption{Documents per feature}
+\caption{Number of documents that contain a certain feature}
 \label{fig:docperfeature}
 \end{figure}
 %Feature values corresponds to the term occurrence frequencies.

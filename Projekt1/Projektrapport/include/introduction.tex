@@ -1,20 +1,17 @@
 \chapter{Introduction}
-This project was about machine learning of different statistical classifiers.
-Machine learning is about construct and study systems that can learn from data.
-This could be used to train a system to recognize patterns, in for instance emails and learn how to distinguish between spam and non-spam messages. In this project the classifiers were applied to reviews and the task was to categorize these.
-By statistical analysis of experiments, the classifiers were compared in terms of, for instance, classification accuracy.
+This project was about machine learning of different statistical classifiers. Machine learning is about constructing and studying systems that can learn from data without being explicitly programmed. This could be used to train a system to recognize patterns in for instance emails to learn how to distinguish between spam and non-spam messages. In this project the classifiers were applied to written reviews and the task was to categorize these in their respective topics and whether the review was positive or negative. By statistical analysis of experiments the classifiers were compared in terms of classification accuracy.
 \section{Problem description}
 The problem was to categorize reviews from Amazon. There were 6 different categories;
-books, camera, DVD, health, music and software. The reviews were also
+\textit{Books}, \textit{Camera}, \textit{DVD}, \textit{Health}, \textit{Music} and \textit{Software}. The reviews were also
 categorized as positive and negative reviews. 
 \\\\
-The following classification tasks was investigated using different classification:
+The following classification tasks were investigated using different supervised learning algorithms:
 \begin{itemize}
 \item Text categorization: Categorize review documents into their six categories: Books, DVDs, Cameras, Music, Health, and Software.
 \item In-domain sentiment analysis: For each review category, train and classify review documents as positive or negative. 
 \item  Out-of-domain sentiment analysis: Make training and test sets for two different topics (such as Books and Cameras).
 \end{itemize}
-The question of issue in this project was to answer weather there exist a correlation between Out-of-domain sentiment analysis and Text categorization. 
+The question of issue in this project was to answer whether there exists a correlation between Out-of-domain sentiment analysis and Text categorization. 
 \\\\
 %The classification is done by
 %implementing five different classification algorithms; Naive Bayes, Perceptron,
@@ -61,7 +58,7 @@ results? Is it possible to remove such words?
 %\subsection{Text classification}
 Text classification has become a popular subject within machine learning as the amount of information lately has rapidly grown \citep{joachims}. Text classification is to
 classify documents into a fixed number of predefined categories. The categories
-could be sentimental (positive / negative) or different topics that the
+could be sentimental (positive or negative) or different topics that the
 document concern \cite{ngrams_ai}.
 
 \subsection{Representing text}
@@ -97,7 +94,7 @@ features that represents the words.
         words. Unigram is one word and bigram is two words \citep{ngrams_ai}.
 \item TF-IDF - Term Frequency–Inverse Document Frequency, is used to count the
         words in the documents and give a number of how important each word is.
-        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}.
+        This is given by Equation~\ref{eq:tfidf} \citep{tfidf}, where $f(t,d)$ is the number of occurrences of term $t$ in document $d$, and $D$ is the set of documents in the corpus.
 \end{itemize}
 
 \begin{equation}
@@ -148,20 +145,19 @@ score[$c$] $\leftarrow \log P(c)$\\
 
 \subsection{K-Nearest Neighbour (KNN)}
 %http://www.cse.chalmers.se/edu/course/TDA231/mlsli11.pdf
-K-nearest neighbours (KNN) algorithm is one of the simplest machine learning
-algorithms. The classification performed by KNN works as follows: Fix some
-number $k$. For any new $x \in X$, take the most common classification value among
-the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
+% The K-Nearest Neighbour (KNN) algorithm is one of the simplest machine learning algorithms. 
+The classification performed by K-Nearest Neighbour (KNN) works as follows: Fix some number $k$. For any new $x \in X$, take the most common classification value among the $k$ training examples in $D$ closest to $x$ \cite{ml_2011}.
 \\\\
-Even though the KNN algorithm
-seems extraordinary simple there are some things that one must take in
-consideration. First of all what is nearest? There is of course a natural
-distance function in a geometrical space but a proper definition in parameter
-space is not obvious. As it turn out a distance function can be defined in a lot
-of ways. The given attributes are overall very different in reality.
-One may multiply each attribute variable by arbitrary factors or in other
-words stretch the coordinate axes arbitrary and independent. It is very easy to
-find examples when doing so will result in very different outcomes of the classifications.
+Even though the KNN algorithm seems extraordinary simple there are some things that one must take in consideration. 
+First of all one has to define what is nearest. There is of course a natural distance function in a geometrical space but a proper definition in parameter space is not obvious.
+There are various distance metrics that could be used. Euclidean distance, Manhattan distance and dot product is commonly used functions. 
+%First of all, how is distance defined? There is of course a natural
+%distance function in a geometrical space but a proper definition in parameter
+%space is not obvious. As it turn out a distance function can be defined in a lot
+%of ways. The given attributes are overall very different in reality.
+%One may multiply each attribute variable by arbitrary factors or in other
+%words stretch the coordinate axes arbitrary and independent. It is very easy to
+%find examples when doing so will result in very different outcomes of the classifications.
 Even further irrelevant attributes may change the classification even though they
 should not do so \cite{ml_2011}. 
 %This phenomena is called \emph{curse of dimensionality}. One

@@ -13,7 +13,7 @@ Python was used to generate the feature vector from the documents.
 \\\\
 Matlab was used to implement the algorithms, Cross-validation and to generate plots. The Statistics Toolbox with functions $cvpartition$, to easily perform N-cross-validation and $svmtrain$ to train a SVM, has been of great use during the project. Statistics Toolbox also contains a handy function to perform Principal Component Analysis, which was a help tool to visualize data with many variables. 
 
-\section{Feature Vector / Text Representation}
+\section{Text representation and feature vectors}
 \input{include/text_categorization}
 %Stop-words \\
 %TF-IDF \\
@@ -74,11 +74,11 @@ This averaged vector was built incrementally by updating it while the usual weig
  \caption{Averaged Perceptron}
  \label{algorithm:perceptron}
 \end{algorithm} \\
-In both the Perceptron algorithms, the algorithm makes a number of iterations. To decide how many iterations that must be done to get a fair result the misclassifications and the number of iterations were plotted, which is shown in Figure~\ref{fig:number_iterations}. The algorithms used input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converged after around 15 iterations for both sentimental classification and the classification for different classes. 
+Both of the Perceptron algorithms run a fixed number of iterations (epochs\footnote{Epoch - a complete pass through all of the training patterns.}). To decide how many iterations that must be done to get a fair result the misclassifications and the number of iterations were plotted, which is shown in Figure~\ref{fig:number_iterations}. The algorithms used input data of 2000 words (unigram) and 10-fold crossvalidaion. As seen in the plot, both the algorithms converged after around 15 iterations for both sentimental classification and the classification for different classes. 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.5]{../Plottar/perceptron_2000words_unigram_10foldcv_classes-high_sentimental-low.png}
 \caption{Plot over misclassifications for different \#iterations}
 \label{fig:number_iterations}
 \end{figure}\\
-Since the Perceptron algorithms are 0/1 classifiers there were some difficulties with classifying the data as classes. This was solved by: for all data and all classes classify if data belongs to this class or not. Finally choose the class it belonged to most.
+Since the Perceptron algorithms are 0/1 classifiers there were some difficulties with classifying the data as classes. This was solved by: for all data and all classes classify if data belongs to this class or not. This classification gives a number which in the sentimental classification was just signed to get if the document was classified as positive or negative. This can not be done for classes since then a document can belong to more than one class. Instead of signing the classification the results were compared as they were and the largest one was chosen, i.e. the class the document belonged to at most. 

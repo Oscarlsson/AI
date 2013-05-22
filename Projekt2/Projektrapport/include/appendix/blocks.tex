@@ -20,13 +20,16 @@ data Block = B
         height :: Double
 
 instance Eq Block
-        Don’t use compare when comparing sizes of blocks since they will 
-        always be different —if they don’t have equal name
-
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1cm}\= \kill
+\> Don’t use \textbf{compare} when comparing sizes of blocks since they will \\
+\> always be different —if they don’t have equal name
+\end{tabbing}
+\begin{verbatim}
 instance Ord Block
 instance Show Block
-\end{verbatim}
-\begin{verbatim}
+
 blocks :: [Block]
 \end{verbatim}
 \begin{tabbing}

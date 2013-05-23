@@ -4,8 +4,12 @@ interpretations. We had long discussions about the meaning of ''Above'' and ''On
 \\\\
 During the project we have learned the importance of having a good heuristic function in A* and the importance of avoiding overestimation. 
 Several times when we overestimated the heuristic function our A* algorithm ended up visiting more than 100 times the numbers of nodes. 
- 
+\\\\
+We also had a lot of discussions about the difference and how to treat $any$, $the$ and $all$. We wanted the parser to always give the planner the best parse tree, which sometimes is impossible because serval parse trees could be valid and similary. Therefore the parser must sometimes give multiple parse trees to the planner which must choose the tree that gives the best planning.
+
 \section{Future work}
-Simple future works we would have done if we had more time would be to optimize the time it take to perform the instructions, restore all blocks that we move when reaching other blocks or positions. We would also have printed what the planner does such as ''I move the topmost block from stack X to stack Y'' and guarantee that the planner always move the block that should be move, instead of moving other blocks to reach the goal state.
+Simple future works we would have done if we had more time would be to optimize the time it take to perform the instructions, restore all blocks that we move when reaching other blocks or positions. We would also have printed what the planner does such as ''I move the topmost block from stack X to stack Y''.
+\\\\
+Also implmenting a difference between $any$, $the$ and $all$ in the parser would be prioritized, together with appropriate changes in the planner. Futhermore we would have extended the planner such that it do not just take the first parse tree that is valid. Instead the planner should perform the planning for the parse tree that got the best planning. 
 \\\\
 Another interesting work would be to add the possibility of moving a block inbetween two other blocks. 

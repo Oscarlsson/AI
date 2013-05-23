@@ -56,32 +56,51 @@ If a block should be put left of or right of several blocks, the parser returns
 the leftmost or rightmost block as a reference block. 
 
 \section{Planner}
-Planner uses $A^*$ similar to the algorithm in (\ref{algorithm:astar}). The
+The planner uses $A^*$ similar to Algorithm \ref{algorithm:astar}. The
 successor function in a world returns every possible worlds that can be reached
 by applying any valid instruction. The add function is responsible for
 calculating the heuristics of every node.
-
+\\\\
 Every node in a world consist of a history which is a sequence of instructions. 
 The nodes was saved in a priority queue and two equal words are never saved more
-then once. If an world from the queue is popped that satisfy an finished state
+then once. If a world from the queue is popped and satisfy a finished state
 then the algorithm has found a solution and terminates. This in contrast to if a
-successor is found that satisfy the same constraints when optimality can not be
-guarantied. This because of that one must take the heuristic in consideration.   
-
-To sure of that a solution is found a world must satisfy a number of logical
+successor is found that satisfy the same constraints then optimality can not be
+guaranteed. This because of that one must take the heuristic in consideration. \\ 
+\begin{algorithm}[h!]
+ \SetAlgoLined
+ \KwData{TimeoutInt, World, Goal}
+ \KwResult{History}
+ Initialize priority queue $PQ$ with world, empty history and value 0\;
+ $Seen \leftarrow empty$\;
+ \While{not timeout}{
+   $World$, $History$ $\leftarrow$ pop $PQ$\;
+   \If {$World == Goal$}{
+    break\;
+   }
+   $Seen \leftarrow World + Seen$\; 
+   $Succ \leftarrow$ successors of $World$ not in $Seen$\;
+   $PQ' \leftarrow$ add $Succ$\;
+ }
+ \Return $History$
+ \caption{A*}
+ \label{algorithm:astar}
+\end{algorithm} 
+\\
+To make sure of that a solution is found a world must satisfy a number of logical
 constraints. This is generated from an interpretation of what the user has
 written. This interpretation comes from the parsing of the natural language but 
 also choices from what a given parse tree actually means. This logical
-constraints differ from different parse trees.   
-
+constraints differ for different parse trees.   
+\\\\
 The implemented $A^*$ algorithm makes use of a timeout. This means that 
 the algorithm terminates after a number of steps even though a solution is not
-found. This generally happens when a solution is impossible to find.
-
-The physical laws in the world are handled be comparison functions. A pyramid
+found. This generally happens when a solution is impossible to find. 
+\\\\
+The laws of physics in the world are handled be comparison functions. A pyramid
 and a ball are always smaller then every other object. In this way it is never
 possible to put anything on a ball or pyramid. 
-
+\\\\
 The heuristic assumes that that there are infinitely many free spaces in the
 world where one can but a block. From this follows that one can always move a
 free block in two steps. 
@@ -125,22 +144,3 @@ free block in two steps.
 
 %Successors på en värld returnerar alla möjliga världar man kan komma till genom
 %att göra en tillåten instruktion. Add räknar ut f(n) på varje värld
-\begin{algorithm}[h!]
- \SetAlgoLined
- \KwData{TimeoutInt, World, Goal}
- \KwResult{History}
- Initialize priority queue $PQ$ with world, empty history and value 0\;
- $Seen \leftarrow empty$\;
- \While{not timeout}{
-   $World$, $History$ $\leftarrow$ pop $PQ$\;
-   \If {$World == Goal$}{
-    break\;
-   }
-   $Seen \leftarrow World + Seen$\; 
-   $Succ \leftarrow$ successors of $World$ not in $Seen$\;
-   $PQ' \leftarrow$ add $Succ$\;
- }
- \Return $History$
- \caption{A*}
- \label{algorithm:astar}
-\end{algorithm}

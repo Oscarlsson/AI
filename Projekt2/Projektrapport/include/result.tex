@@ -152,12 +152,21 @@ box.''}
 \end{figure}\\
 Of course there is several sentences which is not handled by the parser and the planner. An example of a such sentence is "Move all blocks inside a box on top of the red square." which results in a timeout due to our translation of the command. The parser returns a list of all blocks that is inside of a box, to be moved. This is impossible to perform in the initial world since there is two boxes with a ball inside and balls can never be put on each other. Then the planner will not find a solution, which results in a timeout.\\\\
 The planner does not print what it does, such as ''I move the topmost block from stack X to stack Y''. The planning is just shown visually and in form of pick and drop instructions. \\\\\\\\
-The planner will not try to optimize the time it takes to perform the instructions, i.e. it might not drop blocks at the closest available stack. This does not affect the number of instructions, which we try to optimize. Also, the planner will not try to restore blocks to their inital positions if it has move them to reach another block or position. The planner does not guarantee that we move the right block, i.e. if block A should be moved to the left of block B the planner might move block B to the right of block A instead. 
+The planner will not try to optimize the time it takes to perform the instructions, i.e. it might not drop blocks at the closest available stack. This does not affect the number of instructions, which we try to optimize. Also, the planner will not try to restore blocks to their inital positions if it has move them to reach another block or position. 
 \\\\
-If the sentence is ambiguous, the parser will return multiple parse tree but the planner will only choose the first valid parse tree. In the example sentence 2, the first parse tree is treated as invalid.
+If the sentence is ambiguous, the parser will return multiple parse tree but the planner will only choose the first valid parse tree. In the example sentence 2, the first parse tree is treated as invalid. 
+\\\\
+Another thing worth mention is that the parser does not make any difference of $any$, $the$ and $all$. It always returns a list of all possibilities to the planner. 
 \section{Discussion}
 A big problem when handling natural language is that there is many ways of read things which easily makes a sentence ambiguous. We also noticed that it was hard to cover all cases that could occur in the parser and depending on which input we got it was possible to pattern match on power sets of possible inputs, which the code increase rapidly. \\\\
 Another difficulty in the beginning was that the syntax tree that was given from the parser was a concrete syntax tree and we wanted an abstract syntax tree to be able to pattern match on the different parts. This was solved when we found a library which could convert between GF grammar as concrete and abstract syntax. \\\\
 We also choosed to implement a planning algorithm by graph traversal, by implementing A*. Another possibility would been to use for example First-Order Logic instead. 
 \\\\
 We did a lot of tweaking with the heuristic function and notice how instable it was. There might be cases that we miss and there is a lot of ways of making a heuristic function.
+\\\\
+We hade many discussions about have to treat $any$, $the$ and $all$ in the parser and the diffenrece of these. This resluted in that they were treated in the same way which is not correct. A possible solution of how to treat these could be the following: 
+\begin{itemize}
+\item if $any$, the planner could treat the possibilities as different parse trees and choose the best one. 
+\item if $the$, and there is more than one possibility the system should let the user specify which one was meant. 
+\item if $all$, all possibilities should be returned to the planner
+\end{itemize}

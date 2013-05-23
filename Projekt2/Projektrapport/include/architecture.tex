@@ -62,34 +62,53 @@ by applying any valid instruction. The add function is responsible for
 calculating the heuristics of every node.
 
 Every node in a world consist of a history which is a sequence of instructions. 
-The nodes was saved in a priority queue and to equal words are never saved more
+The nodes was saved in a priority queue and two equal words are never saved more
 then once. If an world from the queue is popped that satisfy an finished state
-then the algorithm has found a solution and terminates.   
+then the algorithm has found a solution and terminates. This in contrast to if a
+successor is found that satisfy the same constraints when optimality can not be
+guarantied. This because of that one must take the heuristic in consideration.   
 
-Varje nod är en värld och en historia som består av en sekvens av
-instruktioner.  Noderna sparas i en prioritetskö och två lika dana värdar
-sparas aldrig mer än en gång. 
+To sure of that a solution is found a world must satisfy a number of logical
+constraints. This is generated from an interpretation of what the user has
+written. This interpretation comes from the parsing of the natural language but 
+also choices from what a given parse tree actually means. This logical
+constraints differ from different parse trees.   
 
-Om vi poppar en värld ur prioritetskön som också
-uppfyller finished så är vi färdiga till skillnad från om vi hade hittat en
-succsessor som var finishid för då kan vi inte garantera optimalitet. Detta på
-grund utav att vi måste ta hänsyn till heuristiken. 
+The implemented $A^*$ algorithm makes use of a timeout. This means that 
+the algorithm terminates after a number of steps even though a solution is not
+found. This generally happens when a solution is impossible to find.
 
-För att veta om vi är färdiga så måste världen uppfylla ett antal logiska
-satser som vi generar utifrån vår tolkning av den meningen som användaren
-anger. Dessa logiska satser skiljer mellan olika parseträd.
+The physical laws in the world are handled be comparison functions. A pyramid
+and a ball are always smaller then every other object. In this way it is never
+possible to put anything on a ball or pyramid. 
 
-Vi har en timeout på $A^*$ som innebär att vi avbryter om det visar sig att
-algoritmen tar för lång tid. Oftast på grund utav att det inte finns någon
-lösning. 
+The heuristic assumes that that there are infinitely many free spaces in the
+world where one can but a block. From this follows that one can always move a
+free block in two steps. 
+%Varje nod är en värld och en historia som består av en sekvens av
+%instruktioner.  Noderna sparas i en prioritetskö och två lika dana värdar
+%sparas aldrig mer än en gång. 
 
-Fysiken sköts av en jämnförelseoperator på block. En pyramid eller en boll är alltid
-mindre än allt annat och vi kan bara lägga mindre block på större block. På så
-sätt är det aldrig möjligt att lägga någonting på en boll eller en pyramid.  
+%Om vi poppar en värld ur prioritetskön som också
+%uppfyller finished så är vi färdiga till skillnad från om vi hade hittat en
+%succsessor som var finishid för då kan vi inte garantera optimalitet. Detta på
+%grund utav att vi måste ta hänsyn till heuristiken. 
+
+%För att veta om vi är färdiga så måste världen uppfylla ett antal logiska
+%satser som vi generar utifrån vår tolkning av den meningen som användaren
+%anger. Dessa logiska satser skiljer mellan olika parseträd.
+
+%Vi har en timeout på $A^*$ som innebär att vi avbryter om det visar sig att
+%algoritmen tar för lång tid. Oftast på grund utav att det inte finns någon
+%lösning. 
+
+%Fysiken sköts av en jämnförelseoperator på block. En pyramid eller en boll är alltid
+%mindre än allt annat och vi kan bara lägga mindre block på större block. På så
+%sätt är det aldrig möjligt att lägga någonting på en boll eller en pyramid.  
 
 
-Heuristikfunktionen antar att vi har ett oändligt antal liga platser i världen.
-Dvs vi antar alltid att vi kan flytta ett block inom ramen av två steg. 
+%Heuristikfunktionen antar att vi har ett oändligt antal liga platser i världen.
+%Dvs vi antar alltid att vi kan flytta ett block inom ramen av två steg. 
 %* goal, finished \\
 
 

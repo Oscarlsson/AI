@@ -5,7 +5,7 @@ and Table \ref{tab:exampleinput2}. As seen in the second example sentence, it
 also handles ambiguous sentences, i.e. handles multiple parse trees. The first
 parse tree both refers to move all blocks in the world and an non-existing
 block, which is the reason for the error message ''no such block''. All the
-plans below assumes that holding is null and the initial world shown in
+plans below assumes an initial world identical to the one shown in 
 Figure \ref{fig:initworld}.\\
 \begin{figure}[h!]
 \centering
@@ -75,8 +75,8 @@ All the examples in Table \ref{tab:exampleinput} and Table
 planning is done is shown in Figure \ref{fig:moveex}. The implemented parser
 and planner also handles the actions $Take$ and $Put$. Examples of these are
 shown below in Table \ref{tab:put_take}. The $Put$ action assumes that there is
-a block in holding, in this case the world is the same as above but with
-holding the red square.\\\\
+a holding block, in this case the world is the same as above but the robot arm 
+holds the red square.\\\\
 \begin{table}[h!]
 \centering
 \begin{tabular}{| p{6cm} | p {5.8cm} | p{1.8cm} | }

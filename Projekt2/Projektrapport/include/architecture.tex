@@ -1,6 +1,6 @@
 \chapter{Architecture}
 The parser and the planner was implemented in Haskell. The parser interpreted
-what blocks the sentence refered to and the planner found a planning of how to
+what blocks the sentence referred to and the planner found a plan of how to
 move these blocks to reach the goal state determined by the parser. 
 
 \section{Programs and tools}
@@ -18,7 +18,7 @@ given sentence and functions such as to check whether a certain block is
 relative to another block or not. 
 
 \section{Parser}
-The sentence was first modified by removing unnessesary characters, such as
+The sentence was first modified by removing unnecessary characters, such as
 ''.'', ''!'' and ''?''. Also, all characters were changed to lower case so it
 could be given and parsed by the GF grammar. To be able to use pattern matching
 on the generated output from the GF parser, the GF grammar was translated into
@@ -57,7 +57,7 @@ the leftmost or rightmost block as a reference block.
 
 \section{Planner}
 The planner uses $A^*$ similar to Algorithm \ref{algorithm:astar}. The
-successor function in a world returns every possible worlds that can be reached
+successor function in a world returns every possible world that can be reached
 by applying any valid instruction. The add function is responsible for
 calculating the heuristics of every node.
 \\\\

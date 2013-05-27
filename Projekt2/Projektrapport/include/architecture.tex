@@ -144,10 +144,10 @@ free block in two steps.
 
 %Successors på en värld returnerar alla möjliga världar man kan komma till genom
 %att göra en tillåten instruktion. Add räknar ut f(n) på varje värld
-\section{Cooperation between Parser and Planner}
+\section{Parser and Planner}
 The main idea with the implementation of the parser and the planner was that the
 parser should take care of the interpretation of a sentence and the planner
-should take of this interpretation and perform the actions which should lead to a
+should take this interpretation and perform the actions which should lead to a
 solution. However there are cases when the input string may lead to
 ambiguous output by the parser. For example the sentence ''Move all blocks inside a box on top
 of the red square.'' makes it possible to move blocks from different boxes. One could

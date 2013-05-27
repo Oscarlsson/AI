@@ -185,7 +185,15 @@ sentence 2, the first parse tree is treated as invalid.
 \\\\
 Another thing worth mention is that the parser does not make any difference of
 $any$, $the$ and $all$. It always returns a list of all possibilities to the
-planner. 
+planner. The planner does not handle those differently either, so the result will be 
+the same which in practice means that some sentences will not as expected. For example, 
+take the sentence ''Put a ball in the box''. If there are multiple balls in the world, 
+this will give a timeout since the planner will try to move all balls into the box and 
+balls are not allowed to be on top of each other. Also, ''the box'' may refer to 
+multiple boxes but only the first one in the list will be chosen. The correct behavior of 
+the parser and the planner would be to chose one ball, which is easiest to move and therefore 
+best according to the heuristic function, and move it into the box, specified 
+by the user. 
 \section{Discussion}
 A big problem when handling natural languages is that there are many ways of read
 things which easily makes a sentence ambiguous. We also noticed that it was
@@ -207,8 +215,8 @@ heuristic function.
 \\\\
 We had many discussions about have to treat $any$, $the$ and $all$ in the
 parser and the difference of these. This resulted in that they were treated in
-the same way which is not correct. A possible solution of how to treat these
-could be the following: 
+the same way which is not correct. If we would had more time, a possible solution 
+of how to treat these could be the following: 
 \begin{itemize}
 \item if $any$, the planner could treat the possibilities as different parse trees and choose the best one. 
 \item if $the$, and there is more than one possibility the system should let the user specify which one was meant. 

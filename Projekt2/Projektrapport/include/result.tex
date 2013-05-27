@@ -163,11 +163,11 @@ Put it on the floor & ( put ( ontop floor) ) & drop 6\linebreak \\ \hline
 box.''}
 \label{fig:moveex}
 \end{figure}\\
-Of course there is several sentences which is not handled by the parser and the
+Of course there are several sentences which are not handled by the parser and the
 planner. An example of a such sentence is "Move all blocks inside a box on top
 of the red square." which results in a timeout due to our translation of the
 command. The parser returns a list of all blocks that is inside of a box, to be
-moved. This is impossible to perform in the initial world since there is two
+moved. This is impossible to perform in the initial world since there are two
 boxes with a ball inside and balls can never be put on each other. Then the
 planner will not find a solution, which results in a timeout.\\\\
 The planner does not print what it does, such as ''I move the topmost block
@@ -187,7 +187,7 @@ Another thing worth mention is that the parser does not make any difference of
 $any$, $the$ and $all$. It always returns a list of all possibilities to the
 planner. 
 \section{Discussion}
-A big problem when handling natural language is that there is many ways of read
+A big problem when handling natural languages is that there are many ways of read
 things which easily makes a sentence ambiguous. We also noticed that it was
 hard to cover all cases that could occur in the parser and depending on which
 input we got it was possible to pattern match on power sets of possible inputs,
@@ -202,7 +202,7 @@ implementing A*. Another possibility would been to use for example First-Order
 Logic instead. 
 \\\\
 We did a lot of tweaking with the heuristic function and notice how instable it
-was. There might be cases that we miss and there is a lot of ways of making a
+was. There might be cases that we miss and there are a lot of ways of making a
 heuristic function.
 \\\\
 We had many discussions about have to treat $any$, $the$ and $all$ in the

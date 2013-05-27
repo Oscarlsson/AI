@@ -13,7 +13,13 @@ $the$ and $all$. We wanted the parser to always give the planner the best parse
 tree, which sometimes is impossible because several parse trees could be valid
 and similarly. Therefore the parser must sometimes give multiple parse trees to
 the planner which must choose the tree that gives the best planning.
-
+\\\\
+The planner should always output one and only one plan as simple as
+possible from all the possible interpretations. This was harder than we thought. 
+There may be a lot of possible interpretation and the format of the
+output from the parser became more important. Sadly due to lack of time this
+problem became poorly handled and the planner basically takes the first
+interpretation delivered by the parser. 
 \section{Future work}
 Simple future works we would have done if we had more time would be to optimize
 the time it take to perform the instructions, restore all blocks that we move

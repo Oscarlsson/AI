@@ -1,5 +1,5 @@
 \chapter{Architecture}
-The parser and the planner was implemented in Haskell. The parser interpreted
+The parser and the planner were implemented in Haskell. The parser interpreted
 what blocks the sentence referred to and the planner found a plan of how to
 move these blocks to reach the goal state determined by the parser. 
 
@@ -50,7 +50,7 @@ drop blocks is preserved within the parser. It would be impossible to take a
 block left of or right of all blocks, since this refers to the block itself.
 And it would not be allowed to take the floor or put something inside a block
 that is not a box. All blocks must also be above the floor. If any of these
-laws were violated, an error were returned.
+laws were violated, an error was returned.
  \\\\
 If a block should be put left of or right of several blocks, the parser returns
 the leftmost or rightmost block as a reference block. 
@@ -62,7 +62,7 @@ by applying any valid instruction. The add function is responsible for
 calculating the heuristics of every node.
 \\\\
 Every node in a world consist of a history which is a sequence of instructions. 
-The nodes was saved in a priority queue and two equal words are never saved more
+The nodes were saved in a priority queue and two equal words are never saved more
 then once. If a world from the queue is popped and satisfy a finished state
 then the algorithm has found a solution and terminates. This in contrast to if a
 successor is found that satisfy the same constraints then optimality can not be

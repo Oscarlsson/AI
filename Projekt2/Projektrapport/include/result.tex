@@ -210,7 +210,7 @@ parser and the difference of these. This resulted in that they were treated in
 the same way which is not correct. If we would had more time, a possible solution 
 of how to treat these could be the following: 
 \begin{itemize}
-\item if $any$, the planner could treat the possibilities as different parse trees and choose the best one. 
-\item if $the$, and there is more than one possibility the system should let the user specify which one was meant. 
-\item if $all$, all possibilities should be returned to the planner
+\item if $any$, the planner could treat the possible blocks as different parse trees and choose the one that gives the simpliest solution.  
+\item if $the$, and there is more than one possible block that was referred, the system should let the user specify which one was meant or choose the one that gives the simpliest solution. 
+\item if $all$, all possible blocks should be moved by the planner
 \end{itemize}

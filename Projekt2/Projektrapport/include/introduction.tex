@@ -29,9 +29,10 @@ several possible plannings.
 
 \section{Theory}
 This project was a subset by a famous PhD thesis called SHRDLU which  is a
-dialogue system that operates in a three-dimensional blocks world. To parse the
-sentences, the programming language Grammatical Framework was used and the
-planner was done implementing the search algorithm A*.
+dialogue system that operates in a three-dimensional blocks world
+\cite{SHRDLU_url}. To parse the sentences, the programming language Grammatical
+Framework was used and the planner was done implementing the search algorithm
+A*\cite{gf_url,astar_ai}.
 
 \subsection{The blocks world}
 The blocks world is a famous planning domain that consists of a set of cubes on
@@ -98,7 +99,7 @@ goal from $n'$ \citep{astar_ai}. This is also described in Equation
 h(n) \leq c(n, a, n') + h(n')
 \label{Eq:consistent_astar}
 \end{equation}\\
-It could also be proved that A* is optimally efficient for any consistent
+It could also be proven that A* is optimally efficient for any consistent
 heuristic \citep{astar_ai}. This means that no other optimal algorithm is
 guaranteed to expand fewer nodes than A* \citep{astar_ai}. However, A* is not
 beneficial for many large-scaled problems since it keeps all generated nodes in

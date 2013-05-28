@@ -18,6 +18,7 @@ given sentence and functions such as to check whether a certain block is
 relative to another block or not. 
 
 \section{Parser}
+\label{sec:parser}
 The sentence was first modified by removing unnecessary characters, such as
 ''.'', ''!'' and ''?''. Also, all characters were changed to lowercase so it
 could be given and parsed by the GF grammar. To be able to use pattern matching
@@ -56,17 +57,31 @@ If a block should be put left of or right of several blocks, the parser returns
 the leftmost or rightmost block as a reference block. 
 
 \section{Planner}
-The planner uses $A^*$ similar to Algorithm \ref{algorithm:astar}. The
-successor function in a world returns every possible world that can be reached
-by applying any valid instruction. The add function is responsible for
-calculating the heuristics of every node.
-\\\\
-Every node in a world consist of a history which is a sequence of instructions. 
-The nodes were saved in a priority queue and two equal words are never saved more
-then once. If a world from the queue is popped and satisfy a finished state
-then the algorithm has found a solution and terminates. This in contrast to if a
-successor is found that satisfy the same constraints then optimality can not be
-guaranteed. This because of that one must take the heuristic in consideration. \\ 
+The planner uses the $A^*$ similar to Algorithm \ref{algorithm:astar}. The
+algorithm works as mentioned by maintaining a priority queue of possible
+successor nodes in the state space of the search problem. Each node represents a
+state defined by the blocks in the world and the holding attribute. In addition,
+a node keeps a history, i.e. a sequence of instructions that lead up to the
+state. The priority for each node is defined by the length of the history $g(n)$ plus
+its heuristic function value $h(n)$ as defined in Equation \ref{Eq:astar}. The next node to be expanded in each step is
+always the node with the shortest combination of history length and heuristic
+function value. This ensures that an expanded node, i.e. the popped node of the
+queue, always have its shortest path associated with it under the premise that
+the heuristic function never overestimates any node. Thus, the algorithm
+terminates when it pops a node that is in a finished state. 
+
+The successor function adds to the queue every possible node that can be reached
+by applying any legal instruction, except those that have previously been
+expanded. The successor nodes are not evaluated for being finished since this
+would yield premature termination as explained above.
+
+A problem is regarded as unsolvable if a configurable maximum of 1000 nodes are
+expanded before finding a finished state. This case covers both impossible
+problems and those problems that the algorithm fails to solve. It was not
+prioritized during the project to distinguish between the two, since many
+different cases would need to be implemented for the algorithm to be able to
+identify the type of goals that are impossible. 
+
 \begin{algorithm}[h!]
  \SetAlgoLined
  \KwData{TimeoutInt, World, Goal}
@@ -86,17 +101,56 @@ guaranteed. This because of that one must take the heuristic in consideration. \
  \caption{A*}
  \label{algorithm:astar}
 \end{algorithm} 
-\\
-To make sure of that a solution is found a world must satisfy a number of logical
-constraints. This is generated from an interpretation of what the user has
-written. This interpretation comes from the parsing of the natural language but 
-also choices from what a given parse tree actually means. This logical
-constraints differ for different parse trees.   
-\\\\
-The implemented $A^*$ algorithm makes use of a timeout. This means that 
-the algorithm terminates after a number of steps even though a solution is not
-found. This generally happens when a solution is impossible to find. 
-\\\\
+
+\subsection{Scope and constraints}
+
+This section discusses the scope and constraints of the planner in terms of the
+decisions that were made regarding how to interpret references to blocks and
+locations.
+
+\subsubsection{Blocks to move} 
+\label{sec:blockstomove}
+The goal object is defined partly by a list of blocks to move, from here on
+referred to as objects. The initial parse tree may have referred to these
+objects as either (1) \textit{any/a(n)}, (2) \textit{the} or (3) \textit{all}.
+The natural response to these are to (1) move the block that yields the shortest
+path, (2) question the user if there is ambiguity and (3) move all matching
+blocks.
+
+During the project, we prioritized and solved for the possibility for our
+algorithm to handle multiple objects, and the planner does not distinguish
+between the three cases above; i.e. if several objects are referenced, all of
+them need to be moved to the requested location. This was due to the fact that
+the code can easily be extended by adding various checks in a procedure that
+handles the cases above, as long as the general case of moving several objects
+has been implemented.
+
+\subsubsection{Blocks in location reference}
+
+The location reference of the goal object definition (e.g. \textit{LeftOf},
+\textit{OnTop} etc. as explained in section \ref{location:parser}) generally
+refers to a list of blocks, from here on referred to as targets. The parse tree
+may, just as for objects in section \ref{sec:blockstomove}, refer to these
+targets by \textit{any/a(n), the} or \textit{all}, with the same natural ways to
+handle them as mentioned previously. The goal object maintains a list of
+matching targets, and it has not been prioritized to distinguish between the
+cases or handling any other than the first element in the list of matching
+targets. The code can easily be extended to handle not just one, but any number
+of targets in an appropriate way.
+
+%To make sure of that a solution is found a world must satisfy a number of logical
+%constraints. This is generated from an interpretation of what the user has
+%written. This interpretation comes from the parsing of the natural language but 
+%also choices from what a given parse tree actually means. This logical
+%constraints differ for different parse trees.
+
+-----OLD STUFF NOT REWRITTEN BELOW-------
+
+Issues in current scope
+    Rearranging blocks in space other than that of which the 
+    heuristic function handles.
+        Examples
+
 The laws of physics in the world are handled by comparison functions. A pyramid
 and a ball are always smaller than every other object. In this way it is never
 possible to put anything on a ball or pyramid. 

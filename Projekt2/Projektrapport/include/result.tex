@@ -71,7 +71,7 @@ drop 7\linebreak\\ \hline
 \label{tab:exampleinput2}
 \end{table}\\
 All the examples in Table \ref{tab:exampleinput} and Table
-\ref{tab:exampleinput2} refers to a $Move$ action. An example of how the
+\ref{tab:exampleinput2} refers to a $Move$ action. An example of how a
 planning is done is shown in Figure \ref{fig:moveex}. The implemented parser
 and planner also handles the actions $Take$ and $Put$. Examples of these are
 shown below in Table \ref{tab:put_take}. The $Put$ action assumes that there is
@@ -186,7 +186,7 @@ sentence 2, the first parse tree is treated as invalid.
 Another thing worth mention is that the parser does not make any difference of
 $any$, $the$ and $all$. It always returns a list of all possibilities to the
 planner. The planner does not handle those differently either, so the result will be 
-the same which in practice means that some sentences will not as expected. For example, 
+the same which in practice means that some sentences will not act as expected. E.g. 
 take the sentence ''Put a ball in the box''. If there are multiple balls in the world, 
 this will give a timeout since the planner will try to move all balls into the box and 
 balls are not allowed to be on top of each other. Also, ''the box'' may refer to 
@@ -195,23 +195,24 @@ the parser and the planner would be to chose one ball, which is easiest to move 
 best according to the heuristic function, and move it into the box, specified 
 by the user. 
 \section{Discussion}
-A big problem when handling natural languages is that there are many ways of read
+A well-known problem when handling natural languages is that there are many ways of interpreting
 things which easily makes a sentence ambiguous. We also noticed that it was
 hard to cover all cases that could occur in the parser and depending on which
 input we got it was possible to pattern match on power sets of possible inputs,
-which the code increase rapidly. \\\\
+which maked the code increase rapidly. \\\\
 Another difficulty in the beginning was that the syntax tree that was given
 from the parser was a concrete syntax tree and we wanted an abstract syntax
 tree to be able to pattern match on the different parts. This was solved when
 we found a library which could convert between GF grammar as concrete and
 abstract syntax. \\\\
-We also choose to implement a planning algorithm by graph traversal, by
-implementing A*. Another possibility would been to use for example First-Order
-Logic instead. 
-\\\\
 We did a lot of tweaking with the heuristic function and notice how instable it
 was. There might be cases that we miss and there are a lot of ways of making a
 heuristic function.
+\\\\
+Our choice was to implement a planning algorithm by graph traversal, by
+implementing A*. Another possibility would have been to use for example First-Order
+Logic instead but the group had prior knowledge of graph traversal and with the time 
+given it seemed most reasonable to come up with an effecient planner using our prior knowledge. 
 \\\\
 We had many discussions about have to treat $any$, $the$ and $all$ in the
 parser and the difference of these. This resulted in that they were treated in

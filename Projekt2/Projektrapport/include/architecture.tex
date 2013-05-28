@@ -4,8 +4,8 @@ what blocks the sentence referred to and the planner found a plan of how to
 move these blocks to reach the goal state determined by the parser. 
 
 \section{Programs and tools}
-Haskell was used to implement the parser and the planner. The given grammar was
-written in GF and the interface used CGI and JavaScript. A Python script is
+Haskell was used to implement the parser and the planner. The predefined grammar was
+written in GF and the interface used CGI and JavaScript as GUI. A Python script was
 used to handle the communication between the Haskell files and the JavaScripts.
 \\\\
 The planner was implemented using a standard library priority queue \citep{psq_url}. 
@@ -18,8 +18,7 @@ given sentence and functions such as to check whether a certain block is
 relative to another block or not. 
 
 \section{Parser}
-The sentence was first modified by removing unnecessary characters, such as
-''.'', ''!'' and ''?''. Also, all characters were changed to lowercase so it
+The sentence was first modified by removing special characters. Also, all characters were changed to lowercase so it
 could be given and parsed by the GF grammar. To be able to use pattern matching
 on the generated output from the GF parser, the GF grammar was translated into
 Haskell data types, which were automatically generated (See Appendix B.7). From

@@ -55,27 +55,33 @@ laws were violated, an error was returned.
 If a block should be put left of or right of several blocks, the parser returns
 the leftmost or rightmost block as a reference block. 
 
-\section{Planner}
-The planner uses the $A^*$ similar to Algorithm \ref{algorithm:astar}. The
-algorithm works as mentioned by maintaining a priority queue of possible
+\section{Planner} 
+
+The planner uses the $A^*$-algorithm similar to Algorithm \ref{algorithm:astar}.
+The algorithm works as mentioned by maintaining a priority queue of possible
 successor nodes in the state space of the search problem. Each node represents a
 state defined by the blocks in the world and the holding attribute. In addition,
 a node keeps a history, i.e. a sequence of instructions that lead up to the
-state. The priority for each node is defined by the length of the history $g(n)$ plus
-its heuristic function value $h(n)$ as defined in Equation \ref{Eq:astar}. The next node to be expanded in each step is
-always the node with the shortest combination of history length and heuristic
-function value. This ensures that an expanded node, i.e. the popped node of the
-queue, always have its shortest path associated with it under the premise that
-the heuristic function never overestimates any node. Thus, the algorithm
-terminates when it pops a node that is in a finished state. 
+state. The priority for each node is defined by the length of the history $g(n)$
+plus its heuristic function value $h(n)$ as defined in Equation \ref{Eq:astar}.
+The next node to be expanded in each step is always the node with the shortest
+combination of history length and heuristic function value $f(n) = g(n) + h(n)$.
+This ensures that an expanded node, i.e. the popped node of the queue, always
+have the shortest possible path associated with it under the premise that the
+heuristic function never overestimates any node. Thus, the algorithm terminates
+when it pops a node that is in a finished state. 
 
 The successor function adds to the queue every possible node that can be reached
-by applying any legal instruction, except those that have previously been
-expanded. The successor nodes are not evaluated for being finished since this
-would yield premature termination as explained above.
+by applying any legal instruction, except for those that have previously been
+expanded (visited). The successor nodes are not evaluated for being finished
+since this would yield premature termination as explained above. Legal moves
+include the laws of physics which are handled by comparison functions respecting
+the width of objects and also that a pyramid and a ball are always smaller than
+any other object. In this way it is easy to say all blocks must be supported by
+larger or equally sized blocks.
 
-A problem is regarded as unsolvable if a configurable maximum of 1000 nodes are
-expanded before finding a finished state. This case covers both impossible
+A problem is regarded as unsolvable if a (configurable) maximum of 1000 nodes
+are expanded before finding a finished state. This case covers both impossible
 problems and those problems that the algorithm fails to solve. It was not
 prioritized during the project to distinguish between the two, since many
 different cases would need to be implemented for the algorithm to be able to
@@ -100,6 +106,50 @@ identify the type of goals that are impossible.
  \caption{A*}
  \label{algorithm:astar}
 \end{algorithm} 
+
+\subsection{Heuristic function}
+
+The task of the heuristic function is to use rules of thumb to estimate the
+remaining path length to the goal. For this proejct, there is no definite answer
+to such a method, since that would imply solving the actual problem. Instead, it
+is possible to define a lower bound in terms of the number of moves required to
+clear all blocks obstructing the path between any block's start and final
+position. Simply moving a block requires \textit{at least}\footnote{Moving a
+block may require moving other blocks first, since there may be no other legal
+positions for it to move to.} two moves, a pick and a drop. In
+addition, all misplaced blocks need to be moved which also contributes to the
+path length.  
+
+The performance of the $A*$-algorithm depends heavily on the heuristic function.
+If it is constant, a breadth first search is performed, which is clearly
+impractical since the Shrdlite world usually has at least 5-10 valid moves per
+turn, and around 10 moves are a normal plan length, which easly puts the number
+of node evaluations in the order of millions. 
+
+Due to its large impact, the heuristic function also adjusts its value based on
+which block is being held; a held block that is supposed to be moved has a $+1$
+(instead of $+2$ as it would be on the ground), and holding a neutral block has
+a $+1$ contribution since it \textit{at least} has to be dropped. In addition,
+blocks to be moved (and their obstructing blocks) are not counted if they are
+already in the final position.
+
+\subsubsection{Issues}
+
+The rules explained in the previous section are designed to handle cases where a
+number of blocks lie on top of each of the blocks that the user has referred
+to. The heuristic function is defined so that the planner prioritizes to set
+these blocks aside as fast as possible.
+
+A possible issue with this method arises when there is not much free space
+around the referenced blocks. If there is no free space to put the obstructing
+blocks, and rearrangements are required, the heuristic function has no way to
+distinguish between different sets of such rearrangements. This can be compared
+to a Tower of Hanoi \footnote{Tower of Hanoi -
+\url{http://en.wikipedia.org/wiki/Tower_of_Hanoi}} problem where a high amount of
+moves has to be made to utilize the little amount of available space. Since the
+search tree grows quickly as mentioned previously, it only requires a slight
+shortage of space to cripple the algorithm, but it is a rare event in the
+somewhat sparse world that was worked on during this project.
 
 \subsection{Scope and constraints}
 
@@ -127,7 +177,7 @@ has been implemented.
 \subsubsection{Blocks in location reference}
 
 The location reference of the goal object definition (e.g. \textit{LeftOf},
-\textit{OnTop} etc. as explained in section \ref{location:parser}) generally
+\textit{OnTop} etc. as explained in section \ref{sec:parser}) generally
 refers to a list of blocks, from here on referred to as targets. The parse tree
 may, just as for objects in section \ref{sec:blockstomove}, refer to these
 targets by \textit{any/a(n), the} or \textit{all}, with the same natural ways to
@@ -137,90 +187,30 @@ cases or handling any other than the first element in the list of matching
 targets. The code can easily be extended to handle not just one, but any number
 of targets in an appropriate way.
 
-%To make sure of that a solution is found a world must satisfy a number of logical
-%constraints. This is generated from an interpretation of what the user has
-%written. This interpretation comes from the parsing of the natural language but 
-%also choices from what a given parse tree actually means. This logical
-%constraints differ for different parse trees.
-
------OLD STUFF NOT REWRITTEN BELOW-------
-
-Issues in current scope
-    Rearranging blocks in space other than that of which the 
-    heuristic function handles.
-        Examples
-
-The laws of physics in the world are handled by comparison functions. A pyramid
-and a ball are always smaller than every other object. In this way it is never
-possible to put anything on a ball or pyramid. 
-\\\\
-The heuristic assumes that that there are infinitely many free spaces in the
-world where one can but a block. From this follows that one can always move a
-free block in two steps. 
-%Varje nod är en värld och en historia som består av en sekvens av
-%instruktioner.  Noderna sparas i en prioritetskö och två lika dana värdar
-%sparas aldrig mer än en gång. 
-
-%Om vi poppar en värld ur prioritetskön som också
-%uppfyller finished så är vi färdiga till skillnad från om vi hade hittat en
-%succsessor som var finishid för då kan vi inte garantera optimalitet. Detta på
-%grund utav att vi måste ta hänsyn till heuristiken. 
-
-%För att veta om vi är färdiga så måste världen uppfylla ett antal logiska
-%satser som vi generar utifrån vår tolkning av den meningen som användaren
-%anger. Dessa logiska satser skiljer mellan olika parseträd.
-
-%Vi har en timeout på $A^*$ som innebär att vi avbryter om det visar sig att
-%algoritmen tar för lång tid. Oftast på grund utav att det inte finns någon
-%lösning. 
-
-%Fysiken sköts av en jämnförelseoperator på block. En pyramid eller en boll är alltid
-%mindre än allt annat och vi kan bara lägga mindre block på större block. På så
-%sätt är det aldrig möjligt att lägga någonting på en boll eller en pyramid.  
-
-
-%Heuristikfunktionen antar att vi har ett oändligt antal liga platser i världen.
-%Dvs vi antar alltid att vi kan flytta ett block inom ramen av två steg. 
-%* goal, finished \\
-
-
-%* heuristic function\\
-
-
-%* A*, nodes and edges, timeout\\
-
-
-%* instructions, valid, comparator\\
-
-
-%* pseudo code A*\\\\
-
-%Successors på en värld returnerar alla möjliga världar man kan komma till genom
-%att göra en tillåten instruktion. Add räknar ut f(n) på varje värld
 \section{Parser and Planner}
+
 The main idea with the implementation of the parser and the planner was that the
 parser should take care of the interpretation of a sentence and the planner
 should take this interpretation and perform the actions which should lead to a
-solution. However there are cases when the input string may lead to
-ambiguous output by the parser. For example the sentence ''Move all blocks inside a box on top
-of the red square.'' makes it possible to move blocks from different boxes. One could
-also choose to interpret the sentence as to move all blocks from every box. Even
-further there may be more than one red square in the world. Instead of asking 
-attendant questions to the user the idea was to send all possible meanings of
-the sentence to the planner. The planner should output one and only one plan as simple as
-possible from all the possible interpretations. 
-\\\\
+solution. However there are cases when the input string may lead to ambiguous
+output by the parser. For example the sentence ''Move all blocks inside a box on
+top of the red square.'' makes it possible to move blocks from different boxes.
+One could also choose to interpret the sentence as to move all blocks from every
+box. Even further there may be more than one red square in the world. Instead of
+asking attendant questions to the user the idea was to send all possible
+meanings of the sentence to the planner. The planner should output one and only
+one plan as simple as possible from all the possible interpretations. 
+
 The parser takes care of a lot of impossible sentences such as ''Take the
 floor''. Some sentences will however pass the parser since they do not seem
 directly impossible. For example ''Move all blocks inside a box on top of a
 square''. This may be impossible due to the laws of physics in the world. Say
 for instance that there is only one square in the world and this square is
 smaller than some block in a box, then there is no possible solution because it
-is impossible to put a bigger block on top of a smaller block. The idea here
-was that the planner should realize this and take an other interpretation if
-several interpretations where generated by the parser and otherwise fail with
-some informative error. For now only a time out message is delivered by the
-planner.           
+is impossible to put a bigger block on top of a smaller block. The idea here was
+that the planner should realize this and take an other interpretation if several
+interpretations where generated by the parser and otherwise fail with some
+informative error. For now only a time out message is delivered by the planner.           
 
 
 

@@ -179,7 +179,7 @@ Another thing worth mentioning is that the parser does not make any difference
 of $any$, $the$ and $all$. It always returns a list of all possibilities to the
 planner. The planner does not handle those differently either, so the result
 will be the same which in practice means that some sentences will not act as
-expected. E.g.  take the sentence ''Put a ball in the box''. If there are
+expected. E.g. take the sentence ''Put a ball in the box''. If there are
 multiple balls in the world, this will give a timeout since the planner will try
 to move all balls into the box and balls are not allowed to be on top of each
 other. Also, ''the box'' may refer to multiple boxes but only the first one in
@@ -207,7 +207,16 @@ implementing A*. Another possibility would have been to use for example First-Or
 Logic instead but the group had prior knowledge of graph traversal and with the time 
 given it seemed most reasonable to come up with an effecient planner using our prior knowledge. 
 \\\\
-
+The details of the heuristic function allowed us to find optimal solutions to
+all examples of parse trees presented. Optimality in this context is defined by
+finding the fewest moves required for the given parse tree and in a reasonable
+amount of time. It does not refer to the quality of the moves that were made,
+nor the quality of the final state in any terms. It does not compare
+alternative parse trees to see whether one is faster to solve, nor whether any
+parse tree involves less destruction of the world. Optimality in this sense has
+been solely in a $A*$-algorithm specific sense, but there are indeed several
+other ways to define it.
+\\\\
 We had several discussions about how to interpret and treat the different
 meaning of $any$, $the$ and $all$ in the parser. We decided to prioritize being
 able to treat the general case of several blocks but not to differentiate the

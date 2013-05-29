@@ -4,22 +4,25 @@ interpretations. We had long discussions about the meaning of ''Above'' and
 ''Ontop'' and about the difference of these.  
 \\\\
 During the project we have learned the importance of having a good heuristic
-function in A* and the importance of avoiding overestimation.  Several times
-when we overestimated the heuristic function our A* algorithm ended up visiting
-more than 100 times the numbers of nodes. 
+function in A* and the importance of avoiding overestimation. Several times
+when we overestimated the heuristic function our A* algorithm was faster at
+finding a finished state but ended up including suboptimal actions to get there. 
+Also, if the heuristic function was not properly tweaked, the branching factor
+makes finding a solution impossible.
 \\\\
 We also had a lot of discussions about the difference and how to treat $any$,
 $the$ and $all$. We wanted the parser to always give the planner the best parse
 tree, which sometimes is impossible because several parse trees could be valid
-and similarly. Therefore the parser must sometimes give multiple parse trees to
+and similar. Therefore the parser must sometimes give multiple parse trees to
 the planner which must choose the tree that gives the best planning.
 \\\\
-The planner should always output one and only one plan as simple as
-possible from all the possible interpretations. This was harder than we thought. 
-There may be a lot of possible interpretation and the format of the
-output from the parser became more important. Sadly due to lack of time this
-problem became poorly handled and the planner simply takes the first
-interpretation delivered by the parser. 
+The planner should always output one and only one plan as simple as possible
+from all the possible interpretations. This was harder than we thought.  There
+may be a lot of possible interpretations and the format of the output from the
+parser became more important. Sadly due to time constraints this problem was not
+treated and the planner simply takes the first interpretation delivered by the
+parser. 
+
 \newpage 
 
 \section{Future work}

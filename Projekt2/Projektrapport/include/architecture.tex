@@ -56,7 +56,6 @@ If a block should be put left of or right of several blocks, the parser returns
 the leftmost or rightmost block as a reference block. 
 
 \section{Planner} 
-
 The planner used the $A^*$-algorithm similar to Algorithm \ref{algorithm:astar}.
 The algorithm worked as mentioned by maintaining a priority queue of possible
 successor nodes in the state space of the search problem. Each node represented a
@@ -70,7 +69,7 @@ This ensured that an expanded node, i.e. the popped node of the queue, always
 have the shortest possible path associated with it under the premise that the
 heuristic function never overestimates any node. Thus, the algorithm terminates
 when it pops a node that is in a finished state. 
-
+\\\\\\\\\\\\\\
 The successor function adds to the queue every possible node that can be reached
 by applying any legal instruction, except for those that have previously been
 expanded (visited). The successor nodes should not be checked for being finished
@@ -79,14 +78,13 @@ include the laws of physics which were handled by comparison functions
 respecting the width of objects and also that a pyramid and a ball are always
 smaller than any other object. In this way it was easy to say all blocks must be
 supported by larger or equally sized blocks.
-
+\\\\
 A problem was regarded as unsolvable if a (configurable) maximum of 1000 nodes
 are expanded before finding a finished state. This case covers both impossible
 problems and those problems that the algorithm fails to solve. It was not
 prioritized during the project to distinguish between the two, since many
 different cases would need to be implemented for the algorithm to be able to
-identify the type of goals that are impossible. 
-
+identify the type of goals that are impossible. \\
 \begin{algorithm}[h!]
  \SetAlgoLined
  \KwData{TimeoutInt, World, Goal}
@@ -108,7 +106,6 @@ identify the type of goals that are impossible.
 \end{algorithm} 
 
 \subsection{Heuristic function}
-
 The task of a heuristic function is to use rules of thumb to estimate the
 remaining path length to the goal. For this proejct, there was no definite
 answer to such a method, since that would imply solving the actual problem.
@@ -118,13 +115,13 @@ final position. Simply moving a block requires \textit{at least}\footnote{Moving
 a block may require moving other blocks first, since there may be no other legal
 positions for it to move to.} two moves, a pick and a drop. In addition, all
 misplaced blocks need to be moved which also contributed to the path length.  
-
+\\
 The performance of the $A*$-algorithm depends heavily on the heuristic function.
 If it is constant, a breadth first search is performed, which is clearly
 impractical since the Shrdlite world usually has at least 5-10 valid moves per
 turn, and around 10 moves are a normal plan length, which easly puts the number
 of node evaluations in the order of millions. 
-
+\\\\
 Due to its large impact, the heuristic function also adjusted its value based on
 which block is being held; a held block that is supposed to be moved has a $+1$
 (instead of $+2$ as it would be on the ground), and holding a neutral block had
@@ -133,12 +130,11 @@ blocks to be moved (and their obstructing blocks) were not counted if they are
 already in the final position.
 
 \subsubsection{Issues}
-
 The rules explained in the previous section were designed to handle cases where
 a number of blocks lie on top of each of the blocks that the user has referred
 to. The heuristic function was defined so that the planner prioritizes to set
 these blocks aside as fast as possible.
-
+\\\\
 A possible issue with this method arises when there is not much free space
 around the referenced blocks. If there is no free space to put the obstructing
 blocks, and rearrangements are required, the heuristic function has no way to
@@ -151,7 +147,6 @@ shortage of space to cripple the algorithm, but it is a rare event in the
 somewhat sparse world that was worked on during this project.
 
 \subsection{Scope and constraints}
-
 This section discusses the scope and constraints of the planner in terms of the
 decisions that were made regarding how to interpret references to blocks and
 locations.
@@ -164,7 +159,7 @@ objects as either (1) \textit{any/a(n)}, (2) \textit{the} or (3) \textit{all}.
 The natural response to these are to (1) move the block that yields the shortest
 path, (2) question the user if there is ambiguity and (3) move all matching
 blocks.
-
+\\\\\\\\
 During the project, we prioritized and solved for the possibility for our
 algorithm to handle multiple objects, and the planner does not distinguish
 between the three cases above; i.e. if several objects are referenced, all of
@@ -174,7 +169,6 @@ handles the cases above, as long as the general case of moving several objects
 has been implemented.
 
 \subsubsection{Blocks in location reference}
-
 The location reference of the goal object definition (e.g. \textit{LeftOf},
 \textit{OnTop} etc. as explained in section \ref{sec:parser}) generally refers
 to a list of blocks, from here on referred to as targets. The parse tree may,
@@ -187,7 +181,6 @@ easily be extended to handle not just one, but any number of targets in an
 appropriate way.
 
 \section{Parser and Planner}
-
 The main idea with the implementation of the parser and the planner was that the
 parser should take care of the interpretation of a sentence and the planner
 should take this interpretation and perform the actions which should lead to a
@@ -199,7 +192,7 @@ box. Even further there may be more than one red square in the world. Instead of
 asking attendant questions to the user the idea was to send all possible
 meanings of the sentence to the planner. The planner should output one and only
 one plan as simple as possible from all the possible interpretations. 
-
+\\\\
 The parser takes care of a lot of impossible sentences such as ''Take the
 floor''. Some sentences will however pass the parser since they do not seem
 directly impossible. For example ''Move all blocks inside a box on top of a
@@ -209,7 +202,4 @@ smaller than some block in a box, then there is no possible solution because it
 is impossible to put a bigger block on top of a smaller block. The idea here was
 that the planner should realize this and take an other interpretation if several
 interpretations where generated by the parser and otherwise fail with some
-informative error. For now only a time out message is delivered by the planner.           
-
-
-
+informative error. For now only a time out message is delivered by the planner.

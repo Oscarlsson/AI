@@ -3,7 +3,7 @@ TIN171AI
 
 TIN171AI
 
-# Projekt 1 - " Sentimentalizer "
+# Projekt 1 - "Sentimentalizer"
 Deadline : 28 April
 
 
